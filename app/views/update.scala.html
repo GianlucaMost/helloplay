@@ -1,26 +1,18 @@
-@(user: models.User)
+@(message: String, user: models.User)
 
 @import helper._
 
-
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="US-ASCII">
-		<title>create user</title>
-	</head>
-	<body>
-		<h1>update an user</h1>
-		@helper.form(action = routes.UserController.update) {
-				<p>
-					<input type="text" name="name" placeholder="Benutzername" value="user'name').value"></input>
-				</p>
-				<p>
-					<input type="text" name="pw" placeholder="Passwort"></input>
-				</p>
-				<p>
-					<input type="submit" value="Speichern"></input>
-				</p>
-		}
-	</body>
-</html>
+@main("Benutzer bearbeiten") {
+	<h1>@message</h1>
+	@helper.form(action = routes.UserController.update) {
+			<p>
+				<input type="text" name="name" placeholder="Benutzername" value="@user.name"></input>
+			</p>
+			<p>
+				<input type="password" name="pw" placeholder="Passwort"></input>
+			</p>
+			<p>
+				<input type="submit" value="Speichern"></input>
+			</p>
+	}
+}

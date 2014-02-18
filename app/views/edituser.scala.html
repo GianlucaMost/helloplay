@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="US-ASCII">
-<title>create user</title>
-</head>
-<body>
-	<h1>create a new user</h1>
+@main("Benutzer anlegen") {
+	<h1>Einen neuen Benutzer anlegen</h1>
 	@helper.form(action = routes.UserController.save()) {
 			<p>
 				<input type="text" name="name" value="2do"></input>
@@ -17,5 +11,4 @@
 				<input type="submit" value="Speichern"></input>
 			</p>
 	}
-</body>
-</html>
+}

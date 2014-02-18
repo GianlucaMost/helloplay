@@ -1,26 +1,25 @@
-@(form: Form[User])
+@(message: String, passform: Form[User])
 
 @import helper._
 
+@main("Neuer Benutzer") {
+	<h1>Neuen Benutzer anlegen</h1>
+	
+	@if(flash.containsKey("error")) {
+		<div>
+			<strong class="error">Oops!</strong> @flash.get("error")
+		</div>
+	}
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="US-ASCII">
-		<title>create user</title>
-	</head>
-	<body>
-		<h1>create a new user</h1>
-		@helper.form(action = routes.UserController.save) {
-				<p>
-					<input type="text" name="name" placeholder="Benutzername"></input>
-				</p>
-				<p>
-					<input type="text" name="pw" placeholder="Passwort"></input>
-				</p>
-				<p>
-					<input type="submit" value="Speichern"></input>
-				</p>
-		}
-	</body>
-</html>
+	@helper.form(action = routes.UserController.save) {
+			<p>
+				<input type="text" name="name" placeholder="Benutzername"></input>
+			</p>
+			<p>
+				<input type="password" name="pw" placeholder="Passwort"></input>
+			</p>
+			<p>
+				<input type="submit" value="Speichern"></input>
+			</p>
+	}
+}

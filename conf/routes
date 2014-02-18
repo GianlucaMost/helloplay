@@ -24,7 +24,7 @@ GET     /login     		          	controllers.LoginController.login()
 POST    /login                      controllers.LoginController.authenticate()
 
 # show the user-update-page
-GET		/user/update/:id			controllers.UserController.updatePage(id: Long)
+GET		/user/update/:id			controllers.UserController.updateShow(id: Long)
 
 # handle the user-update
 POST	/user/update				controllers.UserController.update()

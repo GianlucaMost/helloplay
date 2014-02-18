@@ -13,14 +13,14 @@ import javax.persistence.SequenceGenerator;
 
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
+import play.db.jpa.Transactional;
 
 /**
  * User entity managed by JPA
  */
 @Entity 
 @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
-public class User
-{  
+public class User{  
 	@Id													//id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public Long id;
@@ -30,21 +30,35 @@ public class User
     
     @Constraints.Required
     public String password;
+    
+    /**
+     * check username, when the name already exist, 'true' is returned, otherwise 'false'
+     */
+    @Transactional(readOnly=true)
+    public static boolean userExist(String name) {
+    	EntityManager em = JPA.em();
+    	
+    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+    	query.setParameter("pName", name);
+    	Collection<User> coll = query.getResultList();
+    	
+    	return !coll.isEmpty();
+    }
 	
     /**
      * Find an user by id.
      */
-    public static User findById(Long id)
-    {
+    @Transactional(readOnly=true)
+    public static User findById(Long id){
     	EntityManager em = JPA.em();
-        return em.find(User.class, id);
+    	return em.find(User.class, id);
     }
     
     /**
      * Get all users.
      */
-    public static Collection<User> findAll()
-    {
+    @Transactional(readOnly=true)
+    public static Collection<User> findAll(){
         Query query = JPA.em().createQuery("SELECT u FROM User u");
         return (Collection<User>) query.getResultList();
     }
@@ -53,41 +67,23 @@ public class User
      * Add a new user.
      * @param name
      */
-    public static void add(String name, String pw)
-    {
-    	EntityManager em = JPA.em();   	
-    	User user = new User();
-    	user.name=name;
-    	user.password=pw;
-    	
-    	Query query = JPA.em().createQuery("SELECT u FROM User u where name = :pName ");
-    	query.setParameter("pName", name);
-    	
-    	if(query.getResultList().isEmpty())
-    	{
-    		user.delete();
-    	}else
-    	{
+    @Transactional
+    public static void add(String name, String pw) {
+    	if(!userExist(name)) {
+    		EntityManager em = JPA.em();   	
+        	User user = new User();
+        	user.name=name;
+        	user.password=pw;
     		em.persist(user);
     	}
-    	
-    	//2do hier muss ich mir noch was anderes ueberlegen, um nur den namen zu checken
-//    	if (findAll().contains(user)==true)
-//    	{
-//    		user.delete();
-//    	}else
-//    	{
-//    		em.persist(user);
-//    	}
-
     }
     
     /**
      * Update this user.
      * @param name
      */
-    public void update(String name, String pw)
-    {
+    @Transactional
+    public void update(String name, String pw){
     	EntityManager em = JPA.em();
 		User user = em.find(User.class, this.id);
     	user.name = name;
@@ -98,8 +94,8 @@ public class User
     /**
      * Delete this user.
      */
-    public void delete()
-    {
+    @Transactional
+    public void delete(){
         JPA.em().remove(this);
     }
     

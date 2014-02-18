@@ -1,32 +1,21 @@
 @(form: Form[models.User])
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login</title>
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
-    </head>
-    <body>
-        <header>
-            <a href="@routes.Application.index" id="logo"><span>Log</span>in</a>
-        </header>
-    	@helper.form(routes.LoginController.authenticate){
-		   <h1>Sign in</h1>
-			@if(form.hasGlobalErrors){
-			    <p class="error">
-			        @form.globalError.message
-			    </p>
-			}
-		   <p>
-		       <input type="text" name="name" placeholder="Benutzername" value="@form("name").value">
-		   </p>
-		   <p>
-		       <input type="password" name="password" placeholder="Password">
-		   </p>
-		   <p>
-		       <button type="submit">Login</button>
-		   </p>
+@main("Einloggen") {
+   	@helper.form(routes.LoginController.authenticate){
+	   <h1>Einloggen</h1>
+		@if(form.hasGlobalErrors){
+		    <p class="error">
+		        @form.globalError.message
+		    </p>
 		}
-    </body>
-</html>
+	   <p>
+	       <input type="text" name="name" placeholder="Benutzername" value="@form("name").value">
+	   </p>
+	   <p>
+	       <input type="password" name="password" placeholder="Password">
+	   </p>
+	   <p>
+	       <button type="submit">Login</button>
+	   </p>
+	}
+}

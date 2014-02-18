@@ -1,13 +1,23 @@
 @(message: String, users: Collection[models.User])
 
-@main("User List") {
-    
+@main("Benutzerliste"){
+	<h1>@message</h1>
     <div>
-    	<ul>
-    	@for(user <- users) {
-  			<li>@user.name</li>
-		}
-    	</ul>
+    	<table border="1">
+    		<tr>
+    			<th>Id</th>
+    			<th>Benutzername</th>
+    			<th>Bearbeiten</th>
+    			<th>Loeschen</th>
+    		</tr>
+    		@for(user <- users) {
+	    		<tr>
+	    			<td>@user.id</td>
+	  				<td>@user.name</td>
+	  				<td><a href="/user/update/@user.id">edit</a></td>
+	  				<td><a href="/user/delete/@user.id">delete</a></td>
+	  			</tr>
+			}
+    	</table>
     </div>
-
 }
