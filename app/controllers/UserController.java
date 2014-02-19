@@ -122,10 +122,13 @@ public class UserController extends Controller {
 		String pw = form.get("pw");
 		User udUser = User.findById(Global.lUpdateId);
 		if (!User.userExist(name) || name.equals(udUser.name)) {
-//			User udUser = User.findByName(name);
-			udUser.update(name, pw);
-			Collection<User> users = User.findAll();
-			return ok(user.render("Benutzer '" + name + "' wurde aktuallisiert", users));
+			if (name.isEmpty() || pw.isEmpty()) {
+				flash("error", "username or password is emty.");
+				return redirect(routes.UserController.updateShow(Global.lUpdateId));
+			}else {
+				udUser.update(name, pw);
+				return ok(user.render("Benutzer '" + name + "' wurde aktuallisiert", User.findAll()));
+			}
 		}else {
 			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
 			return redirect("/user/update/" + Global.lUpdateId);
