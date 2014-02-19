@@ -69,7 +69,7 @@ public class User{
      */
     @Transactional
     public static void add(String name, String pw) {
-		EntityManager em = JPA.em();   	
+		EntityManager em = JPA.em();
     	User user = new User();
     	user.name=name;
     	user.password=pw;

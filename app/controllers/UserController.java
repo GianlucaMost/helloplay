@@ -61,7 +61,6 @@ public class UserController extends Controller {
 	@Transactional
 	public static Result newuser() {
 		Form<User> userForm = form(User.class);
-//		return ok(newuser.render(userForm));
 		return ok(newuser.render("", userForm));
 	}
 	
@@ -82,10 +81,16 @@ public class UserController extends Controller {
 	    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
 	    		return redirect(routes.UserController.newuser());
 	    	}else{
-	    		User.add(name, pw);
-	    		Collection<User> users = User.findAll();
-	    		flash("success", "User " + name + " has been created");
-				return ok(user.render("Benutzer '" + name + "' wurde angelegt", users));
+	    		if(name.isEmpty() || pw.isEmpty()) {
+	    			Collection<User> users = User.findAll();
+		    		flash("error", "username or password is emty.");
+					return redirect(routes.UserController.newuser());
+	    		}else {				
+					User.add(name, pw);
+		    		Collection<User> users = User.findAll();
+		    		flash("success", "User " + name + " has been created");
+					return ok(user.render("Benutzer '" + name + "' wurde angelegt", users));
+	    		}
 	    	}
 	    }
 	}
@@ -124,8 +129,6 @@ public class UserController extends Controller {
 		}else {
 			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
 			return redirect("/user/update/" + Global.lUpdateId);
-//    		return redirect(routes.UserController.update());
-//			return badRequest();
 		}
 	}
 	
