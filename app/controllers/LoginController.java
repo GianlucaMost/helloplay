@@ -13,7 +13,6 @@ import static play.data.Form.*;
 public class LoginController extends Controller
 {	
 	public static Result login() {
-//	    return ok(login.render(Form.form(Login.class)));
 	    return ok(login.render(Form.form(models.User.class)));
 
 	}
@@ -21,7 +20,6 @@ public class LoginController extends Controller
 	@Transactional
 	public static Result authenticate()
 	{
-//	    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 	    Form<models.User> loginForm = Form.form(models.User.class).bindFromRequest();
 	    
 	    final DynamicForm form = form().bindFromRequest();
@@ -37,23 +35,15 @@ public class LoginController extends Controller
 		        return redirect("/");
 	    	}else {
 	    		flash("error", "username or password is wrong.");
-				return redirect(routes.LoginController.login());
+//				return redirect(routes.LoginController.login());
+				return badRequest(login.render(loginForm));
 	    	}
 	    }
 	}
 	
-//	public static class Login
-//	{
-//	    public String name;
-//	    public String password;
-//	    
-//	    public String validate()
-//		{
-////		    if (User.authenticate(name, password) == null)
-////		    {
-////		      return "Invalid user or password";
-////		    }
-//		    return null;
-//		}
-//	}
+	public static Result logout() {
+	    session().clear();
+	    flash("success", "You've been logged out");
+	    return redirect(routes.Application.index());
+	}
 }

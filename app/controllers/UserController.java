@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 //import org.apache.bcel.generic.ReturnaddressType;
 
 
+
 //import controllers.LoginController.Login;
 import models.User;
 import play.*;
@@ -29,6 +30,7 @@ public class UserController extends Controller {
 	 * Put all users (found by the findAll-method) in a Collection and render the user-view
 	 * @return
 	 */
+	@Security.Authenticated(Secured.class)
 	@Transactional(readOnly=true)
     public static Result users() {
 		Logger.info("Start");
@@ -82,14 +84,12 @@ public class UserController extends Controller {
 	    		return redirect(routes.UserController.newuser());
 	    	}else{
 	    		if(name.isEmpty() || pw.isEmpty()) {
-	    			Collection<User> users = User.findAll();
 		    		flash("error", "username or password is emty.");
 					return redirect(routes.UserController.newuser());
 	    		}else {				
 					User.add(name, pw);
-		    		Collection<User> users = User.findAll();
 		    		flash("success", "User " + name + " has been created");
-					return ok(user.render("Benutzer '" + name + "' wurde angelegt", users));
+					return ok(user.render("Benutzer '" + name + "' wurde angelegt", User.findAll()));
 	    		}
 	    	}
 	    }

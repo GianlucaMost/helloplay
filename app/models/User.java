@@ -97,13 +97,6 @@ public class User{
         JPA.em().remove(this);
     }
     
-//    public String validate() {
-//        if (User.authenticate(email, password) == null) {
-//          return "Invalid user or password";
-//        }
-//        return null;
-//    }
-    
     /**
      * validate a user
      * @param name

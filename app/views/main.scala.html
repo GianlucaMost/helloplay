@@ -12,6 +12,12 @@
     <body>
     	<header>
             <a href="@routes.Application.index" id="homeling"><span>home</span></a>
+            <dl id="user">
+	        	<dt>User</dt>
+		        <dd>
+		            <a href="@routes.LoginController.logout()">Logout</a>
+		        </dd>
+	    	</dl>
         </header>
         @content
     </body>
