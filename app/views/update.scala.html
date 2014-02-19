@@ -4,15 +4,20 @@
 
 @main("Benutzer bearbeiten") {
 	<h1>@message</h1>
+	@if(flash.containsKey("error")) {
+		<div>
+			<strong class="error">Oops!</strong> @flash.get("error")
+		</div>
+	}
 	@helper.form(action = routes.UserController.update) {
-			<p>
-				<input type="text" name="name" placeholder="Benutzername" value="@user.name"></input>
-			</p>
-			<p>
-				<input type="password" name="pw" placeholder="Passwort"></input>
-			</p>
-			<p>
-				<input type="submit" value="Speichern"></input>
-			</p>
+		<p>
+			<input type="text" name="name" placeholder="Benutzername" value="@user.name"></input>
+		</p>
+		<p>
+			<input type="password" name="pw" placeholder="Passwort"></input>
+		</p>
+		<p>
+			<input type="submit" value="Speichern"></input>
+		</p>
 	}
 }

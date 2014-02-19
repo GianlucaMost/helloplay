@@ -19,13 +19,18 @@ import play.db.jpa.Transactional;
 import views.html.*;
 import play.data.DynamicForm;
 
-public class UserController extends Controller{
+public class UserController extends Controller {
+	
+	public static class Global {
+		public static long lUpdateId;
+	}
+	
 	/**
 	 * Put all users (found by the findAll-method) in a Collection and render the user-view
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-    public static Result users(){
+    public static Result users() {
 		Logger.info("Start");
 		Collection<User> users = User.findAll();
 		Logger.info("User size: " + users.size());
@@ -38,7 +43,7 @@ public class UserController extends Controller{
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-	public static Result finduser(long id){
+	public static Result finduser(long id) {
 		Logger.info("Start");
 		User user = User.findById(id);
 		Logger.info("User searched for: " + user);
@@ -54,7 +59,7 @@ public class UserController extends Controller{
 	 * @return
 	 */
 	@Transactional
-	public static Result newuser(){
+	public static Result newuser() {
 		Form<User> userForm = form(User.class);
 //		return ok(newuser.render(userForm));
 		return ok(newuser.render("", userForm));
@@ -65,7 +70,7 @@ public class UserController extends Controller{
 	 * @return
 	 */
 	@Transactional
-	public static Result save(){
+	public static Result save() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
 		final String pw = form.get("pw");
@@ -91,9 +96,14 @@ public class UserController extends Controller{
 	 * @return
 	 */
 	@Transactional
-	public static Result updateShow(long id){
+	public static Result updateShow(long id) {
 		User user = User.findById(id);
-		return ok(update.render("Benutzer mit id '" + user.id + "' bearbeiten", user));
+		Global.lUpdateId=id;
+		if (user!=null) {
+			return ok(update.render("Benutzer mit id '" + user.id + "' bearbeiten", user));
+		}else {
+			return badRequest("Der Benutzer den Sie editieren wollen existiert nicht!");
+		}
 	}
 	
 	/**
@@ -101,8 +111,22 @@ public class UserController extends Controller{
 	 * @return
 	 */
 	@Transactional
-	public static Result update(){
-		return ok();
+	public static Result update() {
+		DynamicForm form = form().bindFromRequest();
+		String name = form.get("name");
+		String pw = form.get("pw");
+		User udUser = User.findById(Global.lUpdateId);
+		if (!User.userExist(name) || name.equals(udUser.name)) {
+//			User udUser = User.findByName(name);
+			udUser.update(name, pw);
+			Collection<User> users = User.findAll();
+			return ok(user.render("Benutzer '" + name + "' wurde aktuallisiert", users));
+		}else {
+			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
+			return redirect("/user/update/" + Global.lUpdateId);
+//    		return redirect(routes.UserController.update());
+//			return badRequest();
+		}
 	}
 	
 	/**

@@ -49,7 +49,7 @@ public class User{
      * Find an user by id.
      */
     @Transactional(readOnly=true)
-    public static User findById(Long id){
+    public static User findById(Long id) {
     	EntityManager em = JPA.em();
     	return em.find(User.class, id);
     }
@@ -69,13 +69,11 @@ public class User{
      */
     @Transactional
     public static void add(String name, String pw) {
-    	if(!userExist(name)) {
-    		EntityManager em = JPA.em();   	
-        	User user = new User();
-        	user.name=name;
-        	user.password=pw;
-    		em.persist(user);
-    	}
+		EntityManager em = JPA.em();   	
+    	User user = new User();
+    	user.name=name;
+    	user.password=pw;
+		em.persist(user);
     }
     
     /**
@@ -83,7 +81,7 @@ public class User{
      * @param name
      */
     @Transactional
-    public void update(String name, String pw){
+    public void update(String name, String pw) {
     	EntityManager em = JPA.em();
 		User user = em.find(User.class, this.id);
     	user.name = name;
