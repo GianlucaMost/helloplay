@@ -104,5 +104,23 @@ public class User{
 //        return null;
 //    }
     
+    /**
+     * validate a user
+     * @param name
+     * @param pw
+     * @return
+     */
+    @Transactional
+    public static boolean validate(String name, String pw) {
+    	if (userExist(name)) {
+	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+	    	query.setParameter("pName", name);
+	    	User user = (User) query.getSingleResult();
+	    	return user.password.equals(pw);
+    	}else {
+    		return false;
+    	}
+    }
+    
     
 }

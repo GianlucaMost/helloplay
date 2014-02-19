@@ -18,16 +18,27 @@ public class LoginController extends Controller
 
 	}
 	
+	@Transactional
 	public static Result authenticate()
 	{
 //	    Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
 	    Form<models.User> loginForm = Form.form(models.User.class).bindFromRequest();
-	    if (loginForm.hasErrors()) {
+	    
+	    final DynamicForm form = form().bindFromRequest();
+		final String name = form.get("name");
+		final String pw = form.get("pw");
+	    
+	    if (form.hasErrors()) {
 	        return badRequest(login.render(loginForm));
 	    } else {
-	        session().clear();
-	        session("name", loginForm.get().name);
-	        return redirect(routes.Application.index());
+	    	if (User.validate(name, pw)) {
+		        session().clear();
+		        session("name", name);
+		        return redirect("/");
+	    	}else {
+	    		flash("error", "username or password is wrong.");
+				return redirect(routes.LoginController.login());
+	    	}
 	    }
 	}
 	

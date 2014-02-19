@@ -3,7 +3,12 @@
 @main("Einloggen") {
    	@helper.form(routes.LoginController.authenticate){
 	   <h1>Einloggen</h1>
-		@if(form.hasGlobalErrors){
+	   @if(flash.containsKey("error")) {
+			<div>
+				<strong class="error">Oops!</strong> @flash.get("error")
+			</div>
+		}
+		@if(form.hasGlobalErrors) {
 		    <p class="error">
 		        @form.globalError.message
 		    </p>
@@ -12,10 +17,10 @@
 	       <input type="text" name="name" placeholder="Benutzername" value="@form("name").value">
 	   </p>
 	   <p>
-	       <input type="password" name="password" placeholder="Password">
+	       <input type="password" name="pw" placeholder="Passwort">
 	   </p>
 	   <p>
-	       <button type="submit">Login</button>
+	       <input type="submit" value="Login"></input>
 	   </p>
 	}
 }
