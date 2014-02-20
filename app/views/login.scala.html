@@ -2,25 +2,27 @@
 
 @main_login("Einloggen") {
    	@helper.form(routes.LoginController.authenticate){
-	   <h1>Einloggen</h1>
-	   @if(flash.containsKey("error")) {
-			<div>
-				<strong class="error">Oops!</strong> @flash.get("error")
-			</div>
-		}
-		@if(form.hasGlobalErrors) {
-		    <p class="error">
-		        @form.globalError.message
-		    </p>
-		}
-	   <p>
-	       <input type="text" name="name" placeholder="Benutzername" value="@form("name").value">
-	   </p>
-	   <p>
-	       <input type="password" name="pw" placeholder="Passwort">
-	   </p>
-	   <p>
-	       <input type="submit" value="Login"></input>
-	   </p>
+	   	<div class="container">
+		   <h1>Einloggen</h1>
+		   @if(flash.containsKey("error")) {
+				<div class="alert alert-danger">
+					<strong class="error">Oops!</strong> @flash.get("error")
+				</div>
+			}
+			@if(form.hasGlobalErrors) {
+			    <p class="error">
+			        @form.globalError.message
+			    </p>
+			}
+		   <p>
+		       <input type="text" class="form-control" name="name" placeholder="Benutzername" value="@form("name").value">
+		   </p>
+		   <p>
+		       <input type="password" class="form-control" name="pw" placeholder="Passwort">
+		   </p>
+		   <p>
+		       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+		   </p>
+		</div>
 	}
 }
