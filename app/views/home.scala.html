@@ -7,16 +7,12 @@
 	        @flash.get("success")
 	    </p>
 	}
-	@currentUser.name
-    <ul>
-  		<li>
-  			<a href="/users/all">Benutzerverwaltung</a>
-  		</li>
-  		<li>
-  			<a href="/user/new">Neuen Benutzer anlegen</a>
-  		</li>
-  		<li>
-  			<a href="/login">Einloggen</a>
-  		</li>
-	</ul>
+	<div class="container-fluid">
+		<div class="row-fluid">
+	  		<div class="span3">
+	  			<a href="/users/all">Benutzerverwaltung</a> <br>
+	  			<a href="/user/new">Neuen Benutzer anlegen</a>
+	  		</div>
+		</div>
+	</div>
 }
