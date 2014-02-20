@@ -1,8 +1,8 @@
-@(message: String, user: models.User)
+@(message: String, user: models.User, currentUser: models.User)
 
 @import helper._
 
-@main("Benutzer bearbeiten") {
+@main("Benutzer bearbeiten", currentUser) {
 	<h1>@message</h1>
 	@if(flash.containsKey("error")) {
 		<div>

@@ -30,13 +30,13 @@ public class UserController extends Controller {
 	 * Put all users (found by the findAll-method) in a Collection and render the user-view
 	 * @return
 	 */
-	@Security.Authenticated(Secured.class)
 	@Transactional(readOnly=true)
+	@Security.Authenticated(Secured.class)
     public static Result users() {
 		Logger.info("Start");
 		Collection<User> users = User.findAll();
 		Logger.info("User size: " + users.size());
-        return ok(user.render("Alle Benutzer", users));
+        return ok(user.render("Alle Benutzer", users, User.findByName(request().username())));
     }
 	
 	/**
@@ -45,6 +45,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional(readOnly=true)
+	@Security.Authenticated(Secured.class)
 	public static Result finduser(long id) {
 		Logger.info("Start");
 		User user = User.findById(id);
@@ -52,7 +53,7 @@ public class UserController extends Controller {
 		if (user==null){
 			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
 		}else{
-			return ok(oneuser.render("Benutzer mit der id " + id, user));
+			return ok(oneuser.render("Benutzer mit der id " + id, user, User.findByName(request().username())));
 		}
 	}
 	
@@ -61,9 +62,10 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result newuser() {
 		Form<User> userForm = form(User.class);
-		return ok(newuser.render("", userForm));
+		return ok(newuser.render("", userForm, User.findByName(request().username())));
 	}
 	
 	/**
@@ -71,6 +73,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result save() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
@@ -89,7 +92,7 @@ public class UserController extends Controller {
 	    		}else {				
 					User.add(name, pw);
 		    		flash("success", "User " + name + " has been created");
-					return ok(user.render("Benutzer '" + name + "' wurde angelegt", User.findAll()));
+					return ok(user.render("Benutzer '" + name + "' wurde angelegt", User.findAll(), User.findByName(request().username())));
 	    		}
 	    	}
 	    }
@@ -101,11 +104,12 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result updateShow(long id) {
 		User user = User.findById(id);
 		Global.lUpdateId=id;
 		if (user!=null) {
-			return ok(update.render("Benutzer mit id '" + user.id + "' bearbeiten", user));
+			return ok(update.render("Benutzer mit id '" + user.id + "' bearbeiten", user, User.findByName(request().username())));
 		}else {
 			return badRequest("Der Benutzer den Sie editieren wollen existiert nicht!");
 		}
@@ -116,6 +120,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result update() {
 		DynamicForm form = form().bindFromRequest();
 		String name = form.get("name");
@@ -127,7 +132,7 @@ public class UserController extends Controller {
 				return redirect(routes.UserController.updateShow(Global.lUpdateId));
 			}else {
 				udUser.update(name, pw);
-				return ok(user.render("Benutzer '" + name + "' wurde aktuallisiert", User.findAll()));
+				return ok(user.render("Benutzer '" + name + "' wurde aktuallisiert", User.findAll(), User.findByName(request().username())));
 			}
 		}else {
 			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
@@ -141,6 +146,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(Secured.class)
 	public static Result delete(long id){
 		User user = User.findById(id);
 		if (user==null)
@@ -148,7 +154,7 @@ public class UserController extends Controller {
 			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
 		}else{
 			user.delete();
-			return ok(delete.render("Benutzer geloescht", user));
+			return ok(delete.render("Benutzer geloescht", user, User.findByName(request().username())));
 		}
 	}
 

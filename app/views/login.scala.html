@@ -1,6 +1,6 @@
 @(form: Form[models.User])
 
-@main("Einloggen") {
+@main_login("Einloggen") {
    	@helper.form(routes.LoginController.authenticate){
 	   <h1>Einloggen</h1>
 	   @if(flash.containsKey("error")) {

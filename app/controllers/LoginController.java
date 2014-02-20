@@ -12,12 +12,14 @@ import static play.data.Form.*;
 
 public class LoginController extends Controller
 {	
+	
 	public static Result login() {
 	    return ok(login.render(Form.form(models.User.class)));
 
 	}
 	
 	@Transactional
+	
 	public static Result authenticate()
 	{
 	    Form<models.User> loginForm = Form.form(models.User.class).bindFromRequest();

@@ -10,10 +10,11 @@ import views.html.*;
 
 public class Application extends Controller {
 
-	@Transactional(readOnly=true)
+	@Transactional
+	@Security.Authenticated(Secured.class)
     public static Result index() {
 //        return ok(index.render("Your new application is ready."));
-        return ok(home.render("Home"));
+        return ok(home.render("Home", User.findByName(request().username())));
     }
 
 }

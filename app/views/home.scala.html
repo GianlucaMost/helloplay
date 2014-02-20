@@ -1,12 +1,13 @@
-@(message: String)
+@(message: String, currentUser: models.User)
 
-@main("Homepage") {
+@main("Homepage", currentUser) {
     <h1>@message</h1>
     @if(flash.contains("success")) {
 	    <p class="success">
 	        @flash.get("success")
 	    </p>
 	}
+	@currentUser.name
     <ul>
   		<li>
   			<a href="/users/all">Benutzerverwaltung</a>

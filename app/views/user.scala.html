@@ -1,6 +1,6 @@
-@(message: String, users: Collection[models.User])
+@(message: String, users: Collection[models.User], currentUser: models.User)
 
-@main("Benutzerliste"){
+@main("Benutzerliste", currentUser){
 	<h1>@message</h1>
     <div>
     	<table border="1">

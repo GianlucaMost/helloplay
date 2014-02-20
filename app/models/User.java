@@ -50,8 +50,19 @@ public class User{
      */
     @Transactional(readOnly=true)
     public static User findById(Long id) {
-    	EntityManager em = JPA.em();
-    	return em.find(User.class, id);
+    	return JPA.em().find(User.class, id);
+    }
+    
+    /**
+     * find user by name
+     * @param name
+     * @return
+     */
+    @Transactional
+    public static User findByName(String name) {
+    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+    	query.setParameter("pName", name);
+    	return (User) query.getSingleResult();
     }
     
     /**

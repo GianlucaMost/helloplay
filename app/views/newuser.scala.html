@@ -1,8 +1,8 @@
-@(message: String, passform: Form[User])
+@(message: String, passform: Form[User], currentUser: models.User)
 
 @import helper._
 
-@main("Neuer Benutzer") {
+@main("Neuer Benutzer", currentUser) {
 	<h1>Neuen Benutzer anlegen</h1>
 	
 	@if(flash.containsKey("error")) {

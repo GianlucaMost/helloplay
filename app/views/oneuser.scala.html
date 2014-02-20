@@ -1,6 +1,6 @@
-@(message: String, user: models.User)
+@(message: String, user: models.User, currentUser: models.User)
 
-@main("Bestimmer Benutzer") {
+@main("Bestimmer Benutzer", currentUser) {
 	<h1>@message</h1>
     <div>
     	Benutzername : @user.name

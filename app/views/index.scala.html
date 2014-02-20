@@ -1,6 +1,6 @@
-@(message: String)
+@(message: String, currentUser: models.User)
 
-@main("Welcome to Play") {
+@main("Welcome to Play", currentUser) {
 
     @play20.welcome(message, style = "Java")
 
