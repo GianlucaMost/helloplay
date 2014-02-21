@@ -35,6 +35,17 @@
 				}
 			</tbody>
     	</table>
+    	@if(flash.containsKey("success")) {
+			<div class="alert alert-success">
+				<strong class="success">Success!</strong> @flash.get("success")
+			</div>
+   		}
+   		@if(flash.containsKey("warning")) {
+			<div class="alert alert-warning">
+				<strong class="warning">Ok!</strong> @flash.get("warning")
+			</div>
+   		}
+    	
     </div>
     <div>
     	<br>
@@ -45,7 +56,7 @@
 		</a>
     	<a href="/user/new">
 			<button type="button" class="btn btn-default btn">
-				<span class="glyphicon glyphicon-user"> Neuer Benutzer</span>
+				<span class="glyphicon glyphicon-user"> Neu</span>
 			</button>
 		</a>
     </div>

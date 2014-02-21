@@ -28,15 +28,13 @@
 			            <li class="active"><a href="@routes.Application.index">Home</a></li>
 			            <li><a href="#about">About</a></li>
 			            <li><a href="#contact">Contact</a></li>
-			            <li>
-			            	
-			            </li>
-			            <li>
-				            
-   						</li>
        				</ul>
        				<ul class="nav navbar-nav navbar-right">
-		              <li><a href="">@currentUser.name</a></li>
+		              <li>
+			              <a href="/user/find/@currentUser.id">
+			              	<span class="glyphicon glyphicon-user"> @currentUser.name</span>
+			              </a>
+		              </li>
 		              <li>
 		              	<a href="@routes.LoginController.logout()">
 	   						<button type="button" class="btn btn btn-primary">Logout</button>
@@ -53,7 +51,9 @@
 		<br>
 	    <div class="container">
       		<div class="starter-template">
-        		@content
+      			<div class=jumbotron>
+        			@content
+        		</div>
       		</div>
     	</div>
     </body>

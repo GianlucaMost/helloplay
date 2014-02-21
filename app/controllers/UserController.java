@@ -94,7 +94,7 @@ public class UserController extends Controller {
 	    		}else {				
 					User.add(name, pw);
 		    		flash("success", "User " + name + " has been created");
-					return ok(user.render("Benutzer '" + name + "' wurde angelegt", User.findAll(), User.findByName(request().username())));
+		    		return redirect(routes.UserController.users());
 	    		}
 	    	}
 	    }
@@ -155,8 +155,9 @@ public class UserController extends Controller {
 		{
 			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
 		}else{
+			flash("warning", "user " + user.name + " wurde geloescht");
 			user.delete();
-			return ok(delete.render("Benutzer geloescht", user, User.findByName(request().username())));
+			return redirect(routes.UserController.users());
 		}
 	}
 
