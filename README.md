@@ -7,3 +7,6 @@ helloplay
 +Logout implementiert
 +nur autorisierter Zugang (login erforderlich)
 *Benutzername und Logot-link wird nun auf allen content-sites im header angezeigt.
+
++bootstrap importiert
+*main und login view designt
