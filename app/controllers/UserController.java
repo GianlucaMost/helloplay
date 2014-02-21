@@ -57,6 +57,8 @@ public class UserController extends Controller {
 		}
 	}
 	
+	
+	
 	/**
 	 * render the newuser-view
 	 * @return

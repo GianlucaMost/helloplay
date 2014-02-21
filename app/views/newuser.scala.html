@@ -3,23 +3,23 @@
 @import helper._
 
 @main("Neuer Benutzer", currentUser) {
-	<h1>Neuen Benutzer anlegen</h1>
-	
-	@if(flash.containsKey("error")) {
-		<div>
-			<strong class="error">Oops!</strong> @flash.get("error")
-		</div>
-	}
-
 	@helper.form(action = routes.UserController.save) {
+		<div class="container-fluid">
+			<h1 class="form-heading">Neuen Benutzer anlegen</h1>
+			@if(flash.containsKey("error")) {
+				<div class="alert alert-danger">
+					<strong class="error">Oops!</strong> @flash.get("error")
+				</div>
+			}
 			<p>
-				<input type="text" name="name" placeholder="Benutzername"></input>
+				<input type="text" class="form-control" name="name" placeholder="Benutzername"></input>
 			</p>
 			<p>
-				<input type="password" name="pw" placeholder="Passwort"></input>
+				<input type="password" class="form-control" name="pw" placeholder="Passwort"></input>
 			</p>
 			<p>
-				<input type="submit" value="Speichern"></input>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Anlegen</button>
 			</p>
+		</div>
 	}
 }

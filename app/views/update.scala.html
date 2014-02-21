@@ -3,21 +3,24 @@
 @import helper._
 
 @main("Benutzer bearbeiten", currentUser) {
-	<h1>@message</h1>
-	@if(flash.containsKey("error")) {
-		<div>
-			<strong class="error">Oops!</strong> @flash.get("error")
+	@helper.form(action = routes.UserController.update) {
+		<div class="container-fluid">
+			<h1 class="form-heading">@message</h1>
+			@if(flash.containsKey("error")) {
+				<div class="alert alert-danger">
+					<strong class="error">Oops!</strong> @flash.get("error")
+				</div>
+			}
+			<p>
+				<input type="text" class="form-control" name="name" placeholder="Benutzername" value="@user.name"></input>
+			</p>
+			<p>
+				<input type="password" class="form-control" name="pw" placeholder="Passwort"></input>
+			</p>
+			<p>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Speichern</button>
+			</p>
 		</div>
 	}
-	@helper.form(action = routes.UserController.update) {
-		<p>
-			<input type="text" name="name" placeholder="Benutzername" value="@user.name"></input>
-		</p>
-		<p>
-			<input type="password" name="pw" placeholder="Passwort"></input>
-		</p>
-		<p>
-			<input type="submit" value="Speichern"></input>
-		</p>
-	}
 }
+

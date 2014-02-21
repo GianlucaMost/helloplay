@@ -1,28 +1,28 @@
 @(form: Form[models.User])
 
 @main_login("Einloggen") {
-   	@helper.form(routes.LoginController.authenticate){
-	   	<div class="container">
-		   <h1>Einloggen</h1>
-		   @if(flash.containsKey("error")) {
+	@helper.form(routes.LoginController.authenticate){
+		<div class="container-fluid">
+	  		<h1 class="form-signin-heading">Einloggen</h1>
+	  		@if(flash.containsKey("error")) {
 				<div class="alert alert-danger">
 					<strong class="error">Oops!</strong> @flash.get("error")
 				</div>
 			}
 			@if(form.hasGlobalErrors) {
-			    <p class="error">
-			        @form.globalError.message
-			    </p>
+		    	<p class="error">
+		        	@form.globalError.message
+		    	</p>
 			}
-		   <p>
-		       <input type="text" class="form-control" name="name" placeholder="Benutzername" value="@form("name").value">
-		   </p>
-		   <p>
-		       <input type="password" class="form-control" name="pw" placeholder="Passwort">
-		   </p>
-		   <p>
-		       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		   </p>
+			<p>
+	      		<input size="700" type="text" class="form-control" name="name" placeholder="Benutzername" value="@form("name").value">
+	      	</p>
+	      	<p>
+	      		<input type="password" class="form-control" name="pw" placeholder="Passwort">
+	      	</p>
+	      	<p>
+	      		<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+	      	</p>
 		</div>
 	}
 }
