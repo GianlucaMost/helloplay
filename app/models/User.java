@@ -60,9 +60,13 @@ public class User{
      */
     @Transactional
     public static User findByName(String name) {
-    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
-    	query.setParameter("pName", name);
-    	return (User) query.getSingleResult();
+    	if (User.userExist(name)) {
+	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+	    	query.setParameter("pName", name);
+	    	return (User) query.getSingleResult();
+    	}else {
+    		return null;
+    	}
     }
     
     /**

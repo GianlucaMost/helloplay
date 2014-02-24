@@ -50,9 +50,9 @@ public class UserController extends Controller {
 		Logger.info("Start");
 		User user = User.findById(id);
 		Logger.info("User searched for: " + user);
-		if (user==null){
+		if (user==null) {
 			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
-		}else{
+		}else {
 			return ok(oneuser.render("Benutzer mit der id " + id, user, User.findByName(request().username())));
 		}
 	}
@@ -134,7 +134,8 @@ public class UserController extends Controller {
 				return redirect(routes.UserController.updateShow(Global.lUpdateId));
 			}else {
 				udUser.update(name, pw);
-				return ok(user.render("Benutzer '" + name + "' wurde aktuallisiert", User.findAll(), User.findByName(request().username())));
+				flash("success", "Benutzer " + name + " wurde aktuallisiert");
+				return redirect(routes.UserController.users());
 			}
 		}else {
 			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");

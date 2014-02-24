@@ -31,14 +31,22 @@
        				</ul>
        				<ul class="nav navbar-nav navbar-right">
 		              <li>
+		              	@if(currentUser != null) {
 			              <a href="/user/find/@currentUser.id">
 			              	<span class="glyphicon glyphicon-user"> @currentUser.name</span>
 			              </a>
+			            }
 		              </li>
 		              <li>
-		              	<a href="@routes.LoginController.logout()">
-	   						<button type="button" class="btn btn btn-primary">Logout</button>
-	   					</a>
+		              	@if(currentUser != null) {
+			              	<a href="@routes.LoginController.logout()">
+		   						<button type="button" class="btn btn btn-primary">Logout</button>
+		   					</a>
+	   					}else {
+	   						<a href="@routes.LoginController.login()">
+		   						<button type="button" class="btn btn btn-primary">Login</button>
+		   					</a>
+	   					}
 	   				  </li>
 		            </ul>
      			</div><!--/.nav-collapse -->
