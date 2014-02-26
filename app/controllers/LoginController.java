@@ -9,6 +9,7 @@ import play.db.jpa.Transactional;
 import views.html.*;
 import play.data.*;
 import static play.data.Form.*;
+import play.libs.Crypto;
 
 public class LoginController extends Controller
 {	
@@ -19,7 +20,6 @@ public class LoginController extends Controller
 	}
 	
 	@Transactional
-	
 	public static Result authenticate()
 	{
 	    Form<models.User> loginForm = Form.form(models.User.class).bindFromRequest();
@@ -34,10 +34,10 @@ public class LoginController extends Controller
 	    	if (User.validate(name, pw)) {
 		        session().clear();
 		        session("name", name);
+		        flash("success", "You are logged in.");
 		        return redirect("/");
 	    	}else {
 	    		flash("error", "username or password is wrong.");
-//				return redirect(routes.LoginController.login());
 				return badRequest(login.render(loginForm));
 	    	}
 	    }
@@ -45,7 +45,7 @@ public class LoginController extends Controller
 	
 	public static Result logout() {
 	    session().clear();
-	    flash("success", "You've been logged out");
+	    flash("success", "You've been logged out.");
 	    return redirect(routes.Application.index());
 	}
 }

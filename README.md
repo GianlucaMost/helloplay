@@ -10,3 +10,8 @@ helloplay
 
 +bootstrap importiert
 *main und login view designt
+
+*mehrere design-improvements
+
+*hp jetzt ohne login einsehbar
++aktueller Benutzer im header

@@ -13,6 +13,7 @@ public class Application extends Controller {
 	
 	@Transactional
     public static Result index() {
-		return ok(home.render("Home", User.findByName(request().username())));
+		String name = session().get("name");
+		return ok(home.render("Home", User.findByName(name)));
 	}
 }

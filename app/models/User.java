@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.SequenceGenerator;
 
@@ -36,8 +37,6 @@ public class User{
      */
     @Transactional(readOnly=true)
     public static boolean userExist(String name) {
-    	EntityManager em = JPA.em();
-    	
     	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
     	query.setParameter("pName", name);
     	Collection<User> coll = query.getResultList();
@@ -66,6 +65,10 @@ public class User{
 	    	return (User) query.getSingleResult();
     	}else {
     		return null;
+//    		User user = new User();
+//    		user.name="Gast";
+//    		user.id=(long) 0;
+//    		return user;
     	}
     }
     
@@ -120,12 +123,12 @@ public class User{
      */
     @Transactional
     public static boolean validate(String name, String pw) {
-    	if (userExist(name)) {
+    	try {
 	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
 	    	User user = (User) query.getSingleResult();
 	    	return user.password.equals(pw);
-    	}else {
+    	} catch (NoResultException ex) {
     		return false;
     	}
     }
