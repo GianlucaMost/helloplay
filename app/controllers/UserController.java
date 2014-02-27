@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 
 
 
+
+import org.mindrot.jbcrypt.BCrypt;
+
 //import controllers.LoginController.Login;
 import models.User;
 import play.*;
@@ -79,7 +82,7 @@ public class UserController extends Controller {
 	public static Result save() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
-		final String pw = form.get("pw");
+		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
 		
 	    if (form.hasErrors()) {
 	        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
@@ -88,11 +91,11 @@ public class UserController extends Controller {
 	    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
 	    		return redirect(routes.UserController.newuser());
 	    	}else{
-	    		if(name.isEmpty() || pw.isEmpty()) {
+	    		if(name.isEmpty() || pwHash.isEmpty()) {
 		    		flash("error", "username or password is emty.");
 					return redirect(routes.UserController.newuser());
 	    		}else {				
-					User.add(name, pw);
+					User.add(name, pwHash);
 		    		flash("success", "User " + name + " has been created");
 		    		return redirect(routes.UserController.users());
 	    		}
@@ -127,13 +130,14 @@ public class UserController extends Controller {
 		DynamicForm form = form().bindFromRequest();
 		String name = form.get("name");
 		String pw = form.get("pw");
+		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt()); 
 		User udUser = User.findById(Global.lUpdateId);
 		if (!User.userExist(name) || name.equals(udUser.name)) {
 			if (name.isEmpty() || pw.isEmpty()) {
-				flash("error", "username or password is emty.");
+				flash("error", "username or password is empty.");
 				return redirect(routes.UserController.updateShow(Global.lUpdateId));
 			}else {
-				udUser.update(name, pw);
+				udUser.update(name, pwHash);
 				flash("success", "Benutzer " + name + " wurde aktuallisiert");
 				return redirect(routes.UserController.users());
 			}

@@ -3,6 +3,8 @@ package models;
 import java.util.Collection;
 import java.util.List;
 
+import org.mindrot.jbcrypt.*;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
@@ -86,11 +88,11 @@ public class User{
      * @param name
      */
     @Transactional
-    public static void add(String name, String pw) {
+    public static void add(String name, String pwHash) {
 		EntityManager em = JPA.em();
     	User user = new User();
     	user.name=name;
-    	user.password=pw;
+    	user.password=pwHash;
 		em.persist(user);
     }
     
@@ -99,11 +101,11 @@ public class User{
      * @param name
      */
     @Transactional
-    public void update(String name, String pw) {
+    public void update(String name, String pwHash) {
     	EntityManager em = JPA.em();
 		User user = em.find(User.class, this.id);
     	user.name = name;
-    	user.password = pw;
+    	user.password = pwHash;
     	em.persist(user);
     }
  
@@ -127,7 +129,8 @@ public class User{
 	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
 	    	User user = (User) query.getSingleResult();
-	    	return user.password.equals(pw);
+//	    	return user.password.equals(pw);
+	    	return BCrypt.checkpw(pw, user.password);
     	} catch (NoResultException ex) {
     		return false;
     	}

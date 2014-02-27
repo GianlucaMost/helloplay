@@ -9,9 +9,11 @@ helloplay
 *Benutzername und Logot-link wird nun auf allen content-sites im header angezeigt.
 
 +bootstrap importiert
-*main und login view designt
+*main und login view designed
 
 *mehrere design-improvements
 
 *hp jetzt ohne login einsehbar
 +aktueller Benutzer im header
+
++Passwoerter werden nun verschluesselt und beim einloggen dementsprechend ueberprueft.
