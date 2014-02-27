@@ -4,17 +4,8 @@ import static play.data.Form.form;
 
 import java.util.Collection;
 
-import javax.servlet.http.HttpServletRequest;
-
-
-//import org.apache.bcel.generic.ReturnaddressType;
-
-
-
-
 import org.mindrot.jbcrypt.BCrypt;
 
-//import controllers.LoginController.Login;
 import models.User;
 import play.*;
 import play.mvc.*;
@@ -23,6 +14,7 @@ import play.db.jpa.Transactional;
 import views.html.*;
 import play.data.DynamicForm;
 
+@Security.Authenticated(Secured.class)
 public class UserController extends Controller {
 	
 	public static class Global {
@@ -34,7 +26,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-	@Security.Authenticated(Secured.class)
     public static Result users() {
 		Logger.info("Start");
 		Collection<User> users = User.findAll();
@@ -48,7 +39,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-	@Security.Authenticated(Secured.class)
 	public static Result finduser(long id) {
 		Logger.info("Start");
 		User user = User.findById(id);
@@ -67,7 +57,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	@Security.Authenticated(Secured.class)
 	public static Result newuser() {
 		Form<User> userForm = form(User.class);
 		return ok(newuser.render("", userForm, User.findByName(request().username())));
@@ -78,7 +67,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	@Security.Authenticated(Secured.class)
 	public static Result save() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
@@ -109,7 +97,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	@Security.Authenticated(Secured.class)
 	public static Result updateShow(long id) {
 		User user = User.findById(id);
 		Global.lUpdateId=id;
@@ -125,7 +112,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	@Security.Authenticated(Secured.class)
 	public static Result update() {
 		DynamicForm form = form().bindFromRequest();
 		String name = form.get("name");
@@ -153,7 +139,6 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	@Security.Authenticated(Secured.class)
 	public static Result delete(long id){
 		User user = User.findById(id);
 		if (user==null)

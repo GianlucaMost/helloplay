@@ -24,7 +24,7 @@ import play.db.jpa.Transactional;
 @Entity 
 @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
 public class User{  
-	@Id													//id der tbl
+	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public Long id;
     
@@ -42,7 +42,6 @@ public class User{
     	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
     	query.setParameter("pName", name);
     	Collection<User> coll = query.getResultList();
-    	
     	return !coll.isEmpty();
     }
 	
@@ -67,10 +66,6 @@ public class User{
 	    	return (User) query.getSingleResult();
     	}else {
     		return null;
-//    		User user = new User();
-//    		user.name="Gast";
-//    		user.id=(long) 0;
-//    		return user;
     	}
     }
     
@@ -129,7 +124,6 @@ public class User{
 	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
 	    	User user = (User) query.getSingleResult();
-//	    	return user.password.equals(pw);
 	    	return BCrypt.checkpw(pw, user.password);
     	} catch (NoResultException ex) {
     		return false;
