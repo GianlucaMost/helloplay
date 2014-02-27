@@ -1,0 +1,25 @@
+@(passform: Form[User])
+
+@import helper._
+
+@main_login("Registrieren") {
+	@helper.form(action = routes.LoginController.register) {
+		<div class="container-fluid">
+			<h1 class="form-heading">Registrieren</h1>
+			@if(flash.containsKey("error")) {
+				<div class="alert alert-danger">
+					<strong class="error">Oops!</strong> @flash.get("error")
+				</div>
+			}
+			<p>
+				<input type="text" class="form-control" name="name" placeholder="Benutzername"></input>
+			</p>
+			<p>
+				<input type="password" class="form-control" name="pw" placeholder="Passwort"></input>
+			</p>
+			<p>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>
+			</p>
+		</div>
+	}
+}

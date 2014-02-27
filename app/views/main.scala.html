@@ -21,33 +21,39 @@
 			            <span class="icon-bar"></span>
 			            <span class="icon-bar"></span>
        				</button>
-       				<a class="navbar-brand" href="@routes.Application.index">hello play</a>
+       				<a class="navbar-brand" href="@routes.Application.index">WMtipp</a>
      			</div>
      			<div class="collapse navbar-collapse">
        				<ul class="nav navbar-nav">
-			            <li class="active"><a href="@routes.Application.index">Home</a></li>
-			            <li><a href="#about">About</a></li>
-			            <li><a href="#contact">Contact</a></li>
+			            <li><a href="#tipps">Tipps</a></li>
+			            <li><a href="#tipprunde">Tipp-Runde</a></li>
        				</ul>
        				<ul class="nav navbar-nav navbar-right">
-		              <li>
 		              	@if(currentUser != null) {
-			              <a href="/user/find/@currentUser.uid">
-			              	<span class="glyphicon glyphicon-user"> @currentUser.name</span>
-			              </a>
-			            }
-		              </li>
-		              <li>
+			              	<li>
+				              <a href="/user/find/@currentUser.uid">
+				              	<span class="glyphicon glyphicon-user"> @currentUser.name</span>
+				              </a>
+			              	</li>
+		              	}
 		              	@if(currentUser != null) {
-			              	<a href="@routes.LoginController.logout()">
-		   						<button type="button" class="btn btn btn-primary">Logout</button>
-		   					</a>
+		              		<li>
+				              	<a href="@routes.LoginController.logout()">
+			   						<button type="button" class="btn btn btn-primary">Logout</button>
+			   					</a>
+		   					</li>
 	   					}else {
-	   						<a href="@routes.LoginController.login()">
-		   						<button type="button" class="btn btn btn-primary">Login</button>
-		   					</a>
+	   						<li>
+		   						<a href="@routes.LoginController.showRegister()">
+			   						<button type="button" class="btn btn btn-primary">Register</button>
+			   					</a>
+		   					</li>
+	   						<li>
+		   						<a href="@routes.LoginController.login()">
+			   						<button type="button" class="btn btn btn-primary">Login</button>
+			   					</a>
+		   					</li>
 	   					}
-	   				  </li>
 		            </ul>
      			</div><!--/.nav-collapse -->
      		</div>

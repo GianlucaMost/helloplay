@@ -35,5 +35,11 @@ GET		/user/delete/:id			controllers.UserController.delete(id: Long)
 # logout the user
 GET     /logout                     controllers.LoginController.logout()
 
+# register new user
+GET		/login/register				controllers.LoginController.showRegister()
+
+# register new user
+POST	/login/register				controllers.LoginController.register()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

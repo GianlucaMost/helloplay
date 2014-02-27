@@ -17,3 +17,5 @@ helloplay
 +aktueller Benutzer im header
 
 +Passwoerter werden nun verschluesselt und beim einloggen dementsprechend ueberprueft.
+
++Die Registrieren-Seite wurde implementiert
