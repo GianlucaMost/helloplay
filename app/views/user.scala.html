@@ -15,17 +15,17 @@
 	    	<tbody>
 	    		@for(user <- users) {
 		    		<tr>
-		    			<td>@user.id</td>
+		    			<td>@user.uid</td>
 		  				<td>@user.name</td>
 		  				<td>
-		  					<a href="/user/update/@user.id">
+		  					<a href="/user/update/@user.uid">
 		  						<button type="button" class="btn btn-default btn">
 								  <span class="glyphicon glyphicon-pencil"></span>
 								</button>
 		  					</a>
 		  				</td>
 		  				<td>
-		  					<a href="/user/delete/@user.id">
+		  					<a href="/user/delete/@user.uid">
 		  						<button type="button" class="btn btn-default btn">
 								  <span class="glyphicon glyphicon-trash"></span>
 								</button>

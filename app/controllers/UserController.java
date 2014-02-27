@@ -101,7 +101,7 @@ public class UserController extends Controller {
 		User user = User.findById(id);
 		Global.lUpdateId=id;
 		if (user!=null) {
-			return ok(update.render("Benutzer mit id '" + user.id + "' bearbeiten", user, User.findByName(request().username())));
+			return ok(update.render("Benutzer mit id '" + user.uid + "' bearbeiten", user, User.findByName(request().username())));
 		}else {
 			return badRequest("Der Benutzer den Sie editieren wollen existiert nicht!");
 		}

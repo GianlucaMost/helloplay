@@ -23,26 +23,36 @@ import play.db.jpa.Transactional;
  */
 @Entity 
 @SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
-public class User{  
+public class User {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
-    public Long id;
+    public Long uid;
     
     @Constraints.Required
     public String name;
     
     @Constraints.Required
-    public String password;
+    public String pw;
+    
+    @Constraints.Required
+    public int punkte=0;
+    
+    @Constraints.Required
+    public byte admin=0;
     
     /**
      * check username, when the name already exist, 'true' is returned, otherwise 'false'
      */
     @Transactional(readOnly=true)
     public static boolean userExist(String name) {
-    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
-    	query.setParameter("pName", name);
-    	Collection<User> coll = query.getResultList();
-    	return !coll.isEmpty();
+    	try {
+	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+	    	query.setParameter("pName", name);
+	    	User user = (User) query.getSingleResult();
+	    	return true;
+    	} catch (NoResultException ex) {
+    		return false;
+    	}
     }
 	
     /**
@@ -87,7 +97,7 @@ public class User{
 		EntityManager em = JPA.em();
     	User user = new User();
     	user.name=name;
-    	user.password=pwHash;
+    	user.pw=pwHash;
 		em.persist(user);
     }
     
@@ -98,9 +108,9 @@ public class User{
     @Transactional
     public void update(String name, String pwHash) {
     	EntityManager em = JPA.em();
-		User user = em.find(User.class, this.id);
+		User user = em.find(User.class, this.uid);
     	user.name = name;
-    	user.password = pwHash;
+    	user.pw = pwHash;
     	em.persist(user);
     }
  
@@ -124,7 +134,7 @@ public class User{
 	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
 	    	User user = (User) query.getSingleResult();
-	    	return BCrypt.checkpw(pw, user.password);
+	    	return BCrypt.checkpw(pw, user.pw);
     	} catch (NoResultException ex) {
     		return false;
     	}
