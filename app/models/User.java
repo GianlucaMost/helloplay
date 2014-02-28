@@ -5,14 +5,9 @@ import java.util.List;
 
 import org.mindrot.jbcrypt.*;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
+
+import models.*;
 
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
@@ -21,12 +16,16 @@ import play.db.jpa.Transactional;
 /**
  * User entity managed by JPA
  */
-@Entity 
-@SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
+@Entity
+@Table(name="user")
 public class User {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
+	@Column(name="uid")
     public Long uid;
+	
+	@Column(name="fk_trid")
+	public int fk_trid=-1;
     
     @Constraints.Required
     public String name;

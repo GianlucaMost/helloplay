@@ -14,6 +14,14 @@ public class Application extends Controller {
 	@Transactional
     public static Result index() {
 		String name = session().get("name");
-		return ok(home.render("Home", User.findByName(name)));
+		User user = User.findByName(name);
+		if (user==null)
+		{
+			return ok(home.render("Home", User.findByName(name)));
+		}else if(user.admin==1) {
+			return redirect(routes.UserController.users());
+		}else {
+			return ok(home.render("Home", User.findByName(name)));
+		}
 	}
 }
