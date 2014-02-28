@@ -44,6 +44,14 @@ public class Spiel {
     public SimpleDateFormat ende = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
     
     /**
+     * Default constructor
+     */
+    public Spiel()
+    {
+    	
+    }
+    
+    /**
      * Konstruktor without game-result
      * @param fk_midheim
      * @param fk_midgast

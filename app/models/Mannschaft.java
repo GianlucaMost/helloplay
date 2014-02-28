@@ -51,6 +51,9 @@ public class Mannschaft {
     @Constraints.Required
     public int punkte=0;
     
+    /**
+     * Default constructor
+     */
     public Mannschaft()
     {
     	
