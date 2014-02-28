@@ -10,7 +10,6 @@ import org.mindrot.jbcrypt.*;
 import javax.persistence.*;
 
 import models.*;
-
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -19,7 +18,7 @@ import play.db.jpa.Transactional;
  * Mannschaft entity managed by JPA
  */
 @Entity 
-@SequenceGenerator(name = "mannschaft_seq", sequenceName = "mannschaft_seq")
+@Table(name="mannschaft")
 public class Mannschaft {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
@@ -51,6 +50,11 @@ public class Mannschaft {
     
     @Constraints.Required
     public int punkte=0;
+    
+    public Mannschaft()
+    {
+    	
+    }
     
     /**
      * Konstruktor
@@ -85,5 +89,15 @@ public class Mannschaft {
     @Transactional(readOnly=true)
     public static Mannschaft findById(int mid) {
     	return JPA.em().find(Mannschaft.class, mid);
+    }
+    
+    /**
+     * holt alle Mannschaften aus der db
+     * @return
+     */
+    @Transactional(readOnly=true)
+    public static Collection<Mannschaft> findAll(){
+        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
+        return (Collection<Mannschaft>) query.getResultList();
     }
 }

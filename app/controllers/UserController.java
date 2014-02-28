@@ -50,7 +50,10 @@ public class UserController extends Controller {
 		}
 	}
 	
-	
+	@Transactional(readOnly=true)
+	public static Result accverwaltung() {
+		return ok(accverwaltung.render(User.findByName(request().username())));
+	}
 	
 	/**
 	 * render the newuser-view
@@ -118,6 +121,7 @@ public class UserController extends Controller {
 		String pw = form.get("pw");
 		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt()); 
 		User udUser = User.findById(Global.lUpdateId);
+		User curUser = User.findByName(request().username());
 		if (!User.userExist(name) || name.equals(udUser.name)) {
 			if (name.isEmpty() || pw.isEmpty()) {
 				flash("error", "username or password is empty.");
@@ -125,7 +129,11 @@ public class UserController extends Controller {
 			}else {
 				udUser.update(name, pwHash);
 				flash("success", "Benutzer " + name + " wurde aktuallisiert");
-				return redirect(routes.UserController.users());
+				if (curUser.admin==1) {
+					return redirect(routes.UserController.users());
+				}else {
+					return redirect(routes.UserController.accverwaltung());
+				}
 			}
 		}else {
 			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
@@ -147,7 +155,12 @@ public class UserController extends Controller {
 		}else{
 			flash("warning", "user " + user.name + " wurde geloescht");
 			user.delete();
-			return redirect(routes.UserController.users());
+			User curUser = User.findByName(request().username());
+			if (curUser.admin==1) {
+				return redirect(routes.UserController.users());
+			}else {
+				return redirect(routes.UserController.accverwaltung());
+			}
 		}
 	}
 

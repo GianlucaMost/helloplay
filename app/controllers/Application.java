@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.util.Collection;
 
+import models.Mannschaft;
 import models.User;
 import play.*;
 import play.mvc.*;
@@ -17,11 +18,11 @@ public class Application extends Controller {
 		User user = User.findByName(name);
 		if (user==null)
 		{
-			return ok(home.render("Home", User.findByName(name)));
+			return ok(home.render("Home", null, null));
 		}else if(user.admin==1) {
 			return redirect(routes.UserController.users());
 		}else {
-			return ok(home.render("Home", User.findByName(name)));
+			return ok(home.render("Home", Mannschaft.findAll(), user));
 		}
 	}
 }

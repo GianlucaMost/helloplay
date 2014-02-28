@@ -10,7 +10,6 @@ import org.mindrot.jbcrypt.*;
 import javax.persistence.*;
 
 import models.*;
-
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -19,7 +18,7 @@ import play.db.jpa.Transactional;
  * Spiel entity managed by JPA
  */
 @Entity 
-@SequenceGenerator(name = "spiel_seq", sequenceName = "spiel_seq")
+@Table(name="spiel")
 public class Spiel {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement

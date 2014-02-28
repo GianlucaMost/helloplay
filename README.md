@@ -19,3 +19,10 @@ helloplay
 +Passwoerter werden nun verschluesselt und beim einloggen dementsprechend ueberprueft.
 
 +Die Registrieren-Seite wurde implementiert
+
++Models mit Attributen, Konstruktoren und Standard-Methoden hinzugefügt (mapping für er fehlt noch)
++accountverwaltung implementiert.
++MannschaftsController hinzugefuegt
++Unterscheidung zwischen admin, user und guest schon bei der hp
+*admin-hp geaendert
+*user-hp ausgebaut (mannschaftstabelle)

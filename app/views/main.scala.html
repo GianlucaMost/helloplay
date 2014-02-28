@@ -31,8 +31,13 @@
        				<ul class="nav navbar-nav navbar-right">
 		              	@if(currentUser != null) {
 			              	<li>
-				              <a href="/user/find/@currentUser.uid">
-				              	<span class="glyphicon glyphicon-user"> @currentUser.name</span>
+				              <a href="@routes.UserController.accverwaltung()">
+				              	<span class="glyphicon glyphicon-user">
+				              		@currentUser.name
+				              		@if(currentUser.admin == 1) {
+				              			(admin)
+				              		}
+				              	</span>
 				              </a>
 			              	</li>
 		              	}

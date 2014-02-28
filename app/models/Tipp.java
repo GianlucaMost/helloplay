@@ -8,7 +8,6 @@ import org.mindrot.jbcrypt.*;
 import javax.persistence.*;
 
 import models.*;
-
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -17,7 +16,7 @@ import play.db.jpa.Transactional;
  * Tipp entity managed by JPA
  */
 @Entity 
-@SequenceGenerator(name = "tipp_seq", sequenceName = "tipp_seq")
+@Table(name="tipp")
 public class Tipp {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
@@ -34,7 +33,16 @@ public class Tipp {
     
     @Constraints.Required
     public byte toregast;
+
+    /**
+     * Default constructor
+     */
+    public Tipp()
+    {
+    	
+    }
     
+
     /**
      * Konstruktor
      * @param fk_uid

@@ -8,7 +8,6 @@ import org.mindrot.jbcrypt.*;
 import javax.persistence.*;
 
 import models.*;
-
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -17,7 +16,7 @@ import play.db.jpa.Transactional;
  * Trunde entity managed by JPA
  */
 @Entity 
-@SequenceGenerator(name = "trunde_seq", sequenceName = "trunde_seq")
+@Table(name="trunde")
 public class Trunde {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
@@ -26,6 +25,14 @@ public class Trunde {
     
     @Constraints.Required
     public String bezeichnung;
+    
+    /**
+     * Default constructor
+     */
+    public Trunde()
+    {
+    	
+    }
     
     /**
      * Konstruktor

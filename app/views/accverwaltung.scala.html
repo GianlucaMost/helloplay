@@ -1,0 +1,30 @@
+@(currentUser: models.User)
+
+@main("Accountverwaltung", currentUser) {
+	<h1>Wilkommen</h1>
+	@if(flash.containsKey("success")) {
+		<div class="alert alert-success">
+			<strong class="success">Success!</strong> @flash.get("success")
+		</div>
+   	}
+   	@if(flash.containsKey("warning")) {
+		<div class="alert alert-warning">
+			<strong class="warning">Ok!</strong> @flash.get("warning")
+		</div>
+   	}
+    <div>
+    	<a href="/user/update/@currentUser.uid">
+			<button type="button" class="btn btn-default btn">
+	  			<span class="glyphicon glyphicon-pencil"> Daten bearbeiten</span>
+			</button>
+		</a>
+		<br>
+		<br>
+		<a href="/user/delete/@currentUser.uid">
+			<button type="button" class="btn btn-default btn">
+	  			<span class="glyphicon glyphicon-trash"> Account loeschen</span>
+			</button>
+		</a>
+    </div>
+
+}

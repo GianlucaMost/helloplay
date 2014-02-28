@@ -1,4 +1,4 @@
-@(message: String, currentUser: models.User)
+@(message: String, mannschaften: Collection[models.Mannschaft], currentUser: models.User)
 
 @main("Home", currentUser){
     <h1>@message</h1>
@@ -10,9 +10,41 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 	  		<div class="span3">
-	  			<a href="/users/all">
-	  				<span class="glyphicon glyphicon-user"> Benutzerverwaltung</span>
+	  			<a href="#Gruppenuebersicht">
+	  				Gruppenuebersicht
 	  			</a>
+	  			<br>
+	  			<a href="#Spielplan">
+	  				Spielplan
+	  			</a>
+	  			<table class="table table-striped">
+	    			<thead>
+	    				<tr>
+	    					<th>Mannschaft</th>
+	    					<th>Gruppe</th>
+	    					<th>Spiele</th>
+	    					<th>Siege</th>
+	    					<th>Niederlagen</th>
+	    					<th>Tore</th>
+	    					<th>Gegentore</th>
+	    					<th>Punkte</th>
+	    				</tr>
+	    			</thead>
+	    			<tbody>
+	    				@for(mannschaft <- mannschaften) {
+		    				<tr>
+		    					<td>@mannschaft.bezeichnung</td>
+		  						<td>@mannschaft.gruppe</td>
+		  						<td>@mannschaft.spiele</td>
+		  						<td>@mannschaft.siege</td>
+		  						<td>@mannschaft.niederlagen</td>
+		  						<td>@mannschaft.tore</td>
+		  						<td>@mannschaft.gegentore</td>
+		  						<td>@mannschaft.punkte</td>
+		  					</tr>
+						}
+					</tbody>
+    			</table>
 	  		</div>
 		</div>
 	</div>

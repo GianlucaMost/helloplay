@@ -2,8 +2,15 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+#Allgemein
+
 # Home page
 GET     /                           controllers.Application.index()
+
+#Gruppenuebersicht
+#GET		/grppreview					
+
+#UserController
 
 # get all users
 GET     /users/all               	controllers.UserController.users()
@@ -17,12 +24,6 @@ GET		/user/new					controllers.UserController.newuser()
 # create new user
 POST	/user/new					controllers.UserController.save()
 
-# show login
-GET     /login     		          	controllers.LoginController.login()
-
-# submit login
-POST    /login                      controllers.LoginController.authenticate()
-
 # show the user-update-page
 GET		/user/update/:id			controllers.UserController.updateShow(id: Long)
 
@@ -31,6 +32,17 @@ POST	/user/update				controllers.UserController.update()
 
 # delete an user with id
 GET		/user/delete/:id			controllers.UserController.delete(id: Long)
+
+# show accountverwaltung
+GET		/user/accverwaltung			controllers.UserController.accverwaltung()
+	
+#LoginController
+
+# show login
+GET     /login     		          	controllers.LoginController.login()
+
+# submit login
+POST    /login                      controllers.LoginController.authenticate()
 
 # logout the user
 GET     /logout                     controllers.LoginController.logout()
