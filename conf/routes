@@ -56,5 +56,8 @@ POST	/login/register				controllers.LoginController.register()
 # Mannschaft mit :id anzeigen
 GET		/mannschaft/find/:id		controllers.MannschaftController.mannschaftShow(id: Long)
 
+# detailierte mannschaftsuebersicht
+GET		/mannschaft/overview		controllers.MannschaftController.mannschaften()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

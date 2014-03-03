@@ -28,11 +28,8 @@ public class MannschaftController extends Controller {
 	 * @return
 	 */
 	@Transactional(readOnly=true)
-    public static Result Mannschaften() {
-		Logger.info("Start");
-		Collection<Mannschaft> mannschaften = Mannschaft.findAll();
-		Logger.info("Mannschafts size: " + mannschaften.size());
-		return ok(home.render("Mannschaften", mannschaften, User.findByName(request().username())));
+    public static Result mannschaften() {
+		return ok(mannschaften_tbl.render(Mannschaft.findAll(), User.findByName(request().username())));
     }
 	
 	@Transactional(readOnly=true)

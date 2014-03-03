@@ -1,6 +1,8 @@
-@(mannschaften: Collection[models.Mannschaft])
+@(mannschaften: Collection[models.Mannschaft], currentUser: models.User)
 
-<div>
+@main("Home", currentUser){
+    <h1>Detailuebersicht</h1>
+	<div>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -17,7 +19,11 @@
 		<tbody>
 			@for(mannschaft <- mannschaften) {
 				<tr>
-					<td>@mannschaft.bezeichnung</td>
+					<td>
+						<a href="/mannschaft/find/@mannschaft.mid">
+							@mannschaft.bezeichnung
+						</a>
+					</td>
 					<td>@mannschaft.gruppe</td>
 					<td>@mannschaft.spiele</td>
 					<td>@mannschaft.siege</td>
@@ -30,3 +36,4 @@
 		</tbody>
 	</table>
 </div>
+}

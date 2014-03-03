@@ -7,26 +7,14 @@
 			<strong class="success">Success!</strong> @flash.get("success")
 		</div>
    		}
-	<div class="container-fluid">
-		<div class="row-fluid">
-	  		<div class="span3">
-	  			<a href="#Gruppenuebersicht">
-	  				Gruppenuebersicht
-	  			</a>
-	  			<br>
-	  			<a href="#Spielplan">
-	  				Spielplan
-	  			</a>
-	  			
-	  			<div class="container">
-			      <h3>Gruppenuebersicht</h3>
-			      	<div class="row">
-				        <div class="col-md-6">@grp_overview(mannschaften)</div>
-				        <div class="col-md-6"></div>
-			      	</div>
-			  			
-				@mannschaften_tbl(mannschaften)
-	  		</div>
+	<div class="container">
+		<div class="row">
+	  		@grp_overview(mannschaften)
 		</div>
+		<a href="@routes.MannschaftController.mannschaften()">
+			<button type="button" class="btn btn-default btn">
+	  			Detailansicht
+			</button>
+		</a>
 	</div>
 }

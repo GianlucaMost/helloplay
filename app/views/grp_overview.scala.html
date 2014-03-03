@@ -1,6 +1,8 @@
 @(mannschaften: Collection[models.Mannschaft])
 
+<h3>Gruppenuebersicht</h3>	
 @for(index <- 0 until 8){
+	<div class="col-md-3">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Gruppe
@@ -31,7 +33,11 @@
 								    @m.gruppe match {
 									    case "A" => { 
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -51,7 +57,11 @@
 									    case "A" => {  }
 									    case "B" => { 
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -71,7 +81,11 @@
 									    case "B" => {  }
 									    case "C" => {  
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -91,7 +105,11 @@
 									    case "C" => {  }
 									    case "D" => {  
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -111,7 +129,11 @@
 									    case "D" => {  }
 									    case "E" => {  
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -131,7 +153,11 @@
 									    case "E" => {  }
 									    case "F" => {  
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -151,7 +177,11 @@
 									    case "F" => {  }
 									    case "G" => {  
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -171,7 +201,11 @@
 									    case "G" => {  }
 									    case "H" => {  
 									    	<tr>
-						    					<td>@m.bezeichnung</td>
+						    					<td>
+						    						<a href="/mannschaft/find/@m.mid">
+						    							@m.bezeichnung
+						    						</a>
+						    					</td>
 						  						<td>@m.punkte</td>
 									  		</tr>
 										}
@@ -183,4 +217,5 @@
  			</table>
 		</div>
 	</div>
+</div>
 }
