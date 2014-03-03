@@ -2,12 +2,13 @@ package controllers;
 
 import static play.data.Form.form;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
 import models.*;
-
 import play.*;
 import play.mvc.*;
 import play.data.Form;
@@ -31,7 +32,11 @@ public class MannschaftController extends Controller {
 		Logger.info("Start");
 		Collection<Mannschaft> mannschaften = Mannschaft.findAll();
 		Logger.info("Mannschafts size: " + mannschaften.size());
-        return ok(home.render("Mannschaften", mannschaften, User.findByName(request().username())));
+		return ok(home.render("Mannschaften", mannschaften, User.findByName(request().username())));
     }
-
+	
+	@Transactional(readOnly=true)
+	public static Result mannschaftShow(long mid) {
+		return ok(mannschaft.render(Mannschaft.findById(mid), User.findByName(request().username())));
+	}
 }

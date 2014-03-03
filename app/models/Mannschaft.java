@@ -22,7 +22,7 @@ import play.db.jpa.Transactional;
 public class Mannschaft {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
-    public int mid;
+    public Long mid;
     
     @Constraints.Required
     public String bezeichnung;
@@ -90,16 +90,16 @@ public class Mannschaft {
      * @return
      */
     @Transactional(readOnly=true)
-    public static Mannschaft findById(int mid) {
+    public static Mannschaft findById(long mid) {
     	return JPA.em().find(Mannschaft.class, mid);
     }
     
     /**
-     * holt alle Mannschaften aus der db
+     * Holt alle Mannschaften aus der db
      * @return
      */
     @Transactional(readOnly=true)
-    public static Collection<Mannschaft> findAll(){
+    public static Collection<Mannschaft> findAll() {
         Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
         return (Collection<Mannschaft>) query.getResultList();
     }

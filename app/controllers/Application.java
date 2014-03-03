@@ -18,7 +18,7 @@ public class Application extends Controller {
 		User user = User.findByName(name);
 		if (user==null)
 		{
-			return ok(home.render("Home", null, null));
+			return ok(home.render("Home", Mannschaft.findAll(), null));
 		}else if(user.admin==1) {
 			return redirect(routes.UserController.users());
 		}else {

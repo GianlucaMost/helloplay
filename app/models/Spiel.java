@@ -22,7 +22,7 @@ import play.db.jpa.Transactional;
 public class Spiel {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
-    public int sid;
+    public Long sid;
     
     @Constraints.Required
     public int fk_midheim;

@@ -17,34 +17,15 @@
 	  			<a href="#Spielplan">
 	  				Spielplan
 	  			</a>
-	  			<table class="table table-striped">
-	    			<thead>
-	    				<tr>
-	    					<th>Mannschaft</th>
-	    					<th>Gruppe</th>
-	    					<th>Spiele</th>
-	    					<th>Siege</th>
-	    					<th>Niederlagen</th>
-	    					<th>Tore</th>
-	    					<th>Gegentore</th>
-	    					<th>Punkte</th>
-	    				</tr>
-	    			</thead>
-	    			<tbody>
-	    				@for(mannschaft <- mannschaften) {
-		    				<tr>
-		    					<td>@mannschaft.bezeichnung</td>
-		  						<td>@mannschaft.gruppe</td>
-		  						<td>@mannschaft.spiele</td>
-		  						<td>@mannschaft.siege</td>
-		  						<td>@mannschaft.niederlagen</td>
-		  						<td>@mannschaft.tore</td>
-		  						<td>@mannschaft.gegentore</td>
-		  						<td>@mannschaft.punkte</td>
-		  					</tr>
-						}
-					</tbody>
-    			</table>
+	  			
+	  			<div class="container">
+			      <h3>Gruppenuebersicht</h3>
+			      	<div class="row">
+				        <div class="col-md-6">@grp_overview(mannschaften)</div>
+				        <div class="col-md-6"></div>
+			      	</div>
+			  			
+				@mannschaften_tbl(mannschaften)
 	  		</div>
 		</div>
 	</div>

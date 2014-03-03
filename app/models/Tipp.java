@@ -20,7 +20,7 @@ import play.db.jpa.Transactional;
 public class Tipp {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
-    public int tid;
+    public Long tid;
     
     @Constraints.Required
     public int fk_uid;

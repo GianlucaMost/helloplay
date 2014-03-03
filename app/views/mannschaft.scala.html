@@ -1,0 +1,32 @@
+@(m: models.Mannschaft, currentUser: models.User)
+
+@main("Benutzer loeschen", currentUser) {
+    <h1>@m.bezeichnung</h1>
+    <div>
+    	 <table class="table table-striped">
+	    	<thead>
+  				<tr>
+  					<th>Gruppe</th>
+  					<th>Spiele</th>
+  					<th>Siege</th>
+  					<th>Niederlagen</th>
+  					<th>Tore</th>
+  					<th>Gegentore</th>
+  					<th>Punkte</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+ 				<tr>
+					<td>@m.gruppe</td>
+					<td>@m.spiele</td>
+					<td>@m.siege</td>
+					<td>@m.niederlagen</td>
+					<td>@m.tore</td>
+					<td>@m.gegentore</td>
+					<td>@m.punkte</td>
+				</tr>
+			</tbody>
+    	</table>
+    </div>
+
+}

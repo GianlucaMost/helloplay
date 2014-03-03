@@ -1,0 +1,32 @@
+@(mannschaften: Collection[models.Mannschaft])
+
+<div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Mannschaft</th>
+				<th>Gruppe</th>
+				<th>Spiele</th>
+				<th>Siege</th>
+				<th>Niederlagen</th>
+				<th>Tore</th>
+				<th>Gegentore</th>
+				<th>Punkte</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(mannschaft <- mannschaften) {
+				<tr>
+					<td>@mannschaft.bezeichnung</td>
+					<td>@mannschaft.gruppe</td>
+					<td>@mannschaft.spiele</td>
+					<td>@mannschaft.siege</td>
+					<td>@mannschaft.niederlagen</td>
+					<td>@mannschaft.tore</td>
+					<td>@mannschaft.gegentore</td>
+					<td>@mannschaft.punkte</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
