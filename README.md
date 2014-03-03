@@ -26,3 +26,8 @@ helloplay
 +Unterscheidung zwischen admin, user und guest schon bei der hp
 *admin-hp geaendert
 *user-hp ausgebaut (mannschaftstabelle)
+
++Gruppenuebersicht hinzugefuegt
++Mannschaftsuebersicht hinzugefuegt
+
+*Gruppenuebersicht in der Ansicht verbessert, es herrscht aber noch optimierungsbedarf am Code (grp_preview.scala.html -> 2much copy'n'paste)

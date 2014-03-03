@@ -30,185 +30,113 @@
 						@index match {
 							case 0 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => { 
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "B" => {  }
-									    case "C" => {  }
-									    case "D" => {  }
-									    case "E" => {  }
-									    case "F" => {  }
-									    case "G" => {  }
-									    case "H" => {  }
+								    @if(m.gruppe.equals("A")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 1 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => { 
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "C" => {  }
-									    case "D" => {  }
-									    case "E" => {  }
-									    case "F" => {  }
-									    case "G" => {  }
-									    case "H" => {  }
+								    @if(m.gruppe.equals("B")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 2 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => {  }
-									    case "C" => {  
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "D" => {  }
-									    case "E" => {  }
-									    case "F" => {  }
-									    case "G" => {  }
-									    case "H" => {  }
+								    @if(m.gruppe.equals("C")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 3 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => {  }
-									    case "C" => {  }
-									    case "D" => {  
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "E" => {  }
-									    case "F" => {  }
-									    case "G" => {  }
-									    case "H" => {  }
+								    @if(m.gruppe.equals("D")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 4 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => {  }
-									    case "C" => {  }
-									    case "D" => {  }
-									    case "E" => {  
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "F" => {  }
-									    case "G" => {  }
-									    case "H" => {  }
+								    @if(m.gruppe.equals("E")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 5 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => {  }
-									    case "C" => {  }
-									    case "D" => {  }
-									    case "E" => {  }
-									    case "F" => {  
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "G" => {  }
-									    case "H" => {  }
+								    @if(m.gruppe.equals("F")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 6 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => {  }
-									    case "C" => {  }
-									    case "D" => {  }
-									    case "E" => {  }
-									    case "F" => {  }
-									    case "G" => {  
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
-									    case "H" => {  }
+									@if(m.gruppe.equals("G")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
 							case 7 => {
 								@for(m <- mannschaften){
-								    @m.gruppe match {
-									    case "A" => {  }
-									    case "B" => {  }
-									    case "C" => {  }
-									    case "D" => {  }
-									    case "E" => {  }
-									    case "F" => {  }
-									    case "G" => {  }
-									    case "H" => {  
-									    	<tr>
-						    					<td>
-						    						<a href="/mannschaft/find/@m.mid">
-						    							@m.bezeichnung
-						    						</a>
-						    					</td>
-						  						<td>@m.punkte</td>
-									  		</tr>
-										}
+								    @if(m.gruppe.equals("H")) {
+										<tr>
+					    					<td>
+					    						<a href="/mannschaft/find/@m.mid">
+					    							@m.bezeichnung
+					    						</a>
+					    					</td>
+						  					<td>@m.punkte</td>
+									  	</tr>
 									}
 								}
 							}
