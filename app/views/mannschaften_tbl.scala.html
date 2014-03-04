@@ -1,39 +1,49 @@
-@(mannschaften: Collection[models.Mannschaft], currentUser: models.User)
+@(mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
 
-@main("Home", currentUser){
-    <h1>Detailuebersicht</h1>
-	<div>
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>Mannschaft</th>
-				<th>Gruppe</th>
-				<th>Spiele</th>
-				<th>Siege</th>
-				<th>Niederlagen</th>
-				<th>Tore</th>
-				<th>Gegentore</th>
-				<th>Punkte</th>
-			</tr>
-		</thead>
-		<tbody>
-			@for(m <- mannschaften) {
-				<tr>
-					<td>
-						<a href="/mannschaft/find/@m.mid">
-							@m.bezeichnung
-						</a>
-					</td>
-					<td>@m.gruppe</td>
-					<td>@m.spiele</td>
-					<td>@m.siege</td>
-					<td>@m.niederlagen</td>
-					<td>@m.tore</td>
-					<td>@m.gegentore</td>
-					<td>@m.punkte</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-</div>
+@main("Detailuebersicht", currentUser){
+	<h3>Detailuebersicht</h3>	
+	@for((key, value) <- mannschaften){
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Gruppe @key</h3>
+			</div>
+			<div class="panel-body">
+				<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Mannschaft</th>
+								<th>Spiele</th>
+								<th>Siege</th>
+								<th>Niederlagen</th>
+								<th>Tore</th>
+								<th>Gegentore</th>
+								<th>Punkte</th>
+							</tr>
+						</thead>
+		 				<tbody>
+							@for(m <- value) {
+		 						<tr>
+									<td>
+			    						<a href="/mannschaft/find/@m.mid">
+			    							@m.bezeichnung
+			    						</a>
+							    	</td>
+									<td>@m.spiele</td>
+									<td>@m.siege</td>
+									<td>@m.niederlagen</td>
+									<td>@m.tore</td>
+									<td>@m.gegentore</td>
+									<td>@m.punkte</td>
+								</tr>
+							}
+						</tbody>
+	 				</table>
+			</div><!-- panel-body -->
+		</div><!-- panel -->
+	}
+	<a href="@routes.Application.index()">
+		<button type="button" class="btn btn-default btn">
+  			Zurueck
+		</button>
+	</a>
 }

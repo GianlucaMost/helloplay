@@ -34,3 +34,4 @@ helloplay
 
 *Codeoptimierung in der Gruppenuebersicht
 
+*Codeoptimierung in der Gruppen- und Detail-/Ansicht

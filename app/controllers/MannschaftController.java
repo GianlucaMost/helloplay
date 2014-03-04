@@ -29,7 +29,7 @@ public class MannschaftController extends Controller {
 	 */
 	@Transactional(readOnly=true)
     public static Result mannschaften() {
-		return ok(mannschaften_tbl.render(Mannschaft.getColl(), User.findByName(request().username())));
+		return ok(mannschaften_tbl.render(Mannschaft.findAll(), User.findByName(request().username())));
     }
 	
 	@Transactional(readOnly=true)

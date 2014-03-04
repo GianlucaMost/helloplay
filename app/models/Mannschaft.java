@@ -103,16 +103,6 @@ public class Mannschaft {
      * @return
      */
     @Transactional(readOnly=true)
-    public static Collection<Mannschaft> getColl() {
-        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
-        return (Collection<Mannschaft>) query.getResultList();
-    }
-    
-    /**
-     * Holt alle Mannschaften aus der db
-     * @return
-     */
-    @Transactional(readOnly=true)
     public static  Map<String, List<Mannschaft>> findAll() {
         Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
         Collection<Mannschaft> col = (Collection<Mannschaft>) query.getResultList();
@@ -127,9 +117,7 @@ public class Mannschaft {
         		teamMap.get(team.gruppe).add(team);
         	}
         }
-        
         Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
-        
         return treeMap;
     }
 }
