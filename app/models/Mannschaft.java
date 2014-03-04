@@ -1,7 +1,11 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -99,8 +103,33 @@ public class Mannschaft {
      * @return
      */
     @Transactional(readOnly=true)
-    public static Collection<Mannschaft> findAll() {
+    public static Collection<Mannschaft> getColl() {
         Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
         return (Collection<Mannschaft>) query.getResultList();
+    }
+    
+    /**
+     * Holt alle Mannschaften aus der db
+     * @return
+     */
+    @Transactional(readOnly=true)
+    public static  Map<String, List<Mannschaft>> findAll() {
+        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
+        Collection<Mannschaft> col = (Collection<Mannschaft>) query.getResultList();
+        Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
+        
+        for (Mannschaft team : col) {
+        	if (!teamMap.containsKey(team.gruppe)) {
+        		List<Mannschaft> teamList = new ArrayList<Mannschaft>();
+        		teamList.add(team);
+        		teamMap.put(team.gruppe, teamList);
+        	} else {
+        		teamMap.get(team.gruppe).add(team);
+        	}
+        }
+        
+        Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
+        
+        return treeMap;
     }
 }

@@ -30,4 +30,7 @@ helloplay
 +Gruppenuebersicht hinzugefuegt
 +Mannschaftsuebersicht hinzugefuegt
 
-*Gruppenuebersicht in der Ansicht verbessert, es herrscht aber noch optimierungsbedarf am Code (grp_preview.scala.html -> 2much copy'n'paste)
+*Gruppenuebersicht in der Ansicht verbessert, es herrscht aber noch optimierungsbedarf am Code (grp_preview.scala.html -> 2much copy'n paste)
+
+*Codeoptimierung in der Gruppenuebersicht
+

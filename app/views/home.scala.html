@@ -1,4 +1,4 @@
-@(message: String, mannschaften: Collection[models.Mannschaft], currentUser: models.User)
+@(message: String, mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
 
 @main("Home", currentUser){
     <h1>@message</h1>

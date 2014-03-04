@@ -17,20 +17,20 @@
 			</tr>
 		</thead>
 		<tbody>
-			@for(mannschaft <- mannschaften) {
+			@for(m <- mannschaften) {
 				<tr>
 					<td>
-						<a href="/mannschaft/find/@mannschaft.mid">
-							@mannschaft.bezeichnung
+						<a href="/mannschaft/find/@m.mid">
+							@m.bezeichnung
 						</a>
 					</td>
-					<td>@mannschaft.gruppe</td>
-					<td>@mannschaft.spiele</td>
-					<td>@mannschaft.siege</td>
-					<td>@mannschaft.niederlagen</td>
-					<td>@mannschaft.tore</td>
-					<td>@mannschaft.gegentore</td>
-					<td>@mannschaft.punkte</td>
+					<td>@m.gruppe</td>
+					<td>@m.spiele</td>
+					<td>@m.siege</td>
+					<td>@m.niederlagen</td>
+					<td>@m.tore</td>
+					<td>@m.gegentore</td>
+					<td>@m.punkte</td>
 				</tr>
 			}
 		</tbody>
