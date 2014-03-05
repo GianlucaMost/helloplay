@@ -19,20 +19,33 @@ import play.db.jpa.Transactional;
 @Table(name="tipp")
 public class Tipp {  
 	@Id													// id der tbl
+	@Column(name="tid", nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public int tid;
     
     @Constraints.Required
+    @Column(name="fk_uid")
     public int fk_uid;
     
     @Constraints.Required
+    @Column(name="fk_sid")
     public int fk_sid;
     
     @Constraints.Required
+    @Column(name="toreheim")
     public byte toreheim;
     
     @Constraints.Required
+    @Column(name="toregast")
     public byte toregast;
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name="sid", referencedColumnName="sid")
+    private Spiel spiel;
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name="uid", referencedColumnName="uid")
+    private User user;
 
     /**
      * Default constructor

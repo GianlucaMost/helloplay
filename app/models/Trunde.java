@@ -24,6 +24,7 @@ public class Trunde {
     public int trid;
     
     @Constraints.Required
+    @Column(name="bezeichnung")
     public String bezeichnung;
     
     /**

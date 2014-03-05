@@ -38,6 +38,10 @@ public class User {
     @Constraints.Required
     public byte admin=0;
     
+    @ManyToOne(optional=true)
+    @JoinColumn(name="trid", referencedColumnName="trid")
+    private Trunde trunde;
+    
     /**
      * default constuctor
      */
@@ -73,9 +77,9 @@ public class User {
     @Transactional(readOnly=true)
     public static boolean userExist(String name) {
     	try {
-	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+	    	Query query = JPA.em().createQuery("SELECT u.name FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
-	    	User user = (User) query.getSingleResult();
+	    	String tmp = (String) query.getSingleResult();
 	    	return true;
     	} catch (NoResultException ex) {
     		return false;
@@ -98,7 +102,7 @@ public class User {
     @Transactional
     public static User findByName(String name) {
     	if (User.userExist(name)) {
-	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
+    		Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
 	    	return (User) query.getSingleResult();
     	}else {

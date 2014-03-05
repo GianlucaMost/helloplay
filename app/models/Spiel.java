@@ -21,27 +21,35 @@ import play.db.jpa.Transactional;
 @Table(name="spiel")
 public class Spiel {  
 	@Id													// id der tbl
+	@Column(name="sid", nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public int sid;
     
     @Constraints.Required
+    @Column(name="fk_midheim")
     public int fk_midheim;
     
     @Constraints.Required
+    @Column(name="fk_midgast")
     public int fk_midgast;
     
+    @Column(name="toreheim")
     public byte toreheim;
     
+    @Column(name="toregast")
     public byte toregast;
     
     @Constraints.Required
+    @Column(name="ort")
     public String ort;
     
     @Constraints.Required
-    public Timestamp beginn = new Timestamp(System.currentTimeMillis());
+    @Column(name="beginn")
+    public Timestamp beginn;
     
     @Constraints.Required
-    public Timestamp ende = new Timestamp(System.currentTimeMillis());
+    @Column(name="ende")
+    public Timestamp ende;
     
     /**
      * Default constructor
@@ -58,10 +66,12 @@ public class Spiel {
      * @param beginn
      * @param ende
      */
-    public Spiel(int fk_midheim, int fk_midgast, String ort){
+    public Spiel(int fk_midheim, int fk_midgast, String ort, Timestamp beginn, Timestamp ende){
     	this.fk_midheim = fk_midheim;
     	this.fk_midgast = fk_midgast;
     	this.ort = ort;
+    	this.beginn=beginn;
+    	this.ende=ende;
     }
     
     /**
@@ -74,7 +84,7 @@ public class Spiel {
     
     @Transactional(readOnly=true)
     public static Collection<Spiel> gamesOfTeam(int mid){
-        Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim = :pMid");
+        Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim=:pMid OR s.fk_midgast=:pMid");
         query.setParameter("pMid", mid);
         Collection<Spiel> col = query.getResultList();
         return col;	

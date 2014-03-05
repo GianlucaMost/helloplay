@@ -34,6 +34,6 @@ public class MannschaftController extends Controller {
 	
 	@Transactional(readOnly=true)
 	public static Result mannschaftShow(int mid) {
-		return ok(mannschaft.render(Mannschaft.findById(mid), Spiel.gamesOfTeam(mid), User.findByName(request().username())));
+		return ok(mannschaft.render(Mannschaft.findById(mid), Spiel.gamesOfTeam(mid), Mannschaft.findAllCol(), User.findByName(request().username())));
 	}
 }

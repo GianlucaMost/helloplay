@@ -98,8 +98,15 @@ public class Mannschaft {
     	return JPA.em().find(Mannschaft.class, mid);
     }
     
+    
+    @Transactional(readOnly=true)
+    public static Collection<Mannschaft> findAllCol() {
+        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
+        return (Collection<Mannschaft>) query.getResultList();
+    }
+    
     /**
-     * Holt alle Mannschaften aus der db
+     * Holt alle Mannschaften aus der db und erstellt eine nach gruppen sortierte treeMap
      * @return
      */
     @Transactional(readOnly=true)
