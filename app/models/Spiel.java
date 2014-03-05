@@ -51,6 +51,9 @@ public class Spiel {
     @Column(name="ende")
     public Timestamp ende;
     
+    @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
+    private Collection<Tipp> tipps;
+    
     /**
      * Default constructor
      */

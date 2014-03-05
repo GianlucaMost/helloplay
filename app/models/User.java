@@ -24,7 +24,7 @@ public class User {
     public int uid;
 	
 	@Column(name="fk_trid")
-	public int fk_trid=-1;
+	public int fk_trid=0;
     
     @Constraints.Required
     public String name;
@@ -37,10 +37,6 @@ public class User {
     
     @Constraints.Required
     public byte admin=0;
-    
-    @ManyToOne(optional=true)
-    @JoinColumn(name="trid", referencedColumnName="trid")
-    private Trunde trunde;
     
     /**
      * default constuctor
