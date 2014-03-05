@@ -21,7 +21,7 @@ public class Trunde {
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
 	@Column(name="trid")
-    public Long trid;
+    public int trid;
     
     @Constraints.Required
     public String bezeichnung;

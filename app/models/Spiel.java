@@ -22,7 +22,7 @@ import play.db.jpa.Transactional;
 public class Spiel {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
-    public Long sid;
+    public int sid;
     
     @Constraints.Required
     public int fk_midheim;
@@ -38,41 +38,57 @@ public class Spiel {
     public String ort;
     
     @Constraints.Required
-    public SimpleDateFormat beginn = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    public Timestamp beginn = new Timestamp(System.currentTimeMillis());
     
     @Constraints.Required
-    public SimpleDateFormat ende = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    public Timestamp ende = new Timestamp(System.currentTimeMillis());
     
     /**
      * Default constructor
      */
-    public Spiel()
-    {
+    public Spiel(){
     	
     }
     
     /**
-     * Konstruktor without game-result
+     * Constructor without game-result
      * @param fk_midheim
      * @param fk_midgast
      * @param ort
      * @param beginn
      * @param ende
      */
-    public Spiel(int fk_midheim, int fk_midgast, String ort, SimpleDateFormat beginn, SimpleDateFormat ende)
-    {
+    public Spiel(int fk_midheim, int fk_midgast, String ort){
     	this.fk_midheim = fk_midheim;
     	this.fk_midgast = fk_midgast;
     	this.ort = ort;
-    	this.beginn = beginn;
-    	this.ende = ende;
     }
     
     /**
-     * Find a Spiel by id.
+     * Find a Soiel by id.
      */
     @Transactional(readOnly=true)
     public static Spiel findById(int sid) {
     	return JPA.em().find(Spiel.class, sid);
+    }
+    
+    @Transactional(readOnly=true)
+    public static Collection<Spiel> gamesOfTeam(int mid){
+        Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim = :pMid");
+        query.setParameter("pMid", mid);
+        Collection<Spiel> col = query.getResultList();
+        return col;	
+    }
+    
+    /**
+     * non static game-result-setting
+     * @param toreheim
+     * @param toregast
+     */
+    @Transactional
+    public void setErgebnis(byte th, byte tg){
+    	this.toreheim=th;
+    	this.toregast=tg;
+    	JPA.em().persist(this);
     }
 }

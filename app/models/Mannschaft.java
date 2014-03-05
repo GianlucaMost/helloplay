@@ -26,7 +26,7 @@ import play.db.jpa.Transactional;
 public class Mannschaft {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
-    public Long mid;
+    public int mid;
     
     @Constraints.Required
     public String bezeichnung;
@@ -94,7 +94,7 @@ public class Mannschaft {
      * @return
      */
     @Transactional(readOnly=true)
-    public static Mannschaft findById(long mid) {
+    public static Mannschaft findById(int mid) {
     	return JPA.em().find(Mannschaft.class, mid);
     }
     

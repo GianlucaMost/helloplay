@@ -1,6 +1,6 @@
-@(m: models.Mannschaft, currentUser: models.User)
+@(m: models.Mannschaft, spiele: Collection[models.Spiel], currentUser: models.User)
 
-@main("Benutzer loeschen", currentUser) {
+@main(m.bezeichnung, currentUser) {
     <h1>@m.bezeichnung</h1>
     <div>
     	 <table class="table table-striped">
@@ -28,5 +28,33 @@
 			</tbody>
     	</table>
     </div>
-
+	<h3>Spielplan</h3>
+	<div>
+    	 <table class="table table-striped">
+	    	<thead>
+  				<tr>
+  					<th>midHeim</th>
+  					<th>midGast</th>
+  					<th>toreHeim</th>
+  					<th>toreGast</th>
+  					<th>ort</th>
+  					<th>beginn</th>
+  					<th>ende</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  				@for(s <- spiele){
+	 				<tr>
+						<td>@s.fk_midheim</td>
+						<td>@s.fk_midgast</td>
+						<td>@s.toreheim</td>
+						<td>@s.toregast</td>
+						<td>@s.ort</td>
+						<td>@s.beginn</td>
+						<td>@s.ende</td>
+					</tr>
+				}
+			</tbody>
+    	</table>
+    </div>
 }

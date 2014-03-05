@@ -16,7 +16,7 @@ GET     /                           controllers.Application.index()
 GET     /users/all               	controllers.UserController.users()
 
 # show specific user
-GET     /user/find/:id              controllers.UserController.finduser(id: Long)
+GET     /user/find/:id              controllers.UserController.finduser(id: Int)
 
 # create new user
 GET		/user/new					controllers.UserController.newuser()
@@ -25,13 +25,13 @@ GET		/user/new					controllers.UserController.newuser()
 POST	/user/new					controllers.UserController.save()
 
 # show the user-update-page
-GET		/user/update/:id			controllers.UserController.updateShow(id: Long)
+GET		/user/update/:id			controllers.UserController.updateShow(id: Int)
 
 # handle the user-update
 POST	/user/update				controllers.UserController.update()
 
 # delete an user with id
-GET		/user/delete/:id			controllers.UserController.delete(id: Long)
+GET		/user/delete/:id			controllers.UserController.delete(id: Int)
 
 # show accountverwaltung
 GET		/user/accverwaltung			controllers.UserController.accverwaltung()
@@ -54,7 +54,7 @@ GET		/login/register				controllers.LoginController.showRegister()
 POST	/login/register				controllers.LoginController.register()
 
 # Mannschaft mit :id anzeigen
-GET		/mannschaft/find/:id		controllers.MannschaftController.mannschaftShow(id: Long)
+GET		/mannschaft/find/:id		controllers.MannschaftController.mannschaftShow(id: Int)
 
 # detailierte mannschaftsuebersicht
 GET		/mannschaft/overview		controllers.MannschaftController.mannschaften()
