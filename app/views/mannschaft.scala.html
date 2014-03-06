@@ -48,13 +48,17 @@
   				@for(s <- spiele){
 	 				<tr>
 						<td>
-							@s.getMannschaftHeim()
+							<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+			    				@s.getMannschaftHeim().bezeichnung
+			    			</a>
 						</td>
 						<td>@s.toreheim</td>
 						<td>   -   </td>
 						<td>@s.toregast</td>
 						<td>
-							@s.getMannschaftGast()
+							<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+			    				@s.getMannschaftGast().bezeichnung
+			    			</a>
 						</td>
 						<td>@s.ort</td>
 						<td>@s.beginn</td>

@@ -41,3 +41,6 @@ helloplay
 
 +Relation fuer spiel<->mannschaft implementiert
 #getter and setter anpassen(http://en.wikibooks.org/wiki/Java_Persistence/OneToMany#Getters_and_Setters)
+	update: oder auch nicht :D
+	
+#Mannschaftsuebersicht->Spielplan Gastmannschaft bugfix
