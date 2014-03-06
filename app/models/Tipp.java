@@ -75,7 +75,7 @@ public class Tipp {
     
     /**
      * set Spiel from this Tipp
-     * @param tr
+     * @param s
      */
     public void setSpiel(Spiel s){
     	this.spiel=s;
@@ -91,7 +91,7 @@ public class Tipp {
     
     /**
      * set User from this Tipp
-     * @param tr
+     * @param u
      */
     public void setUser(User u){
     	this.user=u;

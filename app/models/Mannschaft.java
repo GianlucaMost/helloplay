@@ -26,34 +26,48 @@ import play.db.jpa.Transactional;
 public class Mannschaft {  
 	@Id													// id der tbl
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
+	@Column(name="mid")
     public int mid;
     
     @Constraints.Required
+    @Column(name="bezeichnung")
     public String bezeichnung;
     
     @Constraints.Required
+    @Column(name="gruppe")
     public String gruppe;
     
     @Constraints.Required
-    public int spiele=0;
+    @Column(name="anzahlspiele")
+    public int anzahlspiele=0;
     
     @Constraints.Required
+    @Column(name="siege")
     public byte siege=0;
     
     @Constraints.Required
+    @Column(name="unentschieden")
     public byte unentschieden=0;
     
     @Constraints.Required
+    @Column(name="niederlagen")
     public byte niederlagen=0;
     
     @Constraints.Required
+    @Column(name="tore")
     public int tore=0;
     
     @Constraints.Required
+    @Column(name="gegentore")
     public int gegentore=0;
     
     @Constraints.Required
+    @Column(name="punkte")
     public int punkte=0;
+    
+    @OneToMany(targetEntity=Spiel.class)
+    @JoinColumn(name="sid", referencedColumnName="mid")
+    private Collection<Spiel> spiele;
     
     /**
      * Default constructor
@@ -75,17 +89,25 @@ public class Mannschaft {
      * @param gegentore
      * @param punkte
      */
-    public Mannschaft(String bezeichnung, String gruppe, int spiele, byte siege, byte unentschieden, byte niederlagen, int tore, int gegentore, int punkte)
+    public Mannschaft(String bezeichnung, String gruppe, int anzahlspiele, byte siege, byte unentschieden, byte niederlagen, int tore, int gegentore, int punkte)
     {
     	this.bezeichnung=bezeichnung;
     	this.gruppe=gruppe;
-    	this.spiele=spiele;
+    	this.anzahlspiele=anzahlspiele;
     	this.siege=siege;
     	this.unentschieden=unentschieden;
     	this.niederlagen=niederlagen;
     	this.tore=tore;
     	this.gegentore=gegentore;
     	this.punkte=punkte;
+    }
+    
+    /**
+     * get spiele from this mannschaft
+     * @return
+     */
+    public Collection<Spiel> getSpiele(){
+    	return this.spiele;
     }
     
     /**

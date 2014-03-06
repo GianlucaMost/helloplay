@@ -1,4 +1,4 @@
-@(m: models.Mannschaft, spiele: Collection[models.Spiel], mannschaften: Collection[models.Mannschaft], currentUser: models.User)
+@(m: models.Mannschaft, spiele: Collection[models.Spiel], currentUser: models.User)
 
 @main(m.bezeichnung, currentUser) {
     <h1>@m.bezeichnung</h1>
@@ -19,7 +19,7 @@
   			<tbody>
  				<tr>
 					<td>@m.gruppe</td>
-					<td>@m.spiele</td>
+					<td>@m.anzahlspiele</td>
 					<td>@m.siege</td>
 					<td>@m.niederlagen</td>
 					<td>@m.tore</td>
@@ -48,25 +48,13 @@
   				@for(s <- spiele){
 	 				<tr>
 						<td>
-							@for(mannschaft <- mannschaften){
-								@if(mannschaft.mid==s.fk_midheim){
-									<a href="/mannschaft/find/@mannschaft.mid">
-			    						@mannschaft.bezeichnung
-			    					</a>
-								}
-							}
+							@s.getMannschaftHeim()
 						</td>
 						<td>@s.toreheim</td>
 						<td>   -   </td>
 						<td>@s.toregast</td>
 						<td>
-							@for(mannschaft <- mannschaften){
-								@if(mannschaft.mid==s.fk_midgast){
-									<a href="/mannschaft/find/@mannschaft.mid">
-			    						@mannschaft.bezeichnung
-			    					</a>
-								}
-							}
+							@s.getMannschaftGast()
 						</td>
 						<td>@s.ort</td>
 						<td>@s.beginn</td>

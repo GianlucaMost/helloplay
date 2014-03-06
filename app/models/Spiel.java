@@ -25,14 +25,6 @@ public class Spiel {
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public int sid;
     
-    @Constraints.Required
-    @Column(name="fk_midheim")
-    public int fk_midheim;
-    
-    @Constraints.Required
-    @Column(name="fk_midgast")
-    public int fk_midgast;
-    
     @Column(name="toreheim")
     public byte toreheim;
     
@@ -54,6 +46,14 @@ public class Spiel {
     @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
+    @OneToOne(optional=false)
+    @JoinColumn(name="fk_midheim", referencedColumnName="mid")
+    private Mannschaft mannschaft_heim;
+    
+    @OneToOne(optional=false)
+    @JoinColumn(name="fk_midgast", referencedColumnName="mid")
+    private Mannschaft mannschaft_gast;
+    
     /**
      * Default constructor
      */
@@ -69,9 +69,9 @@ public class Spiel {
      * @param beginn
      * @param ende
      */
-    public Spiel(int fk_midheim, int fk_midgast, String ort, Timestamp beginn, Timestamp ende){
-    	this.fk_midheim = fk_midheim;
-    	this.fk_midgast = fk_midgast;
+    public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Timestamp beginn, Timestamp ende){
+    	this.mannschaft_heim = mannschaft_heim;
+    	this.mannschaft_gast = mannschaft_gast;
     	this.ort = ort;
     	this.beginn=beginn;
     	this.ende=ende;
@@ -86,7 +86,39 @@ public class Spiel {
     }
     
     /**
-     * Find a Soiel by id.
+     * get mannschaft_heim from this user
+     * @return
+     */
+    public Mannschaft getMannschaftHeim(){
+    	return this.mannschaft_heim;
+    }
+    
+    /**
+     * set mannschaft_heim from this user
+     * @param m
+     */
+    public void setMannschaftHeim(Mannschaft m){
+    	this.mannschaft_heim=m;
+    }
+    
+    /**
+     * get mannschaft_gast from this user
+     * @return
+     */
+    public Mannschaft getMannschaftGast(){
+    	return this.mannschaft_gast;
+    }
+    
+    /**
+     * set mannschaft_gast from this user
+     * @param m
+     */
+    public void setMannschaftGast(Mannschaft m){
+    	this.mannschaft_gast=m;
+    }
+    
+    /**
+     * Find a Spiel by id.
      */
     @Transactional(readOnly=true)
     public static Spiel findById(int sid) {

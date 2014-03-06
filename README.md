@@ -38,3 +38,6 @@ helloplay
 
 +Relationen implementiert.
 #Relationship fuer spiel<->mannschaft implementieren
+
++Relation fuer spiel<->mannschaft implementiert
+#getter and setter anpassen(http://en.wikibooks.org/wiki/Java_Persistence/OneToMany#Getters_and_Setters)
