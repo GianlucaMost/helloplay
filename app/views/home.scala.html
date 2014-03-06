@@ -6,7 +6,12 @@
 		<div class="alert alert-success">
 			<strong class="success">Success!</strong> @flash.get("success")
 		</div>
-   		}
+   	}
+   	@if(flash.containsKey("warning")) {
+			<div class="alert alert-warning">
+				<strong class="warning">Warning!</strong> @flash.get("warning")
+			</div>
+   	}
 	<div class="container">
 		<div class="row">
 	  		@grp_overview(mannschaften)

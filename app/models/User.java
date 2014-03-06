@@ -23,20 +23,30 @@ public class User {
 	@Column(name="uid")
     public int uid;
 	
-	@Column(name="fk_trid")
-	public int fk_trid=0;
+	
     
     @Constraints.Required
+    @Column(name="name")
     public String name;
     
     @Constraints.Required
+    @Column(name="pw")
     public String pw;
     
     @Constraints.Required
+    @Column(name="punkte")
     public int punkte=0;
     
     @Constraints.Required
+    @Column(name="admin")
     public byte admin=0;
+    
+    @OneToMany(mappedBy="user", targetEntity=Tipp.class)
+    private Collection<Tipp> tipps;
+    
+    @ManyToOne(optional=false)
+    @JoinColumn(name="fk_trid", referencedColumnName="trid")
+    private Trunde trunde;
     
     /**
      * default constuctor
@@ -50,9 +60,10 @@ public class User {
      * @param name
      * @param pw
      */
-    public User(String name, String pw){
+    public User(String name, String pwHash){
     	this.name=name;
-    	this.pw=BCrypt.hashpw(pw, BCrypt.gensalt());
+    	this.pw=pwHash;
+    	this.trunde=Trunde.findById(0);
     }
     
     /**
@@ -65,6 +76,30 @@ public class User {
     	this.name=name;
     	this.pw=BCrypt.hashpw(pw, BCrypt.gensalt());
     	this.admin=admin;
+    }
+    
+    /**
+     * get TippRunde from this user
+     * @return
+     */
+    public Trunde getTrunde(){
+    	return this.trunde;
+    }
+    
+    /**
+     * set TippRunde from this user
+     * @param tr
+     */
+    public void setTrunde(Trunde tr){
+    	this.trunde=tr;
+    }
+    
+    /**
+     * get tipps from this user
+     * @return
+     */
+    public Collection<Tipp> getTipps(){
+    	return this.tipps;
     }
     
     /**

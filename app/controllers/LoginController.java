@@ -91,7 +91,8 @@ public class LoginController extends Controller
 		    		flash("error", "username or password is emty.");
 					return redirect(routes.LoginController.register());
 	    		}else {				
-					User.add(name, pwHash);
+	    			User user = new User(name, pwHash);
+	    			User.add(user);
 					session().clear();
 			        session("name", name);
 			        flash("success", "You are logged in.");

@@ -23,13 +23,7 @@ public class Tipp {
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public int tid;
     
-    @Constraints.Required
-    @Column(name="fk_uid")
-    public int fk_uid;
-    
-    @Constraints.Required
-    @Column(name="fk_sid")
-    public int fk_sid;
+
     
     @Constraints.Required
     @Column(name="toreheim")
@@ -40,11 +34,11 @@ public class Tipp {
     public byte toregast;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name="sid", referencedColumnName="sid")
+    @JoinColumn(name="fk_sid", referencedColumnName="sid")
     private Spiel spiel;
     
     @ManyToOne(optional=false)
-    @JoinColumn(name="uid", referencedColumnName="uid")
+    @JoinColumn(name="fk_uid", referencedColumnName="uid")
     private User user;
 
     /**
@@ -63,12 +57,44 @@ public class Tipp {
      * @param toreheim
      * @param toregast
      */
-    public Tipp(int fk_uid, int fk_sid, byte toreheim, byte toregast)
+    public Tipp(User fk_uid, Spiel fk_sid, byte toreheim, byte toregast)
     {
-    	this.fk_uid=fk_uid;
-    	this.fk_sid=fk_sid;
+    	this.user=fk_uid;
+    	this.spiel=fk_sid;
     	this.toreheim=toreheim;
     	this.toregast=toregast;
+    }
+    
+    /**
+     * get Spiel from this Tipp
+     * @return
+     */
+    public Spiel getSpiel(){
+    	return this.spiel;
+    }
+    
+    /**
+     * set Spiel from this Tipp
+     * @param tr
+     */
+    public void setSpiel(Spiel s){
+    	this.spiel=s;
+    }
+    
+    /**
+     * get User from this Tipp
+     * @return
+     */
+    public User getUser(){
+    	return this.user;
+    }
+    
+    /**
+     * set User from this Tipp
+     * @param tr
+     */
+    public void setUser(User u){
+    	this.user=u;
     }
     
     /**

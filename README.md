@@ -35,3 +35,6 @@ helloplay
 *Codeoptimierung in der Gruppenuebersicht
 
 *Codeoptimierung in der Gruppen- und Detail-/Ansicht
+
++Relationen implementiert.
+#Relationship fuer spiel<->mannschaft implementieren

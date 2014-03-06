@@ -27,6 +27,9 @@ public class Trunde {
     @Column(name="bezeichnung")
     public String bezeichnung;
     
+    @OneToMany(mappedBy="trunde", targetEntity=User.class)
+    private Collection<User> users;
+    
     /**
      * Default constructor
      */
@@ -42,6 +45,14 @@ public class Trunde {
     public Trunde(String b)
     {
     	this.bezeichnung=b;
+    }
+    
+    /**
+     * get all user included in this TippRunde
+     * @return
+     */
+    public Collection<User> getUsers(){
+    	return this.users;
     }
     
     /**

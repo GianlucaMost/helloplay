@@ -78,6 +78,14 @@ public class Spiel {
     }
     
     /**
+     * get tipps from this spiel
+     * @return
+     */
+    public Collection<Tipp> getTipps(){
+    	return this.tipps;
+    }
+    
+    /**
      * Find a Soiel by id.
      */
     @Transactional(readOnly=true)

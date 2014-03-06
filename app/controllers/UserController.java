@@ -86,7 +86,7 @@ public class UserController extends Controller {
 		    		flash("error", "username or password is emty.");
 					return redirect(routes.UserController.newuser());
 	    		}else {				
-					User.add(name, pwHash);
+					User.add(new User(name, pwHash));
 		    		flash("success", "User " + name + " has been created");
 		    		return redirect(routes.UserController.users());
 	    		}
@@ -155,12 +155,7 @@ public class UserController extends Controller {
 		}else{
 			flash("warning", "user " + user.name + " wurde geloescht");
 			user.delete();
-			User curUser = User.findByName(request().username());
-			if (curUser.admin==1) {
-				return redirect(routes.UserController.users());
-			}else {
-				return redirect(routes.UserController.accverwaltung());
-			}
+			return redirect("/");
 		}
 	}
 
