@@ -44,3 +44,6 @@ helloplay
 	update: oder auch nicht :D
 	
 #Mannschaftsuebersicht->Spielplan Gastmannschaft bugfix
+
+*Spieluebersicht-bugfix
+*several improvements

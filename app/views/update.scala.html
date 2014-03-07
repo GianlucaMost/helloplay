@@ -1,11 +1,11 @@
-@(message: String, user: models.User, currentUser: models.User)
+@(uid: Int, user: models.User, currentUser: models.User)
 
 @import helper._
 
 @main("Benutzer bearbeiten", currentUser) {
-	@helper.form(action = routes.UserController.update) {
+	@helper.form(action = routes.UserController.update(uid)) {
 		<div class="container-fluid">
-			<h1 class="form-heading">@message</h1>
+			<h1 class="form-heading">Benutzer mit der ID '@uid' bearbeiten</h1>
 			@if(flash.containsKey("error")) {
 				<div class="alert alert-danger">
 					<strong class="error">Oops!</strong> @flash.get("error")

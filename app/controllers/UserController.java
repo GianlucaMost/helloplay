@@ -17,10 +17,6 @@ import play.data.DynamicForm;
 @Security.Authenticated(Secured.class)
 public class UserController extends Controller {
 	
-	public static class Global {
-		public static int lUpdateId;
-	}
-	
 	/**
 	 * Put all users (found by the findAll-method) in a Collection and render the user-view
 	 * @return
@@ -102,9 +98,8 @@ public class UserController extends Controller {
 	@Transactional
 	public static Result updateShow(int id) {
 		User user = User.findById(id);
-		Global.lUpdateId=id;
 		if (user!=null) {
-			return ok(update.render("Benutzer mit id '" + user.uid + "' bearbeiten", user, User.findByName(request().username())));
+			return ok(update.render(user.uid, user, User.findByName(request().username())));
 		}else {
 			return badRequest("Der Benutzer den Sie editieren wollen existiert nicht!");
 		}
@@ -115,17 +110,17 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	public static Result update() {
+	public static Result update(int id) {
 		DynamicForm form = form().bindFromRequest();
 		String name = form.get("name");
 		String pw = form.get("pw");
 		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt()); 
-		User udUser = User.findById(Global.lUpdateId);
+		User udUser = User.findById(id);
 		User curUser = User.findByName(request().username());
 		if (!User.userExist(name) || name.equals(udUser.name)) {
 			if (name.isEmpty() || pw.isEmpty()) {
 				flash("error", "username or password is empty.");
-				return redirect(routes.UserController.updateShow(Global.lUpdateId));
+				return redirect(routes.UserController.updateShow(id));
 			}else {
 				udUser.update(name, pwHash);
 				flash("success", "Benutzer " + name + " wurde aktuallisiert");
@@ -137,7 +132,7 @@ public class UserController extends Controller {
 			}
 		}else {
 			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
-			return redirect("/user/update/" + Global.lUpdateId);
+			return redirect("/user/update/" + id);
 		}
 	}
 	

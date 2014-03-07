@@ -46,11 +46,14 @@ public class Spiel {
     @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
-    @OneToOne(optional=false)
+    
+    
+    
+    @ManyToOne()
     @JoinColumn(name="fk_midheim", referencedColumnName="mid")
     private Mannschaft mannschaft_heim;
     
-    @OneToOne(optional=false)
+    @ManyToOne()
     @JoinColumn(name="fk_midgast", referencedColumnName="mid")
     private Mannschaft mannschaft_gast;
     

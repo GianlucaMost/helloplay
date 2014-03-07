@@ -65,9 +65,11 @@ public class Mannschaft {
     @Column(name="punkte")
     public int punkte=0;
     
-    @OneToMany(targetEntity=Spiel.class)
-    @JoinColumn(name="sid", referencedColumnName="mid")
-    private Collection<Spiel> spiele;
+    @OneToMany(mappedBy="mannschaft_heim")
+    private Collection<Spiel> heimSpiele;
+    
+    @OneToMany(mappedBy="mannschaft_gast")
+    private Collection<Spiel> auswaertsSpiele;
     
     /**
      * Default constructor
@@ -107,7 +109,10 @@ public class Mannschaft {
      * @return
      */
     public Collection<Spiel> getSpiele(){
-    	return this.spiele;
+    	List<Spiel> ret = new ArrayList<Spiel>();
+    	ret.addAll(this.heimSpiele);
+    	ret.addAll(this.auswaertsSpiele);
+    	return ret;
     }
     
     /**
