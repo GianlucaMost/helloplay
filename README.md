@@ -47,3 +47,5 @@ helloplay
 
 *Spieluebersicht-bugfix
 *several improvements
+
+*Ansicht der Spieluebersicht optimiert.

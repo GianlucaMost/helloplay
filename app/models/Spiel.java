@@ -64,6 +64,14 @@ public class Spiel {
     	
     }
     
+    public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Timestamp beginn){
+    	this.mannschaft_heim = mannschaft_heim;
+    	this.mannschaft_gast = mannschaft_gast;
+    	this.ort = ort;
+    	this.beginn=beginn;
+    	this.ende.setTime(beginn.getTime()+110*60*10);
+    }
+    
     /**
      * Constructor without game-result
      * @param fk_midheim
