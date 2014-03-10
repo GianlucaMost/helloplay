@@ -49,3 +49,5 @@ helloplay
 *several improvements
 
 *Ansicht der Spieluebersicht optimiert.
+
++Kompletten Spielplan auf hp

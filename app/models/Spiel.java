@@ -86,6 +86,7 @@ public class Spiel {
     	this.ort = ort;
     	this.beginn=beginn;
     	this.ende=ende;
+    	this.ende.after(new Timestamp(System.currentTimeMillis()));
     }
     
     /**
