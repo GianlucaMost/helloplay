@@ -51,3 +51,5 @@ helloplay
 *Ansicht der Spieluebersicht optimiert.
 
 +Kompletten Spielplan auf hp
+
+*Es werden nur noch anstehende Spiele auf der hp angezeigt

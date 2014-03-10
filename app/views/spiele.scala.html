@@ -20,25 +20,27 @@
 	  			@for((key, value) <- mannschaften){
 		  			@for(m <- value) {
 		  				@for(s <- m.getSpiele()){
-			 				<tr>
-			 					<td>@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()</td>
-			 					<td>@m.gruppe</td>
-								<td>
-									<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
-					    				@s.getMannschaftHeim().bezeichnung
-					    			</a>
-								</td>
-								<td>@s.toreheim</td>
-								<td>   -   </td>
-								<td>@s.toregast</td>
-								<td>
-									<a href="/mannschaft/find/@s.getMannschaftGast().mid">
-					    				@s.getMannschaftGast().bezeichnung
-					    			</a>
-								</td>
-								<td>@s.ort</td>
-								<td>@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
-							</tr>
+			  				@if(!s.gameOver()){
+				 				<tr>
+				 					<td>@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()</td>
+				 					<td>@m.gruppe</td>
+									<td>
+										<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+						    				@s.getMannschaftHeim().bezeichnung
+						    			</a>
+									</td>
+									<td>@s.toreheim</td>
+									<td>   -   </td>
+									<td>@s.toregast</td>
+									<td>
+										<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+						    				@s.getMannschaftGast().bezeichnung
+						    			</a>
+									</td>
+									<td>@s.ort</td>
+									<td>@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
+								</tr>
+							}
 						}
 					}
 				}

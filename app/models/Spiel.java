@@ -86,7 +86,7 @@ public class Spiel {
     	this.ort = ort;
     	this.beginn=beginn;
     	this.ende=ende;
-    	this.ende.after(new Timestamp(System.currentTimeMillis()));
+//    	this.ende.after(new Timestamp(System.currentTimeMillis()));
     }
     
     /**
@@ -155,5 +155,13 @@ public class Spiel {
     	this.toreheim=th;
     	this.toregast=tg;
     	JPA.em().persist(this);
+    }
+    
+    /**
+     * return true if this games end-timestamp is before the current system-time
+     * @return
+     */
+    public boolean gameOver(){
+    	return this.ende.before(new Timestamp(System.currentTimeMillis()));
     }
 }
