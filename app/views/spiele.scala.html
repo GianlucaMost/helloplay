@@ -1,28 +1,27 @@
-@(mannschaften: Map[String, List[Mannschaft]])
+@(mannschaften: Map[String, List[Mannschaft]], cU: models.User)
 
 <h3>Spielplan</h3>
 	<div>
     	 <table class="table table-striped">
 	    	<thead>
   				<tr>
-  					<th>Datum</th>
+  					<th>Beginn (UTC+01:00)</th>
   					<th>Gruppe</th>
   					<th>Spiel</th>
   					<th></th>
   					<th></th>
   					<th></th>
   					<th></th>
-  					<th>Ort</th>
-  					<th>Beginn (UTC+01:00)</th>
+  					<th><strong>Tipp</strong></th>
   				</tr>
   			</thead>
   			<tbody>
 	  			@for((key, value) <- mannschaften){
-		  			@for(m <- value) {
-		  				@for(s <- m.getSpiele()){
+		  			@for(m <- value){
+		  				@for(s <- m.getHeimSpiele()){
 			  				@if(!s.gameOver()){
 				 				<tr>
-				 					<td>@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()</td>
+				 					<td><strong>@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()</strong> - @if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
 				 					<td>@m.gruppe</td>
 									<td>
 										<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
@@ -37,8 +36,13 @@
 						    				@s.getMannschaftGast().bezeichnung
 						    			</a>
 									</td>
-									<td>@s.ort</td>
-									<td>@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
+									<td>
+										@for(t <- s.getTipps()){
+											@if(t.getUser().equals(cU)){
+												<strong>@t.toreheim - @t.toregast</strong>
+											}
+										}
+									</td>
 								</tr>
 							}
 						}

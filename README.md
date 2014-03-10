@@ -53,3 +53,6 @@ helloplay
 +Kompletten Spielplan auf hp
 
 *Es werden nur noch anstehende Spiele auf der hp angezeigt
+
++Es werden jetzt eigene Tipps auf der hp angezeigt
+*Spiele erscheinen jetzt nicht mehr doppelt auf der hp

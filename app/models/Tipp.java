@@ -33,11 +33,11 @@ public class Tipp {
     @Column(name="toregast")
     public byte toregast;
     
-    @ManyToOne(optional=false)
+    @ManyToOne
     @JoinColumn(name="fk_sid", referencedColumnName="sid")
     private Spiel spiel;
     
-    @ManyToOne(optional=false)
+    @ManyToOne
     @JoinColumn(name="fk_uid", referencedColumnName="uid")
     private User user;
 
@@ -52,15 +52,15 @@ public class Tipp {
 
     /**
      * Konstruktor
-     * @param fk_uid
-     * @param fk_sid
+     * @param currentUser
+     * @param game
      * @param toreheim
      * @param toregast
      */
-    public Tipp(User fk_uid, Spiel fk_sid, byte toreheim, byte toregast)
+    public Tipp(User currentUser, Spiel game, byte toreheim, byte toregast)
     {
-    	this.user=fk_uid;
-    	this.spiel=fk_sid;
+    	this.user=currentUser;
+    	this.spiel=game;
     	this.toreheim=toreheim;
     	this.toregast=toregast;
     }

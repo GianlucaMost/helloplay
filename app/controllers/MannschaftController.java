@@ -19,10 +19,6 @@ import play.data.DynamicForm;
 @Security.Authenticated(Secured.class)
 public class MannschaftController extends Controller {
 	
-	public static class Global {
-		
-	}
-	
 	/**
 	 * Listet alle Mannschaften auf
 	 * @return

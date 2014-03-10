@@ -137,6 +137,11 @@ public class Spiel {
     	return JPA.em().find(Spiel.class, sid);
     }
     
+    /**
+     * return a collection of all games of a team
+     * @param mid
+     * @return
+     */
     @Transactional(readOnly=true)
     public static Collection<Spiel> gamesOfTeam(int mid){
         Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim=:pMid OR s.fk_midgast=:pMid");
@@ -163,5 +168,13 @@ public class Spiel {
      */
     public boolean gameOver(){
     	return this.ende.before(new Timestamp(System.currentTimeMillis()));
+    }
+    
+    public boolean gameRunning(){
+    	if (!gameOver()){
+    		return this.beginn.before(new Timestamp(System.currentTimeMillis()));
+    	}else{
+    		return false;
+    	}
     }
 }

@@ -109,10 +109,14 @@ public class Mannschaft {
      * @return
      */
     public Collection<Spiel> getSpiele(){
-    	List<Spiel> ret = new ArrayList<Spiel>();
-    	ret.addAll(this.heimSpiele);
-    	ret.addAll(this.auswaertsSpiele);
-    	return ret;
+    	List<Spiel> games = new ArrayList<Spiel>();
+    	games.addAll(this.heimSpiele);
+    	games.addAll(this.auswaertsSpiele);
+    	return games;
+    }
+    
+    public Collection<Spiel> getHeimSpiele(){
+    	return this.heimSpiele;
     }
     
     /**

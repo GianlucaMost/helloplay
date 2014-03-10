@@ -2,32 +2,36 @@
 
 @main(m.bezeichnung, currentUser) {
     <h1><strong>@m.bezeichnung</strong> - Gruppe @m.gruppe</h1>
-    <h3>Uebersicht</h3>
-    <div>
-    	 <table class="table table-striped">
-	    	<thead>
-  				<tr>
-  					<th>Gruppe</th>
-  					<th>Spiele</th>
-  					<th>Siege</th>
-  					<th>Niederlagen</th>
-  					<th>Tore</th>
-  					<th>Gegentore</th>
-  					<th>Punkte</th>
-  				</tr>
-  			</thead>
-  			<tbody>
- 				<tr>
-					<td>@m.gruppe</td>
-					<td>@m.anzahlspiele</td>
-					<td>@m.siege</td>
-					<td>@m.niederlagen</td>
-					<td>@m.tore</td>
-					<td>@m.gegentore</td>
-					<td>@m.punkte</td>
-				</tr>
-			</tbody>
-    	</table>
+    <div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Uebersicht</h3>
+		</div>
+		<div class="panel-body">
+		    <div>
+		    	 <table class="table table-striped">
+			    	<thead>
+		  				<tr>
+		  					<th>Spiele</th>
+		  					<th>Siege</th>
+		  					<th>Niederlagen</th>
+		  					<th>Tore</th>
+		  					<th>Gegentore</th>
+		  					<th>Punkte</th>
+		  				</tr>
+		  			</thead>
+		  			<tbody>
+		 				<tr>
+							<td>@m.anzahlspiele</td>
+							<td>@m.siege</td>
+							<td>@m.niederlagen</td>
+							<td>@m.tore</td>
+							<td>@m.gegentore</td>
+							<td>@m.punkte</td>
+						</tr>
+					</tbody>
+		    	</table>
+		    </div>
+   		</div>
     </div>
 	<h3>Spielplan</h3>
 	<div>

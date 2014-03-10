@@ -19,9 +19,5 @@ import play.data.DynamicForm;
 @Security.Authenticated(Secured.class)
 public class SpielController extends Controller {
 	
-	public static class Global {
-		
-	}
-	
 	
 }
