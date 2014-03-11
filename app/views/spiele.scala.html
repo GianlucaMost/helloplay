@@ -1,53 +1,56 @@
-@(mannschaften: Map[String, List[Mannschaft]], cU: models.User)
+@(spiele: Collection[models.Spiel], cU: models.User)
 
-<h3>Spielplan</h3>
-	<div>
-    	 <table class="table table-striped">
-	    	<thead>
-  				<tr>
-  					<th>Beginn (UTC+01:00)</th>
-  					<th>Gruppe</th>
-  					<th>Spiel</th>
-  					<th></th>
-  					<th></th>
-  					<th></th>
-  					<th></th>
-  					<th><strong>Tipp</strong></th>
-  				</tr>
-  			</thead>
-  			<tbody>
-	  			@for((key, value) <- mannschaften){
-		  			@for(m <- value){
-		  				@for(s <- m.getHeimSpiele()){
-			  				@if(!s.gameOver()){
-				 				<tr>
-				 					<td><strong>@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()</strong> - @if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
-				 					<td>@m.gruppe</td>
-									<td>
-										<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
-						    				@s.getMannschaftHeim().bezeichnung
-						    			</a>
-									</td>
-									<td>@s.toreheim</td>
-									<td>   -   </td>
-									<td>@s.toregast</td>
-									<td>
-										<a href="/mannschaft/find/@s.getMannschaftGast().mid">
-						    				@s.getMannschaftGast().bezeichnung
-						    			</a>
-									</td>
-									<td>
-										@for(t <- s.getTipps()){
-											@if(t.getUser().equals(cU)){
-												<strong>@t.toreheim - @t.toregast</strong>
-											}
-										}
-									</td>
-								</tr>
-							}
-						}
-					}
+<div class="page-header">
+	<h2>Spielplan</h2>
+</div>
+<div class="row">
+   	 <table class="table table-striped">
+    	<thead>
+			<tr>
+				<th>Beginn*</th>
+				<th>Spiel</th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				@if(cU!=null){
+					<th><strong>Tipp</strong></th>
 				}
-			</tbody>
-    	</table>
-    </div>
+			</tr>
+		</thead>
+		<tbody>
+ 			@for(s <- spiele){
+ 				<tr>
+ 					<td><strong>@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()</strong> - @if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
+					<td>
+						<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+		    				@s.getMannschaftHeim().bezeichnung
+		    			</a>
+					</td>
+					<td>@s.toreheim</td>
+					<td>   -   </td>
+					<td>@s.toregast</td>
+					<td>
+						<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+		    				@s.getMannschaftGast().bezeichnung
+		    			</a>
+					</td>
+					@if(cU!=null){
+						<td>
+							<div class=row>
+								<div class="col-md-4">
+									@helper.form(action = routes.TippController.tippen(s.sid, cU.uid)) {
+										<input type="number" class="form-control" name="toreHeim" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toreheim}}"></input>
+										<input type="number" class="form-control" name="toreGast" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toregast}}"></input>
+										<button class="btn btn-sm btn-default btn-block" type="submit">ok</button>
+									}
+								</div>
+							</div>
+						</td>
+					}
+				</tr>
+			}
+		</tbody>
+   	</table>
+	*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!
+</div> <!-- row -->

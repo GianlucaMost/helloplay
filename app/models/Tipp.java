@@ -23,13 +23,9 @@ public class Tipp {
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
     public int tid;
     
-
-    
-    @Constraints.Required
     @Column(name="toreheim")
     public byte toreheim;
     
-    @Constraints.Required
     @Column(name="toregast")
     public byte toregast;
     
@@ -103,6 +99,24 @@ public class Tipp {
     @Transactional(readOnly=true)
     public static Tipp findById(int tid) {
     	return JPA.em().find(Tipp.class, tid);
+    }
+    
+    @Transactional(readOnly=true)
+    public static Collection<Tipp> findAll() {
+        Query query = JPA.em().createQuery("SELECT t FROM Tipp t");
+        return (Collection<Tipp>) query.getResultList();
+    }
+    
+    @Transactional
+    public void add() {
+		JPA.em().persist(this);
+    }
+    
+    @Transactional
+    public void update(byte th, byte tg) {
+    	this.toreheim=th;
+    	this.toregast=tg;
+		JPA.em().persist(this);
     }
     
     /**

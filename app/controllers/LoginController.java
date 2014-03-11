@@ -51,7 +51,7 @@ public class LoginController extends Controller
 	}
 	
 	/**
-	 * logging out the current logged in user
+	 * logout the current user
 	 * @return
 	 */
 	public static Result logout() {

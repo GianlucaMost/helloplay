@@ -1,7 +1,9 @@
-@(message: String, mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
+@(games: Collection[models.Spiel], mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
 
 @main("Home", currentUser){
-    <h1>@message</h1>
+    <div class="page-header">
+		<h1>Home</h1>
+	</div>	
 	@if(flash.containsKey("success")) {
 		<div class="alert alert-success">
 			<strong class="success">Success!</strong> @flash.get("success")
@@ -22,7 +24,7 @@
 			</button>
 		</a>
 		<div>
-			@spiele(mannschaften, currentUser)
+			@spiele(games, currentUser)
 		</div>
 		
 	</div>

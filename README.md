@@ -56,3 +56,6 @@ helloplay
 
 +Es werden jetzt eigene Tipps auf der hp angezeigt
 *Spiele erscheinen jetzt nicht mehr doppelt auf der hp
+
++Es können nun Tipps auf der hp abgegeben und aktualisiert werden
+*design improvements in login and register-form

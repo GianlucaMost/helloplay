@@ -137,6 +137,12 @@ public class Spiel {
     	return JPA.em().find(Spiel.class, sid);
     }
     
+    @Transactional(readOnly=true)
+    public static Collection<Spiel> findAll() {
+        Query query = JPA.em().createQuery("SELECT s FROM Spiel s ORDER BY s.beginn");
+        return (Collection<Spiel>) query.getResultList();
+    }
+    
     /**
      * return a collection of all games of a team
      * @param mid
