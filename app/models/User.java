@@ -22,8 +22,6 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
 	@Column(name="uid")
     public int uid;
-	
-	
     
     @Constraints.Required
     @Column(name="name")

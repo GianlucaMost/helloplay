@@ -1,7 +1,7 @@
 @(m: models.Mannschaft, spiele: Collection[models.Spiel], currentUser: models.User)
 
 @main(m.bezeichnung, currentUser) {
-    <h1><strong>@m.bezeichnung</strong> - Gruppe @m.gruppe</h1>
+    <h1><strong>@m.bezeichnung</strong> <small> Gruppe @m.gruppe </small></h1>
     <div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Uebersicht</h3>

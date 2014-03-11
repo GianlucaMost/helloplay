@@ -16,7 +16,12 @@
 	    		@for(user <- users) {
 		    		<tr>
 		    			<td>@user.uid</td>
-		  				<td>@user.name</td>
+		  				<td>
+		  					@user.name
+		  					@if(user.admin == 1) {
+				            	(admin)
+				          	}
+				        </td>
 		  				<td>
 		  					<a href="/user/update/@user.uid">
 		  						<button type="button" class="btn btn-default btn">

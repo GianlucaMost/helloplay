@@ -59,3 +59,6 @@ helloplay
 
 +Es können nun Tipps auf der hp abgegeben und aktualisiert werden
 *design improvements in login and register-form
+
+*Es werden jetzt wieder nur noch nicht fertige Spiele auf der hp angezeigt
+*Auf der hp kann jetzt nur noch fuer nicht laufende Spiele getippt werden.
