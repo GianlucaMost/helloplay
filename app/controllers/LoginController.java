@@ -41,7 +41,7 @@ public class LoginController extends Controller
 	    	if (User.validate(name, pw)) {
 		        session().clear();
 		        session("name", name);
-		        flash("success", "You are logged in.");
+		        flash("success", "Sie sind jetzt angemeldet.");
 		        return redirect("/");
 	    	}else {
 	    		flash("error", "username or password is wrong.");
@@ -56,7 +56,7 @@ public class LoginController extends Controller
 	 */
 	public static Result logout() {
 	    session().clear();
-	    flash("success", "You've been logged out.");
+	    flash("success", "Sie sind jetzt abgemeldet.");
 	    return redirect(routes.Application.index());
 	}
 	

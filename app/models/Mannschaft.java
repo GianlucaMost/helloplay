@@ -142,7 +142,7 @@ public class Mannschaft {
      */
     @Transactional(readOnly=true)
     public static  Map<String, List<Mannschaft>> findAll() {
-        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
+        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
         Collection<Mannschaft> col = (Collection<Mannschaft>) query.getResultList();
         Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
         

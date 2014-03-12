@@ -6,26 +6,32 @@
 	</div>	
 	@if(flash.containsKey("success")) {
 		<div class="alert alert-success">
-			<strong class="success">Success!</strong> @flash.get("success")
+			<strong class="success">Erfolg!</strong> @flash.get("success")
 		</div>
    	}
    	@if(flash.containsKey("warning")) {
-			<div class="alert alert-warning">
-				<strong class="warning">Warning!</strong> @flash.get("warning")
-			</div>
+		<div class="alert alert-warning">
+			<strong class="warning">Warnung!</strong> @flash.get("warning")
+		</div>
    	}
+   	@if(flash.containsKey("tippError")) {
+			<div class="alert alert-danger">
+				<strong class="warning">Fehler!</strong> @flash.get("tippError")
+			</div>
+   		}
 	<div class="container">
-		<div class="row">
+		<div>
 	  		@grp_overview(mannschaften)
 		</div>
 		<a href="@routes.MannschaftController.mannschaften()">
+		<p class="text-right">
 			<button type="button" class="btn btn-default btn">
-	  			Detailansicht
+		 			Detailansicht >>
 			</button>
+		</p>
 		</a>
 		<div>
 			@spiele(games, currentUser)
 		</div>
-		
-	</div>
+	</div> <!-- container -->
 }

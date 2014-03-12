@@ -62,3 +62,6 @@ helloplay
 
 *Es werden jetzt wieder nur noch nicht fertige Spiele auf der hp angezeigt
 *Auf der hp kann jetzt nur noch fuer nicht laufende Spiele getippt werden.
+
++Tippen nun auch in der Mannschafts-Uebersicht moeglich.
+*diverese design- und code-verbesserungen
