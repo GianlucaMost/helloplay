@@ -3,6 +3,16 @@
 <div class="page-header">
 	<h2>Spielplan</h2>
 </div>
+@if(flash.containsKey("tippError")) {
+	<div class="alert alert-danger">
+		<strong class="warning">Fehler!</strong> @flash.get("tippError")
+	</div>
+}
+@if(flash.containsKey("tippSuccess")) {
+	<div class="alert alert-success">
+		<strong class="success">Erfolg!</strong> @flash.get("tippSuccess")
+	</div>
+}
 <div class="row-fluid">
    	 <table class="table table-striped">
     	<thead>
@@ -28,7 +38,7 @@
 	 				}
 	 					<td>
 	 						<strong>
-	 							@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()
+	 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@s.beginn.getMonth()
 	 						</strong>
 	 						 - 
 	 						<small>

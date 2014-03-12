@@ -65,3 +65,6 @@ helloplay
 
 +Tippen nun auch in der Mannschafts-Uebersicht moeglich.
 *diverese design- und code-verbesserungen
+*hack in mannschaft.findAll() als Vorbereitung auf Finalspiel-Implementierung
+
+*verschiedene Ansichts-Verbesserungen

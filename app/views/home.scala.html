@@ -14,21 +14,17 @@
 			<strong class="warning">Warnung!</strong> @flash.get("warning")
 		</div>
    	}
-   	@if(flash.containsKey("tippError")) {
-			<div class="alert alert-danger">
-				<strong class="warning">Fehler!</strong> @flash.get("tippError")
-			</div>
-   		}
 	<div class="container">
 		<div>
 	  		@grp_overview(mannschaften)
 		</div>
+		<div id="stSpielplan"></div> <!-- hack zur richtigen Darstellung mit navbar -->
 		<a href="@routes.MannschaftController.mannschaften()">
-		<p class="text-right">
-			<button type="button" class="btn btn-default btn">
-		 			Detailansicht >>
-			</button>
-		</p>
+			<p class="text-right">
+				<button type="button" class="btn btn-default btn">
+			 			Detailansicht >>
+				</button>
+			</p>
 		</a>
 		<div>
 			@spiele(games, currentUser)

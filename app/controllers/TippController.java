@@ -36,24 +36,24 @@ public class TippController extends Controller {
 			for(Tipp t: tipps){
 				if(t.getSpiel().equals(Spiel.findById(sid)) && t.getUser().equals(User.findById(uid)) && th >=0 && tg >=0){
 					t.update(th, tg);
-					flash("success", "Ihr Tipp " + t.getSpiel().getMannschaftHeim().bezeichnung + " - " + t.getSpiel().getMannschaftGast().bezeichnung + " wurde aktuallisiert");
-					return redirect(refererHeader);
+					flash("tippSuccess", "Ihr Tipp " + t.getSpiel().getMannschaftHeim().bezeichnung + " - " + t.getSpiel().getMannschaftGast().bezeichnung + " wurde aktuallisiert");
+					return redirect(refererHeader + "#stSpielplan");
 				}
 			}
 			
 			if (th >=0 && tg >=0){
 				Tipp newTipp = new Tipp(User.findById(uid), Spiel.findById(sid), th, tg);
 				newTipp.add();
-				flash("success", "Ihr Tipp " + newTipp.getSpiel().getMannschaftHeim().bezeichnung + " - " + newTipp.getSpiel().getMannschaftGast().bezeichnung + " wurde abgegeben");
+				flash("tippSuccess", "Ihr Tipp " + newTipp.getSpiel().getMannschaftHeim().bezeichnung + " - " + newTipp.getSpiel().getMannschaftGast().bezeichnung + " wurde abgegeben");
 			}else {
 				flash("tippError", "Bitte gueltige Toranzahl angeben");
 			}
-		    return redirect(refererHeader);
+		    return redirect(refererHeader + "#stSpielplan");
 		} catch (NumberFormatException ex) {
 			Logger.info("User: " + User.findById(uid).name + " hat ungueltigen Tipp abgegeben");
 			Logger.error(ex.toString());
-			flash("error", "Ihr Tipp ist ungueltig. Die Werte sind so falsch.");
-    		return redirect(refererHeader);
+			flash("tippError", "Ihr Tipp ist ungueltig. Die Werte sind so falsch.");
+    		return redirect(refererHeader + "#stSpielplan");
     	}
 	}
 }
