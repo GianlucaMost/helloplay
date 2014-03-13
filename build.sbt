@@ -9,7 +9,8 @@ libraryDependencies ++= Seq(
   javaJpa,
   "mysql" % "mysql-connector-java" % "5.1.25",
   "org.hibernate" % "hibernate-entitymanager" % "3.6.9.Final",
-  "org.mindrot" % "jbcrypt" % "0.3m"
+  "org.mindrot" % "jbcrypt" % "0.3m",
+  "rome" % "rome" % "1.0"
 )     
 
 play.Project.playJavaSettings

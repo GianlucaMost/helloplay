@@ -1,7 +1,11 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -13,6 +17,14 @@ import models.*;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
+
+import com.sun.syndication.feed.synd.*;
+import com.sun.syndication.io.FeedException;
+import com.sun.syndication.io.SyndFeedOutput;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 
 /**
  * Spiel entity managed by JPA
@@ -182,5 +194,56 @@ public class Spiel {
     	}else{
     		return false;
     	}
+    }
+    
+    public void ladeRSS() throws IllegalArgumentException, FeedException, IOException{
+//      URL feedSource = new URL("http://some.rss.feed");
+//      SyndFeedInput input = new SyndFeedInput();
+//      SyndFeed feed = input.build(new XmlReader(feedSource));
+//      
+//      
+//      List<SyndEntry> entries = feed.getEntries();
+//      Iterator itEntries = entries.iterator();
+//      
+//      for(SyndEntry se: entries){
+//      	String autor=se.getAuthor();
+//      }
+    	
+    	URL feedSource = new URL("http://some.rss.feed");
+    	SyndFeedInput input = new SyndFeedInput();
+    	SyndFeed feed = input.build(new XmlReader(feedSource));
+    	
+    	List<SyndEntry> entries = feed.getEntries();
+    	
+    	for(SyndEntry se: entries){
+    		String titel=se.getTitle();
+    	}
+    }
+    
+    public List<String> holeRSS() throws IllegalArgumentException, FeedException, IOException{
+//      URL feedSource = new URL("http://some.rss.feed");
+//      SyndFeedInput input = new SyndFeedInput();
+//      SyndFeed feed = input.build(new XmlReader(feedSource));
+//      
+//      
+//      List<SyndEntry> entries = feed.getEntries();
+//      Iterator itEntries = entries.iterator();
+//      
+//      for(SyndEntry se: entries){
+//      	String autor=se.getAuthor();
+//      }
+    	
+    	URL feedSource = new URL("http://some.rss.feed");
+    	SyndFeedInput input = new SyndFeedInput();
+    	SyndFeed feed = input.build(new XmlReader(feedSource));
+    	
+    	List<SyndEntry> entries = feed.getEntries();
+    	List<String> titles = new ArrayList<String>();
+    	
+    	for(SyndEntry se: entries){
+    		String title=se.getTitle();
+    		titles.add(title);
+    	}
+    	return titles;
     }
 }
