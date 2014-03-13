@@ -68,3 +68,5 @@ helloplay
 *hack in mannschaft.findAll() als Vorbereitung auf Finalspiel-Implementierung
 
 *verschiedene Ansichts-Verbesserungen
+
++Erste annaeherung an RSSimplementierung (testphase)

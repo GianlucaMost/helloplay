@@ -1,0 +1,20 @@
+@(titel: List[String])
+
+	<div class="page-header">
+		<h2>test</h2>
+	</div>
+	
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Titel</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(t <- titel){
+				<tr>
+					<td>@t</td>
+				</tr>
+			}
+		</tbody>
+	</table>

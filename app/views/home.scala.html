@@ -1,4 +1,4 @@
-@(games: Collection[models.Spiel], mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
+@(games: Collection[models.Spiel], mannschaften: Map[String, List[Mannschaft]], currentUser: models.User, titel: List[String])
 
 @main("Home", currentUser){
     <div class="page-header">
@@ -15,6 +15,9 @@
 		</div>
    	}
 	<div class="container">
+		<div>
+			@test(titel)
+		</div>
 		<div>
 	  		@grp_overview(mannschaften)
 		</div>

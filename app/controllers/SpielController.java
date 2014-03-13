@@ -19,15 +19,9 @@ import play.db.jpa.Transactional;
 import views.html.*;
 import play.data.DynamicForm;
 
-import com.sun.syndication.feed.synd.*;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
-
 @Security.Authenticated(Secured.class)
 public class SpielController extends Controller {
-	
+	public static Result feed() {
+		return ok();
+    }
 }

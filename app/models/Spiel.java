@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,6 +23,7 @@ import play.db.jpa.Transactional;
 import com.sun.syndication.feed.synd.*;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedOutput;
+import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
@@ -81,7 +84,7 @@ public class Spiel {
     	this.mannschaft_gast = mannschaft_gast;
     	this.ort = ort;
     	this.beginn=beginn;
-    	this.ende.setTime(beginn.getTime()+110*60*10);
+//    	this.ende.setTime(beginn.getTime()+110*60*10);
     }
     
     /**
@@ -98,7 +101,6 @@ public class Spiel {
     	this.ort = ort;
     	this.beginn=beginn;
     	this.ende=ende;
-//    	this.ende.after(new Timestamp(System.currentTimeMillis()));
     }
     
     /**
@@ -220,30 +222,50 @@ public class Spiel {
     	}
     }
     
-    public List<String> holeRSS() throws IllegalArgumentException, FeedException, IOException{
-//      URL feedSource = new URL("http://some.rss.feed");
-//      SyndFeedInput input = new SyndFeedInput();
-//      SyndFeed feed = input.build(new XmlReader(feedSource));
-//      
-//      
-//      List<SyndEntry> entries = feed.getEntries();
-//      Iterator itEntries = entries.iterator();
-//      
-//      for(SyndEntry se: entries){
-//      	String autor=se.getAuthor();
-//      }
+    public static List<String> holeRSS(){
     	
-    	URL feedSource = new URL("http://some.rss.feed");
-    	SyndFeedInput input = new SyndFeedInput();
-    	SyndFeed feed = input.build(new XmlReader(feedSource));
+//    	URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
+//    	SyndFeedInput input = new SyndFeedInput();
+//    	SyndFeed feed = input.build(new XmlReader(feedSource));
     	
-    	List<SyndEntry> entries = feed.getEntries();
-    	List<String> titles = new ArrayList<String>();
-    	
-    	for(SyndEntry se: entries){
-    		String title=se.getTitle();
-    		titles.add(title);
-    	}
-    	return titles;
+		try {
+			URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
+//			URL feedSource = new URL("http://rss.kicker.de/live/wm");
+			SyndFeedInput input = new SyndFeedInput();
+	    	SyndFeed feed = input.build(new XmlReader(feedSource));
+	    	
+	    	List<SyndEntry> entries = feed.getEntries();
+	    	
+	    	List<String> titles = new ArrayList<String>();
+	    	
+	    	for(SyndEntry se: entries){
+	    		String title=se.getTitle();
+//	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
+	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
+	    		Matcher matcher = pattern.matcher(title);
+	    		if(matcher.matches()){
+	    			titles.add(matcher.group(1));
+	    			titles.add(matcher.group(2));
+	    			titles.add(matcher.group(3));
+	    			titles.add(matcher.group(4));
+	    		}else{
+	    			titles.add("test");
+	    		}
+	    	}
+	    	return titles;
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FeedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
     }
 }

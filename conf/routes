@@ -61,5 +61,8 @@ GET		/mannschaft/overview		controllers.MannschaftController.mannschaften()
 
 POST	/tippen/:sid+:uid			controllers.TippController.tippen(sid: Int, uid: Int)
 
+#test
+GET		/test						controllers.SpielController.feed()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

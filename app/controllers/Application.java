@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+
 import models.*;
 import play.*;
 import play.mvc.*;
@@ -15,11 +16,11 @@ public class Application extends Controller {
 		User user = User.findByName(name);
 		if (user==null)
 		{
-			return ok(home.render(Spiel.findAll(), Mannschaft.findAll(), null));
+			return ok(home.render(Spiel.findAll(), Mannschaft.findAll(), null, Spiel.holeRSS()));
 		}else if(user.admin==1) {
 			return redirect(routes.UserController.users());
 		}else {
-			return ok(home.render(Spiel.findAll(), Mannschaft.findAll(), user));
+			return ok(home.render(Spiel.findAll(), Mannschaft.findAll(), user, Spiel.holeRSS()));
 		}
 	}
 }
