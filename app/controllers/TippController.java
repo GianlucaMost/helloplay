@@ -22,8 +22,7 @@ import play.data.DynamicForm;
 public class TippController extends Controller {
 	
 	@Transactional
-	public static Result tippen(int sid, int uid)
-	{
+	public static Result tippen(int sid, int uid){
 		String refererHeader = request().headers().get("Referer")[0];
 		
 		try {
@@ -55,5 +54,10 @@ public class TippController extends Controller {
 			flash("tippError", "Ihr Tipp ist ungueltig. Die Werte sind so falsch.");
     		return redirect(refererHeader + "#stSpielplan");
     	}
+	}
+	
+	@Transactional
+	public static Result showTipps(){
+		return ok(tipps.render(Spiel.findAll(), User.findByName(request().username())));
 	}
 }

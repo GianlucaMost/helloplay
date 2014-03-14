@@ -1,4 +1,4 @@
-@(games: Collection[models.Spiel], mannschaften: Map[String, List[Mannschaft]], currentUser: models.User, titel: List[String])
+@(games: Collection[models.Spiel], mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
 
 @main("Home", currentUser){
     <div class="page-header">
@@ -16,9 +16,6 @@
    	}
 	<div class="container">
 		<div>
-			@test(titel)
-		</div>
-		<div>
 	  		@grp_overview(mannschaften)
 		</div>
 		<div id="stSpielplan"></div> <!-- hack zur richtigen Darstellung mit navbar -->
@@ -33,4 +30,4 @@
 			@spiele(games, currentUser)
 		</div>
 	</div> <!-- container -->
-}
+}<!-- main -->

@@ -180,6 +180,11 @@ public class User {
 		em.persist(user);
     }
     
+    @Transactional
+    public void persist() {
+		JPA.em().persist(this);
+    }
+    
     /**
      * Update this user.
      * @param name

@@ -10,15 +10,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
 
 import org.mindrot.jbcrypt.*;
 
 import javax.persistence.*;
 
 import models.*;
+import play.Logger;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
+import play.libs.Akka;
 
 import com.sun.syndication.feed.synd.*;
 import com.sun.syndication.io.FeedException;
@@ -28,6 +31,10 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
+
+import akka.actor.Props;
+import akka.util.*;
+//import scala.concurrent.duration.Duration;
 
 /**
  * Spiel entity managed by JPA
@@ -151,6 +158,17 @@ public class Spiel {
     	return JPA.em().find(Spiel.class, sid);
     }
     
+    @Transactional
+    public static Spiel findGroupGame(Mannschaft mh, Mannschaft mg) {
+    	Integer midh=mh.mid;
+    	Integer midg=mg.mid;
+    	
+		Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim = :pMidh AND s.fk_midgast = :pMidg");
+    	query.setParameter("pMidh", midh);
+    	query.setParameter("pMidg", midg);
+    	return (Spiel) query.getSingleResult();
+    }
+    
     @Transactional(readOnly=true)
     public static Collection<Spiel> findAll() {
         Query query = JPA.em().createQuery("SELECT s FROM Spiel s ORDER BY s.beginn");
@@ -177,9 +195,43 @@ public class Spiel {
      */
     @Transactional
     public void setErgebnis(byte th, byte tg){
-    	this.toreheim=th;
-    	this.toregast=tg;
-    	JPA.em().persist(this);
+    	byte thp = this.toreheim;
+    	byte tgp = this.toregast;
+    	if (thp!=th || tgp!=tg){
+    		this.toreheim=th;
+        	this.toregast=tg;
+        	JPA.em().persist(this);
+    	}
+    	if (this.gameOver()){
+    		//tipps von diesem spiel holen
+    		Collection<Tipp> tipps = this.tipps;
+    		//jeden tipp durchlaufen
+    		for (Tipp t: tipps){
+    			//gucken ob dieser tipp.checked=0 ist
+    			if(t.checked==0){
+    				//punkte vergeben
+    				User user = t.getUser();
+    				int p=user.punkte;
+    					//wenn genau richtiges ergebnis dann 3punkte
+    					if(th==t.toreheim && tg==t.toregast){
+    						p=p+3;
+    					//wenn richtige tordifferenz dann 2punkte
+    					}else if(th-tg==t.toreheim-t.toregast){
+    						p=p+2;
+    					//wenn richtige mannschaft dann 1punkt
+    					}else if(th>tg && t.toreheim>t.toregast){
+    						p=p+1;
+    					}else if(tg>th && t.toregast>t.toreheim){
+    						p=p+1;
+    					}
+    				user.punkte=p;
+    				user.persist();
+    				//diesen tipp.checked=1 setzen
+    				t.checked=1;
+    				t.persist();
+    			}
+    		}
+    	}
     }
     
     /**
@@ -198,61 +250,102 @@ public class Spiel {
     	}
     }
     
-    public void ladeRSS() throws IllegalArgumentException, FeedException, IOException{
-//      URL feedSource = new URL("http://some.rss.feed");
-//      SyndFeedInput input = new SyndFeedInput();
-//      SyndFeed feed = input.build(new XmlReader(feedSource));
-//      
-//      
-//      List<SyndEntry> entries = feed.getEntries();
-//      Iterator itEntries = entries.iterator();
-//      
-//      for(SyndEntry se: entries){
-//      	String autor=se.getAuthor();
-//      }
+    public static void setResultWithRss(){
+//    	Akka.system().scheduler().schedule(
+//    	        Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
+//    	        Duration.create(30, TimeUnit.MINUTES),     //Frequency 30 minutes
+//    	        testActor,
+//    	        "tick",
+//    	        Akka.system().dispatcher(),
+//    	        null
+//    	);
     	
-    	URL feedSource = new URL("http://some.rss.feed");
-    	SyndFeedInput input = new SyndFeedInput();
-    	SyndFeed feed = input.build(new XmlReader(feedSource));
+//    	Akka.system().scheduler().schedule(
+//    	        Duration.create(0, MILLISECONDS),   // initial delay 
+//    	        Duration.create(5, MINUTES),        // run job every 5 minutes
+//
+//    	        new Runnable() 
+//    	        {
+//    	            public void run() 
+//    	            {
+//    	                ....
+//    	            }
+//    	        }
+//    	    );
     	
-    	List<SyndEntry> entries = feed.getEntries();
-    	
-    	for(SyndEntry se: entries){
-    		String titel=se.getTitle();
-    	}
-    }
-    
-    public static List<String> holeRSS(){
-    	
-//    	URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
-//    	SyndFeedInput input = new SyndFeedInput();
-//    	SyndFeed feed = input.build(new XmlReader(feedSource));
+    	Akka.system().scheduler().schedule(
+    			Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
+    			Duration.create(30, TimeUnit.MINUTES),     //Frequency 30 minutes
+    			new Runnable(){
+    				public void run(){
+    					
+    				}
+    			}
+    	);
     	
 		try {
-			URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
-//			URL feedSource = new URL("http://rss.kicker.de/live/wm");
+			
+			byte th=0;
+			byte tg=0;
+			Mannschaft mh=null;
+			Mannschaft mg=null;
+			String mhRename="";
+			String mgRename="";
+			
+//			URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
+			URL feedSource = new URL("http://rss.kicker.de/live/wm");
 			SyndFeedInput input = new SyndFeedInput();
 	    	SyndFeed feed = input.build(new XmlReader(feedSource));
 	    	
 	    	List<SyndEntry> entries = feed.getEntries();
 	    	
-	    	List<String> titles = new ArrayList<String>();
-	    	
 	    	for(SyndEntry se: entries){
 	    		String title=se.getTitle();
-//	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
-	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
+	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
+//	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
 	    		Matcher matcher = pattern.matcher(title);
 	    		if(matcher.matches()){
-	    			titles.add(matcher.group(1));
-	    			titles.add(matcher.group(2));
-	    			titles.add(matcher.group(3));
-	    			titles.add(matcher.group(4));
+	    			Logger.info("RSSfeed matches");
+	    			//umbenennen nicht identischer mannschafts-bezeichnungen
+	    			mhRename=matcher.group(1);
+	    			mgRename=matcher.group(2);
+	    			switch(mhRename){
+	    			case "Elfenbeinküste":
+	    				mhRename="Elfenbeinkueste";
+	    				break;
+	    			case "Bosnien-Herzegowina":
+	    				mhRename="Bosnien-H.";
+	    				break;
+	    			case "Südkorea":
+	    				mhRename="Korea Republik";
+	    				break;
+	    			}
+	    			switch(mgRename){
+	    			case "Elfenbeinküste":
+	    				mgRename="Elfenbeinkueste";
+	    				break;
+	    			case "Bosnien-Herzegowina":
+	    				mgRename="Bosnien-H.";
+	    				break;
+	    			case "Südkorea":
+	    				mgRename="Korea Republik";
+	    				break;
+	    			}
+	    			mh=Mannschaft.findByName(mhRename);
+	    			mg=Mannschaft.findByName(mgRename);
+	    			th=Byte.parseByte((matcher.group(3)));
+	    			tg=Byte.parseByte((matcher.group(4)));
+	    			Logger.info("mh = " + mh + "(" + mhRename + ")");
+	    			Logger.info("mg = " + mg + "(" + mgRename + ")");
+	    			Logger.info("th = " + th);
+	    			Logger.info("tg = " + tg);
+	    			Spiel gg = Spiel.findGroupGame(mh, mg);
+	    	    	gg.setErgebnis(th, tg);
 	    		}else{
-	    			titles.add("test");
+	    			Logger.warn("Found RSSfeed, that doesnt match!");
+	    			Logger.info("Title:" + se.toString());
 	    		}
 	    	}
-	    	return titles;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -266,6 +359,5 @@ public class Spiel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
     }
 }

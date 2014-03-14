@@ -61,6 +61,8 @@ GET		/mannschaft/overview		controllers.MannschaftController.mannschaften()
 
 POST	/tippen/:sid+:uid			controllers.TippController.tippen(sid: Int, uid: Int)
 
+GET		/tipps						controllers.TippController.showTipps()
+
 #test
 GET		/test						controllers.SpielController.feed()
 

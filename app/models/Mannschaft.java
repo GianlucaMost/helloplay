@@ -129,6 +129,13 @@ public class Mannschaft {
     	return JPA.em().find(Mannschaft.class, mid);
     }
     
+    @Transactional
+    public static Mannschaft findByName(String bezeichnung) {
+    		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
+	    	query.setParameter("pBezeichnung", bezeichnung);
+	    	return (Mannschaft) query.getSingleResult();
+    }
+    
     
     @Transactional(readOnly=true)
     public static Collection<Mannschaft> findAllCol() {

@@ -23,7 +23,7 @@ public class UserController extends Controller {
 	 */
 	@Transactional(readOnly=true)
     public static Result users() {
-		Logger.info("Start");
+		Logger.info("Start searching for all user");
 		Collection<User> users = User.findAll();
 		Logger.info("User size: " + users.size());
         return ok(user.render("Alle Benutzer", users, User.findByName(request().username())));
@@ -36,7 +36,7 @@ public class UserController extends Controller {
 	 */
 	@Transactional(readOnly=true)
 	public static Result finduser(int id) {
-		Logger.info("Start");
+		Logger.info("Start searching for user with id" + id);
 		User user = User.findById(id);
 		Logger.info("User searched for: " + user);
 		if (user==null) {

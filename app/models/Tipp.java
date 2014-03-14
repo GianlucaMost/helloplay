@@ -29,6 +29,9 @@ public class Tipp {
     @Column(name="toregast")
     public byte toregast;
     
+    @Column(name="checked")
+    public byte checked=0;
+    
     @ManyToOne
     @JoinColumn(name="fk_sid", referencedColumnName="sid")
     private Spiel spiel;
@@ -116,6 +119,11 @@ public class Tipp {
     public void update(byte th, byte tg) {
     	this.toreheim=th;
     	this.toregast=tg;
+		JPA.em().persist(this);
+    }
+    
+    @Transactional
+    public void persist() {
 		JPA.em().persist(this);
     }
     
