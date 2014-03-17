@@ -36,12 +36,13 @@ public class UserController extends Controller {
 	 */
 	@Transactional(readOnly=true)
 	public static Result finduser(int id) {
-		Logger.info("Start searching for user with id" + id);
+		Logger.info("Start searching for user with id " + id);
 		User user = User.findById(id);
-		Logger.info("User searched for: " + user);
 		if (user==null) {
+			Logger.info("Der Benutzer mit der id " + id + "existiert nicht.");
 			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
 		}else {
+			Logger.info("User searched for: " + user.name);
 			return ok(oneuser.render("Benutzer mit der id " + id, user, User.findByName(request().username())));
 		}
 	}
@@ -49,6 +50,18 @@ public class UserController extends Controller {
 	@Transactional(readOnly=true)
 	public static Result accverwaltung() {
 		return ok(accverwaltung.render(User.findByName(request().username())));
+	}
+	
+	@Transactional
+	public static Result switchAdmin(int uid) {
+//		final DynamicForm form = form().bindFromRequest();
+//		byte admin = Byte.parseByte(form.get("admin"));
+		User u = User.findById(uid);
+//		u.admin=admin;
+//		u.persist();
+		u.switchAdmin();
+		String refererHeader = request().headers().get("Referer")[0];
+		return redirect(refererHeader);
 	}
 	
 	/**

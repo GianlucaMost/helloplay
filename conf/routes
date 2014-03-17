@@ -35,6 +35,10 @@ GET		/user/delete/:id			controllers.UserController.delete(id: Int)
 
 # show accountverwaltung
 GET		/user/accverwaltung			controllers.UserController.accverwaltung()
+
+GET		/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
+
+POST	/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
 	
 #LoginController
 

@@ -252,38 +252,6 @@ public class Spiel {
     }
     
     public static void setResultWithRss(){
-//    	Akka.system().scheduler().schedule(
-//    	        Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
-//    	        Duration.create(30, TimeUnit.MINUTES),     //Frequency 30 minutes
-//    	        testActor,
-//    	        "tick",
-//    	        Akka.system().dispatcher(),
-//    	        null
-//    	);
-    	
-//    	Akka.system().scheduler().schedule(
-//	        Duration.create(0, "MILLISECONDS"),   // initial delay
-//	        Duration.create(5, "MINUTES"),        // run job every 5 minutes
-//
-//	        new Runnable() 
-//	        {
-//	            public void run() 
-//	            {
-//	                //....
-//	            }
-//	        }
-//    	);
-    	
-    	//Test, try to execute code frequently
-//    	Akka.system().scheduler().schedule(
-//			Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
-//			Duration.create(5, TimeUnit.MINUTES),     //Frequency 5 minutes
-//			new Runnable(){
-//				public void run(){
-//					Logger.info("test, this should be repeated every 5 minutes");
-//				}
-//			}, Akka.system().dispatcher()
-//    	);
     	
 		try {
 			
@@ -345,8 +313,8 @@ public class Spiel {
 	    			Spiel gg = Spiel.findGroupGame(mh, mg);
 	    	    	gg.setErgebnis(th, tg);
 	    		}else{
-	    			Logger.warn("Found RSSfeed, that doesnt match!");
-	    			Logger.info("Title: " + title);
+//	    			Logger.warn("Found RSSfeed, that doesnt match!");
+//	    			Logger.info("Title: " + title);
 	    		}
 	    	}
 		} catch (MalformedURLException e) {

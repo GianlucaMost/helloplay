@@ -73,3 +73,7 @@ helloplay
 
 *RSS jetzt implementiert und wird in Intervallen gecheckt
 #RSS RegEx not final yet, seems to need exception handling
+
+*accVerwaltung erweitert/optimiert
+*userVerwaltung(admin-Bereich) erweitert/optimiert
+*Tipps-template erweitert

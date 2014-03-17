@@ -4,6 +4,12 @@
     <div class="page-header">
 		<h1>Tipps</h1>
 	</div>	
+	<p>
+		Tipps: @cU.getTipps().size()
+	</p>
+	<p>
+		Punkte: @cU.punkte
+	</p>
 	@if(flash.containsKey("tippError")) {
 		<div class="alert alert-danger">
 			<strong class="warning">Fehler!</strong> @flash.get("tippError")

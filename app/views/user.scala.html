@@ -8,6 +8,7 @@
 	    		<tr>
 	    			<th>Id</th>
 	    			<th>Benutzername</th>
+	    			<th>switch admin</th>
 	    			<th>Bearbeiten</th>
 	    			<th>Loeschen</th>
 	    		</tr>
@@ -22,16 +23,24 @@
 				            	(admin)
 				          	}
 				        </td>
+				        <td>
+				        	<!-- 2do: admin-switching -->
+		  					@helper.form(action = routes.UserController.switchAdmin(user.uid)) {
+								<button class="btn btn-sm btn-default btn-block" type="submit">
+									<span class="glyphicon glyphicon-random"></span>
+								</button>
+							}
+				        </td>
 		  				<td>
 		  					<a href="/user/update/@user.uid">
-		  						<button type="button" class="btn btn-default btn">
+		  						<button type="button" class="btn btn-primary btn">
 								  <span class="glyphicon glyphicon-pencil"></span>
 								</button>
 		  					</a>
 		  				</td>
 		  				<td>
 		  					<a href="/user/delete/@user.uid">
-		  						<button type="button" class="btn btn-default btn">
+		  						<button type="button" class="btn btn-danger btn">
 								  <span class="glyphicon glyphicon-trash"></span>
 								</button>
 		  					</a>

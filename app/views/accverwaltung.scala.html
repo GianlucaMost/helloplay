@@ -1,7 +1,9 @@
 @(currentUser: models.User)
 
 @main("Accountverwaltung", currentUser) {
-	<h1>Wilkommen @currentUser.name</h1>
+	<div class="page-header">
+		<h1><div class="text-muted">Wilkommen</div> <strong>@currentUser.name</strong><small> | </small>@currentUser.getTrunde().bezeichnung</h1>
+	</div>
 	@if(flash.containsKey("success")) {
 		<div class="alert alert-success">
 			<strong class="success">Success!</strong> @flash.get("success")
@@ -12,19 +14,55 @@
 			<strong class="warning">Ok!</strong> @flash.get("warning")
 		</div>
    	}
-    <div>
-    	<a href="/user/update/@currentUser.uid">
-			<button type="button" class="btn btn-default btn">
-	  			<span class="glyphicon glyphicon-pencil"> Daten bearbeiten</span>
-			</button>
-		</a>
-		<br>
-		<br>
-		<a href="/user/delete/@currentUser.uid">
-			<button type="button" class="btn btn-default btn">
-	  			<span class="glyphicon glyphicon-trash"> Account loeschen</span>
-			</button>
-		</a>
-    </div>
+    <div class=container>
+    	<div class=row>
+	    	<div class="col-md-6">
+		    	<div class=row>
+		    		<div class="col-md-10">
+			    		<p>
+			    			Benutzername: @currentUser.name
+						</p>
+						<p>
+							Passwort: ********
+						</p>
+						<p>
+							Tipprunde: @currentUser.getTrunde().bezeichnung
+						</p>
+					</div> <!-- col.md-10 -->
+					<div class="col-md-2">
+						<p>
+							<a href="/user/update/@currentUser.uid">
+								<button type="button" class="btn btn-default btn">
+						  			<span class="glyphicon glyphicon-pencil"></span>
+								</button>
+							</a>
+						</p>
+						<p>
+							<a href="/user/update/@currentUser.uid">
+								<button type="button" class="btn btn-default btn">
+						  			<span class="glyphicon glyphicon-pencil"></span>
+								</button>
+							</a>
+						</p>
+					</div> <!-- col-md-2 -->
+				</div> <!-- row -->
+			</div> <!-- col.md-6 -->
+			<div class="col-md-6">
+				<p>
+					Tipps: @currentUser.getTipps().size()
+				</p>
+				<p>
+					Punkte: @currentUser.punkte
+				</p>
+			</div> <!-- col.md-6 -->
+			<p class="text-right">
+				<a href="/user/delete/@currentUser.uid">
+					<button type="button" class="btn btn-danger btn">
+			  			<span class="glyphicon glyphicon-trash"> Account loeschen</span>
+					</button>
+				</a>
+			</p>
+		</div> <!-- row -->
+    </div> <!-- cotainer -->
 
 }

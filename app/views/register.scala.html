@@ -12,10 +12,16 @@
 				</div>
 			}
 			<p>
-				<input type="text" class="form-control" name="name" placeholder="Benutzername"></input>
+				<div class="input">
+					<input type="text" class="form-control" name="name" placeholder="Benutzername" maxlength="30"></input>
+					<!--  <span class="help-block">Erforderlich, darf nicht leer sein.</span> -->
+				</div>
 			</p>
 			<p>
-				<input type="password" class="form-control" name="pw" placeholder="Passwort"></input>
+				<div class="input">
+					<input type="password" class="form-control" name="pw" placeholder="Passwort" maxlength="30"></input>
+					<!--  <span class="help-block">Erforderlich, darf nicht leer sein.</span> -->
+				</div>
 			</p>
 			<p>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">Registrieren</button>

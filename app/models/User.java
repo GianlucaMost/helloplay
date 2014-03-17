@@ -185,6 +185,17 @@ public class User {
 		JPA.em().persist(this);
     }
     
+    @Transactional
+    public void switchAdmin() {
+    	if (this.admin==1){
+    		this.admin=0;
+    	}else{
+    		this.admin=1;
+    	}
+		JPA.em().persist(this);
+    }
+    
+    
     /**
      * Update this user.
      * @param name
