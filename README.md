@@ -70,3 +70,6 @@ helloplay
 *verschiedene Ansichts-Verbesserungen
 
 +Erste annaeherung an RSSimplementierung (testphase)
+
+*RSS jetzt implementiert und wird in Intervallen gecheckt
+#RSS RegEx not final yet, seems to need exception handling

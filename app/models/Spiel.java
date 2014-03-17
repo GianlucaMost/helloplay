@@ -34,7 +34,7 @@ import com.sun.syndication.io.XmlReader;
 
 import akka.actor.Props;
 import akka.util.*;
-//import scala.concurrent.duration.Duration;
+import scala.concurrent.duration.Duration;
 
 /**
  * Spiel entity managed by JPA
@@ -242,12 +242,13 @@ public class Spiel {
     	return this.ende.before(new Timestamp(System.currentTimeMillis()));
     }
     
+    /**
+     * return true if a game is currently running
+     * @return
+     */
     public boolean gameRunning(){
-    	if (!gameOver()){
-    		return this.beginn.before(new Timestamp(System.currentTimeMillis()));
-    	}else{
-    		return false;
-    	}
+    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	return this.beginn.before(now) && this.ende.after(now);
     }
     
     public static void setResultWithRss(){
@@ -261,27 +262,28 @@ public class Spiel {
 //    	);
     	
 //    	Akka.system().scheduler().schedule(
-//    	        Duration.create(0, MILLISECONDS),   // initial delay 
-//    	        Duration.create(5, MINUTES),        // run job every 5 minutes
+//	        Duration.create(0, "MILLISECONDS"),   // initial delay
+//	        Duration.create(5, "MINUTES"),        // run job every 5 minutes
 //
-//    	        new Runnable() 
-//    	        {
-//    	            public void run() 
-//    	            {
-//    	                ....
-//    	            }
-//    	        }
-//    	    );
+//	        new Runnable() 
+//	        {
+//	            public void run() 
+//	            {
+//	                //....
+//	            }
+//	        }
+//    	);
     	
-    	Akka.system().scheduler().schedule(
-    			Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
-    			Duration.create(30, TimeUnit.MINUTES),     //Frequency 30 minutes
-    			new Runnable(){
-    				public void run(){
-    					
-    				}
-    			}
-    	);
+    	//Test, try to execute code frequently
+//    	Akka.system().scheduler().schedule(
+//			Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
+//			Duration.create(5, TimeUnit.MINUTES),     //Frequency 5 minutes
+//			new Runnable(){
+//				public void run(){
+//					Logger.info("test, this should be repeated every 5 minutes");
+//				}
+//			}, Akka.system().dispatcher()
+//    	);
     	
 		try {
 			
@@ -335,6 +337,7 @@ public class Spiel {
 	    			mg=Mannschaft.findByName(mgRename);
 	    			th=Byte.parseByte((matcher.group(3)));
 	    			tg=Byte.parseByte((matcher.group(4)));
+	    			Logger.info("Found RSSfeed that matches!");
 	    			Logger.info("mh = " + mh + "(" + mhRename + ")");
 	    			Logger.info("mg = " + mg + "(" + mgRename + ")");
 	    			Logger.info("th = " + th);
@@ -343,7 +346,7 @@ public class Spiel {
 	    	    	gg.setErgebnis(th, tg);
 	    		}else{
 	    			Logger.warn("Found RSSfeed, that doesnt match!");
-	    			Logger.info("Title:" + se.toString());
+	    			Logger.info("Title: " + title);
 	    		}
 	    	}
 		} catch (MalformedURLException e) {
