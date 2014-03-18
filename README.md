@@ -79,3 +79,6 @@ helloplay
 *Tipps-template erweitert
 
 *Tipps-template erweitert/optimiert
+
+*accVerwaltung optimiert
+*registrierung optimiert

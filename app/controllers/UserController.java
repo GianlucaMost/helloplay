@@ -150,6 +150,71 @@ public class UserController extends Controller {
 	}
 	
 	/**
+	 * handle the updateName-POST-request
+	 * @return
+	 */
+	@Transactional
+	public static Result updateName(int uid) {
+		String name = form().bindFromRequest().get("name");
+		User udUser = User.findById(uid);
+		if (!User.userExist(name) || name.equals(udUser.name)) {
+			if (name.isEmpty()) {
+				flash("error", "Benutzername darf nicht leer sein!");
+			}else {
+				udUser.update(name);
+				flash("success", "Benutzername wurde aktuallisiert");
+				session().clear();
+				session("name", name);
+			}
+		}else {
+			flash("error", "Benutzer " + name + " wurde nicht aktuallisiert (existiert bereits)!");
+		}
+		return redirect(routes.UserController.accverwaltung());
+	}
+	
+	/**
+	 * show the changePw page
+	 * @param uid
+	 * @return
+	 */
+	@Transactional
+	public static Result changePwShow(int uid) {
+		return ok(changePw.render(User.findByName(request().username())));
+	}
+	
+	/**
+	 * handle the changePw-POST-request
+	 * @return
+	 */
+	@Transactional
+	public static Result changePw(int uid) {
+		DynamicForm form = form().bindFromRequest();
+		String pwOld = form.get("pwOld");
+		String pw = form.get("pw");
+		String pwCon = form.get("pwCon");
+		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt()); 
+		User udUser = User.findById(uid);
+		if(udUser.checkPw(pwOld)){
+			if (pw.isEmpty()) {
+				flash("error", "Das Passwort ist ungueltig");
+				return redirect(routes.UserController.changePw(uid));
+			}else {
+				if(pw.equals(pwCon)){
+					udUser.changePw(pwHash);
+					flash("success", "Passwort wurde geaendert");
+					return redirect(routes.UserController.accverwaltung());
+				}else{
+					flash("error", "Die Passwoerter muessen ubereinstimmen!");
+					return redirect(routes.UserController.changePw(uid));
+				}
+			}
+		}else{
+			flash("error", "Passwort ungueltig!");
+			return redirect(routes.UserController.changePw(uid));
+		}
+	}
+	
+	/**
 	 * delete a user by his id
 	 * @param id
 	 * @return

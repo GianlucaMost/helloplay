@@ -78,27 +78,35 @@ public class LoginController extends Controller
 	public static Result register() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
-		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
+		final String pw = form.get("pw");
+		final String pwCon = form.get("pwCon");
 		
-	    if (form.hasErrors()) {
-	        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
-	    }else{
-	    	if(User.userExist(name)) {
-	    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
-	    		return redirect(routes.LoginController.showRegister());
-	    	}else{
-	    		if(name.isEmpty() || pwHash.isEmpty()) {
-		    		flash("error", "username or password is emty.");
-					return redirect(routes.LoginController.register());
-	    		}else {				
-	    			User user = new User(name, pwHash);
-	    			User.add(user);
-					session().clear();
-			        session("name", name);
-			        flash("success", "You are logged in.");
-			        return redirect(routes.Application.index());
-	    		}
-	    	}
-	    }
+		if(pw.equals(pwCon)){
+			final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
+		
+		    if (form.hasErrors()) {
+		        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
+		    }else{
+		    	if(User.userExist(name)) {
+		    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
+		    		return redirect(routes.LoginController.showRegister());
+		    	}else{
+		    		if(name.isEmpty() || pwHash.isEmpty()) {
+			    		flash("error", "username or password is emty.");
+						return redirect(routes.LoginController.register());
+		    		}else {				
+		    			User user = new User(name, pwHash);
+		    			User.add(user);
+						session().clear();
+				        session("name", name);
+				        flash("success", "Registrierung erfolgreich.");
+				        return redirect(routes.Application.index());
+		    		}
+		    	}
+		    }
+		}else{
+			flash("error", "Die Passwoerter muessen ubereinstimmen!");
+			return redirect(routes.LoginController.register());
+		}
 	}
 }

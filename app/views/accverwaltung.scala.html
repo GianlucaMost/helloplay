@@ -6,7 +6,7 @@
 	</div>
 	@if(flash.containsKey("success")) {
 		<div class="alert alert-success">
-			<strong class="success">Success!</strong> @flash.get("success")
+			<strong class="success">Erfolg!</strong> @flash.get("success")
 		</div>
    	}
    	@if(flash.containsKey("warning")) {
@@ -14,37 +14,44 @@
 			<strong class="warning">Ok!</strong> @flash.get("warning")
 		</div>
    	}
+   	@if(flash.containsKey("error")) {
+		<div class="alert alert-danger">
+			<strong class="error">Oops!</strong> @flash.get("error")
+		</div>
+	}
     <div class=container>
     	<div class=row>
 	    	<div class="col-md-6">
-		    	<div class=row>
-		    		<div class="col-md-10">
-			    		<p>
-			    			Benutzername: @currentUser.name
-						</p>
-						<p>
-							Passwort: ********
-						</p>
-						<p>
-							Tipprunde: @currentUser.getTrunde().bezeichnung
-						</p>
-					</div> <!-- col.md-10 -->
-					<div class="col-md-2">
-						<p>
-							<a href="/user/update/@currentUser.uid">
+	    		<div class=row>
+	    			<div class="col-md-3">
+	    				Benutzername:
+	    			</div> <!-- col.md-3 -->
+	    			<div class="col-md-7  text-right">
+		    			@helper.form(action = routes.UserController.updateName(currentUser.uid)) {
+		    				<div class="input-group">
+		    					<input type="text" class="form-control" name="name" placeholder="@currentUser.name" value="@currentUser.name" maxlength="30"></input>
+		    					<span class="input-group-btn">
+							      <button class="btn btn-default" type="submit">Ok</button>
+							    </span>
+		    				</div> <!-- input-group -->
+		    			}
+		    		</div> <!-- col.md-7 -->
+		    	</div> <!-- row -->
+		    	<br>
+		    	<div class="row">
+		    		<div class="col-md-3">
+						Passwort:
+					</div> <!-- col.md-3 -->
+					<div class="col-md-4 text-left">
+						************
+					</div> <!-- col.md-4 -->
+						<div class="col-md-3 text-right">
+							<a href="/user/changePw/@currentUser.uid">
 								<button type="button" class="btn btn-default btn">
 						  			<span class="glyphicon glyphicon-pencil"></span>
 								</button>
 							</a>
-						</p>
-						<p>
-							<a href="/user/update/@currentUser.uid">
-								<button type="button" class="btn btn-default btn">
-						  			<span class="glyphicon glyphicon-pencil"></span>
-								</button>
-							</a>
-						</p>
-					</div> <!-- col-md-2 -->
+						</div> <!-- col.md-3 -->
 				</div> <!-- row -->
 			</div> <!-- col.md-6 -->
 			<div class="col-md-6">

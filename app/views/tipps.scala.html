@@ -9,7 +9,10 @@
 			Tipps: @cU.getTipps().size()
 		</p>
 		<p>
-			Punkte: @cU.punkte<small>(fuer @cU.uncheckedTipps().size() tipps noch keine Punkte erhalten)</small>
+			Punkte: @cU.punkte
+			@if(cU.uncheckedTipps().size()!=0){
+				<small>(fuer @cU.uncheckedTipps().size() Tipp(-s) noch keine Punkte erhalten)</small>
+			}
 		</p>
 	</blockquote>
 	@if(flash.containsKey("tippError")) {

@@ -205,7 +205,7 @@ public class User {
     
     
     /**
-     * Update this user.
+     * Update this users name and password.
      * @param name
      */
     @Transactional
@@ -215,6 +215,26 @@ public class User {
     	user.name = name;
     	user.pw = pwHash;
     	em.persist(user);
+    }
+    
+    /**
+     * Update this users name.
+     * @param name
+     */
+    @Transactional
+    public void update(String name) {
+    	this.name = name;
+    	JPA.em().persist(this);
+    }
+    
+    /**
+     * Change this users password.
+     * @param name
+     */
+    @Transactional
+    public void changePw(String pwHash) {
+    	this.pw = pwHash;
+    	JPA.em().persist(this);
     }
  
     /**
@@ -241,6 +261,11 @@ public class User {
     	} catch (NoResultException ex) {
     		return false;
     	}
+    }
+    
+    @Transactional
+    public boolean checkPw(String pw) {
+    	return BCrypt.checkpw(pw, this.pw);
     }
     
     @Transactional(readOnly=true)

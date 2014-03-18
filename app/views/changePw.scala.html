@@ -1,0 +1,29 @@
+@(cU: models.User)
+
+@import helper._
+
+@main("Password aendern", cU) {
+	@helper.form(action = routes.UserController.changePw(cU.uid)) {
+		<div class="container-fluid">
+			<h1 class="form-heading">Password aendern</h1>
+			@if(flash.containsKey("error")) {
+				<div class="alert alert-danger">
+					<strong class="error">Oops!</strong> @flash.get("error")
+				</div>
+			}
+			<p>
+				<input type="password" class="form-control" name="pwOld" placeholder="Passwort" maxlength="30"></input>
+			</p>
+			<p>
+				<input type="password" class="form-control" name="pw" placeholder="Neues Passwort" maxlength="30"></input>
+			</p>
+			<p>
+				<input type="password" class="form-control" name="pwCon" placeholder="Passwort bestaetigen" maxlength="30"></input>
+			</p>
+			<p>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Ok</button>
+			</p>
+		</div>
+	}
+}
+
