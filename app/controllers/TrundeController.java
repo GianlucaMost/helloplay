@@ -20,6 +20,14 @@ import views.html.*;
 import play.data.DynamicForm;
 
 @Security.Authenticated(Secured.class)
-public class SpielController extends Controller {
+public class TrundeController extends Controller {
 	
+	/**
+	 * Shows the Trunde-Overview onGET
+	 * @return
+	 */
+	@Transactional
+    public static Result showOverview() {
+		return ok(trunde_overview.render(Spiel.findAll(), User.findByName(request().username())));
+	}
 }

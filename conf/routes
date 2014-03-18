@@ -30,10 +30,13 @@ GET		/user/update/:id			controllers.UserController.updateShow(id: Int)
 # handle the user-update
 POST	/user/update/:id			controllers.UserController.update(id: Int)
 
+# aendert den namen des benutzers mit id
 POST 	/user/updateName/:id		controllers.UserController.updateName(id: Int)
 
+# zeigt das formular zum aendern des passwortes des benutzers mit id an
 GET		/user/changePw/:id			controllers.UserController.changePwShow(id: Int)
 
+# aendert das passwort des benutzers mit id
 POST	/user/changePw/:id			controllers.UserController.changePw(id: Int)
 
 # delete an user with id
@@ -42,8 +45,10 @@ GET		/user/delete/:id			controllers.UserController.delete(id: Int)
 # show accountverwaltung
 GET		/user/accverwaltung			controllers.UserController.accverwaltung()
 
+# admin toggling fuer benutzer mit id
 GET		/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
 
+# admin toggling fuer benutzer mit id
 POST	/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
 	
 #LoginController
@@ -69,12 +74,14 @@ GET		/mannschaft/find/:id		controllers.MannschaftController.mannschaftShow(id: I
 # detailierte mannschaftsuebersicht
 GET		/mannschaft/overview		controllers.MannschaftController.mannschaften()
 
+# benutzer mit uid tippt auf spiel mit sid
 POST	/tippen/:sid+:uid			controllers.TippController.tippen(sid: Int, uid: Int)
 
+# tipps-ueberblick
 GET		/tipps						controllers.TippController.showTipps()
 
-#test
-GET		/test						controllers.SpielController.feed()
+# TippRunden-Uebersicht
+GET		/trunde/overview			controllers.TrundeController.showOverview()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

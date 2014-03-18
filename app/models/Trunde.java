@@ -80,4 +80,11 @@ public class Trunde {
         JPA.em().remove(this);
     }
     
+    @Transactional
+    public Collection findTipps() {
+		Query query = JPA.em().createQuery("SELECT u.name, t.toreheim, t.toregast, tr.bezeichnung FROM Tipp t, User u, Trunde tr WHERE t.user=u AND u.trunde=tr AND tr = :pTr");
+    	query.setParameter("pTr", this);
+    	return (Collection) query.getResultList();
+    }
+    
 }

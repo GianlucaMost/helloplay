@@ -14,6 +14,11 @@
 			<strong class="warning">Warnung!</strong> @flash.get("warning")
 		</div>
    	}
+   	@if(flash.containsKey("info")) {
+		<div class="alert alert-info">
+			<strong class="info">Ok!</strong> @flash.get("info")
+		</div>
+   	}
 	<div class="container">
 		<div>
 	  		@grp_overview(mannschaften)

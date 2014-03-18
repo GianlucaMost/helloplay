@@ -56,7 +56,7 @@ public class LoginController extends Controller
 	 */
 	public static Result logout() {
 	    session().clear();
-	    flash("success", "Sie sind jetzt abgemeldet.");
+	    flash("info", "Sie sind jetzt abgemeldet.");
 	    return redirect(routes.Application.index());
 	}
 	
