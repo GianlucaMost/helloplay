@@ -77,3 +77,5 @@ helloplay
 *accVerwaltung erweitert/optimiert
 *userVerwaltung(admin-Bereich) erweitert/optimiert
 *Tipps-template erweitert
+
+*Tipps-template erweitert/optimiert

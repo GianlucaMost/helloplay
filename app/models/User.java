@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -180,11 +181,18 @@ public class User {
 		em.persist(user);
     }
     
+    
+    /**
+     * persist the user
+     */
     @Transactional
     public void persist() {
 		JPA.em().persist(this);
     }
     
+    /**
+     * toggle between user.admin=1/0
+     */
     @Transactional
     public void switchAdmin() {
     	if (this.admin==1){
@@ -235,5 +243,15 @@ public class User {
     	}
     }
     
-    
+    @Transactional(readOnly=true)
+    public Collection<Tipp> uncheckedTipps() {
+    	List<Tipp> list = new ArrayList<Tipp>();
+    	for (Tipp t: this.getTipps()){
+    		if(t.checked==0){
+    			list.add(t);
+    		}
+    	}
+    	Collection<Tipp> col = list;
+        return col;
+    }
 }
