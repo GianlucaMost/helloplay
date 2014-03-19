@@ -80,11 +80,49 @@ public class Trunde {
         JPA.em().remove(this);
     }
     
+    /**
+     * find all Tipps from this trunde
+     * @return
+     */
     @Transactional
-    public Collection findTipps() {
-		Query query = JPA.em().createQuery("SELECT u.name, t.toreheim, t.toregast, tr.bezeichnung FROM Tipp t, User u, Trunde tr WHERE t.user=u AND u.trunde=tr AND tr = :pTr");
-    	query.setParameter("pTr", this);
-    	return (Collection) query.getResultList();
+    public Collection<Tipp> findTipps() {
+    	String sqlQ = "SELECT t.* FROM tipp AS t "
+    	+ "INNER JOIN user AS u ON t.fk_uid=u.uid "
+    	+ "INNER JOIN trunde AS tr ON u.fk_trid=tr.trid "
+    	+ "WHERE tr.trid = ?";
+    	Query q = JPA.em().createNativeQuery(sqlQ);
+		q.setParameter(1, this.trid);
+    	return (Collection<Tipp>) q.getResultList();
     }
     
+    /**
+     * find all tipps from this trunde for the given spiel
+     * @param s
+     * @return
+     */
+    @Transactional
+    public Collection<Tipp> findTippsSpiel(Spiel s) {
+    	String sqlQ = "select tipp.* from tipp "
+    	+ "inner join user on tipp.fk_uid=user.uid "
+    	+ "inner join trunde on user.fk_trid=trunde.trid "
+    	+ "where trunde.trid = ? "
+    	+ "AND tipp.fk_sid = ?";
+    	Query q = JPA.em().createNativeQuery(sqlQ);
+		q.setParameter(1, this.trid);
+		q.setParameter(2, s.sid);
+    	return (Collection<Tipp>) q.getResultList();
+    }
+    
+    /**
+     * return the sum of all points from every user in this tipprunde
+     * @return
+     */
+    @Transactional
+    public int punkte() {
+    	int p=0;
+    	for(User u: this.getUsers()){
+    		p=p+u.punkte;
+    	}
+    	return p;
+    }
 }

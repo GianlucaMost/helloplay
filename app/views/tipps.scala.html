@@ -11,7 +11,7 @@
 		<p>
 			Punkte: @cU.punkte
 			@if(cU.uncheckedTipps().size()!=0){
-				<small>(fuer @cU.uncheckedTipps().size() Tipp(-s) noch keine Punkte erhalten)</small>
+				<small>(fuer @cU.uncheckedTipps().size() Tipp@if(cU.uncheckedTipps().size()!=1){s} noch keine Punkte erhalten)</small>
 			}
 		</p>
 	</blockquote>

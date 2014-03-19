@@ -1,20 +1,55 @@
 @(spiele: Collection[models.Spiel], cU: models.User)
 
-@main("Home", cU){
+@main("Gruppe " + cU.getTrunde().bezeichnung, cU){
     <div class="page-header">
-		<h1>@cU.getTrunde().bezeichnung</h1>
+		<h1><small>TippRunde</small> @cU.getTrunde().bezeichnung</h1>
 	</div>
-	<blockquote>
-		<p>
-			Tipps: @cU.getTrunde().findTipps().size() (davon @cU.getTipps().size() eigene)
-		</p>
-		<p>
-			Eigene Punkte: @cU.punkte
-			@if(cU.uncheckedTipps().size()!=0){
-				<small>(fuer @cU.uncheckedTipps().size() Tipp(-s) noch keine Punkte erhalten)</small>
-			}
-		</p>
-	</blockquote>
+
+	<div class="row-fluid">
+		<div class="col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Mitglieder</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Benutzer</th>
+									<th>Punkte</th>
+								</tr>
+							</thead>
+			 				<tbody>
+								@for(m <- cU.getTrunde().getUsers()) {
+			 						<tr>
+										<td>
+				    						<a @if(m.equals(cU)){href="/tipps"}else{href="/user/find/@m.uid"}>
+				    							@m.name
+				    						</a>
+								    	</td>
+										<td>@m.punkte</td>
+									</tr>
+								}
+							</tbody>
+		 				</table>
+				</div><!-- panel-body -->
+			</div><!-- panel -->
+		</div> <!-- col.md-3 -->
+	
+		<div class="col-md-5 col-md-offset-4">
+			<blockquote>
+				<p>
+					Tipps: @cU.getTrunde().findTipps().size()
+						<small>@cU.getTipps().size() eigene@if(cU.getTipps().size()==1){r}</small>
+				</p>
+				<p>
+					Punkte: @cU.getTrunde().punkte()
+					<small>@cU.punkte eigene@if(cU.punkte==1){r}</small>
+				</p>
+			</blockquote>
+		</div> <!-- col.md-5 -->
+	</div> <!-- row-fluid -->
+	
 	<div class="row-fluid">
 	   	 <table class="table table-striped">
 	    	<thead>
@@ -30,7 +65,7 @@
 			</thead>
 			<tbody>
 	 			@for(s <- spiele){
-	 				@if(s.getTipps()!=null){
+	 				@if(!cU.getTrunde().findTippsSpiel(s).isEmpty()){
 		 				@if(s.gameRunning()){
 		 					<tr class="info">
 		 				}else {
@@ -86,7 +121,7 @@
 								}
 							</td>
 						</tr>
-					} <!-- if(s.getTipps()!=null) -->
+					} <!-- if(cU.getTrunde().findTippsSpiel(s)!=null) -->
 				} <!-- for(s <- spiele) -->
 			</tbody>
 	   	</table>

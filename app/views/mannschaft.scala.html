@@ -95,8 +95,8 @@
 									<div class=row>
 										<div class="col-md-10">
 											@helper.form(action = routes.TippController.tippen(s.sid, cU.uid)) {
-												<div class="col-md-3"><input type="number" class="form-control" name="toreHeim" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toreheim}}" min="0"></input></div>
-												<div class="col-md-3"><input type="number" class="form-control" name="toreGast" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toregast}}" min="0"></input></div>
+												<div class="col-md-3"><input required type="number" class="form-control" name="toreHeim" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toreheim}}" min="0"></input></div>
+												<div class="col-md-3"><input required type="number" class="form-control" name="toreGast" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toregast}}" min="0"></input></div>
 												<div class="col-md-3"><button class="btn btn-sm btn-default btn-block" type="submit">ok</button></div>
 											}
 										</div>

@@ -86,3 +86,6 @@ helloplay
 +First Trunde-overview implementation
 
 *modfied trunde, tipps and oneuser-view
+
+*optimized TippRunde-overview
+*several other improvements (mainly in views)
