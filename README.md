@@ -84,3 +84,5 @@ helloplay
 *registrierung optimiert
 
 +First Trunde-overview implementation
+
+*modfied trunde, tipps and oneuser-view

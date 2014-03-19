@@ -62,7 +62,7 @@
 				    				@s.getMannschaftGast().bezeichnung
 				    			</a>
 							</td>
-							<td>
+							<td title="test">
 								@for((t,i) <- s.getTipps().zipWithIndex){
 									@if(t.getUser().getTrunde().equals(cU.getTrunde())){
 										@if(t.getUser().equals(cU)){
@@ -70,7 +70,10 @@
 										}else{
 											<small>
 										}
-										@t.getUser().name: @t.toreheim - @t.toregast
+										<a @if(t.getUser().equals(cU)){href="/tipps"}else{href="/user/find/@t.getUser().uid"}>
+						    				@t.getUser().name: 
+						    			</a>
+						    			@t.toreheim - @t.toregast
 										@if(t.getUser().equals(cU)){
 											</strong>
 										}else{

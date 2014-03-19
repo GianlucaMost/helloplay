@@ -1,9 +1,92 @@
 @(message: String, user: models.User, currentUser: models.User)
 
-@main("Bestimmer Benutzer", currentUser) {
-	<h1>@message</h1>
-    <div>
-    	Benutzername : @user.name
-    </div>
-
+@main("Benutzer " + user.name, currentUser) {	
+	<div class="page-header">
+		<h1><strong>@user.name</strong><small> | </small>@user.getTrunde().bezeichnung</h1>
+	</div>
+	<blockquote>
+		<p>
+			Tipps: @user.getTipps().size()
+		</p>
+		<p>
+			Punkte: @user.punkte
+			@if(user.uncheckedTipps().size()!=0){
+				<small>(fuer @user.uncheckedTipps().size() Tipp(-s) noch keine Punkte erhalten)</small>
+			}
+		</p>
+	</blockquote>
+    <div class="row-fluid">
+	   	 <table class="table table-striped">
+	    	<thead>
+				<tr>
+					<th>Beginn*</th>
+					<th>Spiel</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th>Tipp</th>
+					<th>Eigener Tipp</th>
+				</tr>
+			</thead>
+			<tbody>
+	 			@for(t <- user.getTipps()){
+	 				@defining(t.getSpiel()) { s =>
+		 				@if(s.gameRunning()){
+		 					<tr class="info">
+		 				}else {
+		 					@if(s.gameOver()){
+		 						<tr class="warning">
+		 					}else{
+		 						<tr>
+		 					}
+		 				}
+		 					<td>
+		 						<strong>
+		 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
+		 						</strong>
+		 						 - 
+		 						<small>
+		 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
+		 						</small>
+		 					</td>
+							<td>
+								<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+				    				@s.getMannschaftHeim().bezeichnung
+				    			</a>
+							</td>
+							<td>@s.toreheim</td>
+							<td>   -   </td>
+							<td>@s.toregast</td>
+							<td>
+								<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+				    				@s.getMannschaftGast().bezeichnung
+				    			</a>
+							</td>
+							<td>
+								@for(t <- s.getTipps()){
+									@if(t.getUser().equals(user)){
+										@t.toreheim - @t.toregast
+									}
+								}
+							</td>
+							<td>
+								@for(t <- s.getTipps()){
+									@if(t.getUser().equals(currentUser)){
+										@t.toreheim - @t.toregast
+									}
+								}
+							</td>
+						</tr>
+					} <!-- defining -->
+				} <!-- for -->
+			</tbody>
+	   	</table>
+	   	<br>
+		*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!
+		<ul class="list-group">
+			<li class="list-group-item list-group-item-info">Spiel laeuft.</li>
+			<li class="list-group-item list-group-item-warning">Spiel zu Ende.</li>
+		</ul>
+	</div> <!-- row -->
 }
