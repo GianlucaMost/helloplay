@@ -89,3 +89,7 @@ helloplay
 
 *optimized TippRunde-overview
 *several other improvements (mainly in views)
+
+*Tippen auf Spiele ab dem AchtelFinale jetzt mit Freischalt-Datum (wenn Ergebnisse auf jeden Fall feststehen)
+*navbar lässt sich nun richtig "collapsen"
+*several design-improvements

@@ -2,10 +2,10 @@
 
 @main("Gruppe " + cU.getTrunde().bezeichnung, cU){
     <div class="page-header">
-		<h1><small>TippRunde</small> @cU.getTrunde().bezeichnung</h1>
+		<h1>TippRunde<small>_@cU.getTrunde().bezeichnung</small></h1>
 	</div>
 
-	<div class="row-fluid">
+	<div class="row">
 		<div class="col-md-3">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
@@ -36,7 +36,7 @@
 			</div><!-- panel -->
 		</div> <!-- col.md-3 -->
 	
-		<div class="col-md-5 col-md-offset-4">
+		<div class="col-md-3 col-md-offset-6 text-right">
 			<blockquote>
 				<p>
 					Tipps: @cU.getTrunde().findTipps().size()
@@ -47,8 +47,8 @@
 					<small>@cU.punkte eigene@if(cU.punkte==1){r}</small>
 				</p>
 			</blockquote>
-		</div> <!-- col.md-5 -->
-	</div> <!-- row-fluid -->
+		</div> <!-- col.md-3 col.md-offset-6 text-right -->
+	</div> <!-- row -->
 	
 	<div class="row-fluid">
 	   	 <table class="table table-striped">

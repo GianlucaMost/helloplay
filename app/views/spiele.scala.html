@@ -14,77 +14,81 @@
 	</div>
 }
 <div class="row-fluid">
-   	 <table class="table table-striped">
-    	<thead>
-			<tr>
-				<th>Beginn*</th>
-				<th>Spiel</th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				@if(cU!=null){
-					<th>Tipp</th>
-				}
-			</tr>
-		</thead>
-		<tbody>
- 			@for(s <- spiele){
- 				@if(!s.gameOver()){
-	 				@if(s.gameRunning()){
-	 					<tr class="info">
-	 				}else{
-	 					<tr>
-	 				}
-	 					<td>
-	 						<strong>
-	 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
-	 						</strong>
-	 						 - 
-	 						<small>
-	 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
-	 						</small>
-	 					</td>
-						<td>
-							<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
-			    				@s.getMannschaftHeim().bezeichnung
-			    			</a>
-						</td>
-						<td>@s.toreheim</td>
-						<td>   -   </td>
-						<td>@s.toregast</td>
-						<td>
-							<a href="/mannschaft/find/@s.getMannschaftGast().mid">
-			    				@s.getMannschaftGast().bezeichnung
-			    			</a>
-						</td>
-						@if(cU!=null){
+	<div class="col-md-12">
+		<table class="table table-striped">
+	    	<thead>
+				<tr>
+					<th>Beginn*</th>
+					<th>Spiel</th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					@if(cU!=null){
+						<th>Tipp</th>
+					}
+				</tr>
+			</thead>
+			<tbody>
+	 			@for(s <- spiele){
+	 				@if(!s.gameOver()){
+		 				@if(s.gameRunning()){
+		 					<tr class="info">
+		 				}else{
+		 					<tr>
+		 				}
+		 					<td>
+		 						<strong>
+		 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
+		 						</strong>
+		 						 - 
+		 						<small>
+		 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
+		 						</small>
+		 					</td>
 							<td>
-								@if(!s.gameRunning()){
-								<div class="container-fluid">
-									<div class=row-fluid>
-										<div class="col-md-9">
-											@helper.form(action = routes.TippController.tippen(s.sid, cU.uid)) {
-												<div class="col-md-3"><input required type="number" class="form-control" name="toreHeim" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toreheim}}" min="0"></input></div>
-												<div class="col-md-3"><input required type="number" class="form-control" name="toreGast" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toregast}}"min="0"></input></div>
-												<div class="col-md-3"><button class="btn btn-sm btn-default btn-block" type="submit">ok</button></div>
+								<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+				    				@s.getMannschaftHeim().bezeichnung
+				    			</a>
+							</td>
+							<td>@s.toreheim</td>
+							<td>   -   </td>
+							<td>@s.toregast</td>
+							<td>
+								<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+				    				@s.getMannschaftGast().bezeichnung
+				    			</a>
+							</td>
+							@if(cU!=null){
+								<td>
+									@if(!s.gameRunning()){
+										@if(s.isGg() || s.checkAfTippReady() || s.checkVfTippReady() || s.checkHfTippReady() || s.checkFTippReady()){
+											<div class="container-fluid">
+												<div class=row-fluid>
+													<div class="col-md-9">
+														@helper.form(action = routes.TippController.tippen(s.sid, cU.uid)) {
+															<div class="col-md-3"><input required type="number" class="form-control" name="toreHeim" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toreheim}}" min="0"></input></div>
+															<div class="col-md-3"><input required type="number" class="form-control" name="toreGast" value="@for(t <- s.getTipps()){@if(t.getUser().equals(cU)){@t.toregast}}"min="0"></input></div>
+															<div class="col-md-3"><button class="btn btn-sm btn-default btn-block" type="submit">ok</button></div>
+														}
+													</div>
+												</div>
+											</div>
+										}
+									}else{
+										@for(t <- s.getTipps()){
+											@if(t.getUser().equals(cU)){
+												@t.toreheim - @t.toregast
 											}
-										</div>
-									</div>
-								</div>
-								}else{
-									@for(t <- s.getTipps()){
-										@if(t.getUser().equals(cU)){
-											@t.toreheim - @t.toregast
 										}
 									}
-								}
-							</td>
-						}
-					</tr>
-				} <!-- gameOver -->
-			} <!-- for -->
-		</tbody>
-   	</table>
+								</td>
+							}
+						</tr>
+					} <!-- gameOver -->
+				} <!-- for -->
+			</tbody>
+	   	</table>
+	</div> <!-- col.md-12 -->
 	*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!
 </div> <!-- row -->

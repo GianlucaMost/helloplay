@@ -251,6 +251,38 @@ public class Spiel {
     	return this.beginn.before(now) && this.ende.after(now);
     }
     
+    public boolean isGg(){
+    	return this.getMannschaftHeim().gruppe.equals("A") || this.getMannschaftHeim().gruppe.equals("B") || this.getMannschaftHeim().gruppe.equals("C") || this.getMannschaftHeim().gruppe.equals("D") || this.getMannschaftHeim().gruppe.equals("E") || this.getMannschaftHeim().gruppe.equals("F") || this.getMannschaftHeim().gruppe.equals("G") || this.getMannschaftHeim().gruppe.equals("H");
+    }
+    
+    public boolean checkAfTippReady(){
+    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Timestamp rdy = Timestamp.valueOf("2014-06-26 22:00:00.0");
+    	return this.getMannschaftHeim().gruppe.equals("AF") && now.after(rdy);
+    }
+    
+    public boolean checkVfTippReady(){
+    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Timestamp rdy = Timestamp.valueOf("2014-07-02 00:00:00.0");
+    	return this.getMannschaftHeim().gruppe.equals("VF") && now.after(rdy);
+    }
+    
+    public boolean checkHfTippReady(){
+    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Timestamp rdy = Timestamp.valueOf("2014-07-06 00:00:00.0");
+    	return this.getMannschaftHeim().gruppe.equals("HF") && now.after(rdy);
+    }
+    
+    public boolean checkFTippReady(){
+    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Timestamp rdy = Timestamp.valueOf("2014-07-10 00:00:00.0");
+    	if(this.getMannschaftHeim().gruppe.equals("FI") || this.getMannschaftHeim().gruppe.equals("SP3")){
+    		return now.after(rdy);
+    	}else{
+    		return false;
+    	}
+    }
+    
     public static void setResultWithRss(){
     	
 		try {
