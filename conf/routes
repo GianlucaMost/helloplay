@@ -81,7 +81,7 @@ POST	/tippen/:sid+:uid			controllers.TippController.tippen(sid: Int, uid: Int)
 GET		/tipps						controllers.TippController.showTipps()
 
 # TippRunden-Uebersicht
-GET		/trunde/overview			controllers.TrundeController.showOverview()
+GET		/trunde/overview/:id		controllers.TrundeController.showOverview(id: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

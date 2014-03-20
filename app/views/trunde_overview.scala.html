@@ -1,8 +1,8 @@
-@(spiele: Collection[models.Spiel], cU: models.User)
+@(spiele: Collection[models.Spiel], tr: models.Trunde, cU: models.User)
 
-@main("Gruppe " + cU.getTrunde().bezeichnung, cU){
+@main("TippRunde " + tr.bezeichnung, cU){
     <div class="page-header">
-		<h1>TippRunde<small>_@cU.getTrunde().bezeichnung</small></h1>
+		<h1>TippRunde<small>_@tr.bezeichnung</small></h1>
 	</div>
 
 	<div class="row">
@@ -20,7 +20,7 @@
 								</tr>
 							</thead>
 			 				<tbody>
-								@for(m <- cU.getTrunde().getUsers()) {
+								@for(m <- tr.getUsers()) {
 			 						<tr>
 										<td>
 				    						<a @if(m.equals(cU)){href="/tipps"}else{href="/user/find/@m.uid"}>
@@ -39,11 +39,11 @@
 		<div class="col-md-3 col-md-offset-6 text-right">
 			<blockquote>
 				<p>
-					Tipps: @cU.getTrunde().findTipps().size()
+					Tipps: @tr.findTipps().size()
 						<small>@cU.getTipps().size() eigene@if(cU.getTipps().size()==1){r}</small>
 				</p>
 				<p>
-					Punkte: @cU.getTrunde().punkte()
+					Punkte: @tr.punkte()
 					<small>@cU.punkte eigene@if(cU.punkte==1){r}</small>
 				</p>
 			</blockquote>
@@ -65,7 +65,7 @@
 			</thead>
 			<tbody>
 	 			@for(s <- spiele){
-	 				@if(!cU.getTrunde().findTippsSpiel(s).isEmpty()){
+	 				@if(!tr.findTippsSpiel(s).isEmpty()){
 		 				@if(s.gameRunning()){
 		 					<tr class="info">
 		 				}else {
@@ -99,7 +99,7 @@
 							</td>
 							<td title="test">
 								@for((t,i) <- s.getTipps().zipWithIndex){
-									@if(t.getUser().getTrunde().equals(cU.getTrunde())){
+									@if(t.getUser().getTrunde().equals(tr)){
 										@if(t.getUser().equals(cU)){
 											<strong>
 										}else{
@@ -121,7 +121,7 @@
 								}
 							</td>
 						</tr>
-					} <!-- if(cU.getTrunde().findTippsSpiel(s)!=null) -->
+					} <!-- if(tr.findTippsSpiel(s)!=null) -->
 				} <!-- for(s <- spiele) -->
 			</tbody>
 	   	</table>

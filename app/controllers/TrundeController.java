@@ -27,7 +27,13 @@ public class TrundeController extends Controller {
 	 * @return
 	 */
 	@Transactional
-    public static Result showOverview() {
-		return ok(trunde_overview.render(Spiel.findAll(), User.findByName(request().username())));
+    public static Result showOverview(int trid) {
+		Trunde tr = Trunde.findById(trid);
+		if(tr!=null){
+			return ok(trunde_overview.render(Spiel.findAll(), tr, User.findByName(request().username())));
+		}else{
+			Logger.info("Diese TippRunde mit der id " + trid + "existiert nicht.");
+			return badRequest("Diese TippRunde mit der id '" + trid + "' existiert nicht mehr!");
+		}
 	}
 }
