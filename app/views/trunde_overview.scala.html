@@ -20,7 +20,7 @@
 								</tr>
 							</thead>
 			 				<tbody>
-								@for(m <- tr.getUsers()) {
+								@for(m <- tr.getMember()) {
 			 						<tr>
 										<td>
 				    						<a @if(m.equals(cU)){href="/tipps"}else{href="/user/find/@m.uid"}>
@@ -99,7 +99,7 @@
 							</td>
 							<td title="test">
 								@for((t,i) <- s.getTipps().zipWithIndex){
-									@if(t.getUser().getTrunde().equals(tr)){
+									@if(t.getUser().getTrunden().equals(tr)){
 										@if(t.getUser().equals(cU)){
 											<strong>
 										}else{

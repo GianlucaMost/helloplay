@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -27,8 +28,8 @@ public class Trunde {
     @Column(name="bezeichnung")
     public String bezeichnung;
     
-    @OneToMany(mappedBy="trunde", targetEntity=User.class)
-    private Collection<User> users;
+    @ManyToMany(mappedBy="trunden")
+    private Collection<User> member;
     
     /**
      * Default constructor
@@ -51,8 +52,8 @@ public class Trunde {
      * get all user included in this TippRunde
      * @return
      */
-    public Collection<User> getUsers(){
-    	return this.users;
+    public Collection<User> getMember(){
+    	return this.member;
     }
     
     /**
@@ -86,13 +87,22 @@ public class Trunde {
      */
     @Transactional
     public Collection<Tipp> findTipps() {
-    	String sqlQ = "SELECT t.* FROM tipp AS t "
-    	+ "INNER JOIN user AS u ON t.fk_uid=u.uid "
-    	+ "INNER JOIN trunde AS tr ON u.fk_trid=tr.trid "
-    	+ "WHERE tr.trid = ?";
-    	Query q = JPA.em().createNativeQuery(sqlQ);
-		q.setParameter(1, this.trid);
-    	return (Collection<Tipp>) q.getResultList();
+    	
+    	Collection<Tipp> tipps = new ArrayList<Tipp>();
+    	for(User m: this.getMember()){
+    		for (Tipp t: m.getTipps()){
+    			tipps.add(t);
+    		}
+    	}
+    	return tipps;
+    	
+//    	String sqlQ = "SELECT t.* FROM tipp AS t "
+//    	+ "INNER JOIN user AS u ON t.fk_uid=u.uid "
+//    	+ "INNER JOIN trunde AS tr ON u.fk_trid=tr.trid "
+//    	+ "WHERE tr.trid = ?";
+//    	Query q = JPA.em().createNativeQuery(sqlQ);
+//		q.setParameter(1, this.trid);
+//    	return (Collection<Tipp>) q.getResultList();
     }
     
     /**
@@ -102,15 +112,25 @@ public class Trunde {
      */
     @Transactional
     public Collection<Tipp> findTippsSpiel(Spiel s) {
-    	String sqlQ = "select tipp.* from tipp "
-    	+ "inner join user on tipp.fk_uid=user.uid "
-    	+ "inner join trunde on user.fk_trid=trunde.trid "
-    	+ "where trunde.trid = ? "
-    	+ "AND tipp.fk_sid = ?";
-    	Query q = JPA.em().createNativeQuery(sqlQ);
-		q.setParameter(1, this.trid);
-		q.setParameter(2, s.sid);
-    	return (Collection<Tipp>) q.getResultList();
+    	Collection<Tipp> tipps = new ArrayList<Tipp>();
+    	for(User m: this.getMember()){
+    		for (Tipp t: m.getTipps()){
+    			if(t.getSpiel().equals(s)){
+    				tipps.add(t);
+    			}
+    		}
+    	}
+    	return tipps;
+    	
+//    	String sqlQ = "select tipp.* from tipp "
+//    	+ "inner join user on tipp.fk_uid=user.uid "
+//    	+ "inner join trunde on user.fk_trid=trunde.trid "
+//    	+ "where trunde.trid = ? "
+//    	+ "AND tipp.fk_sid = ?";
+//    	Query q = JPA.em().createNativeQuery(sqlQ);
+//		q.setParameter(1, this.trid);
+//		q.setParameter(2, s.sid);
+//    	return (Collection<Tipp>) q.getResultList();
     }
     
     /**
@@ -120,7 +140,7 @@ public class Trunde {
     @Transactional
     public int punkte() {
     	int p=0;
-    	for(User u: this.getUsers()){
+    	for(User u: this.getMember()){
     		p=p+u.punkte;
     	}
     	return p;

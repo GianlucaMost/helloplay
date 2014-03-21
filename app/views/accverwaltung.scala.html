@@ -2,7 +2,7 @@
 
 @main("Accountverwaltung", currentUser) {
 	<div class="page-header">
-		<h1><div class="text-muted">Wilkommen</div> <strong>@currentUser.name</strong><small> | </small>@currentUser.getTrunde().bezeichnung</h1>
+		<h1><div class="text-muted">Wilkommen</div> <strong>@currentUser.name</strong></h1>
 	</div>
 	@if(flash.containsKey("success")) {
 		<div class="alert alert-success">

@@ -93,3 +93,5 @@ helloplay
 *Tippen auf Spiele ab dem AchtelFinale jetzt mit Freischalt-Datum (wenn Ergebnisse auf jeden Fall feststehen)
 *navbar lässt sich nun richtig "collapsen"
 *several design-improvements
+
++Benutzer koennen sich jetzt in mehreren TippRunden befinden.

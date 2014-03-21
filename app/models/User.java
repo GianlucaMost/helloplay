@@ -43,9 +43,12 @@ public class User {
     @OneToMany(mappedBy="user", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
-    @ManyToOne(optional=false)
-    @JoinColumn(name="fk_trid", referencedColumnName="trid")
-    private Trunde trunde;
+    @ManyToMany
+    @JoinTable(
+        name="user_trunde",
+        joinColumns={@JoinColumn(name="fk_uid", referencedColumnName="uid")},
+        inverseJoinColumns={@JoinColumn(name="fk_trid", referencedColumnName="trid")})
+    private Collection<Trunde> trunden;
     
     /**
      * default constuctor
@@ -62,7 +65,6 @@ public class User {
     public User(String name, String pwHash){
     	this.name=name;
     	this.pw=pwHash;
-    	this.trunde=Trunde.findById(0);
     }
     
     /**
@@ -81,16 +83,16 @@ public class User {
      * get TippRunde from this user
      * @return
      */
-    public Trunde getTrunde(){
-    	return this.trunde;
+    public Collection<Trunde> getTrunden(){
+    	return this.trunden;
     }
     
     /**
      * set TippRunde from this user
      * @param tr
      */
-    public void setTrunde(Trunde tr){
-    	this.trunde=tr;
+    public void addTrunde(Trunde tr){
+    	this.trunden.add(tr);
     }
     
     /**
