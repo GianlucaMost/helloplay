@@ -77,6 +77,9 @@ public class UserController extends Controller {
 		User u = User.findById(uid);
 		Trunde tr = Trunde.findById(trid);
 		u.removeFromTrunde(tr);
+//		if(tr.getTrAdmin().equals(u)){
+//			tr.setTrAdmin(null);
+//		}
 		Logger.info("Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
 		flash("info", "Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
 		return redirect(routes.TrundeController.showMain());

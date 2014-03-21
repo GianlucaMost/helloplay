@@ -101,3 +101,7 @@ helloplay
 +TrundeMain added
 +Verlassen und Erstellen von Trunden moeglich
 	#admin muss noch gesetzt werden
+
+*admin wird jetzt korrekt gesetzt.
++man kann jetzt trunden per link beitreten
+

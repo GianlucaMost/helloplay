@@ -46,13 +46,32 @@ public class TrundeController extends Controller {
     public static Result addNew(int uid) {
 		final DynamicForm form = form().bindFromRequest();
 		final String b = form.get("bezeichnung");
-		Trunde tr = new Trunde(b);
 		User u = User.findById(uid);
+		Trunde tr = new Trunde(b, u);
 		Logger.info("Benutzer " + u.name + " (" + u.uid + ") moechte neue TippRunde " + b + " erstellen.");
 		tr.persist();
 		u.addTrunde(tr);
 		Logger.info("Benutzer " + u.name + " ist nun in TippRunde " + tr.bezeichnung + ".");
 		flash("success", "TippRunde " + tr.bezeichnung + " erstellt");
+		return redirect(routes.TrundeController.showMain());
+	}
+	
+	@Transactional
+    public static Result removeTrunde(int trid) {
+		Trunde tr = Trunde.findById(trid);
+		String tmp = tr.bezeichnung;
+		Logger.info("TippRunde " + tr.bezeichnung + "wird geloscht. Admin is " + tr.getTrAdmin().name + " (" + tr.getTrAdmin().uid + ").");
+		tr.delete();
+		flash("info", "TippRunde " + tmp + " wurde geloescht!");
+		return redirect(routes.TrundeController.showMain());
+	}
+	
+	@Transactional
+    public static Result joinTrunde(int trid) {
+		User u = User.findByName(request().username());
+		Trunde tr = Trunde.findById(trid);
+		u.addTrunde(tr);
+		flash("success", "Sie sind der TippRunde " + tr.bezeichnung + " beigetreten.");
 		return redirect(routes.TrundeController.showMain());
 	}
 }

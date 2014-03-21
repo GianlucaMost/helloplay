@@ -47,9 +47,10 @@ public class Trunde {
      * Konstruktor
      * @param b
      */
-    public Trunde(String b)
+    public Trunde(String b, User admin)
     {
     	this.bezeichnung=b;
+    	this.tradmin=admin;
     }
     
     /**
@@ -60,10 +61,18 @@ public class Trunde {
     	return this.member;
     }
     
+    /**
+     * get the admin of this tr
+     * @return
+     */
     public User getTrAdmin(){
     	return this.tradmin;
     }
     
+    /**
+     * Set given user u to the admin of this tr
+     * @param u
+     */
     public void setTrAdmin(User u){
     	this.tradmin=u;
     }
@@ -115,14 +124,6 @@ public class Trunde {
     		}
     	}
     	return tipps;
-    	
-//    	String sqlQ = "SELECT t.* FROM tipp AS t "
-//    	+ "INNER JOIN user AS u ON t.fk_uid=u.uid "
-//    	+ "INNER JOIN trunde AS tr ON u.fk_trid=tr.trid "
-//    	+ "WHERE tr.trid = ?";
-//    	Query q = JPA.em().createNativeQuery(sqlQ);
-//		q.setParameter(1, this.trid);
-//    	return (Collection<Tipp>) q.getResultList();
     }
     
     /**
@@ -141,16 +142,6 @@ public class Trunde {
     		}
     	}
     	return tipps;
-    	
-//    	String sqlQ = "select tipp.* from tipp "
-//    	+ "inner join user on tipp.fk_uid=user.uid "
-//    	+ "inner join trunde on user.fk_trid=trunde.trid "
-//    	+ "where trunde.trid = ? "
-//    	+ "AND tipp.fk_sid = ?";
-//    	Query q = JPA.em().createNativeQuery(sqlQ);
-//		q.setParameter(1, this.trid);
-//		q.setParameter(2, s.sid);
-//    	return (Collection<Tipp>) q.getResultList();
     }
     
     /**

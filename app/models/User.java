@@ -114,9 +114,21 @@ public class User {
     	return this.tipps;
     }
     
+    /**
+     * get all TR where this user is admin from
+     * @return
+     */
     public Collection<Trunde> getTrAdmin(){
     	return this.tradmin;
     }
+    
+//    /**
+//     * removes the given TR from the Collection of TRs this user is admin from
+//     * @param tr
+//     */
+//    public void removeTrAdmin(Trunde tr){
+//    	this.tradmin.remove(tr);
+//    }
     
     /**
      * check username, when the name already exist, 'true' is returned, otherwise 'false'

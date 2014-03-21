@@ -6,10 +6,15 @@
 	</div>
 	
 	@if(flash.containsKey("success")) {
-	<div class="alert alert-success">
-		<strong class="success">Erfolg!</strong> @flash.get("success")
-	</div>
- 		}
+		<div class="alert alert-success">
+			<strong class="success">Erfolg!</strong> @flash.get("success")
+		</div>
+ 	}
+ 	@if(flash.containsKey("info")) {
+		<div class="alert alert-info">
+			<strong class="info">Hinweis.</strong> @flash.get("info")
+		</div>
+ 	}
 	
 	<div class="row-fluid">
 		<table class="table table-striped">
@@ -40,10 +45,26 @@
 		 					@tr.punkte()
 		 				</td>
 		 				<td>
-		  					@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
-								<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
-									<span class="glyphicon glyphicon-remove"></span>
-								</button>
+			 				@if(tr.getTrAdmin()!=null){
+			 					@if(tr.getTrAdmin().equals(cU)){
+				  					@helper.form(action = routes.TrundeController.removeTrunde(tr.trid)) {
+										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
+											<span class="glyphicon glyphicon-trash"></span>
+										</button>
+									}
+								}else{
+									@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
+										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
+											<span class="glyphicon glyphicon-remove"></span>
+										</button>
+									}
+								}
+							}else{
+								@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
+									<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
+										<span class="glyphicon glyphicon-remove"></span>
+									</button>
+								}
 							}
 		  				</td>
 		 			</tr>
