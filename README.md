@@ -95,3 +95,5 @@ helloplay
 *several design-improvements
 
 +Benutzer koennen sich jetzt in mehreren TippRunden befinden.
+
+*bugfixes (trunden-view)
