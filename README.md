@@ -97,3 +97,7 @@ helloplay
 +Benutzer koennen sich jetzt in mehreren TippRunden befinden.
 
 *bugfixes (trunden-view)
+
++TrundeMain added
++Verlassen und Erstellen von Trunden moeglich
+	#admin muss noch gesetzt werden

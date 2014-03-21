@@ -1,7 +1,9 @@
 @(mannschaften: Map[String, List[Mannschaft]], currentUser: models.User)
 
 @main("Detailuebersicht", currentUser){
-	<h3>Detailuebersicht</h3>	
+	<div class="page-header">
+		<h1>Detailansicht</h1>
+	</div>
 	@for((key, value) <- mannschaften){
 		<div class="panel panel-primary">
 			<div class="panel-heading">

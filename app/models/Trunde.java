@@ -31,6 +31,10 @@ public class Trunde {
     @ManyToMany(mappedBy="trunden")
     private Collection<User> member;
     
+    @ManyToOne
+    @JoinColumn(name="fk_admin", referencedColumnName="uid")
+    private User tradmin;
+    
     /**
      * Default constructor
      */
@@ -56,12 +60,28 @@ public class Trunde {
     	return this.member;
     }
     
+    public User getTrAdmin(){
+    	return this.tradmin;
+    }
+    
+    public void setTrAdmin(User u){
+    	this.tradmin=u;
+    }
+    
     /**
      * Find a 'Trunde' by id.
      */
     @Transactional(readOnly=true)
     public static Trunde findById(int trid) {
     	return JPA.em().find(Trunde.class, trid);
+    }
+    
+    /**
+     * persist the trunde
+     */
+    @Transactional
+    public void persist() {
+		JPA.em().persist(this);
     }
     
     /**

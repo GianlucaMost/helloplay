@@ -24,7 +24,6 @@
 				          	}
 				        </td>
 				        <td>
-				        	<!-- 2do: admin-switching -->
 		  					@helper.form(action = routes.UserController.switchAdmin(user.uid)) {
 								<button class="btn btn-sm btn-default btn-block" type="submit">
 									<span class="glyphicon glyphicon-random"></span>
@@ -51,12 +50,12 @@
     	</table>
     	@if(flash.containsKey("success")) {
 			<div class="alert alert-success">
-				<strong class="success">Success!</strong> @flash.get("success")
+				<strong class="success">Erfolg!</strong> @flash.get("success")
 			</div>
    		}
    		@if(flash.containsKey("warning")) {
 			<div class="alert alert-warning">
-				<strong class="warning">Warning!</strong> @flash.get("warning")
+				<strong class="warning">Warnung!</strong> @flash.get("warning")
 			</div>
    		}
     	

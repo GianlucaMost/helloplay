@@ -29,21 +29,21 @@
      					@if(currentUser.admin != 1) {
 		       				<ul class="nav navbar-nav">
 					            <li><a href="/tipps">Tipps</a></li>
-					            <li><a href="/trunde/overview">Tipp-Runde</a></li>
+					            <li><a href="/trunde">TippRunden</a></li>
 		       				</ul>
 	       				}
        				}
        				<ul class="nav navbar-nav navbar-right">
 		              	@if(currentUser != null) {
 			              	<li>
-				              <a href="@routes.UserController.accverwaltung()">
-				              	<span class="glyphicon glyphicon-user">
-				              		@currentUser.name
-				              		@if(currentUser.admin == 1) {
-				              			(admin)
-				              		}
-				              	</span>
-				              </a>
+								<a href="@routes.UserController.accverwaltung()">
+									<span class="glyphicon glyphicon-user">
+										@currentUser.name
+										@if(currentUser.admin == 1) {
+											(admin)
+										}
+									</span>
+								</a>
 			              	</li>
 		              	}
 		              	@if(currentUser != null) {

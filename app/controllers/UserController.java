@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import models.Trunde;
 import models.User;
 import play.*;
 import play.mvc.*;
@@ -52,17 +53,35 @@ public class UserController extends Controller {
 		return ok(accverwaltung.render(User.findByName(request().username())));
 	}
 	
+	/**
+	 * toggle the admin-byte from the given user (set to 0 when 1 and set to 1 when 0)
+	 * @param uid
+	 * @return
+	 */
 	@Transactional
 	public static Result switchAdmin(int uid) {
-//		final DynamicForm form = form().bindFromRequest();
-//		byte admin = Byte.parseByte(form.get("admin"));
 		User u = User.findById(uid);
-//		u.admin=admin;
-//		u.persist();
 		u.switchAdmin();
 		String refererHeader = request().headers().get("Referer")[0];
 		return redirect(refererHeader);
 	}
+	
+	/**
+	 * removes the given user(by uid) from the given trunde(by trid)
+	 * @param uid
+	 * @param trid
+	 * @return
+	 */
+	@Transactional
+	public static Result removeFromTrunde(int uid, int trid) {
+		User u = User.findById(uid);
+		Trunde tr = Trunde.findById(trid);
+		u.removeFromTrunde(tr);
+		Logger.info("Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
+		flash("info", "Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
+		return redirect(routes.TrundeController.showMain());
+	}
+	
 	
 	/**
 	 * render the newuser-view

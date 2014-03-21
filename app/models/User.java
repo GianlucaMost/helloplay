@@ -50,6 +50,9 @@ public class User {
         inverseJoinColumns={@JoinColumn(name="fk_trid", referencedColumnName="trid")})
     private Collection<Trunde> trunden;
     
+    @OneToMany(mappedBy="tradmin", targetEntity=Trunde.class)
+    private Collection<Trunde> tradmin;
+    
     /**
      * default constuctor
      */
@@ -96,11 +99,23 @@ public class User {
     }
     
     /**
+     * removes this user from the given TippRunde
+     * @param tr
+     */
+    public void removeFromTrunde(Trunde tr){
+    	this.trunden.remove(tr);
+    }
+    
+    /**
      * get tipps from this user
      * @return
      */
     public Collection<Tipp> getTipps(){
     	return this.tipps;
+    }
+    
+    public Collection<Trunde> getTrAdmin(){
+    	return this.tradmin;
     }
     
     /**

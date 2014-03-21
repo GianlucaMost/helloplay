@@ -50,6 +50,12 @@ GET		/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
 
 # admin toggling fuer benutzer mit id
 POST	/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
+
+# remove user with uid from trunde with trid
+GET		/user/trunde/remove/:uid+:trid			controllers.UserController.removeFromTrunde(uid: Int, trid: Int)
+
+# remove user with uid from trunde with trid
+POST	/user/trunde/remove/:uid+:trid			controllers.UserController.removeFromTrunde(uid: Int, trid: Int)
 	
 #LoginController
 
@@ -81,7 +87,12 @@ POST	/tippen/:sid+:uid			controllers.TippController.tippen(sid: Int, uid: Int)
 GET		/tipps						controllers.TippController.showTipps()
 
 # TippRunden-Uebersicht
-GET		/trunde/overview/:id		controllers.TrundeController.showOverview(id: Int)
+GET		/trunde						controllers.TrundeController.showMain()
+
+# TippRunde-Detailansicht
+GET		/trunde/:id					controllers.TrundeController.showDetail(id: Int)
+
+POST	/trunde/add/:uid			controllers.TrundeController.addNew(uid: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
