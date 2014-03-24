@@ -18,6 +18,8 @@ import play.db.jpa.Transactional;
 import views.html.*;
 import play.data.DynamicForm;
 
+
+
 @Security.Authenticated(Secured.class)
 public class TippController extends Controller {
 	

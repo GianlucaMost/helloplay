@@ -6,11 +6,7 @@
 	@helper.form(action = routes.LoginController.register) {
 		<div class="container-fluid">
 			<h1 class="form-heading">Registrieren</h1>
-			@if(flash.containsKey("error")) {
-				<div class="alert alert-danger">
-					<strong class="error">Oops!</strong> @flash.get("error")
-				</div>
-			}
+			@alerts()
 			<p>
 				<div class="input">
 					<input required type="text" class="form-control" name="name" placeholder="Benutzername" maxlength="30"></input>

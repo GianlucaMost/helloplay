@@ -4,21 +4,7 @@
 	<div class="page-header">
 		<h1><div class="text-muted">Wilkommen</div> <strong>@currentUser.name</strong></h1>
 	</div>
-	@if(flash.containsKey("success")) {
-		<div class="alert alert-success">
-			<strong class="success">Erfolg!</strong> @flash.get("success")
-		</div>
-   	}
-   	@if(flash.containsKey("warning")) {
-		<div class="alert alert-warning">
-			<strong class="warning">Ok!</strong> @flash.get("warning")
-		</div>
-   	}
-   	@if(flash.containsKey("error")) {
-		<div class="alert alert-danger">
-			<strong class="error">Oops!</strong> @flash.get("error")
-		</div>
-	}
+	@alerts()
     <div class=container>
     	<div class=row>
 	    	<div class="col-md-6">

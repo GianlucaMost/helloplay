@@ -2,7 +2,9 @@ package controllers;
 
 import static play.data.Form.form;
 
+import java.awt.Desktop;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -52,8 +54,8 @@ public class TrundeController extends Controller {
 		tr.persist();
 		u.addTrunde(tr);
 		Logger.info("Benutzer " + u.name + " ist nun in TippRunde " + tr.bezeichnung + ".");
-		flash("success", "TippRunde " + tr.bezeichnung + " erstellt");
-		return redirect(routes.TrundeController.showMain());
+		flash("success", "TippRunde " + tr.bezeichnung + " wurde erstellt.");
+		return redirect(routes.TrundeController.showDetail(tr.trid));
 	}
 	
 	@Transactional
@@ -70,8 +72,41 @@ public class TrundeController extends Controller {
     public static Result joinTrunde(int trid) {
 		User u = User.findByName(request().username());
 		Trunde tr = Trunde.findById(trid);
-		u.addTrunde(tr);
-		flash("success", "Sie sind der TippRunde " + tr.bezeichnung + " beigetreten.");
+		if (!u.getTrunden().contains(tr)){
+			u.addTrunde(tr);
+			Logger.info(u.name + " tritt der TippRunde " + tr.bezeichnung + " (" + tr.trid + ") bei.");
+			flash("success", "Sie sind der TippRunde " + tr.bezeichnung + " beigetreten.");
+		}else{
+			Logger.info(u.name + " (" + u.uid + ") befindet sich bereits in TippRunde " + tr.bezeichnung + " (" + tr.trid + ").");
+			flash("error",	"Sie befinden sich bereits in der TippRunde " + tr.bezeichnung);
+		}
 		return redirect(routes.TrundeController.showMain());
+	}
+	
+	@Transactional
+    public static Result invite(int uid, int trid) {
+		final DynamicForm form = form().bindFromRequest();
+		final String adress = form.get("email");
+		final String msg = form.get("msg");
+		User host = User.findById(uid);
+		Trunde tr = Trunde.findById(trid);
+		String mail = "mailto:" + adress + "?subject=WMtipp - TippRunden Einladung&body=Der Benutzer " + host.name + " des TippPortals WMtipp moechte Sie gerne zu der TippRunde " + tr.bezeichnung + " einladen. Melden Sie sich an und klicken Sie auf folgenden Link um der TippRunde beizutreten. http://localhost:9000/trunde/join/" + trid;
+		try {
+            Desktop
+	            .getDesktop()
+	            .mail(
+	            		new URI(
+	//                  	"mailto:gugu@gaga.de?subject=someSubject&cc=aa@bb.cc,dd@dd.ds&bcc=x@y.zz&body=someBodyText"
+	            			"mailto:"
+	            			+ adress
+	            			+ "?subject=WMtipp-Einladung&body="
+//	            			+ "Der%20Benutzer%20" + host.name + "%20moechte%20Sie%20gerne%20zu%20der%20TippRunde%20" + tr.bezeichnung + "%20einladen.%0D%0A"
+//	            			+ "Melden%20Sie%20sich%20bitte%20an%20und%20klicken%20dann%20auf%20folgenden%20Link:%0D%0A"
+	            			+ "http://localhost:9000/trunde/join/" + trid
+                        ));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		return TODO;
 	}
 }

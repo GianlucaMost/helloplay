@@ -4,21 +4,7 @@
     <div class="page-header">
 		<h1>Home</h1>
 	</div>	
-	@if(flash.containsKey("success")) {
-		<div class="alert alert-success">
-			<strong class="success">Erfolg!</strong> @flash.get("success")
-		</div>
-   	}
-   	@if(flash.containsKey("warning")) {
-		<div class="alert alert-warning">
-			<strong class="warning">Warnung!</strong> @flash.get("warning")
-		</div>
-   	}
-   	@if(flash.containsKey("info")) {
-		<div class="alert alert-info">
-			<strong class="info">Ok!</strong> @flash.get("info")
-		</div>
-   	}
+	@alerts()
 	<div class="container">
 		<div>
 	  		@grp_overview(mannschaften)

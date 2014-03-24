@@ -15,16 +15,7 @@
 			}
 		</p>
 	</blockquote>
-	@if(flash.containsKey("tippError")) {
-		<div class="alert alert-danger">
-			<strong class="warning">Fehler!</strong> @flash.get("tippError")
-		</div>
-	}
-	@if(flash.containsKey("tippSuccess")) {
-		<div class="alert alert-success">
-			<strong class="success">Erfolg!</strong> @flash.get("tippSuccess")
-		</div>
-	}
+	@alerts()
 	<div class="row-fluid">
 	   	 <table class="table table-striped">
 	    	<thead>

@@ -23,6 +23,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional(readOnly=true)
+	@Security.Authenticated(AdminSecured.class)
     public static Result users() {
 		Logger.info("Start searching for all user");
 		Collection<User> users = User.findAll();
@@ -59,6 +60,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(AdminSecured.class)
 	public static Result switchAdmin(int uid) {
 		User u = User.findById(uid);
 		u.switchAdmin();
@@ -75,14 +77,21 @@ public class UserController extends Controller {
 	@Transactional
 	public static Result removeFromTrunde(int uid, int trid) {
 		User u = User.findById(uid);
+		User cU = User.findByName(request().username());
 		Trunde tr = Trunde.findById(trid);
 		u.removeFromTrunde(tr);
 //		if(tr.getTrAdmin().equals(u)){
 //			tr.setTrAdmin(null);
 //		}
-		Logger.info("Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
-		flash("info", "Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
-		return redirect(routes.TrundeController.showMain());
+		if(u.equals(cU)){
+			Logger.info("Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
+			flash("info", "TippRunde " + tr.bezeichnung + " wurde verlassen.");
+			return redirect(routes.TrundeController.showMain());
+		}else{
+			Logger.info("Benutzer " + u.name + " wurde von " + cU.name + " aus der TippRunde " + tr.bezeichnung + " gekickt");
+			flash("info", "Benutzer " + u.name + " aus der TippRunde " + tr.bezeichnung + "  geworfen.");
+			return redirect(routes.TrundeController.showDetail(tr.trid));
+		}
 	}
 	
 	
@@ -91,6 +100,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(AdminSecured.class)
 	public static Result newuser() {
 		Form<User> userForm = form(User.class);
 		return ok(newuser.render("", userForm, User.findByName(request().username())));
@@ -101,6 +111,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(AdminSecured.class)
 	public static Result save() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
@@ -131,6 +142,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(AdminSecured.class)
 	public static Result updateShow(int id) {
 		User user = User.findById(id);
 		if (user!=null) {
@@ -145,6 +157,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
+	@Security.Authenticated(AdminSecured.class)
 	public static Result update(int id) {
 		DynamicForm form = form().bindFromRequest();
 		String name = form.get("name");
@@ -237,20 +250,22 @@ public class UserController extends Controller {
 	}
 	
 	/**
-	 * delete a user by his id
+	 * delete the user with the given id
 	 * @param id
 	 * @return
 	 */
 	@Transactional
 	public static Result delete(int id){
-		User user = User.findById(id);
-		if (user==null)
-		{
-			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
-		}else{
-			flash("warning", "user " + user.name + " wurde geloescht");
-			user.delete();
+		User delUser = User.findById(id);
+		User curUser = User.findByName(request().username());
+		if (delUser!=null){
+			if(delUser.equals(curUser) || curUser.admin==1){
+				flash("warning", "user " + delUser.name + " wurde geloescht");
+				delUser.delete();
+			}
 			return redirect("/");
+		}else{
+			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
 		}
 	}
 

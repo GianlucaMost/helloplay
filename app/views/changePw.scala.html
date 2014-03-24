@@ -6,11 +6,7 @@
 	@helper.form(action = routes.UserController.changePw(cU.uid)) {
 		<div class="container-fluid">
 			<h1 class="form-heading">Password aendern</h1>
-			@if(flash.containsKey("error")) {
-				<div class="alert alert-danger">
-					<strong class="error">Oops!</strong> @flash.get("error")
-				</div>
-			}
+			@alerts()
 			<p>
 				<input required type="password" class="form-control" name="pwOld" placeholder="Passwort" maxlength="30"></input>
 			</p>

@@ -4,132 +4,171 @@
     <div class="page-header">
 		<h1>TippRunde<small>_@tr.bezeichnung</small></h1>
 	</div>
-
-	<div class="row">
-		<div class="col-md-3">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Mitglieder</h3>
-				</div>
-				<div class="panel-body">
-					<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>Benutzer</th>
-									<th>Punkte</th>
-								</tr>
-							</thead>
-			 				<tbody>
-								@for(m <- tr.getMember()) {
-			 						<tr>
-										<td>
-				    						<a @if(m.equals(cU)){href="/tipps"}else{href="/user/find/@m.uid"}>
-				    							@m.name
-				    						</a>
-								    	</td>
-										<td>@m.punkte</td>
+	@alerts()
+ 	@defining(tr.getTrAdmin()) { tra =>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Mitglieder</h3>
+					</div>
+					<div class="panel-body">
+						<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Benutzer</th>
+										<th>Punkte</th>
+										@if(tra!=null && tra.equals(cU)){
+											<th></th>
+										}
 									</tr>
-								}
-							</tbody>
-		 				</table>
-				</div><!-- panel-body -->
-			</div><!-- panel -->
-		</div> <!-- col.md-3 -->
-		
-		http://localhost:9000/trunde/join/@tr.trid
-		
-		<div class="col-md-3 col-md-offset-6 text-right">
-			<blockquote>
-				<p>
-					Tipps: @tr.findTipps().size()
-						<small>@cU.getTipps().size() eigene@if(cU.getTipps().size()==1){r}</small>
-				</p>
-				<p>
-					Punkte: @tr.punkte()
-					<small>@cU.punkte eigene@if(cU.punkte==1){r}</small>
-				</p>
-			</blockquote>
-		</div> <!-- col.md-3 col.md-offset-6 text-right -->
-	</div> <!-- row -->
-	
-	<div class="row-fluid">
-	   	 <table class="table table-striped">
-	    	<thead>
-				<tr>
-					<th>Beginn*</th>
-					<th>Spiel</th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th></th>
-					<th>Tipps</th>
-				</tr>
-			</thead>
-			<tbody>
-	 			@for(s <- spiele){
-	 				@if(!tr.findTippsSpiel(s).isEmpty()){
-		 				@if(s.gameRunning()){
-		 					<tr class="info">
-		 				}else {
-		 					@if(s.gameOver()){
-		 						<tr class="warning">
-		 					}else{
-		 						<tr>
-		 					}
-		 				}
-		 					<td>
-		 						<strong>
-		 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
-		 						</strong>
-		 						 - 
-		 						<small>
-		 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
-		 						</small>
-		 					</td>
-							<td>
-								<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
-				    				@s.getMannschaftHeim().bezeichnung
-				    			</a>
-							</td>
-							<td>@s.toreheim</td>
-							<td>   -   </td>
-							<td>@s.toregast</td>
-							<td>
-								<a href="/mannschaft/find/@s.getMannschaftGast().mid">
-				    				@s.getMannschaftGast().bezeichnung
-				    			</a>
-							</td>
-							<td>
-								@for((t, i) <- tr.findTippsSpiel(s).zipWithIndex){
-									@if(t.getUser().equals(cU)){
-										<strong>
-									}else{
-										<small>
+								</thead>
+				 				<tbody>
+									@for(m <- tr.getMember()) {
+				 						<tr>
+											<td>
+												@if(tra!=null && tra.equals(m)){
+													<strong>
+												}
+					    						<a @if(m.equals(cU)){href="/tipps"}else{href="/user/find/@m.uid"}>
+					    							@m.name
+					    						</a>
+					    						@if(tra!=null && tra.equals(m)){
+													</strong>
+												}
+									    	</td>
+											<td>@m.punkte</td>
+											@if(tra!=null && tra.equals(cU) && !tra.equals(m)){
+												<td>
+													@helper.form(action = routes.UserController.removeFromTrunde(m.uid, tr.trid)) {
+														<button title="Entfernen" class="btn btn-sm btn-danger btn-block" type="submit">
+															<span class="glyphicon glyphicon-remove"></span>
+														</button>
+													}
+												</td>
+											}
+										</tr>
 									}
-									<a @if(t.getUser().equals(cU)){href="/tipps"}else{href="/user/find/@t.getUser().uid"}>
-					    				@t.getUser().name: 
+								</tbody>
+			 				</table>
+			 			@if(tra!=null && tra.equals(cU)){
+							<a href="mailto:?subject=WMtipp - TippRunden Einladung&body=Melden Sie sich an und klicken dann auf folgenden Link um der TippRunde @tr.bezeichnung beizutreten:%0Dhttp://localhost:9000/trunde/join@tr.trid">
+								<button title="Neuen Benutzer einladen" class="btn btn-sm btn-default btn-block">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</a>
+						}
+					</div><!-- panel-body -->
+				</div><!-- panel -->
+			</div> <!-- col.md-3 -->
+			
+			<div class="col-md-4">
+				@helper.form(action = routes.TrundeController.invite(cU.uid, tr.trid)) {
+					<p>
+			      		<input required type="text" class="form-control" name="email" placeholder="Email-Adresse">
+			      	</p>
+			      	<p>
+			      		<input required type="text" class="form-control" name="msg" placeholder="Nachricht" maxlength="600">
+			      	</p>
+					<button title="Einladen" class="btn btn-sm btn-default btn-block" type="submit">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				}
+			</div>
+			
+			<div class="col-md-3 col-md-offset-2 text-right">
+				<blockquote>
+					<p>
+						Tipps: @tr.findTipps().size()
+							<small>@cU.getTipps().size() eigene@if(cU.getTipps().size()==1){r}</small>
+					</p>
+					<p>
+						Punkte: @tr.punkte()
+						<small>@cU.punkte eigene@if(cU.punkte==1){r}</small>
+					</p>
+				</blockquote>
+			</div> <!-- col.md-3 col.md-offset-6 text-right -->
+		</div> <!-- row -->
+		
+		<div class="row-fluid">
+		   	 <table class="table table-striped">
+		    	<thead>
+					<tr>
+						<th>Beginn*</th>
+						<th>Spiel</th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th>Tipps</th>
+					</tr>
+				</thead>
+				<tbody>
+		 			@for(s <- spiele){
+		 				@if(!tr.findTippsSpiel(s).isEmpty()){
+			 				@if(s.gameRunning()){
+			 					<tr class="info">
+			 				}else {
+			 					@if(s.gameOver()){
+			 						<tr class="warning">
+			 					}else{
+			 						<tr>
+			 					}
+			 				}
+			 					<td>
+			 						<strong>
+			 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
+			 						</strong>
+			 						 - 
+			 						<small>
+			 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
+			 						</small>
+			 					</td>
+								<td>
+									<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+					    				@s.getMannschaftHeim().bezeichnung
 					    			</a>
-					    			@t.toreheim - @t.toregast
-									@if(t.getUser().equals(cU)){
-										</strong>
-									}else{
-										</small>
+								</td>
+								<td>@s.toreheim</td>
+								<td>   -   </td>
+								<td>@s.toregast</td>
+								<td>
+									<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+					    				@s.getMannschaftGast().bezeichnung
+					    			</a>
+								</td>
+								<td>
+									@for((t, i) <- tr.findTippsSpiel(s).zipWithIndex){
+										@if(t.getUser().equals(cU)){
+											<strong>
+										}else{
+											<small>
+										}
+										<a @if(t.getUser().equals(cU)){href="/tipps"}else{href="/user/find/@t.getUser().uid"}>
+						    				@t.getUser().name: 
+						    			</a>
+						    			@t.toreheim - @t.toregast
+										@if(t.getUser().equals(cU)){
+											</strong>
+										}else{
+											</small>
+										}
+										@if(i<=tr.findTippsSpiel(s).size()-1){
+											<br>
+										}
 									}
-									@if(i<=tr.findTippsSpiel(s).size()-1){
-										<br>
-									}
-								}
-							</td>
-						</tr>
-					} <!-- if(tr.findTippsSpiel(s)!=null) -->
-				} <!-- for(s <- spiele) -->
-			</tbody>
-	   	</table>
-	   	<br>
-		*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!
-		<ul class="list-group">
-			<li class="list-group-item list-group-item-info">Spiel laeuft.</li>
-			<li class="list-group-item list-group-item-warning">Spiel zu Ende.</li>
-		</ul>
-	</div> <!-- row -->
+								</td>
+							</tr>
+						} <!-- if(tr.findTippsSpiel(s)!=null) -->
+					} <!-- for(s <- spiele) -->
+				</tbody>
+		   	</table>
+		   	<br>
+			*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!
+			<ul class="list-group">
+				<li class="list-group-item list-group-item-info">Spiel laeuft.</li>
+				<li class="list-group-item list-group-item-warning">Spiel zu Ende.</li>
+			</ul>
+		</div> <!-- row -->
+	} <!-- defining tr.getTrAdmin() as tra -->
 }<!-- main -->

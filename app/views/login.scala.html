@@ -4,11 +4,7 @@
 	@helper.form(routes.LoginController.authenticate){
 		<div class="container-fluid">
 	  		<h1 class="form-signin-heading">Einloggen</h1>
-	  		@if(flash.containsKey("error")) {
-				<div class="alert alert-danger">
-					<strong class="error">Oops!</strong> @flash.get("error")
-				</div>
-			}
+	  		@alerts()
 			@if(form.hasGlobalErrors) {
 		    	<p class="error">
 		        	@form.globalError.message

@@ -105,3 +105,7 @@ helloplay
 *admin wird jetzt korrekt gesetzt.
 +man kann jetzt trunden per link beitreten
 
++Verschiedene invite-Moeglichkeiten(beta)
++Admin-Bereich und zusaetzlich admin-funktionen jetzt durch AdminSecured geschuetzt.
+*code-improvements(flash-messages parametrisiert)
+

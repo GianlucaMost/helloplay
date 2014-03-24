@@ -6,11 +6,7 @@
 	@helper.form(action = routes.UserController.update(uid)) {
 		<div class="container-fluid">
 			<h1 class="form-heading">Benutzer mit der ID '@uid' bearbeiten</h1>
-			@if(flash.containsKey("error")) {
-				<div class="alert alert-danger">
-					<strong class="error">Oops!</strong> @flash.get("error")
-				</div>
-			}
+			@alerts()
 			<p>
 				<input required type="text" class="form-control" name="name" placeholder="Benutzername" value="@user.name" maxlength="30"></input>
 			</p>

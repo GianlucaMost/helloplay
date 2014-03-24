@@ -16,7 +16,7 @@ public class Secured extends Security.Authenticator {
 	
 	@Override
 	public Result onUnauthorized(Context ctx) {
-//		flash("warning", "Sie muessen sich anmelden/registrierenum diesen Inhalt sehen zu koennen!");
+//		flash("warning", "Sie muessen sich anmelden/registrieren um diesen Inhalt sehen zu koennen!");
 		return redirect(routes.LoginController.login());
 	}
 }

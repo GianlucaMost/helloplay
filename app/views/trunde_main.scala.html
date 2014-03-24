@@ -4,53 +4,63 @@
     <div class="page-header">
 		<h1>TippRunden</h1>
 	</div>
-	
-	@if(flash.containsKey("success")) {
-		<div class="alert alert-success">
-			<strong class="success">Erfolg!</strong> @flash.get("success")
-		</div>
- 	}
- 	@if(flash.containsKey("info")) {
-		<div class="alert alert-info">
-			<strong class="info">Hinweis.</strong> @flash.get("info")
-		</div>
- 	}
-	
+	@alerts()
 	<div class="row-fluid">
-		<table class="table table-striped">
-	    	<thead>
-				<tr>
-					<th>Bezeichnung</th>
-					<th>Mitglieder</th>
-					<th>Tipps</th>
-					<th>Punkte</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				@for(tr <- cU.getTrunden()){
-		 			<tr>
-		 				<td>
-		 					<a href="/trunde/@tr.trid">
-			    				@tr.bezeichnung
-			    			</a>
-		 				</td>
-		 				<td>
-		 					@tr.getMember().size()
-		 				</td>
-		 				<td>
-		 					@tr.findTipps().size()
-		 				</td>
-		 				<td>
-		 					@tr.punkte()
-		 				</td>
-		 				<td>
-			 				@if(tr.getTrAdmin()!=null){
-			 					@if(tr.getTrAdmin().equals(cU)){
-				  					@helper.form(action = routes.TrundeController.removeTrunde(tr.trid)) {
-										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
-											<span class="glyphicon glyphicon-trash"></span>
-										</button>
+		<!-- wenn sich cU schon in mind 1er tr befindet -->
+		@if(cU.getTrunden().size!=0){
+			<table class="table table-striped">
+		    	<thead>
+					<tr>
+						<th>Bezeichnung</th>
+						<th>Mitglieder</th>
+						<th>Tipps</th>
+						<th>Punkte</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@for(tr <- cU.getTrunden()){
+			 			<tr>
+			 				<td>
+			 					@if(tr.getTrAdmin()!=null){
+				 					@if(tr.getTrAdmin().equals(cU)){
+				 						<strong>
+				 					}
+				 					<a href="/trunde/@tr.trid" title="admin = @tr.getTrAdmin().name">
+					    				@tr.bezeichnung
+					    			</a>
+					    			@if(tr.getTrAdmin().equals(cU)){
+					    				</strong>
+					    			}
+				    			}else{
+				    				<a href="/trunde/@tr.trid">
+					    				@tr.bezeichnung
+					    			</a>
+				    			}
+			 				</td>
+			 				<td>
+			 					@tr.getMember().size()
+			 				</td>
+			 				<td>
+			 					@tr.findTipps().size()
+			 				</td>
+			 				<td>
+			 					@tr.punkte()
+			 				</td>
+			 				<td>
+				 				@if(tr.getTrAdmin()!=null){
+				 					@if(tr.getTrAdmin().equals(cU)){
+					  					@helper.form(action = routes.TrundeController.removeTrunde(tr.trid)) {
+											<button title="Diese TippRunde loeschen" class="btn btn-sm btn-danger btn-block" type="submit">
+												<span class="glyphicon glyphicon-trash"></span>
+											</button>
+										}
+									}else{
+										@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
+											<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
+												<span class="glyphicon glyphicon-remove"></span>
+											</button>
+										}
 									}
 								}else{
 									@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
@@ -59,18 +69,18 @@
 										</button>
 									}
 								}
-							}else{
-								@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
-									<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
-										<span class="glyphicon glyphicon-remove"></span>
-									</button>
-								}
-							}
-		  				</td>
-		 			</tr>
-	 			}
-			</tbody>
-	   	</table>
+			  				</td>
+			 			</tr>
+		 			}
+				</tbody>
+		   	</table>
+	   	}else{ <!-- wenn sich cU noch in keiner tr befindet -->
+	   		<h2>Sie befinden sich zur Zeit in keiner TippRunde</h2>
+	   		<p>
+	   			Wenn Sie eine Einladung per email bekommen haben, klicken Sie bitte auf den enthaltenen Link. <br>
+	   			Sie koennen auch eine eigene TippRunde eroeffnen. Geben Sie einfach die gewuenschte Bezeichnung unten ein und klicken Sie auf das +
+	   		</p>
+	   	}
 	</div> <!-- row -->
 	<div class="row">
 	   	<br>
