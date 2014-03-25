@@ -73,7 +73,7 @@
 	 				}
 	 					<td><strong>@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)</strong></td>
 						<td>
-							<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+							<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftHeim().mid)">
 			    				@s.getMannschaftHeim().bezeichnung
 			    			</a>
 						</td>
@@ -81,7 +81,7 @@
 						<td>   -   </td>
 						<td>@s.toregast</td>
 						<td>
-							<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+							<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftGast().mid)">
 			    				@s.getMannschaftGast().bezeichnung
 			    			</a>
 						</td>

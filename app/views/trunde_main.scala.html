@@ -26,14 +26,14 @@
 				 					@if(tr.getTrAdmin().equals(cU)){
 				 						<strong>
 				 					}
-				 					<a href="/trunde/@tr.trid" title="admin = @tr.getTrAdmin().name">
+				 					<a href="@routes.TrundeController.showDetail(tr.trid)" title="admin = @tr.getTrAdmin().name">
 					    				@tr.bezeichnung
 					    			</a>
 					    			@if(tr.getTrAdmin().equals(cU)){
 					    				</strong>
 					    			}
 				    			}else{
-				    				<a href="/trunde/@tr.trid">
+				    				<a href="@routes.TrundeController.showDetail(tr.trid)">
 					    				@tr.bezeichnung
 					    			</a>
 				    			}

@@ -109,3 +109,7 @@ helloplay
 +Admin-Bereich und zusaetzlich admin-funktionen jetzt durch AdminSecured geschuetzt.
 *code-improvements(flash-messages parametrisiert)
 
+*hardcodierte Links aus templates entfernt
+*einige URLs angepasst (routes)
+*es wird nun ueber einen externen mail-client eingeladen (tr)
+

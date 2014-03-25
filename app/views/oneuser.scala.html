@@ -51,7 +51,7 @@
 		 						</small>
 		 					</td>
 							<td>
-								<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+								<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftHeim().mid)">
 				    				@s.getMannschaftHeim().bezeichnung
 				    			</a>
 							</td>
@@ -59,7 +59,7 @@
 							<td>   -   </td>
 							<td>@s.toregast</td>
 							<td>
-								<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+								<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftGast().mid)">
 				    				@s.getMannschaftGast().bezeichnung
 				    			</a>
 							</td>

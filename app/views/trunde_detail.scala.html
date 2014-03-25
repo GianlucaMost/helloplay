@@ -30,7 +30,7 @@
 												@if(tra!=null && tra.equals(m)){
 													<strong>
 												}
-					    						<a @if(m.equals(cU)){href="/tipps"}else{href="/user/find/@m.uid"}>
+					    						<a @if(m.equals(cU)){href="@routes.TippController.showTipps()"}else{href="@routes.UserController.finduser(m.uid)"}>
 					    							@m.name
 					    						</a>
 					    						@if(tra!=null && tra.equals(m)){
@@ -52,7 +52,7 @@
 								</tbody>
 			 				</table>
 			 			@if(tra!=null && tra.equals(cU)){
-							<a href="mailto:?subject=WMtipp - TippRunden Einladung&body=Melden Sie sich an und klicken dann auf folgenden Link um der TippRunde @tr.bezeichnung beizutreten:%0Dhttp://localhost:9000/trunde/join@tr.trid">
+							<a href="mailto:?subject=WMtipp - TippRunden Einladung&body=Melden Sie sich an und klicken dann auf folgenden Link um der TippRunde @tr.bezeichnung beizutreten:%0Dhttp://localhost:9000/trunde/join/@tr.trid">
 								<button title="Neuen Benutzer einladen" class="btn btn-sm btn-default btn-block">
 									<span class="glyphicon glyphicon-plus"></span>
 								</button>
@@ -62,21 +62,7 @@
 				</div><!-- panel -->
 			</div> <!-- col.md-3 -->
 			
-			<div class="col-md-4">
-				@helper.form(action = routes.TrundeController.invite(cU.uid, tr.trid)) {
-					<p>
-			      		<input required type="text" class="form-control" name="email" placeholder="Email-Adresse">
-			      	</p>
-			      	<p>
-			      		<input required type="text" class="form-control" name="msg" placeholder="Nachricht" maxlength="600">
-			      	</p>
-					<button title="Einladen" class="btn btn-sm btn-default btn-block" type="submit">
-						<span class="glyphicon glyphicon-plus"></span>
-					</button>
-				}
-			</div>
-			
-			<div class="col-md-3 col-md-offset-2 text-right">
+			<div class="col-md-3 col-md-offset-6 text-right">
 				<blockquote>
 					<p>
 						Tipps: @tr.findTipps().size()
@@ -125,7 +111,7 @@
 			 						</small>
 			 					</td>
 								<td>
-									<a href="/mannschaft/find/@s.getMannschaftHeim().mid">
+									<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftHeim().mid)">
 					    				@s.getMannschaftHeim().bezeichnung
 					    			</a>
 								</td>
@@ -133,7 +119,7 @@
 								<td>   -   </td>
 								<td>@s.toregast</td>
 								<td>
-									<a href="/mannschaft/find/@s.getMannschaftGast().mid">
+									<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftGast().mid)">
 					    				@s.getMannschaftGast().bezeichnung
 					    			</a>
 								</td>
@@ -144,7 +130,7 @@
 										}else{
 											<small>
 										}
-										<a @if(t.getUser().equals(cU)){href="/tipps"}else{href="/user/find/@t.getUser().uid"}>
+										<a @if(t.getUser().equals(cU)){href="@routes.TippController.showTipps()"}else{href="@routes.UserController.finduser(t.getUser().uid)"}>
 						    				@t.getUser().name: 
 						    			</a>
 						    			@t.toreheim - @t.toregast

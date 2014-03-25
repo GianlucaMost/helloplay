@@ -46,16 +46,19 @@ GET		/user/delete/:id			controllers.UserController.delete(id: Int)
 GET		/user/accverwaltung			controllers.UserController.accverwaltung()
 
 # admin toggling fuer benutzer mit id
-GET		/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
+GET		/user/:id/switch			controllers.UserController.switchAdmin(id: Int)
 
 # admin toggling fuer benutzer mit id
-POST	/user/switch/:id			controllers.UserController.switchAdmin(id: Int)
+POST	/user/:id/switch			controllers.UserController.switchAdmin(id: Int)
 
 # remove user with uid from trunde with trid
-GET		/user/trunde/remove/:uid+:trid			controllers.UserController.removeFromTrunde(uid: Int, trid: Int)
+GET		/user/:uid/remove/trunde/:trid			controllers.UserController.removeFromTrunde(uid: Int, trid: Int)
 
 # remove user with uid from trunde with trid
-POST	/user/trunde/remove/:uid+:trid			controllers.UserController.removeFromTrunde(uid: Int, trid: Int)
+POST	/user/:uid/remove/trunde/:trid			controllers.UserController.removeFromTrunde(uid: Int, trid: Int)
+
+# benutzer mit uid tippt auf spiel mit sid
+POST	/user/:uid/tipp/:sid		controllers.TippController.tippen(sid: Int, uid: Int)
 	
 #LoginController
 
@@ -80,9 +83,6 @@ GET		/mannschaft/find/:id		controllers.MannschaftController.mannschaftShow(id: I
 # detailierte mannschaftsuebersicht
 GET		/mannschaft/overview		controllers.MannschaftController.mannschaften()
 
-# benutzer mit uid tippt auf spiel mit sid
-POST	/tippen/:sid+:uid			controllers.TippController.tippen(sid: Int, uid: Int)
-
 # tipps-ueberblick
 GET		/tipps						controllers.TippController.showTipps()
 
@@ -102,10 +102,10 @@ POST	/trunde/delete/:trid		controllers.TrundeController.removeTrunde(trid: Int)
 GET		/trunde/join/:trid			controllers.TrundeController.joinTrunde(trid: Int)
 
 # invite versenden
-GET		/trunde/invite/:uid+:trid	controllers.TrundeController.invite(uid: Int, trid: Int)
+GET		/trunde/:trid/invite/:uid	controllers.TrundeController.invite(uid: Int, trid: Int)
 
 # invite versenden
-POST	/trunde/invite/:uid+trid	controllers.TrundeController.invite(uid: Int, trid: Int)
+POST	/trunde/:trid/invite/:uid	controllers.TrundeController.invite(uid: Int, trid: Int)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -26,7 +26,7 @@
 							@for(m <- value) {
 		 						<tr>
 									<td>
-			    						<a href="/mannschaft/find/@m.mid">
+			    						<a href="@routes.MannschaftController.mannschaftShow(m.mid)">
 			    							@m.bezeichnung
 			    						</a>
 							    	</td>

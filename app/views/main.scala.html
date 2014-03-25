@@ -28,8 +28,8 @@
      				@if(currentUser != null) {
      					@if(currentUser.admin != 1) {
 		       				<ul class="nav navbar-nav">
-					            <li><a href="/tipps">Tipps</a></li>
-					            <li><a href="/trunde">TippRunden</a></li>
+					            <li><a href="@routes.TippController.showTipps()">Tipps</a></li>
+					            <li><a href="@routes.TrundeController.showMain()">TippRunden</a></li>
 		       				</ul>
 	       				}
        				}

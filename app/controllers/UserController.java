@@ -263,7 +263,11 @@ public class UserController extends Controller {
 				flash("warning", "user " + delUser.name + " wurde geloescht");
 				delUser.delete();
 			}
-			return redirect("/");
+			if (curUser.admin==1){
+				return redirect(routes.UserController.users());
+			}else{
+				return redirect(routes.Application.index());
+			}
 		}else{
 			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
 		}

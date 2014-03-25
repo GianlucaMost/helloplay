@@ -2,7 +2,7 @@
 
 @main("Accountverwaltung", currentUser) {
 	<div class="page-header">
-		<h1><div class="text-muted">Wilkommen</div> <strong>@currentUser.name</strong></h1>
+		<h1><div class="text-muted">Willkommen</div> <strong>@currentUser.name</strong></h1>
 	</div>
 	@alerts()
     <div class=container>
@@ -32,7 +32,7 @@
 						************
 					</div> <!-- col.md-4 -->
 						<div class="col-md-3 text-right">
-							<a href="/user/changePw/@currentUser.uid">
+							<a href="@routes.UserController.changePwShow(currentUser.uid)">
 								<button type="button" class="btn btn-default btn">
 						  			<span class="glyphicon glyphicon-pencil"></span>
 								</button>
@@ -49,7 +49,7 @@
 				</p>
 			</div> <!-- col.md-6 -->
 			<p class="text-right">
-				<a href="/user/delete/@currentUser.uid">
+				<a href="@routes.UserController.delete(currentUser.uid)">
 					<button type="button" class="btn btn-danger btn">
 			  			<span class="glyphicon glyphicon-trash"> Account loeschen</span>
 					</button>
