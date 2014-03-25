@@ -292,11 +292,20 @@ public class User {
     	}
     }
     
+    /**
+     * ueberprueft das uebergebene passwort
+     * @param pw
+     * @return
+     */
     @Transactional
     public boolean checkPw(String pw) {
     	return BCrypt.checkpw(pw, this.pw);
     }
     
+    /**
+     * gibt eine collection mit tipps zurueck, fuer die noch keine Punkte erhalten worden.
+     * @return
+     */
     @Transactional(readOnly=true)
     public Collection<Tipp> uncheckedTipps() {
     	List<Tipp> list = new ArrayList<Tipp>();

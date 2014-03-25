@@ -46,6 +46,7 @@ public class Trunde {
     /**
      * Konstruktor
      * @param b
+     * @param admin
      */
     public Trunde(String b, User admin)
     {

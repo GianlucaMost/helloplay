@@ -22,7 +22,6 @@ public class AdminSecured extends Security.Authenticator {
 	
 	@Override
 	public Result onUnauthorized(Context ctx) {
-//		flash("warning", "Sie muessen sich anmelden/registriere num diesen Inhalt sehen zu koennen!");
 		return redirect(routes.Application.index());
 	}
 }

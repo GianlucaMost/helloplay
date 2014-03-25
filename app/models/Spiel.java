@@ -68,9 +68,6 @@ public class Spiel {
     @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
-    
-    
-    
     @ManyToOne()
     @JoinColumn(name="fk_midheim", referencedColumnName="mid")
     private Mannschaft mannschaft_heim;
@@ -86,6 +83,13 @@ public class Spiel {
     	
     }
     
+    /**
+     * Constructor
+     * @param mannschaft_heim
+     * @param mannschaft_gast
+     * @param ort
+     * @param beginn
+     */
     public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Timestamp beginn){
     	this.mannschaft_heim = mannschaft_heim;
     	this.mannschaft_gast = mannschaft_gast;
@@ -96,8 +100,8 @@ public class Spiel {
     
     /**
      * Constructor without game-result
-     * @param fk_midheim
-     * @param fk_midgast
+     * @param mannschaft_heim
+     * @param mannschaft_gast
      * @param ort
      * @param beginn
      * @param ende

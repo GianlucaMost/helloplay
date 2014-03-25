@@ -30,6 +30,7 @@ Quellen:
 	Mannschaften:		http://de.fifa.com/worldcup/
 	Spielplan:			http://www.wm2014-infos.de/wm-2014-spielplan/
 	Ergebnisse(RSS):	http://rss.kicker.de/live/wm
+	
 =========
 
 Anmerkungen zum Code:
@@ -38,6 +39,14 @@ Haeufig verwendete Kuerzel:
 	tr -> Trunde -> TippRunde
 	u -> user
 	cU -> currentUser (angemeldeter Benutzer (session))
+	p -> punkte
+	a -> admin
+	m -> mannschaft
+	s -> spiel
+	t -> tipp
+	acc -> account
+	col -> collection
+	pw -> password
 	uid -> user id
 	trid -> TippRunde id
 	mid -> mannschaft id
@@ -176,6 +185,8 @@ Changelog:
 *es wird nun ueber einen externen mail-client eingeladen (tr)
 
 *kleine Optimierungen und BugFixes
+
+*code cleaning
 
 
 

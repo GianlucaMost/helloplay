@@ -83,7 +83,7 @@ public class Mannschaft {
      * Konstruktor
      * @param bezeichnung
      * @param gruppe
-     * @param spiele
+     * @param anzahlspiele
      * @param siege
      * @param unentschieden
      * @param niederlagen
