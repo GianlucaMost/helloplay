@@ -1,5 +1,67 @@
-helloplay
+helloplay (WMtipp)
 =========
+
+Author:		Gianluca Most
+Firma:		InnoQ
+Datum:		Feb.2014-Mar.2014
+Kontakt:	most.gianluca@gmail.com
+
+Dieses Projekt ist ein kleines TippSpiel zur Fussball Weltmeisterschaft 2014 in Brasilien.
+Es ist im Rahmen meines Praktikums bei der Firma innoQ entstanden.
+
+IDE:
+	eclipse
+Frameworks:
+	play 2.2.1
+	bootstrap v3.1.1
+API:
+	rome 1.0 (RSS)
+	jbcrypt 0.3m (password cryp)
+Languages (in etwa anteilmaessig sortiert):
+	java
+	scala
+	JPA
+	mySQL
+Database:
+	SQL
+	hibernate-entitymanager
+
+Quellen:
+	Mannschaften:		http://de.fifa.com/worldcup/
+	Spielplan:			http://www.wm2014-infos.de/wm-2014-spielplan/
+	Ergebnisse(RSS):	http://rss.kicker.de/live/wm
+=========
+
+Anmerkungen zum Code:
+
+Haeufig verwendete Kuerzel:
+	tr -> Trunde -> TippRunde
+	u -> user
+	cU -> currentUser (angemeldeter Benutzer (session))
+	uid -> user id
+	trid -> TippRunde id
+	mid -> mannschaft id
+	sid -> spiel id
+	utrid -> user-TippRunde id (Abhaengigkeiten zwischen Benutzer und TippRunde)
+		
+=========
+	
+Moegliche Probleme:
+	Die Ergebnisse werden nicht korrekt geladen bzw. in die Datenbank geschrieben:
+		Moegliche Ursache:
+			- Der RSS-feed-title sieht nicht konstant gleich aus oder liegt nicht in der erwarteten Form vor
+		Fehlerbehebung:
+			- Checken wie der Titel des feeds aussieht (Quelle s.o.) und Pattern in /app/models/Spiel.java.setResultWithRss() anpassen.
+			- Wie oben und dann switch-case zur Unbenennung der Mannschaften auf Korrektheit der Schreibweise ueberpruefen.
+		Moegliche Folgen:
+			- Benutzer bekommen keine Punkte fuer ihre Tipps
+			- Finalspiele werden nicht zum Tippen freigegeben
+
+=========	
+
+Changelog:
+
+
 *Beim Anlegen von Benutzern wird jetzt ueberprueft ob dieser schon existiert (einmalige Benutzernamen)
 +Benutzer können nun editiert werden.
 
@@ -41,7 +103,7 @@ helloplay
 
 +Relation fuer spiel<->mannschaft implementiert
 #getter and setter anpassen(http://en.wikibooks.org/wiki/Java_Persistence/OneToMany#Getters_and_Setters)
-	update: oder auch nicht :D
+	update: nicht noetig
 	
 #Mannschaftsuebersicht->Spielplan Gastmannschaft bugfix
 
@@ -113,3 +175,14 @@ helloplay
 *einige URLs angepasst (routes)
 *es wird nun ueber einen externen mail-client eingeladen (tr)
 
+*kleine Optimierungen und BugFixes
+
+
+
+=========
+Legende:
+	Leerzeile = neuer commit
+	+Neues Feature
+	*Verbesserung / Anpassung / Bugfix
+	-Feature entfernt
+	#ToDo. Meistens beim nachsten commit erledigt.

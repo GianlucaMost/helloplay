@@ -179,8 +179,8 @@ public class UserController extends Controller {
 				}
 			}
 		}else {
-			flash("error", "User " + name + " has not been updated. User " + name + " exists already!");
-			return redirect("/user/update/" + id);
+			flash("warning", "Benutzer wurde nicht aktuallisiert. Benutzername " + name + " bereits vergeben.");
+			return redirect(routes.UserController.updateShow(id));
 		}
 	}
 	
@@ -197,7 +197,7 @@ public class UserController extends Controller {
 				flash("error", "Benutzername darf nicht leer sein!");
 			}else {
 				udUser.update(name);
-				flash("success", "Benutzername wurde aktuallisiert");
+				flash("success", "Benutzername wurde aktuallisiert.");
 				session().clear();
 				session("name", name);
 			}

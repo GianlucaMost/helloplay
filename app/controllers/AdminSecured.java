@@ -13,7 +13,7 @@ public class AdminSecured extends Security.Authenticator {
 	public String getUsername (Context ctx) {
 		String name = ctx.session().get("name");
 		User cU = User.findByName(name);
-		if (cU.admin==1){
+		if (cU!=null && cU.admin==1){
 			return name;
 		}else{
 			return null;

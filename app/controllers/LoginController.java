@@ -42,7 +42,7 @@ public class LoginController extends Controller
 		        session().clear();
 		        session("name", name);
 		        flash("success", "Sie sind jetzt angemeldet.");
-		        return redirect("/");
+		        return redirect(routes.Application.index());
 	    	}else {
 	    		flash("error", "username or password is wrong.");
 				return badRequest(login.render(loginForm));
