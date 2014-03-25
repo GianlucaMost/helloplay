@@ -120,6 +120,14 @@ public class Mannschaft {
     }
     
     /**
+     * persist this
+     */
+    @Transactional
+    public void persist() {
+		JPA.em().persist(this);
+    }
+    
+    /**
      * Find a Mannschaft by id.
      * @param mid
      * @return
@@ -149,8 +157,10 @@ public class Mannschaft {
      */
     @Transactional(readOnly=true)
     public static  Map<String, List<Mannschaft>> findAll() {
+    	String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
+    	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
         Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
-        Collection<Mannschaft> col = (Collection<Mannschaft>) query.getResultList();
+        Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
         Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
         
         for (Mannschaft team : col) {

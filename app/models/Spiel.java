@@ -65,6 +65,10 @@ public class Spiel {
     @Column(name="ende")
     public Timestamp ende;
     
+    @Constraints.Required
+    @Column(name="checked")
+    public byte checked=0;
+    
     @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
@@ -155,6 +159,14 @@ public class Spiel {
     }
     
     /**
+     * persist this
+     */
+    @Transactional
+    public void persist() {
+		JPA.em().persist(this);
+    }
+    
+    /**
      * Find a Spiel by id.
      */
     @Transactional(readOnly=true)
@@ -201,12 +213,15 @@ public class Spiel {
     public void setErgebnis(byte th, byte tg){
     	byte thp = this.toreheim;
     	byte tgp = this.toregast;
+    	Mannschaft mh = this.getMannschaftHeim();
+		Mannschaft mg = this.getMannschaftGast();
     	if (thp!=th || tgp!=tg){
     		this.toreheim=th;
         	this.toregast=tg;
         	JPA.em().persist(this);
     	}
     	if (this.gameOver()){
+    		// Punkte an User verteilen
     		//tipps von diesem spiel holen
     		Collection<Tipp> tipps = this.tipps;
     		//jeden tipp durchlaufen
@@ -234,6 +249,37 @@ public class Spiel {
     				t.checked=1;
     				t.persist();
     			}
+    		}
+    		
+    		if(this.checked==0){
+    			//Punkte an Mannschaften verteilen
+	    		if (th>tg){
+	    			//Bei Sieg drei Punkte fuer Gewinner
+	    			mh.punkte=mh.punkte+3;
+	    			mh.siege++;
+	    			mg.niederlagen++;
+	    		}else if (th<tg){
+	    			//Bei Sieg 3 Punkte fuer Gewinner
+	    			mg.punkte=mg.punkte+3;
+	    			mg.siege++;
+	    			mh.niederlagen++;
+	    		}else if (th==tg){
+	    			//Bei Unentschieden einen Punkt fuer beide
+	    			mh.punkte=mh.punkte+1;
+	    			mg.punkte=mg.punkte+1;
+	    			mh.unentschieden++;
+	    			mg.unentschieden++;
+	    		}
+	    		//Tore und Gegentore setzen
+	    		mh.tore=mh.tore+th;
+	    		mg.tore=mg.tore+tg;
+	    		mh.gegentore=mh.gegentore+tg;
+	    		mg.gegentore=mg.gegentore+th;
+	    		//Dieses Spiel abhacken, so dass keine Punkte mehr hierfuer vergeben werden
+	    		this.checked=1;
+	    		this.persist();
+	    		mh.persist();
+	    		mg.persist();
     		}
     	}
     }

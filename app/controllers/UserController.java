@@ -84,7 +84,7 @@ public class UserController extends Controller {
 //			tr.setTrAdmin(null);
 //		}
 		if(u.equals(cU)){
-			Logger.info("Benutzer " + u.name + " hat die TippRunde " + tr.bezeichnung + " verlassen");
+			Logger.info("Benutzer " + u.name + " (" + u.uid + ") hat die TippRunde " + tr.bezeichnung + " verlassen");
 			flash("info", "TippRunde " + tr.bezeichnung + " wurde verlassen.");
 			return redirect(routes.TrundeController.showMain());
 		}else{

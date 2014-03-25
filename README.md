@@ -42,8 +42,12 @@ Haeufig verwendete Kuerzel:
 	p -> punkte
 	a -> admin
 	m -> mannschaft
+	mh -> MannschaftHeim
+	mg -> MannschaftGast
 	s -> spiel
 	t -> tipp
+	th -> ToreHeim
+	tg -> ToreGast
 	acc -> account
 	col -> collection
 	pw -> password
@@ -188,7 +192,8 @@ Changelog:
 
 *code cleaning
 
-
+*Hack aus mannschaft.findAll() entfernt
+*Punkte werden nun an Mannschaften vergeben
 
 =========
 Legende:
