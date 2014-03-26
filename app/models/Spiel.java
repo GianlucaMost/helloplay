@@ -3,6 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.IOException;
@@ -69,6 +70,9 @@ public class Spiel {
     @Column(name="checked")
     public byte checked=0;
     
+    @Column(name="bezeichnung")
+    private String bezeichnung;
+    
     @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
@@ -127,7 +131,7 @@ public class Spiel {
     }
     
     /**
-     * get mannschaft_heim from this user
+     * get mannschaft_heim from this spiel
      * @return
      */
     public Mannschaft getMannschaftHeim(){
@@ -135,7 +139,7 @@ public class Spiel {
     }
     
     /**
-     * set mannschaft_heim from this user
+     * set mannschaft_heim from this spiel
      * @param m
      */
     public void setMannschaftHeim(Mannschaft m){
@@ -143,7 +147,7 @@ public class Spiel {
     }
     
     /**
-     * get mannschaft_gast from this user
+     * get mannschaft_gast from this spiel
      * @return
      */
     public Mannschaft getMannschaftGast(){
@@ -151,11 +155,37 @@ public class Spiel {
     }
     
     /**
-     * set mannschaft_gast from this user
+     * get bezeichnung form this spiel
+     * @return
+     */
+    public String getBezeichnung(){
+    	return this.bezeichnung;
+    }
+    
+    /**
+     * set bezeichnung form this spiel
+     * @param b
+     */
+    public void setBezeichnung(String b){
+    	this.bezeichnung = b;
+    }
+    
+    /**
+     * set mannschaft_gast from this spiel
      * @param m
      */
     public void setMannschaftGast(Mannschaft m){
     	this.mannschaft_gast=m;
+    }
+    
+    /**
+     * set mannschaft_heim AND mannschaft_gast from this spiel
+     * @param mh
+     * @param mg
+     */
+    public void setVersus(Mannschaft mh, Mannschaft mg){
+    	this.mannschaft_heim=mh;
+    	this.mannschaft_gast=mg;
     }
     
     /**
@@ -174,6 +204,15 @@ public class Spiel {
     	return JPA.em().find(Spiel.class, sid);
     }
     
+    public static Spiel findByBezeichnung(String b){
+    	for (Spiel s: Spiel.findAll()){
+    		if(s.bezeichnung.equals(b)){
+    			return s;
+    		}
+    	}
+    	return null;
+    }
+    
     @Transactional
     public static Spiel findGroupGame(Mannschaft mh, Mannschaft mg) {
     	Integer midh=mh.mid;
@@ -189,6 +228,16 @@ public class Spiel {
     public static Collection<Spiel> findAll() {
         Query query = JPA.em().createQuery("SELECT s FROM Spiel s ORDER BY s.beginn");
         return (Collection<Spiel>) query.getResultList();
+    }
+    
+    public Mannschaft findWinner(){
+    	Mannschaft m = new Mannschaft();
+    	if(this.toreheim>this.toregast){
+			m = this.getMannschaftHeim();
+		}else if (this.toregast>this.toreheim){
+			m = this.getMannschaftGast();
+		}
+    	return m;
     }
     
     /**
@@ -215,6 +264,8 @@ public class Spiel {
     	byte tgp = this.toregast;
     	Mannschaft mh = this.getMannschaftHeim();
 		Mannschaft mg = this.getMannschaftGast();
+		Timestamp lastGG = Timestamp.valueOf("2014-06-26 22:00:00.0");
+		Collection<Spiel> spiele = Spiel.findAll();
     	if (thp!=th || tgp!=tg){
     		this.toreheim=th;
         	this.toregast=tg;
@@ -226,7 +277,7 @@ public class Spiel {
     		Collection<Tipp> tipps = this.tipps;
     		//jeden tipp durchlaufen
     		for (Tipp t: tipps){
-    			//gucken ob dieser tipp.checked=0 ist
+    			//pruefen ob dieser tipp.checked=0 ist
     			if(t.checked==0){
     				//punkte vergeben
     				User user = t.getUser();
@@ -252,6 +303,8 @@ public class Spiel {
     		}
     		
     		if(this.checked==0){
+    			mh.anzahlspiele++;
+    			mg.anzahlspiele++;
     			//Punkte an Mannschaften verteilen
 	    		if (th>tg){
 	    			//Bei Sieg drei Punkte fuer Gewinner
@@ -275,11 +328,262 @@ public class Spiel {
 	    		mg.tore=mg.tore+tg;
 	    		mh.gegentore=mh.gegentore+tg;
 	    		mg.gegentore=mg.gegentore+th;
-	    		//Dieses Spiel abhacken, so dass keine Punkte mehr hierfuer vergeben werden
+	    		//Dieses Spiel abhaken, so dass keine Punkte mehr hierfuer vergeben werden
 	    		this.checked=1;
 	    		this.persist();
 	    		mh.persist();
 	    		mg.persist();
+	    		
+	    		//TODO
+	    		//wenn das hier das letzte gruppenspiel war, setze die mannschaften fuer alle AchtelFinalSpiele um.
+	    		if(this.beginn.equals(lastGG)){
+	    			Mannschaft siegerA = new Mannschaft();
+	    			Mannschaft siegerB = new Mannschaft();
+	    			Mannschaft siegerC = new Mannschaft();
+	    			Mannschaft siegerD = new Mannschaft();
+	    			Mannschaft siegerE = new Mannschaft();
+	    			Mannschaft siegerF = new Mannschaft();
+	    			Mannschaft siegerG = new Mannschaft();
+	    			Mannschaft siegerH = new Mannschaft();
+	    			Mannschaft zweiterA = new Mannschaft();
+	    			Mannschaft zweiterB = new Mannschaft();
+	    			Mannschaft zweiterC = new Mannschaft();
+	    			Mannschaft zweiterD = new Mannschaft();
+	    			Mannschaft zweiterE = new Mannschaft();
+	    			Mannschaft zweiterF = new Mannschaft();
+	    			Mannschaft zweiterG = new Mannschaft();
+	    			Mannschaft zweiterH = new Mannschaft();
+	    			String[] gruppen = {"A", "B", "C", "D", "E", "F", "G", "H"};
+	    			Map<String, List<Mannschaft>> mannschaften = Mannschaft.findAll();
+	    			for(String key: gruppen){
+	    				List<Mannschaft> mannschaftGruppe = mannschaften.get(key);
+//    					Mannschaft m0 = mannschaftGruppe.get(0);
+//    					Mannschaft m1 = mannschaftGruppe.get(1);
+//    					Mannschaft m2 = mannschaftGruppe.get(2);
+//    					Mannschaft m3 = mannschaftGruppe.get(3);
+//    					if(m0.punkte>m1.punkte && m0.punkte>m2.punkte && m0.punkte>m3.punkte){
+//    						m0.status="Sieger";
+//    						if(m1.punkte>m2.punkte && m1.punkte>m3.punkte){
+//    							m1.status="Zweiter";
+//    						}
+//    						//...
+//    					}else if(m1.punkte>m0.punkte && m1.punkte>m2.punkte && m1.punkte>m3.punkte){
+//    						m1.status="Sieger";
+//    					}else if(m2.punkte>m0.punkte && m2.punkte>m1.punkte && m2.punkte>m3.punkte){
+//    						m2.status="Sieger";
+//    					}else if(m3.punkte>m0.punkte && m3.punkte>m1.punkte && m3.punkte>m2.punkte){
+//    						m3.status="Sieger";
+//    					}
+    					List<Mannschaft> mGruppe = Mannschaft.findByGroup(key);
+    					Mannschaft m0=mGruppe.get(0);
+    					Mannschaft m1=mGruppe.get(1);
+    					Mannschaft m2=mGruppe.get(2);
+    					if(m0.punkte!=m1.punkte){
+    						//wenn kein Punktegleichstand herrscht
+    						m0.status="Sieger";
+    						m1.status="Zweiter";
+    					}else if(m0.punkte==m1.punkte && m0.punkte!=m2.punkte){
+    						//wenn Punktegleichstand zwischen den ersten beiden Mannschaften herrscht (und nicht zwischen den ersten 3)
+    						if(m0.tore-m0.gegentore>m1.tore-m1.gegentore){
+    							//wenn Tordifferenz groesser
+    							m0.status="Sieger";
+        						m1.status="Zweiter";
+    						}else if(m0.tore-m0.gegentore<m1.tore-m1.gegentore){
+    							//wenn Tordifferenz groesser
+    							m1.status="Sieger";
+    							m0.status="Zweiter";
+    						}else if(m0.tore-m0.gegentore==m1.tore-m1.gegentore){
+    							//wenn Tordifferenz gleich ist
+    							if(m0.tore>m1.tore){
+    								//wenn anzahl der Tore groesser
+	    							m0.status="Sieger";
+	    							m1.status="Zweiter";
+    							}else if(m0.tore<m1.tore){
+    								//wenn anzahl der Tore groesser
+	    							m1.status="Sieger";
+	    							m0.status="Zweiter";
+    							}else if(m0.tore==m1.tore){
+    								//wenn Anzahl der tore gleich ist
+    								/**
+    								 	d. Anzahl Punkte aus Direktbegegnungen der punktgleichen Mannschaften,
+										e. Tordifferenz aus den Direktbegegnungen der punktgleichen Mannschaften,
+										f. Anzahl der in den Direktbegegnungen der punktgleichen Mannschaften erzielten Tore.
+										Sollten diese Kriterien nichtzu den eindeutigen Platzierungen führen, entscheidet die FIFA per Los.
+    								 **/
+    							}
+    						}
+    						m0.status=m0.status+" "+key;
+    						m1.status=m1.status+" "+key;
+    					}else if(m0.punkte==m2.punkte){
+    						
+    					}
+	    			}
+	    			
+	    			//Sieger und Zweitplatzierte der GruppenSpiele ermitteln
+	    			
+	    			//finde alle AchtelFinal-Spiele
+	    			Spiel af1 = Spiel.findByBezeichnung("af1");
+	    			Spiel af2 = Spiel.findByBezeichnung("af2");
+	    			Spiel af3 = Spiel.findByBezeichnung("af3");
+	    			Spiel af4 = Spiel.findByBezeichnung("af4");
+	    			Spiel af5 = Spiel.findByBezeichnung("af5");
+	    			Spiel af6 = Spiel.findByBezeichnung("af6");
+	    			Spiel af7 = Spiel.findByBezeichnung("af7");
+	    			Spiel af8 = Spiel.findByBezeichnung("af8");
+	    			
+	    		}
+	    		//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
+	    		if(this.getBezeichnung().equals("af8")){
+	    			Mannschaft m = new Mannschaft();
+	    			for (Spiel s: spiele){
+	    				switch (s.getBezeichnung()){
+	    				case "af1":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF1";
+	    					break;
+	    					
+	    				case "af2":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF2";
+	    					break;
+	    					
+	    				case "af3":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF3";
+	    					break;
+	    					
+	    				case "af4":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF4";
+	    					break;
+	    					
+	    				case "af5":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF5";
+	    					break;
+	    					
+	    				case "af6":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF6";
+	    					break;
+	    					
+	    				case "af7":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF7";
+	    					break;
+	    					
+	    				case "af8":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger AF8";
+	    					break;
+	    				}
+	    			}
+	    			
+	    			//Sieger der AchtelFinal-Spiele ermitteln
+	    			Mannschaft siegerAF1 = Mannschaft.findByState("Sieger AF1");
+	    			Mannschaft siegerAF2 = Mannschaft.findByState("Sieger AF2");
+	    			Mannschaft siegerAF3 = Mannschaft.findByState("Sieger AF3");
+	    			Mannschaft siegerAF4 = Mannschaft.findByState("Sieger AF4");
+	    			Mannschaft siegerAF5 = Mannschaft.findByState("Sieger AF5");
+	    			Mannschaft siegerAF6 = Mannschaft.findByState("Sieger AF6");
+	    			Mannschaft siegerAF7 = Mannschaft.findByState("Sieger AF7");
+	    			Mannschaft siegerAF8 = Mannschaft.findByState("Sieger AF8");
+	    			
+	    			//finde alle ViertelFinal-Spiele
+	    			Spiel vf1 = Spiel.findByBezeichnung("vf1");
+	    			Spiel vf2 = Spiel.findByBezeichnung("vf2");
+	    			Spiel vf3 = Spiel.findByBezeichnung("vf3");
+	    			Spiel vf4 = Spiel.findByBezeichnung("vf4");
+	    			
+	    			//setze ViertelFinale
+	    			vf1.setVersus(siegerAF5, siegerAF6);
+	    			vf2.setVersus(siegerAF1, siegerAF2);
+	    			vf3.setVersus(siegerAF7, siegerAF8);
+	    			vf4.setVersus(siegerAF3, siegerAF4);
+	    		}
+	    		//wenn das hier das letzte VF Spiel war setze HF
+	    		if(this.getBezeichnung().equals("vf4")){
+					Mannschaft m = new Mannschaft();
+	    			for (Spiel s: spiele){
+	    				switch (s.getBezeichnung()){
+	    				case "vf1":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger VF1";
+	    					break;
+	    					
+	    				case "vf2":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger VF2";
+	    					break;
+	    					
+	    				case "vf3":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger VF3";
+	    					break;
+	    					
+	    				case "vf4":
+	    					m = s.findWinner();
+	    					m.bezeichnung="Sieger VF4";
+	    					break;
+	    				}
+	    			}
+	    			
+	    			//Sieger der ViertelFinal-Spiele ermitteln
+	    			Mannschaft siegerVF1 = Mannschaft.findByState("Sieger VF1");
+	    			Mannschaft siegerVF2 = Mannschaft.findByState("Sieger VF2");
+	    			Mannschaft siegerVF3 = Mannschaft.findByState("Sieger VF3");
+	    			Mannschaft siegerVF4 = Mannschaft.findByState("Sieger VF4");
+	    			
+	    			//finde alle HalbFinal-Spiele
+	    			Spiel hf1 = Spiel.findByBezeichnung("hf1");
+	    			Spiel hf2 = Spiel.findByBezeichnung("hf2");
+	    			
+	    			//setze HalbFinale
+	    			hf1.setVersus(siegerVF1, siegerVF2);
+	    			hf2.setVersus(siegerVF3, siegerVF4);
+				}
+	    		//wenn das hier das letzte HF Spiel war setze Finale und SP3
+	    		if(this.getBezeichnung().equals("hf2")){
+	    			for (Spiel s: spiele){
+	    				Mannschaft mHeim = s.getMannschaftHeim();
+	    				Mannschaft mGast = s.getMannschaftGast();
+	    				switch (s.getBezeichnung()){
+	    				case "hf1":
+	    					if(s.toreheim>s.toregast){;
+	    						mHeim.bezeichnung="Sieger HF1";
+	    						mGast.bezeichnung="Verlierer HF1";
+	    					}else if (s.toregast>s.toreheim){
+	    						mGast.bezeichnung="Sieger HF1";
+	    						mHeim.bezeichnung="Verlierer HF1";
+	    					}
+	    					break;
+	    					
+	    				case "hf2":
+	    					if(s.toreheim>s.toregast){;
+	    						mHeim.bezeichnung="Sieger HF2";
+	    						mGast.bezeichnung="Verlierer HF2";
+	    					}else if (s.toregast>s.toreheim){
+	    						mGast.bezeichnung="Sieger HF2";
+	    						mHeim.bezeichnung="Verlierer HF2";
+	    					}
+	    					break;
+	    				}
+	    			}
+	    			
+	    			//Sieger und Verlierer der HalbFinal-Spiele ermitteln
+	    			Mannschaft siegerHF1 = Mannschaft.findByState("Sieger HF1");
+	    			Mannschaft verliererHF1 = Mannschaft.findByState("Verlierer HF1");
+	    			Mannschaft siegerHF2 = Mannschaft.findByState("Sieger HF2");
+	    			Mannschaft verliererHF2 = Mannschaft.findByState("Verlierer HF2");
+	    			
+	    			//finde Spiel um Platz 3 und Finale
+	    			Spiel sp3 = Spiel.findByBezeichnung("sp3");
+	    			Spiel fi = Spiel.findByBezeichnung("fi");
+	    			
+	    			//setze Spiel um Platz 3 und Finale
+	    			sp3.setVersus(verliererHF1, verliererHF2);
+	    			fi.setVersus(siegerHF1, siegerHF2);
+				}
     		}
     	}
     }
@@ -331,6 +635,16 @@ public class Spiel {
     	}else{
     		return false;
     	}
+    }
+    
+    public static Spiel findVs(Mannschaft a, Mannschaft b){
+    	Collection<Spiel> spiele = Spiel.findAll();
+	    for (Spiel s: spiele){
+			if(s.getMannschaftHeim().equals(a) && s.getMannschaftHeim().equals(b)){
+				return s;
+			}
+		}
+	    return null;
     }
     
     public static void setResultWithRss(){

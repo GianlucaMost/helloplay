@@ -65,6 +65,9 @@ public class Mannschaft {
     @Column(name="punkte")
     public int punkte=0;
     
+    @Column(name="status")
+    public String status;
+    
     @OneToMany(mappedBy="mannschaft_heim")
     private Collection<Spiel> heimSpiele;
     
@@ -115,6 +118,10 @@ public class Mannschaft {
     	return games;
     }
     
+    /**
+     * get all heimspiele from this mannschaft
+     * @return
+     */
     public Collection<Spiel> getHeimSpiele(){
     	return this.heimSpiele;
     }
@@ -128,7 +135,7 @@ public class Mannschaft {
     }
     
     /**
-     * Find a Mannschaft by id.
+     * Find a Mannschaft by id
      * @param mid
      * @return
      */
@@ -137,11 +144,28 @@ public class Mannschaft {
     	return JPA.em().find(Mannschaft.class, mid);
     }
     
+    /**
+     * Find a Mannschaft by name
+     * @param bezeichnung
+     * @return
+     */
     @Transactional
     public static Mannschaft findByName(String bezeichnung) {
-    		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
-	    	query.setParameter("pBezeichnung", bezeichnung);
-	    	return (Mannschaft) query.getSingleResult();
+		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
+    	query.setParameter("pBezeichnung", bezeichnung);
+    	return (Mannschaft) query.getSingleResult();
+    }
+    
+    /**
+     * Find a Mannschaft by state
+     * @param status
+     * @return
+     */
+    @Transactional
+    public static Mannschaft findByState(String status) {
+		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.status = :pStatus");
+    	query.setParameter("pStatus", status);
+    	return (Mannschaft) query.getSingleResult();
     }
     
     
@@ -159,7 +183,7 @@ public class Mannschaft {
     public static  Map<String, List<Mannschaft>> findAll() {
     	String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
     	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
-        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
+//        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
         Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
         Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
         
@@ -175,4 +199,11 @@ public class Mannschaft {
         Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
         return treeMap;
     }
+    
+    @Transactional(readOnly=true)
+    public static  List<Mannschaft> findByGroup(String grp) {
+    	String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte";
+    	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
+    	q.setParameter(1, grp);
+    	Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
 }

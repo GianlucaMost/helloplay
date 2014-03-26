@@ -195,6 +195,8 @@ Changelog:
 *Hack aus mannschaft.findAll() entfernt
 *Punkte werden nun an Mannschaften vergeben
 
+*FinalSpiel-Vergabe angefangen (noch nicht alle Regeln fuer gg-entscheid fertig)
+
 =========
 Legende:
 	Leerzeile = neuer commit
