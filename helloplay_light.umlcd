@@ -1,0 +1,3196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.diagrams="http://ns.yatta-solutions.com/umllab/diagrams/1.1.0" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_7Vn2QLW5EeOJh5abZwMogw">
+  <modelElement href="helloplay_light.uml#_7U75wLW5EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UaRmgLW6EeOJh5abZwMogw" targetItem="_UbBNYLW6EeOJh5abZwMogw" sourceItem="_UZ06kLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_Uaoy4LW6EeOJh5abZwMogw" targetItem="_UbBNvbW6EeOJh5abZwMogw" sourceItem="_UalIgLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UaqBAbW6EeOJh5abZwMogw" targetItem="_UbBN1bW6EeOJh5abZwMogw" sourceItem="_UaqBALW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UavgkLW6EeOJh5abZwMogw" targetItem="_UbBN27W6EeOJh5abZwMogw" sourceItem="_UaqoELW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Ua4DcLW6EeOJh5abZwMogw" sourceAnchor="423.0,0.0" targetAnchor="496.0,475.0" target="_UbBNYLW6EeOJh5abZwMogw" source="_UjsBMLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TVbsLW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz3PoLW6EeOJh5abZwMogw" sourceY="-76" targetX="-780" targetY="23"/>
+    <bendpoints xmi:id="_Vz3PobW6EeOJh5abZwMogw" sourceX="780" sourceY="-76" targetY="23"/>
+    <stereotypes xmi:id="_Ua4DcbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TZGELW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_Ua4DcrW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_Vz_LcLW6EeOJh5abZwMogw" position="-326.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Ua4Dc7W6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TVbsbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_Vz-kYLW6EeOJh5abZwMogw" position="5.0,-122.5"/>
+      <visibility xmi:id="_Ua4DdLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Ua4DdbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Ua4DdrW6EeOJh5abZwMogw" aggregationKind="NONE" name="mannschaft_heim" navigable="true">
+      <modelElement href="helloplay_light.uml#_8RK4hLW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_Vz_ygLW6EeOJh5abZwMogw" position="-116.0,28.5"/>
+      <stereotypes xmi:id="_Ua4Dd7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RLfkLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Ua4DeLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RLfkbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjhpILW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RLfkLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjhpIbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RLfkbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_Ua4DebW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_Ua4DerW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Ua9jALW6EeOJh5abZwMogw" sourceAnchor="397.0,0.0" targetAnchor="509.0,0.0" target="_UbBNYLW6EeOJh5abZwMogw" source="_UjsBMLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TZGEbW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz32sLW6EeOJh5abZwMogw" sourceY="-661" targetX="-819" targetY="-87"/>
+    <bendpoints xmi:id="_Vz32sbW6EeOJh5abZwMogw" sourceX="819" sourceY="-661" targetY="-87"/>
+    <stereotypes xmi:id="_Ua9jAbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TcJYLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_Ua9jArW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0BnsLW6EeOJh5abZwMogw" position="174.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Ua9jA7W6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TZGErW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0AZkLW6EeOJh5abZwMogw" position="5.0,-707.5"/>
+      <visibility xmi:id="_Ua9jBLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Ua9jBbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Ua9jBrW6EeOJh5abZwMogw" aggregationKind="NONE" name="mannschaft_gast" navigable="true">
+      <modelElement href="helloplay_light.uml#_8RMGobW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0BnsbW6EeOJh5abZwMogw" position="-118.5,-45.5"/>
+      <stereotypes xmi:id="_Ua9jB7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RMGorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Ua9jCLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RMtsLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjhpIrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RMGorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjhpI7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RMtsLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_Ua9jCbW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_Ua9jCrW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Ua_YMLW6EeOJh5abZwMogw" sourceAnchor="509.0,475.0" targetAnchor="768.0,418.0" target="_UjsBMLW6EeOJh5abZwMogw" source="_UbBNYLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SypILW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz2okLW6EeOJh5abZwMogw" sourceY="517" targetX="448"/>
+    <stereotypes xmi:id="_Ua_YMbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8S3hoLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_Ua_YMrW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_Vz7hELW6EeOJh5abZwMogw" position="-105.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Ua_YM7W6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8SypIbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_Vz66ALW6EeOJh5abZwMogw" position="5.0,5.5"/>
+      <visibility xmi:id="_Ua_YNLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Ua_YNbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Ua_YNrW6EeOJh5abZwMogw" aggregationKind="NONE" name="heimSpiele" navigable="true">
+      <modelElement href="helloplay_light.uml#_8QpUFLW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_Vz7hEbW6EeOJh5abZwMogw" position="5.0,-46.5"/>
+      <visibility xmi:id="_Ua_YN7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_Ua_YOLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_UbAmULW6EeOJh5abZwMogw" sourceAnchor="0.0,238.0" targetAnchor="410.0,0.0" target="_UjsBMLW6EeOJh5abZwMogw" source="_UbBNYLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8S4IsLW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz2okbW6EeOJh5abZwMogw" sourceX="-297" targetY="-336"/>
+    <stereotypes xmi:id="_UbAmUbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8S9BMLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_UbAmUrW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_Vz9WQLW6EeOJh5abZwMogw" position="141.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_UbAmU7W6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8S4IsbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_Vz8vMLW6EeOJh5abZwMogw" position="-21.0,5.5"/>
+      <visibility xmi:id="_UbAmVLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbAmVbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_UbAmVrW6EeOJh5abZwMogw" aggregationKind="NONE" name="auswaertsSpiele" navigable="true">
+      <modelElement href="helloplay_light.uml#_8QqiNLW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_Vz99ULW6EeOJh5abZwMogw" position="5.0,-382.5"/>
+      <visibility xmi:id="_UbAmV7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UbAmWLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UiFesLW6EeOJh5abZwMogw" targetItem="_UjsBMLW6EeOJh5abZwMogw" sourceItem="_UfzmwLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UiV9YLW6EeOJh5abZwMogw" targetItem="_UjsBerW6EeOJh5abZwMogw" sourceItem="_UiSTALW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UifHULW6EeOJh5abZwMogw" targetItem="_UjsBgLW6EeOJh5abZwMogw" sourceItem="_UiXykLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UiiKoLW6EeOJh5abZwMogw" targetItem="_UjsBhbW6EeOJh5abZwMogw" sourceItem="_UihjkLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UirUkLW6EeOJh5abZwMogw" targetItem="_UjsBxbW6EeOJh5abZwMogw" sourceItem="_Uio4ULW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_Uiu-8LW6EeOJh5abZwMogw" targetItem="_UjsByrW6EeOJh5abZwMogw" sourceItem="_UiuX4LW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_Ui-2kLW6EeOJh5abZwMogw" targetItem="_UjsB67W6EeOJh5abZwMogw" sourceItem="_Uiw0ILW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UjB54bW6EeOJh5abZwMogw" targetItem="_UjsB8LW6EeOJh5abZwMogw" sourceItem="_UjB54LW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UjKcwLW6EeOJh5abZwMogw" targetItem="_UjsB9bW6EeOJh5abZwMogw" sourceItem="_UjCg8LW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UjOuMLW6EeOJh5abZwMogw" targetItem="_UjsCHbW6EeOJh5abZwMogw" sourceItem="_UjOHILW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UjVb4LW6EeOJh5abZwMogw" targetItem="_UjsoSbW6EeOJh5abZwMogw" sourceItem="_UjQjYLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Uji3QLW6EeOJh5abZwMogw" sourceAnchor="384.0,0.0" targetAnchor="238.0,285.0" target="_UrFpsLW6EeOJh5abZwMogw" source="_UjsBMLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8Rsc8rW5EeOJh5abZwMogw"/>
+    <nameVisual xmi:id="_Uji3QbW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0Dc4LW6EeOJh5abZwMogw" position="-5.5,-304.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Uji3QrW6EeOJh5abZwMogw" aggregationKind="NONE" name="spiel" navigable="true">
+      <modelElement href="helloplay_light.uml#_8QwBwLW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0C10LW6EeOJh5abZwMogw" position="-47.0,-46.0"/>
+      <stereotypes xmi:id="_Uji3Q7W6EeOJh5abZwMogw" name="JoinColumns">
+        <modelElement href="helloplay_light.uml#_8Qwo0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UqsBELW6EeOJh5abZwMogw" name="JoinColumns">
+        <modelElement href="helloplay_light.uml#_8Qwo0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_Uji3RLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Uji3RbW6EeOJh5abZwMogw" label="0..1" max="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Uji3RrW6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8Rsc8LW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0Dc4bW6EeOJh5abZwMogw" position="0.5000000000001137,5.5"/>
+      <visibility xmi:id="_Uji3R7W6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Uji3SLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_UjraILW6EeOJh5abZwMogw" sourceAnchor="384.0,836.0" targetAnchor="475.0,143.0" target="_UrFpsLW6EeOJh5abZwMogw" source="_UjsBMLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TQjMbW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz4dwLW6EeOJh5abZwMogw" sourceY="89" targetX="-237" targetY="1846"/>
+    <bendpoints xmi:id="_Vz4dwbW6EeOJh5abZwMogw" sourceX="1365" sourceY="89" targetX="1128" targetY="1846"/>
+    <bendpoints xmi:id="_Vz4dwrW6EeOJh5abZwMogw" sourceX="1365" sourceY="-1757" targetX="1128"/>
+    <stereotypes xmi:id="_UjraIbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TU0oLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_UjraIrW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0FSELW6EeOJh5abZwMogw" position="-1314.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_UjraI7W6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TQjMrW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0ErALW6EeOJh5abZwMogw" position="5.0,5.0"/>
+      <visibility xmi:id="_UjraJLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjraJbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_UjraJrW6EeOJh5abZwMogw" aggregationKind="NONE" name="tipps" navigable="true">
+      <modelElement href="helloplay_light.uml#_8RKRcLW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0F5ILW6EeOJh5abZwMogw" position="5.499999999999545,-46.5"/>
+      <visibility xmi:id="_UjraJ7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UjraKLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UqLDsLW6EeOJh5abZwMogw" targetItem="_UrFpsLW6EeOJh5abZwMogw" sourceItem="_UnLaELW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_UqtPMLW6EeOJh5abZwMogw" sourceAnchor="178.0,608.0" targetAnchor="238.0,0.0" target="_UrFpsLW6EeOJh5abZwMogw" source="_VBJZQLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TE9AbW5EeOJh5abZwMogw"/>
+    <stereotypes xmi:id="_UqtPMbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TIAULW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_UqtPMrW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0L_wLW6EeOJh5abZwMogw" position="-40.5,-3.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_UqtPM7W6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TE9ArW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0LYsLW6EeOJh5abZwMogw" position="5.0,5.0"/>
+      <visibility xmi:id="_UqtPNLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UqtPNbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_UqtPNrW6EeOJh5abZwMogw" aggregationKind="NONE" name="tipps" navigable="true">
+      <modelElement href="helloplay_light.uml#_8Q7A5LW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0Mm0LW6EeOJh5abZwMogw" position="-47.5,-45.5"/>
+      <stereotypes xmi:id="_UqtPN7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q8PALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UqtPOLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q8PAbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBHkELW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q8PALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBHkEbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q8PAbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UqtPObW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UqtPOrW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Uq-U8LW6EeOJh5abZwMogw" sourceAnchor="178.0,0.0" targetAnchor="0.0,143.0" target="_UrFpsLW6EeOJh5abZwMogw" source="_VBJZQLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8RtrEbW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz6S8bW6EeOJh5abZwMogw" sourceY="-528" targetX="238" targetY="-1469"/>
+    <bendpoints xmi:id="_Vz6S8rW6EeOJh5abZwMogw" sourceX="-767" sourceY="-528" targetX="-529" targetY="-1469"/>
+    <bendpoints xmi:id="_Vz6S87W6EeOJh5abZwMogw" sourceX="-767" sourceY="941" targetX="-529"/>
+    <nameVisual xmi:id="_Uq-U8bW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0RfULW6EeOJh5abZwMogw" position="20.499999999999886,-7.499999999999773"/>
+    </nameVisual>
+    <sourceRole xmi:id="_Uq-U8rW6EeOJh5abZwMogw" aggregationKind="NONE" name="user" navigable="true">
+      <modelElement href="helloplay_light.uml#_8QxP4LW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0Q4QLW6EeOJh5abZwMogw" position="-46.000000000000114,-496.0"/>
+      <visibility xmi:id="_Uq-U87W6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Uq-U9LW6EeOJh5abZwMogw" label="0..1" max="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_Uq-U9bW6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8RtEAbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0SGYLW6EeOJh5abZwMogw" position="-29.5,5.5"/>
+      <visibility xmi:id="_Uq-U9rW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_Uq-U97W6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_UzSjcLW6EeOJh5abZwMogw" targetItem="_U2Y6wLW6EeOJh5abZwMogw" sourceItem="_UxZtELW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_Uzpv0LW6EeOJh5abZwMogw" sourceAnchor="152.0,0.0" targetAnchor="298.0,162.0" target="_U2Y6wLW6EeOJh5abZwMogw" source="_VBJZQLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TInYLW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz5r4LW6EeOJh5abZwMogw" sourceY="-203" targetX="423"/>
+    <stereotypes xmi:id="_U2SNELW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TM40LW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_U2RmALW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0N08LW6EeOJh5abZwMogw" position="-300.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_U2RmAbW6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TInYbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0NN4LW6EeOJh5abZwMogw" position="-21.0,-197.5"/>
+      <visibility xmi:id="_U2UpUbW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_U2UpULW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_U2RmArW6EeOJh5abZwMogw" aggregationKind="NONE" name="trunden" navigable="true">
+      <modelElement href="helloplay_light.uml#_8Q82EbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0OcALW6EeOJh5abZwMogw" position="5.000000000000057,-46.5"/>
+      <stereotypes xmi:id="_U2VQYrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q9dILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2VQY7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q9dIbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBILILW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q9dILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBILIbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q9dIbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2VQYbW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_U2VQYLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_UzxEkLW6EeOJh5abZwMogw" sourceAnchor="0.0,304.0" targetAnchor="149.0,323.0" target="_U2Y6wLW6EeOJh5abZwMogw" source="_VBJZQLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TNf4LW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz6S8LW6EeOJh5abZwMogw" sourceX="-420" targetY="346"/>
+    <stereotypes xmi:id="_U2SNFLW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TQjMLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_U2SNEbW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0QRMLW6EeOJh5abZwMogw" position="-40.499999999999886,-241.50000000000023"/>
+    </nameVisual>
+    <sourceRole xmi:id="_U2SNErW6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TNf4bW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0PDELW6EeOJh5abZwMogw" position="-20.5,5.5"/>
+      <visibility xmi:id="_U2VQZbW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_U2VQZLW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_U2SNE7W6EeOJh5abZwMogw" aggregationKind="NONE" name="tradmin" navigable="true">
+      <modelElement href="helloplay_light.uml#_8Q-rQLW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0QRMbW6EeOJh5abZwMogw" position="10.000000000000114,25.999999999999773"/>
+      <stereotypes xmi:id="_U2V3crW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q-rRLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2V3c7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q_SULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBILIrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q-rRLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBILI7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q_SULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2V3cbW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_U2V3cLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_U0T3ILW6EeOJh5abZwMogw" sourceAnchor="149.0,0.0" targetAnchor="165.0,0.0" target="_VBJZQLW6EeOJh5abZwMogw" source="_U2Y6wLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8S9BMbW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz4dw7W6EeOJh5abZwMogw" sourceY="-85" targetX="-585" targetY="-450"/>
+    <bendpoints xmi:id="_Vz5E0LW6EeOJh5abZwMogw" sourceX="585" sourceY="-85" targetY="-450"/>
+    <stereotypes xmi:id="_U2S0IrW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TBSoLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_U2SNFbW6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0HuULW6EeOJh5abZwMogw" position="96.5,-7.499999999999986"/>
+    </nameVisual>
+    <sourceRole xmi:id="_U2S0ILW6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8S9BMrW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0GgMLW6EeOJh5abZwMogw" position="-21.0,-45.5"/>
+      <visibility xmi:id="_U2WegLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_U2V3dLW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_U2S0IbW6EeOJh5abZwMogw" aggregationKind="NONE" name="member" navigable="true">
+      <modelElement href="helloplay_light.uml#_8QzsJbW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0IVYLW6EeOJh5abZwMogw" position="-66.0,-444.50000000000006"/>
+      <visibility xmi:id="_U2WegrW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_U2WegbW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.uml.diagrams.classifier:AssociationVisual" xmi:id="_U02psLW6EeOJh5abZwMogw" sourceAnchor="162.0,323.0" targetAnchor="139.0,0.0" target="_VBJZQLW6EeOJh5abZwMogw" source="_U2Y6wLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8TBSobW5EeOJh5abZwMogw"/>
+    <bendpoints xmi:id="_Vz5E0bW6EeOJh5abZwMogw" sourceY="21" targetX="-546" targetY="-21"/>
+    <bendpoints xmi:id="_Vz5E0rW6EeOJh5abZwMogw" sourceX="546" sourceY="21" targetY="-21"/>
+    <stereotypes xmi:id="_U2TbMbW6EeOJh5abZwMogw" name="Reference">
+      <modelElement href="helloplay_light.uml#_8TE9ALW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <nameVisual xmi:id="_U2S0I7W6EeOJh5abZwMogw" text="">
+      <visualProperties xmi:id="_V0KKkLW6EeOJh5abZwMogw" position="-66.5,-7.5"/>
+    </nameVisual>
+    <sourceRole xmi:id="_U2S0JLW6EeOJh5abZwMogw" aggregationKind="NONE" name="">
+      <modelElement href="helloplay_light.uml#_8TBSorW5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0I8cLW6EeOJh5abZwMogw" position="141.0,-25.5"/>
+      <visibility xmi:id="_U2XFkbW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_U2XFkLW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </sourceRole>
+    <targetRole xmi:id="_U2TbMLW6EeOJh5abZwMogw" aggregationKind="NONE" name="tradmin" navigable="true">
+      <modelElement href="helloplay_light.uml#_8Q06Q7W5EeOJh5abZwMogw"/>
+      <visualProperties xmi:id="_V0KKkbW6EeOJh5abZwMogw" position="-201.5,-15.5"/>
+      <visibility xmi:id="_U2XFk7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_U2XFkrW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+    </targetRole>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U1qiALW6EeOJh5abZwMogw" targetItem="_U2Y647W6EeOJh5abZwMogw" sourceItem="_U1aDULW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U2AgQLW6EeOJh5abZwMogw" targetItem="_U2Y66bW6EeOJh5abZwMogw" sourceItem="_U1_SILW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U2IcELW6EeOJh5abZwMogw" targetItem="_U2Zh9rW6EeOJh5abZwMogw" sourceItem="_U2DjkLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U2OisLW6EeOJh5abZwMogw" targetItem="_U2ZiALW6EeOJh5abZwMogw" sourceItem="_U2JDILW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U-u-cLW6EeOJh5abZwMogw" targetItem="_VBJZQLW6EeOJh5abZwMogw" sourceItem="_U8_SALW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U_RJ8LW6EeOJh5abZwMogw" targetItem="_VBKAaLW6EeOJh5abZwMogw" sourceItem="_U-59kLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U_qykLW6EeOJh5abZwMogw" targetItem="_VBKAcrW6EeOJh5abZwMogw" sourceItem="_U_o9YLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U_tO0LW6EeOJh5abZwMogw" targetItem="_VBKAfrW6EeOJh5abZwMogw" sourceItem="_U_snwLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_U__isLW6EeOJh5abZwMogw" targetItem="_VBKAhLW6EeOJh5abZwMogw" sourceItem="_U_3m4LW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_VAFCQLW6EeOJh5abZwMogw" targetItem="_VBKAirW6EeOJh5abZwMogw" sourceItem="_VAAJwLW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_VAU54LW6EeOJh5abZwMogw" targetItem="_VBKA9LW6EeOJh5abZwMogw" sourceItem="_VAUS0LW6EeOJh5abZwMogw"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_VA9MALW6EeOJh5abZwMogw" targetItem="_VBKA-bW6EeOJh5abZwMogw" sourceItem="_VAwXsLW6EeOJh5abZwMogw"/>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UZ06kLW6EeOJh5abZwMogw" sourceConnectionVisual="_UaRmgLW6EeOJh5abZwMogw" text="Mannschaft entity managed by JPA" item="_UbBNYLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SHTtbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UalIgLW6EeOJh5abZwMogw" sourceConnectionVisual="_Uaoy4LW6EeOJh5abZwMogw" text="Konstruktor&#xA;     * @param bezeichnung&#xA;     * @param gruppe&#xA;     * @param anzahlspiele&#xA;     * @param siege&#xA;     * @param unentschieden&#xA;     * @param niederlagen&#xA;     * @param tore&#xA;     * @param gegentore&#xA;     * @param punkte" item="_UbBNvbW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SJI4bW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UaqBALW6EeOJh5abZwMogw" sourceConnectionVisual="_UaqBAbW6EeOJh5abZwMogw" text="get spiele from this mannschaft&#xA;     * @return" item="_UbBN1bW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SJI4rW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UaqoELW6EeOJh5abZwMogw" sourceConnectionVisual="_UavgkLW6EeOJh5abZwMogw" text="get all heimspiele from this mannschaft&#xA;     * @return" item="_UbBN27W6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SJI47W5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UfzmwLW6EeOJh5abZwMogw" sourceConnectionVisual="_UiFesLW6EeOJh5abZwMogw" text="Spiel entity managed by JPA" item="_UjsBMLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SRrwbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UiSTALW6EeOJh5abZwMogw" sourceConnectionVisual="_UiV9YLW6EeOJh5abZwMogw" text="get tipps from this spiel&#xA;     * @return" item="_UjsBerW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8STg87W5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UiXykLW6EeOJh5abZwMogw" sourceConnectionVisual="_UifHULW6EeOJh5abZwMogw" text="get mannschaft_heim from this spiel&#xA;     * @return" item="_UjsBgLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8STg9LW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UihjkLW6EeOJh5abZwMogw" sourceConnectionVisual="_UiiKoLW6EeOJh5abZwMogw" text="get mannschaft_gast from this spiel&#xA;     * @return" item="_UjsBhbW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SUIAbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_Uio4ULW6EeOJh5abZwMogw" sourceConnectionVisual="_UirUkLW6EeOJh5abZwMogw" text="return true if this games end-timestamp is before the current system-time&#xA;     * @return" item="_UjsBxbW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SUvErW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UiuX4LW6EeOJh5abZwMogw" sourceConnectionVisual="_Uiu-8LW6EeOJh5abZwMogw" text="return true if a game is currently running&#xA;     * @return" item="_UjsByrW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SUvE7W5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_Uiw0ILW6EeOJh5abZwMogw" sourceConnectionVisual="_Ui-2kLW6EeOJh5abZwMogw" text="set mannschaft_heim from this spiel&#xA;     * @param m" item="_UjsB67W6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SUIALW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UjB54LW6EeOJh5abZwMogw" sourceConnectionVisual="_UjB54bW6EeOJh5abZwMogw" text="set mannschaft_gast from this spiel&#xA;     * @param m" item="_UjsB8LW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SUIArW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UjCg8LW6EeOJh5abZwMogw" sourceConnectionVisual="_UjKcwLW6EeOJh5abZwMogw" text="set mannschaft_heim AND mannschaft_gast from this spiel&#xA;     * @param mh&#xA;     * @param mg" item="_UjsB9bW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SUIA7W5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UjOHILW6EeOJh5abZwMogw" sourceConnectionVisual="_UjOuMLW6EeOJh5abZwMogw" text="Constructor&#xA;     * @param mannschaft_heim&#xA;     * @param mannschaft_gast&#xA;     * @param ort&#xA;     * @param beginn" item="_UjsCHbW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8STg8bW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UjQjYLW6EeOJh5abZwMogw" sourceConnectionVisual="_UjVb4LW6EeOJh5abZwMogw" text="Constructor without game-result&#xA;     * @param mannschaft_heim&#xA;     * @param mannschaft_gast&#xA;     * @param ort&#xA;     * @param beginn&#xA;     * @param ende" item="_UjsoSbW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8STg8rW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UnLaELW6EeOJh5abZwMogw" sourceConnectionVisual="_UqLDsLW6EeOJh5abZwMogw" text="Tipp entity managed by JPA" item="_UrFpsLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SJv8rW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_UxZtELW6EeOJh5abZwMogw" sourceConnectionVisual="_UzSjcLW6EeOJh5abZwMogw" text="Trunde entity managed by JPA" item="_U2Y6wLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SK-EbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U1aDULW6EeOJh5abZwMogw" sourceConnectionVisual="_U1qiALW6EeOJh5abZwMogw" text="get all user included in this TippRunde&#xA;     * @return" item="_U2Y647W6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SNaULW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U1_SILW6EeOJh5abZwMogw" sourceConnectionVisual="_U2AgQLW6EeOJh5abZwMogw" text="get the admin of this tr&#xA;     * @return" item="_U2Y66bW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SNaUbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U2DjkLW6EeOJh5abZwMogw" sourceConnectionVisual="_U2IcELW6EeOJh5abZwMogw" text="Konstruktor&#xA;     * @param b&#xA;     * @param admin" item="_U2Zh9rW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SMMMbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U2JDILW6EeOJh5abZwMogw" sourceConnectionVisual="_U2OisLW6EeOJh5abZwMogw" text="Set given user u to the admin of this tr&#xA;     * @param u" item="_U2ZiALW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SNaUrW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U8_SALW6EeOJh5abZwMogw" sourceConnectionVisual="_U-u-cLW6EeOJh5abZwMogw" text="User entity managed by JPA" item="_VBJZQLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SOocLW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U-59kLW6EeOJh5abZwMogw" sourceConnectionVisual="_U_RJ8LW6EeOJh5abZwMogw" text="Konstruktor&#xA;     * @param name&#xA;     * @param pw" item="_VBKAaLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdoLW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U_o9YLW6EeOJh5abZwMogw" sourceConnectionVisual="_U_qykLW6EeOJh5abZwMogw" text="Konstruktor&#xA;     * @param name&#xA;     * @param pw&#xA;     * @param admin" item="_VBKAcrW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdobW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U_snwLW6EeOJh5abZwMogw" sourceConnectionVisual="_U_tO0LW6EeOJh5abZwMogw" text="get TippRunde from this user&#xA;     * @return" item="_VBKAfrW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdorW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_U_3m4LW6EeOJh5abZwMogw" sourceConnectionVisual="_U__isLW6EeOJh5abZwMogw" text="get tipps from this user&#xA;     * @return" item="_VBKAhLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdpbW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_VAAJwLW6EeOJh5abZwMogw" sourceConnectionVisual="_VAFCQLW6EeOJh5abZwMogw" text="get all TR where this user is admin from&#xA;     * @return" item="_VBKAirW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdprW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_VAUS0LW6EeOJh5abZwMogw" sourceConnectionVisual="_VAU54LW6EeOJh5abZwMogw" text="set TippRunde from this user&#xA;     * @param tr" item="_VBKA9LW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdo7W5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_VAwXsLW6EeOJh5abZwMogw" sourceConnectionVisual="_VA9MALW6EeOJh5abZwMogw" text="removes this user from the given TippRunde&#xA;     * @param tr" item="_VBKA-bW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8SQdpLW5EeOJh5abZwMogw"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_UZGh0LW6EeOJh5abZwMogw" name="LoginController">
+    <modelElement href="helloplay_light.uml#_8EEQoLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_UZGh0bW6EeOJh5abZwMogw" position="2949.0,30.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_UZGh0rW6EeOJh5abZwMogw" label="+"/>
+    <operations xmi:id="_UZGh07W6EeOJh5abZwMogw" name="login" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EE3sLW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_UZGh1LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UZGh1bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8Ptf8bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UZGh1rW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UZGh17W6EeOJh5abZwMogw" name="authenticate" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EFewLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UZGh2LW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8EFewbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UZGh2bW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EGF0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UZGh2rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UZGh27W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PuHALW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UZGh3LW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UZGh3bW6EeOJh5abZwMogw" name="logout" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EGF0rW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_UZGh3rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UZGh37W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PuHAbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UZGh4LW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UZGh4bW6EeOJh5abZwMogw" name="showRegister" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EGs4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UZGh4rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8EHT8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UZGh47W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EHT8bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UZGh5LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UZGh5bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PuHArW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UZGh5rW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UZGh57W6EeOJh5abZwMogw" name="register" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EH7ALW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UZGh6LW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8EH7AbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UZGh6bW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EH7ArW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UZGh6rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UZGh67W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PuuELW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UZGh7LW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_UbBNYLW6EeOJh5abZwMogw" comments="_UZ06kLW6EeOJh5abZwMogw" targetConnectionVisual="_UaRmgLW6EeOJh5abZwMogw" name="Mannschaft" associationsIn="_Ua4DcLW6EeOJh5abZwMogw _Ua9jALW6EeOJh5abZwMogw" associationsOut="_Ua_YMLW6EeOJh5abZwMogw _UbAmULW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_UbBNYbW6EeOJh5abZwMogw" position="1103.0,1858.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_UbBNYrW6EeOJh5abZwMogw" name="Table">
+      <modelElement href="helloplay_light.uml#_8E5XELW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_UbBNY7W6EeOJh5abZwMogw" name="JPA1StyledElement">
+      <modelElement href="helloplay_light.uml#_8E5-ILW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_UbBNZLW6EeOJh5abZwMogw" label="+"/>
+    <attributes xmi:id="_UbBNZbW6EeOJh5abZwMogw" name="mid">
+      <modelElement href="helloplay_light.uml#_8QcfwLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNZrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QeU8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNZ7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QeU8bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNaLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNabW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNarW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNa7W6EeOJh5abZwMogw" name="bezeichnung">
+      <modelElement href="helloplay_light.uml#_8QfjELW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNbLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QfjEbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNbbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QgKILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNbrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNb7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNcLW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNcbW6EeOJh5abZwMogw" name="gruppe">
+      <modelElement href="helloplay_light.uml#_8QgxMbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNcrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QhYQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNc7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QhYQbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNdLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNdbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNdrW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNd7W6EeOJh5abZwMogw" defaultValue="0" name="anzahlspiele">
+      <modelElement href="helloplay_light.uml#_8Qh_U7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNeLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QimYLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNebW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QimYbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNerW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNe7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNfLW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNfbW6EeOJh5abZwMogw" defaultValue="0" name="siege">
+      <modelElement href="helloplay_light.uml#_8QimZbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNfrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QjNcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNf7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QjNcrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNgLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNgbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNgrW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNg7W6EeOJh5abZwMogw" defaultValue="0" name="unentschieden">
+      <modelElement href="helloplay_light.uml#_8Qj0gbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNhLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Qj0g7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNhbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QkbkLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNhrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNh7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNiLW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNibW6EeOJh5abZwMogw" defaultValue="0" name="niederlagen">
+      <modelElement href="helloplay_light.uml#_8QkblLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNirW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QlCobW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNi7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QlCorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNjLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNjbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNjrW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNj7W6EeOJh5abZwMogw" defaultValue="0" name="tore">
+      <modelElement href="helloplay_light.uml#_8Qlps7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNkLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QmQwbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNkbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Qm30LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNkrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNk7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNlLW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNlbW6EeOJh5abZwMogw" defaultValue="0" name="gegentore">
+      <modelElement href="helloplay_light.uml#_8Qm31LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNlrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Qne4bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNl7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Qne4rW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNmLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNmbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNmrW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNm7W6EeOJh5abZwMogw" defaultValue="0" name="punkte">
+      <modelElement href="helloplay_light.uml#_8QoF8bW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNnLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QoF87W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNnbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QotALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNnrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNn7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNoLW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNobW6EeOJh5abZwMogw" name="status">
+      <modelElement href="helloplay_light.uml#_8QotBLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNorW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QpUELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNo7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QpUEbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNpLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UbBNpbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UbBNprW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNp7W6EeOJh5abZwMogw" name="heimSpiele">
+      <modelElement href="helloplay_light.uml#_8QpUFLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNqLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QqiMLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNqbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QqiMbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNqrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QqiMLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNq7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QqiMbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNrLW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UbBNrbW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_UbBNrrW6EeOJh5abZwMogw" name="Spiel">
+        <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UbBNr7W6EeOJh5abZwMogw" name="auswaertsSpiele">
+      <modelElement href="helloplay_light.uml#_8QqiNLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBNsLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QrJQrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNsbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QrJQ7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNsrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QrJQrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBNs7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QrJQ7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNtLW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UbBNtbW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_UbBNtrW6EeOJh5abZwMogw" name="Spiel">
+        <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_UbBNt7W6EeOJh5abZwMogw" name="Mannschaft">
+      <modelElement href="helloplay_light.uml#_8E7zULW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UbBNuLW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UbBNubW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8E8aYrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNurW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBNu7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8E8aY7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNvLW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UbBNvbW6EeOJh5abZwMogw" comments="_UalIgLW6EeOJh5abZwMogw" targetConnectionVisual="_Uaoy4LW6EeOJh5abZwMogw" name="Mannschaft">
+      <modelElement href="helloplay_light.uml#_8E9ogLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UbBNvrW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UbBNv7W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8E-2oLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBNwLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBNwbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8E-PlbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNwrW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UbBNw7W6EeOJh5abZwMogw" name="bezeichnung">
+        <modelElement href="helloplay_light.uml#_8E9ogbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNxLW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBNxbW6EeOJh5abZwMogw" name="gruppe">
+        <modelElement href="helloplay_light.uml#_8E9ogrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNxrW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBNx7W6EeOJh5abZwMogw" name="anzahlspiele">
+        <modelElement href="helloplay_light.uml#_8E9og7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNyLW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBNybW6EeOJh5abZwMogw" name="siege">
+        <modelElement href="helloplay_light.uml#_8E9ohLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNyrW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBNy7W6EeOJh5abZwMogw" name="unentschieden">
+        <modelElement href="helloplay_light.uml#_8E9ohbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNzLW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBNzbW6EeOJh5abZwMogw" name="niederlagen">
+        <modelElement href="helloplay_light.uml#_8E9ohrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBNzrW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBNz7W6EeOJh5abZwMogw" name="tore">
+        <modelElement href="helloplay_light.uml#_8E-PkLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN0LW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBN0bW6EeOJh5abZwMogw" name="gegentore">
+        <modelElement href="helloplay_light.uml#_8E-PkbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN0rW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UbBN07W6EeOJh5abZwMogw" name="punkte">
+        <modelElement href="helloplay_light.uml#_8E-PkrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN1LW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UbBN1bW6EeOJh5abZwMogw" comments="_UaqBALW6EeOJh5abZwMogw" targetConnectionVisual="_UaqBAbW6EeOJh5abZwMogw" name="getSpiele">
+      <modelElement href="helloplay_light.uml#_8E-2obW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UbBN1rW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UbBN17W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8FAEwrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBN2LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBN2bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8E_dsLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN2rW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UbBN27W6EeOJh5abZwMogw" comments="_UaqoELW6EeOJh5abZwMogw" targetConnectionVisual="_UavgkLW6EeOJh5abZwMogw" name="getHeimSpiele">
+      <modelElement href="helloplay_light.uml#_8FAEw7W5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UbBN3LW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UbBN3bW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8FAr1LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBN3rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBN37W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FAr0LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN4LW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UbBN4bW6EeOJh5abZwMogw" name="persist">
+      <modelElement href="helloplay_light.uml#_8FBS4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBN4rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FBS4bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBN47W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FB58LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBN5LW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_UbBN5bW6EeOJh5abZwMogw" name="findById" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FChALW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBN5rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FDIELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBN57W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FDIEbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBN6LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBN6bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8N1QoLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN6rW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UbBN67W6EeOJh5abZwMogw" name="mid">
+        <modelElement href="helloplay_light.uml#_8FChAbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN7LW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UbBN7bW6EeOJh5abZwMogw" name="findByName" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FDvILW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBN7rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FEWMLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBN77W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FE9QLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBN8LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBN8bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8N1QobW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN8rW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UbBN87W6EeOJh5abZwMogw" name="bezeichnung">
+        <modelElement href="helloplay_light.uml#_8FDvIbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN9LW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UbBN9bW6EeOJh5abZwMogw" name="findByState" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FFkULW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBN9rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FFkUrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBN97W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FGLYLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBN-LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBN-bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8N1QorW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN-rW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UbBN-7W6EeOJh5abZwMogw" name="status">
+        <modelElement href="helloplay_light.uml#_8FFkUbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBN_LW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UbBN_bW6EeOJh5abZwMogw" name="findAllCol" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FGLYrW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UbBN_rW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UbBN_7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FGyc7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBOALW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FHZgLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBOAbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBOArW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FGLY7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBOA7W6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UbBOBLW6EeOJh5abZwMogw" name="findAll" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FHZg7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBOBbW6EeOJh5abZwMogw" name="Generics">
+        <modelElement href="helloplay_light.uml#_8FLD4LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBOBrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FLq8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBOB7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FLq8bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBOCLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBOCbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P5GILW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBOCrW6EeOJh5abZwMogw" name="Map">
+          <modelElement href="helloplay_light.uml#_8Nf5cbW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UbBOC7W6EeOJh5abZwMogw" name="findByGroup" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FMSArW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UbBODLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FNgILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UbBODbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FNgIbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UbBODrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UbBOD7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FM5ELW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBOELW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UbBOEbW6EeOJh5abZwMogw" name="grp">
+        <modelElement href="helloplay_light.uml#_8FMSA7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UbBOErW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_UdGRALW6EeOJh5abZwMogw" name="MannschaftController">
+    <modelElement href="helloplay_light.uml#_8EKXQLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_UdGRAbW6EeOJh5abZwMogw" position="3228.0,37.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_UdGRArW6EeOJh5abZwMogw" name="LegacyStyledElement">
+      <modelElement href="helloplay_light.uml#_8EKXQbW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_UdGRA7W6EeOJh5abZwMogw" name="Annotations">
+      <modelElement href="helloplay_light.uml#_8EMzgLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_UdGRBLW6EeOJh5abZwMogw" label="+"/>
+    <operations xmi:id="_UdGRBbW6EeOJh5abZwMogw" name="mannschaften" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EK-ULW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UdGRBrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EK-UbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UdGRB7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UdGRCLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PuuErW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UdGRCbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UdGRCrW6EeOJh5abZwMogw" name="mannschaftShow" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8ELlYbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UdGRC7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EMMcLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UdGRDLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UdGRDbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PvVILW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UdGRDrW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UdGRD7W6EeOJh5abZwMogw" name="mid">
+        <modelElement href="helloplay_light.uml#_8ELlYrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UdGRELW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_UjsBMLW6EeOJh5abZwMogw" comments="_UfzmwLW6EeOJh5abZwMogw" targetConnectionVisual="_UiFesLW6EeOJh5abZwMogw" name="Spiel" associationsIn="_Ua_YMLW6EeOJh5abZwMogw _UbAmULW6EeOJh5abZwMogw" associationsOut="_Ua4DcLW6EeOJh5abZwMogw _Ua9jALW6EeOJh5abZwMogw _Uji3QLW6EeOJh5abZwMogw _UjraILW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_UjsBMbW6EeOJh5abZwMogw" position="396.0,2432.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_UjsBMrW6EeOJh5abZwMogw" name="Table">
+      <modelElement href="helloplay_light.uml#_8Gi84LW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_UjsBM7W6EeOJh5abZwMogw" name="JPA1StyledElement">
+      <modelElement href="helloplay_light.uml#_8Gjj8LW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_UjsBNLW6EeOJh5abZwMogw" label="+"/>
+    <attributes xmi:id="_UjsBNbW6EeOJh5abZwMogw" name="sid">
+      <modelElement href="helloplay_light.uml#_8Q_5YLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBNrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RAgcLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBN7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RAgcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBOLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBObW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBOrW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBO7W6EeOJh5abZwMogw" name="toreheim">
+      <modelElement href="helloplay_light.uml#_8RBHhLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBPLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RBukLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBPbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RBukbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBPrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBP7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBQLW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBQbW6EeOJh5abZwMogw" name="toregast">
+      <modelElement href="helloplay_light.uml#_8RBulLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBQrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RCVoLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBQ7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RCVobW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBRLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBRbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBRrW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBR7W6EeOJh5abZwMogw" name="ort">
+      <modelElement href="helloplay_light.uml#_8RCVpLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBSLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RC8sLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBSbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RC8sbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBSrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBS7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBTLW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBTbW6EeOJh5abZwMogw" name="beginn">
+      <modelElement href="helloplay_light.uml#_8RDjwLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBTrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RDjwbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBT7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RDjwrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBULW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBUbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBUrW6EeOJh5abZwMogw" name="Timestamp">
+        <modelElement href="helloplay_light.uml#_8NmAELW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBU7W6EeOJh5abZwMogw" name="ende">
+      <modelElement href="helloplay_light.uml#_8REK0rW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBVLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8REK07W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBVbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8REx4LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBVrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBV7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBWLW6EeOJh5abZwMogw" name="Timestamp">
+        <modelElement href="helloplay_light.uml#_8NmAELW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBWbW6EeOJh5abZwMogw" defaultValue="0" name="checked">
+      <modelElement href="helloplay_light.uml#_8REx5LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBWrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RFY8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBW7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RFY8bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBXLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBXbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBXrW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBX7W6EeOJh5abZwMogw" name="bezeichnung">
+      <modelElement href="helloplay_light.uml#_8RGAALW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBYLW6EeOJh5abZwMogw" name="Column">
+        <modelElement href="helloplay_light.uml#_8RIcQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBYbW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UjsBYrW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBY7W6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBZLW6EeOJh5abZwMogw" name="tipps">
+      <modelElement href="helloplay_light.uml#_8RKRcLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBZbW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RKRdLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBZrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RK4gLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBZ7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8RKRdLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBaLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8RK4gLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBabW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UjsBarW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_UjsBa7W6EeOJh5abZwMogw" name="Tipp">
+        <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBbLW6EeOJh5abZwMogw" name="mannschaft_heim">
+      <modelElement href="helloplay_light.uml#_8RK4hLW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_UjsBbbW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UjsBbrW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBb7W6EeOJh5abZwMogw" name="Mannschaft">
+        <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UjsBcLW6EeOJh5abZwMogw" name="mannschaft_gast">
+      <modelElement href="helloplay_light.uml#_8RMGobW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_UjsBcbW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_UjsBcrW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UjsBc7W6EeOJh5abZwMogw" name="Mannschaft">
+        <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_UjsBdLW6EeOJh5abZwMogw" name="Spiel">
+      <modelElement href="helloplay_light.uml#_8GmnQLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UjsBdbW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UjsBdrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GnOULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBd7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBeLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GnOUbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBebW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBerW6EeOJh5abZwMogw" comments="_UiSTALW6EeOJh5abZwMogw" targetConnectionVisual="_UiV9YLW6EeOJh5abZwMogw" name="getTipps">
+      <modelElement href="helloplay_light.uml#_8GqRoLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UjsBe7W6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UjsBfLW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8Gt8ALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBfbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBfrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GtU8LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBf7W6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBgLW6EeOJh5abZwMogw" comments="_UiXykLW6EeOJh5abZwMogw" targetConnectionVisual="_UifHULW6EeOJh5abZwMogw" name="getMannschaftHeim">
+      <modelElement href="helloplay_light.uml#_8Gt8AbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBgbW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GujELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBgrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBg7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PHqELW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBhLW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBhbW6EeOJh5abZwMogw" comments="_UihjkLW6EeOJh5abZwMogw" targetConnectionVisual="_UiiKoLW6EeOJh5abZwMogw" name="getMannschaftGast">
+      <modelElement href="helloplay_light.uml#_8GujEbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBhrW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GvKILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBh7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBiLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PIRI7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBibW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBirW6EeOJh5abZwMogw" name="setVersusByState">
+      <modelElement href="helloplay_light.uml#_8GvxMLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBi7W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GwYQrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBjLW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_UjsBjbW6EeOJh5abZwMogw" name="mhs">
+        <modelElement href="helloplay_light.uml#_8GwYQLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBjrW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsBj7W6EeOJh5abZwMogw" name="mgs">
+        <modelElement href="helloplay_light.uml#_8GwYQbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBkLW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsBkbW6EeOJh5abZwMogw" name="persist">
+      <modelElement href="helloplay_light.uml#_8GwYQ7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBkrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Gw_ULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBk7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Gw_UbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBlLW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_UjsBlbW6EeOJh5abZwMogw" name="findById" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GxmYLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBlrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GxmYrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBl7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GyNcLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBmLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBmbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PJfQbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBmrW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsBm7W6EeOJh5abZwMogw" name="sid">
+        <modelElement href="helloplay_light.uml#_8GxmYbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBnLW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsBnbW6EeOJh5abZwMogw" name="findByBezeichnung" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8Gy0gLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBnrW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GzbkLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBn7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBoLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PKGULW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBobW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsBorW6EeOJh5abZwMogw" name="b">
+        <modelElement href="helloplay_light.uml#_8Gy0gbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBo7W6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsBpLW6EeOJh5abZwMogw" name="findAll" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8G0CoLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UjsBpbW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UjsBprW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8G0psrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBp7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8G1QwLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBqLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBqbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G0CobW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBqrW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBq7W6EeOJh5abZwMogw" name="findWinner">
+      <modelElement href="helloplay_light.uml#_8G1Qw7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBrLW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G130LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBrbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBrrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PL7grW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBr7W6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBsLW6EeOJh5abZwMogw" name="gamesOfTeam" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8G130bW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UjsBsbW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UjsBsrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8G2e5LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBs7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8G3F8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBtLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBtbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G2e4LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBtrW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsBt7W6EeOJh5abZwMogw" name="mid">
+        <modelElement href="helloplay_light.uml#_8G130rW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBuLW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsBubW6EeOJh5abZwMogw" name="setErgebnis">
+      <modelElement href="helloplay_light.uml#_8G3tALW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBurW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8G4UELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBu7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8G4UEbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBvLW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_UjsBvbW6EeOJh5abZwMogw" name="th">
+        <modelElement href="helloplay_light.uml#_8G3tAbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBvrW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsBv7W6EeOJh5abZwMogw" name="tg">
+        <modelElement href="helloplay_light.uml#_8G3tArW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBwLW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsBwbW6EeOJh5abZwMogw" name="setAF">
+      <modelElement href="helloplay_light.uml#_8G6JQLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBwrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8G6wULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsBw7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8G6wUbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBxLW6EeOJh5abZwMogw" label="-"/>
+    </operations>
+    <operations xmi:id="_UjsBxbW6EeOJh5abZwMogw" comments="_Uio4ULW6EeOJh5abZwMogw" targetConnectionVisual="_UirUkLW6EeOJh5abZwMogw" name="gameOver">
+      <modelElement href="helloplay_light.uml#_8G7XYLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBxrW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G7-cLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBx7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsByLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G7XYbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBybW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsByrW6EeOJh5abZwMogw" comments="_UiuX4LW6EeOJh5abZwMogw" targetConnectionVisual="_Uiu-8LW6EeOJh5abZwMogw" name="gameRunning">
+      <modelElement href="helloplay_light.uml#_8G7-cbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsBy7W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G7-c7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsBzLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsBzbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G7-crW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsBzrW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsBz7W6EeOJh5abZwMogw" name="isGg">
+      <modelElement href="helloplay_light.uml#_8G7-dLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB0LW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G8lgbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB0bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsB0rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G8lgLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB07W6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsB1LW6EeOJh5abZwMogw" name="checkAfTippReady">
+      <modelElement href="helloplay_light.uml#_8G8lgrW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB1bW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G9MkLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB1rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsB17W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G8lg7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB2LW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsB2bW6EeOJh5abZwMogw" name="checkVfTippReady">
+      <modelElement href="helloplay_light.uml#_8G9MkbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB2rW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G9Mk7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB27W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsB3LW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G9MkrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB3bW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsB3rW6EeOJh5abZwMogw" name="checkHfTippReady">
+      <modelElement href="helloplay_light.uml#_8G9zoLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB37W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G9zorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB4LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsB4bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G9zobW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB4rW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsB47W6EeOJh5abZwMogw" name="checkFTippReady">
+      <modelElement href="helloplay_light.uml#_8G9zo7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB5LW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G-asLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB5bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsB5rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8G9zpLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB57W6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UjsB6LW6EeOJh5abZwMogw" name="setResultWithRss" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8G-asbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB6bW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8G_BwLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB6rW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_UjsB67W6EeOJh5abZwMogw" comments="_Uiw0ILW6EeOJh5abZwMogw" targetConnectionVisual="_Ui-2kLW6EeOJh5abZwMogw" name="setMannschaftHeim">
+      <modelElement href="helloplay_light.uml#_8PIRILW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB7LW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8PIRIrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB7bW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_UjsB7rW6EeOJh5abZwMogw" name="m">
+        <modelElement href="helloplay_light.uml#_8PIRIbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB77W6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsB8LW6EeOJh5abZwMogw" comments="_UjB54LW6EeOJh5abZwMogw" targetConnectionVisual="_UjB54bW6EeOJh5abZwMogw" name="setMannschaftGast">
+      <modelElement href="helloplay_light.uml#_8PI4MLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB8bW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8PI4MrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB8rW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_UjsB87W6EeOJh5abZwMogw" name="m">
+        <modelElement href="helloplay_light.uml#_8PI4MbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB9LW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsB9bW6EeOJh5abZwMogw" comments="_UjCg8LW6EeOJh5abZwMogw" targetConnectionVisual="_UjKcwLW6EeOJh5abZwMogw" name="setVersus">
+      <modelElement href="helloplay_light.uml#_8PI4M7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB9rW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8PJfQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB97W6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_UjsB-LW6EeOJh5abZwMogw" name="mh">
+        <modelElement href="helloplay_light.uml#_8PI4NLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB-bW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsB-rW6EeOJh5abZwMogw" name="mg">
+        <modelElement href="helloplay_light.uml#_8PI4NbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsB-7W6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsB_LW6EeOJh5abZwMogw" name="findGroupGame" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8PKGUbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsB_bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8PLUcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsB_rW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8PL7gLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsB_7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsCALW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PLUcLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCAbW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsCArW6EeOJh5abZwMogw" name="mh">
+        <modelElement href="helloplay_light.uml#_8PKGUrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCA7W6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsCBLW6EeOJh5abZwMogw" name="mg">
+        <modelElement href="helloplay_light.uml#_8PKtYLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCBbW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsCBrW6EeOJh5abZwMogw" name="handOutTeamPoints">
+      <modelElement href="helloplay_light.uml#_8PMikLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsCB7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8PNJorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsCCLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8PNwsLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsCCbW6EeOJh5abZwMogw" label="-"/>
+      <parameters xmi:id="_UjsCCrW6EeOJh5abZwMogw" name="s">
+        <modelElement href="helloplay_light.uml#_8PMikbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCC7W6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsCDLW6EeOJh5abZwMogw" name="mh">
+        <modelElement href="helloplay_light.uml#_8PMikrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCDbW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsCDrW6EeOJh5abZwMogw" name="mg">
+        <modelElement href="helloplay_light.uml#_8PMik7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCD7W6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsCELW6EeOJh5abZwMogw" name="th">
+        <modelElement href="helloplay_light.uml#_8PNJoLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCEbW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsCErW6EeOJh5abZwMogw" name="tg">
+        <modelElement href="helloplay_light.uml#_8PNJobW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCE7W6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsCFLW6EeOJh5abZwMogw" name="findVs" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8POXwLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsCFbW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8POXxLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsCFrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsCF7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8POXw7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCGLW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsCGbW6EeOJh5abZwMogw" name="a">
+        <modelElement href="helloplay_light.uml#_8POXwbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCGrW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsCG7W6EeOJh5abZwMogw" name="b">
+        <modelElement href="helloplay_light.uml#_8POXwrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsCHLW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsCHbW6EeOJh5abZwMogw" comments="_UjOHILW6EeOJh5abZwMogw" targetConnectionVisual="_UjOuMLW6EeOJh5abZwMogw" name="Spiel">
+      <modelElement href="helloplay_light.uml#_8QEsULW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UjsCHrW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UjsCH7W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8QF6c7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsCILW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsCIbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8QF6crW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoQLW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsoQbW6EeOJh5abZwMogw" name="mannschaft_heim">
+        <modelElement href="helloplay_light.uml#_8QFTYLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoQrW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoQ7W6EeOJh5abZwMogw" name="mannschaft_gast">
+        <modelElement href="helloplay_light.uml#_8QFTYbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoRLW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoRbW6EeOJh5abZwMogw" name="ort">
+        <modelElement href="helloplay_light.uml#_8QFTYrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoRrW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoR7W6EeOJh5abZwMogw" name="beginn">
+        <modelElement href="helloplay_light.uml#_8QFTY7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoSLW6EeOJh5abZwMogw" name="Timestamp">
+          <modelElement href="helloplay_light.uml#_8NmAELW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsoSbW6EeOJh5abZwMogw" comments="_UjQjYLW6EeOJh5abZwMogw" targetConnectionVisual="_UjVb4LW6EeOJh5abZwMogw" name="Spiel">
+      <modelElement href="helloplay_light.uml#_8QGhgLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UjsoSrW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UjsoS7W6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8QHIlbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsoTLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UjsoTbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8QHIlLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoTrW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UjsoT7W6EeOJh5abZwMogw" name="mannschaft_heim">
+        <modelElement href="helloplay_light.uml#_8QGhgbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoULW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoUbW6EeOJh5abZwMogw" name="mannschaft_gast">
+        <modelElement href="helloplay_light.uml#_8QGhgrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoUrW6EeOJh5abZwMogw" name="Mannschaft">
+          <modelElement href="helloplay_light.uml#_8E260LW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoU7W6EeOJh5abZwMogw" name="ort">
+        <modelElement href="helloplay_light.uml#_8QGhg7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoVLW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoVbW6EeOJh5abZwMogw" name="beginn">
+        <modelElement href="helloplay_light.uml#_8QHIkLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoVrW6EeOJh5abZwMogw" name="Timestamp">
+          <modelElement href="helloplay_light.uml#_8NmAELW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoV7W6EeOJh5abZwMogw" name="ende">
+        <modelElement href="helloplay_light.uml#_8QHIkbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoWLW6EeOJh5abZwMogw" name="Timestamp">
+          <modelElement href="helloplay_light.uml#_8NmAELW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsoWbW6EeOJh5abZwMogw" name="handOutUserPoints">
+      <modelElement href="helloplay_light.uml#_8QHvoLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsoWrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QIWsrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsoW7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QLaALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsoXLW6EeOJh5abZwMogw" label="-"/>
+      <parameters xmi:id="_UjsoXbW6EeOJh5abZwMogw" name="tipps">
+        <modelElement href="helloplay_light.uml#_8QHvobW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoXrW6EeOJh5abZwMogw" name="Collection">
+          <modelElement href="helloplay_light.uml#_8MZtQLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoX7W6EeOJh5abZwMogw" name="th">
+        <modelElement href="helloplay_light.uml#_8QIWsLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoYLW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UjsoYbW6EeOJh5abZwMogw" name="tg">
+        <modelElement href="helloplay_light.uml#_8QIWsbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoYrW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsoY7W6EeOJh5abZwMogw" name="setVF">
+      <modelElement href="helloplay_light.uml#_8QMBELW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsoZLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QMoILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsoZbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QPrcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsoZrW6EeOJh5abZwMogw" label="-"/>
+      <parameters xmi:id="_UjsoZ7W6EeOJh5abZwMogw" name="spiele">
+        <modelElement href="helloplay_light.uml#_8QMBEbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsoaLW6EeOJh5abZwMogw" name="Collection">
+          <modelElement href="helloplay_light.uml#_8MZtQLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UjsoabW6EeOJh5abZwMogw" name="setHF">
+      <modelElement href="helloplay_light.uml#_8QQSgLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsoarW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QQ5kLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_Ujsoa7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QT84bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsobLW6EeOJh5abZwMogw" label="-"/>
+      <parameters xmi:id="_UjsobbW6EeOJh5abZwMogw" name="spiele">
+        <modelElement href="helloplay_light.uml#_8QQSgbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsobrW6EeOJh5abZwMogw" name="Collection">
+          <modelElement href="helloplay_light.uml#_8MZtQLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_Ujsob7W6EeOJh5abZwMogw" name="setFI">
+      <modelElement href="helloplay_light.uml#_8QUj8bW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UjsocLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QVLALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UjsocbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QXnQbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UjsocrW6EeOJh5abZwMogw" label="-"/>
+      <parameters xmi:id="_Ujsoc7W6EeOJh5abZwMogw" name="spiele">
+        <modelElement href="helloplay_light.uml#_8QUj8rW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UjsodLW6EeOJh5abZwMogw" name="Collection">
+          <modelElement href="helloplay_light.uml#_8MZtQLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_UrFpsLW6EeOJh5abZwMogw" comments="_UnLaELW6EeOJh5abZwMogw" targetConnectionVisual="_UqLDsLW6EeOJh5abZwMogw" name="Tipp" associationsIn="_Uji3QLW6EeOJh5abZwMogw _UjraILW6EeOJh5abZwMogw _UqtPMLW6EeOJh5abZwMogw _Uq-U8LW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_UrFpsbW6EeOJh5abZwMogw" position="542.0,1368.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_UrFpsrW6EeOJh5abZwMogw" name="Table">
+      <modelElement href="helloplay_light.uml#_8FZGULW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_UrFps7W6EeOJh5abZwMogw" name="JPA1StyledElement">
+      <modelElement href="helloplay_light.uml#_8FZtYLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_UrFptLW6EeOJh5abZwMogw" label="+"/>
+    <attributes xmi:id="_UrFptbW6EeOJh5abZwMogw" name="tid">
+      <modelElement href="helloplay_light.uml#_8QsXYLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFptrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QsXYbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFpt7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Qs-cLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFpuLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UrFpubW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UrFpurW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UrFpu7W6EeOJh5abZwMogw" name="toreheim">
+      <modelElement href="helloplay_light.uml#_8QtlgLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFpvLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QtlgbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFpvbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QtlgrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFpvrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UrFpv7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UrFpwLW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UrFpwbW6EeOJh5abZwMogw" name="toregast">
+      <modelElement href="helloplay_light.uml#_8QuMkrW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFpwrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QuMk7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFpw7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QuzoLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFpxLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UrFpxbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UrFpxrW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UrFpx7W6EeOJh5abZwMogw" defaultValue="0" name="checked">
+      <modelElement href="helloplay_light.uml#_8Quzo7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFpyLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QvasLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFpybW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QvasbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFpyrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UrFpy7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_UrFpzLW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UrFpzbW6EeOJh5abZwMogw" name="spiel">
+      <modelElement href="helloplay_light.uml#_8QwBwLW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_UrFpzrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UrFpz7W6EeOJh5abZwMogw" label="0..1" max="1"/>
+      <type xmi:id="_UrFp0LW6EeOJh5abZwMogw" name="Spiel">
+        <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_UrFp0bW6EeOJh5abZwMogw" name="user">
+      <modelElement href="helloplay_light.uml#_8QxP4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFp0rW6EeOJh5abZwMogw" name="JoinColumns">
+        <modelElement href="helloplay_light.uml#_8QxP4bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp07W6EeOJh5abZwMogw" name="JoinColumns">
+        <modelElement href="helloplay_light.uml#_8QxP4bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp1LW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_UrFp1bW6EeOJh5abZwMogw" label="0..1" max="1"/>
+      <type xmi:id="_UrFp1rW6EeOJh5abZwMogw" name="User">
+        <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_UrFp17W6EeOJh5abZwMogw" name="Tipp">
+      <modelElement href="helloplay_light.uml#_8FaUcLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UrFp2LW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UrFp2bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Fa7gbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp2rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UrFp27W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8Fa7grW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFp3LW6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UrFp3bW6EeOJh5abZwMogw" name="findById" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FcJoLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFp3rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FcJorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp37W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FcwsLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp4LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UrFp4bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OEhMLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFp4rW6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UrFp47W6EeOJh5abZwMogw" name="tid">
+        <modelElement href="helloplay_light.uml#_8FcJobW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFp5LW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UrFp5bW6EeOJh5abZwMogw" name="findAll" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8Fcws7W5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UrFp5rW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_UrFp57W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FdXxLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp6LW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Fd-0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp6bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UrFp6rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FdXwLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFp67W6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_UrFp7LW6EeOJh5abZwMogw" name="add">
+      <modelElement href="helloplay_light.uml#_8Fel4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFp7bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Fel4bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp7rW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Fel4rW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp77W6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_UrFp8LW6EeOJh5abZwMogw" name="update">
+      <modelElement href="helloplay_light.uml#_8FfM8LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFp8bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FfM87W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp8rW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Ff0ALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp87W6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_UrFp9LW6EeOJh5abZwMogw" name="th">
+        <modelElement href="helloplay_light.uml#_8FfM8bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFp9bW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UrFp9rW6EeOJh5abZwMogw" name="tg">
+        <modelElement href="helloplay_light.uml#_8FfM8rW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFp97W6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UrFp-LW6EeOJh5abZwMogw" name="persist">
+      <modelElement href="helloplay_light.uml#_8Ff0ArW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFp-bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Ff0A7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp-rW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FgbELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp-7W6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_UrFp_LW6EeOJh5abZwMogw" name="delete">
+      <modelElement href="helloplay_light.uml#_8FgbErW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UrFp_bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FgbE7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_UrFp_rW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FhCILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFp_7W6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_UrFqALW6EeOJh5abZwMogw" name="Tipp">
+      <modelElement href="helloplay_light.uml#_8ODTELW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_UrFqAbW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_UrFqArW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8OD6I7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UrFqA7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UrFqBLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OD6IrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFqBbW6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UrFqBrW6EeOJh5abZwMogw" name="currentUser">
+        <modelElement href="helloplay_light.uml#_8ODTEbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFqB7W6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UrFqCLW6EeOJh5abZwMogw" name="game">
+        <modelElement href="helloplay_light.uml#_8ODTErW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFqCbW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UrFqCrW6EeOJh5abZwMogw" name="toreheim">
+        <modelElement href="helloplay_light.uml#_8ODTE7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFqC7W6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UrFqDLW6EeOJh5abZwMogw" name="toregast">
+        <modelElement href="helloplay_light.uml#_8ODTFLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UrFqDbW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_UtUeULW6EeOJh5abZwMogw" name="TippController">
+    <modelElement href="helloplay_light.uml#_8ERE8LW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_UtUeUbW6EeOJh5abZwMogw" position="11.0,3430.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_UtUeUrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+      <modelElement href="helloplay_light.uml#_8ERsALW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_UtUeU7W6EeOJh5abZwMogw" name="Annotations">
+      <modelElement href="helloplay_light.uml#_8EVWYLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_UtUeVLW6EeOJh5abZwMogw" label="+"/>
+    <operations xmi:id="_UtUeVbW6EeOJh5abZwMogw" name="tippen" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8ESTELW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UtUeVrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EThMLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UtUeV7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UtUeWLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PyYcLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UtUeWbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_UtUeWrW6EeOJh5abZwMogw" name="sid">
+        <modelElement href="helloplay_light.uml#_8ESTEbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UtUeW7W6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_UtUeXLW6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8ES6ILW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UtUeXbW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_UtUeXrW6EeOJh5abZwMogw" name="showTipps" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EUIQLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_UtUeX7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EUvULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_UtUeYLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_UtUeYbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PyYcbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_UtUeYrW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_U2Y6wLW6EeOJh5abZwMogw" comments="_UxZtELW6EeOJh5abZwMogw" targetConnectionVisual="_UzSjcLW6EeOJh5abZwMogw" name="Trunde" associationsIn="_Uzpv0LW6EeOJh5abZwMogw _UzxEkLW6EeOJh5abZwMogw" associationsOut="_U0T3ILW6EeOJh5abZwMogw _U02psLW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_U2Y6wbW6EeOJh5abZwMogw" position="33.0,205.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_U2Y6wrW6EeOJh5abZwMogw" name="Table">
+      <modelElement href="helloplay_light.uml#_8FnIwLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_U2Y6w7W6EeOJh5abZwMogw" name="JPA1StyledElement">
+      <modelElement href="helloplay_light.uml#_8Fnv0LW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_U2Y6xLW6EeOJh5abZwMogw" label="+"/>
+    <attributes xmi:id="_U2Y6xbW6EeOJh5abZwMogw" name="trid">
+      <modelElement href="helloplay_light.uml#_8Qx28LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Y6xrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QyeALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Y6x7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QyeAbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y6yLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_U2Y6ybW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_U2Y6yrW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_U2Y6y7W6EeOJh5abZwMogw" name="bezeichnung">
+      <modelElement href="helloplay_light.uml#_8QzFE7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Y6zLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8QzsILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Y6zbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8QzsIbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y6zrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_U2Y6z7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_U2Y60LW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_U2Y60bW6EeOJh5abZwMogw" name="member">
+      <modelElement href="helloplay_light.uml#_8QzsJbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Y60rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q0TM7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Y607W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q06QLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Weg7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q0TM7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2WehLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q06QLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y61LW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_U2Y61bW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_U2Y61rW6EeOJh5abZwMogw" name="User">
+        <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_U2Y617W6EeOJh5abZwMogw" name="tradmin">
+      <modelElement href="helloplay_light.uml#_8Q06Q7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Y62LW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q06RLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Y62bW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q1hULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2XFlLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q06RLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2XFlbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q1hULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y62rW6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_U2Y627W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_U2Y63LW6EeOJh5abZwMogw" name="User">
+        <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_U2Y63bW6EeOJh5abZwMogw" name="Trunde">
+      <modelElement href="helloplay_light.uml#_8FoW4LW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_U2Y63rW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_U2Y637W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Fo98rW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y64LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Y64bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8Fo987W5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Y64rW6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U2Y647W6EeOJh5abZwMogw" comments="_U1aDULW6EeOJh5abZwMogw" targetConnectionVisual="_U1qiALW6EeOJh5abZwMogw" name="getMember">
+      <modelElement href="helloplay_light.uml#_8FplALW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_U2Y65LW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_U2Y65bW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8FqMErW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y65rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Y657W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FplAbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Y66LW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U2Y66bW6EeOJh5abZwMogw" comments="_U1_SILW6EeOJh5abZwMogw" targetConnectionVisual="_U2AgQLW6EeOJh5abZwMogw" name="getTrAdmin">
+      <modelElement href="helloplay_light.uml#_8FqME7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Y66rW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8FqzILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Y667W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Zh0LW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OG9cLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh0bW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U2Zh0rW6EeOJh5abZwMogw" name="findById" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FraMLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Zh07W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FsBQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Zh1LW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FsBQbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh1bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Zh1rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OHkgLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh17W6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U2Zh2LW6EeOJh5abZwMogw" name="trid">
+        <modelElement href="helloplay_light.uml#_8FraMbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh2bW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_U2Zh2rW6EeOJh5abZwMogw" name="persist">
+      <modelElement href="helloplay_light.uml#_8FsoULW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Zh27W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FsoUbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Zh3LW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FsoUrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh3bW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_U2Zh3rW6EeOJh5abZwMogw" name="findAll" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8FtPYLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_U2Zh37W6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_U2Zh4LW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Ft2cLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Zh4bW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Ft2cbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh4rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Zh47W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FtPYbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh5LW6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U2Zh5bW6EeOJh5abZwMogw" name="delete">
+      <modelElement href="helloplay_light.uml#_8FudgLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Zh5rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FudgbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Zh57W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FudgrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh6LW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_U2Zh6bW6EeOJh5abZwMogw" name="findTipps">
+      <modelElement href="helloplay_light.uml#_8FvEkLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_U2Zh6rW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_U2Zh67W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FvroLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Zh7LW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8FvrobW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh7bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Zh7rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FvEkbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh77W6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U2Zh8LW6EeOJh5abZwMogw" name="punkte">
+      <modelElement href="helloplay_light.uml#_8FwSsLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2Zh8bW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8FwSsrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2Zh8rW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Fw5wLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh87W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Zh9LW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8FwSsbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh9bW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U2Zh9rW6EeOJh5abZwMogw" comments="_U2DjkLW6EeOJh5abZwMogw" targetConnectionVisual="_U2IcELW6EeOJh5abZwMogw" name="Trunde">
+      <modelElement href="helloplay_light.uml#_8OFvULW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_U2Zh97W6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_U2Zh-LW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8OGWZLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2Zh-bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2Zh-rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OGWY7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh-7W6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U2Zh_LW6EeOJh5abZwMogw" name="b">
+        <modelElement href="helloplay_light.uml#_8OFvUbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh_bW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_U2Zh_rW6EeOJh5abZwMogw" name="admin">
+        <modelElement href="helloplay_light.uml#_8OGWYLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2Zh_7W6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_U2ZiALW6EeOJh5abZwMogw" comments="_U2JDILW6EeOJh5abZwMogw" targetConnectionVisual="_U2OisLW6EeOJh5abZwMogw" name="setTrAdmin">
+      <modelElement href="helloplay_light.uml#_8OG9cbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U2ZiAbW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8OG9c7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2ZiArW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_U2ZiA7W6EeOJh5abZwMogw" name="u">
+        <modelElement href="helloplay_light.uml#_8OG9crW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2ZiBLW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_U2ZiBbW6EeOJh5abZwMogw" name="findTippsSpiel">
+      <modelElement href="helloplay_light.uml#_8OHkgbW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_U2ZiBrW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_U2ZiB7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8OILlLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_U2ZiCLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8OIyoLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U2ZiCbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U2ZiCrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OILkLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2ZiC7W6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U2ZiDLW6EeOJh5abZwMogw" name="s">
+        <modelElement href="helloplay_light.uml#_8OHkgrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U2ZiDbW6EeOJh5abZwMogw" name="Spiel">
+          <modelElement href="helloplay_light.uml#_8GeEYLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_U4pkkLW6EeOJh5abZwMogw" name="TrundeController">
+    <modelElement href="helloplay_light.uml#_8EXyoLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_U4pkkbW6EeOJh5abZwMogw" position="2625.0,35.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_U4pkkrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+      <modelElement href="helloplay_light.uml#_8EYZsLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_U4pkk7W6EeOJh5abZwMogw" name="Annotations">
+      <modelElement href="helloplay_light.uml#_8EfHYLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_U4pklLW6EeOJh5abZwMogw" label="+"/>
+    <operations xmi:id="_U4pklbW6EeOJh5abZwMogw" name="showDetail" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EZAwLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U4pklrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EZn0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U4pkl7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U4pkmLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8Py_gLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkmbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U4pkmrW6EeOJh5abZwMogw" name="trid">
+        <modelElement href="helloplay_light.uml#_8EZAwbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkm7W6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_U4pknLW6EeOJh5abZwMogw" name="showMain" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EaO4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U4pknbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Ea18LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U4pknrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U4pkn7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8Py_gbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkoLW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_U4pkobW6EeOJh5abZwMogw" name="addNew" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EbdALW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U4pkorW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EcEELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U4pko7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U4pkpLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PzmkLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkpbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U4pkprW6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8EbdAbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkp7W6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_U4pkqLW6EeOJh5abZwMogw" name="removeTrunde" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EcrILW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U4pkqbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EdSMLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U4pkqrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U4pkq7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8PzmkbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkrLW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U4pkrbW6EeOJh5abZwMogw" name="trid">
+        <modelElement href="helloplay_light.uml#_8EcrIbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pkrrW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_U4pkr7W6EeOJh5abZwMogw" name="joinTrunde" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8Ed5QLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_U4pksLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EegULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_U4pksbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_U4pksrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P0NoLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pks7W6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_U4pktLW6EeOJh5abZwMogw" name="trid">
+        <modelElement href="helloplay_light.uml#_8Ed5QbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_U4pktbW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_VBJZQLW6EeOJh5abZwMogw" comments="_U8_SALW6EeOJh5abZwMogw" targetConnectionVisual="_U-u-cLW6EeOJh5abZwMogw" name="User" associationsIn="_U0T3ILW6EeOJh5abZwMogw _U02psLW6EeOJh5abZwMogw" associationsOut="_UqtPMLW6EeOJh5abZwMogw _Uzpv0LW6EeOJh5abZwMogw _UzxEkLW6EeOJh5abZwMogw _Uq-U8LW6EeOJh5abZwMogw">
+    <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_VBJZQbW6EeOJh5abZwMogw" position="602.0,570.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_VBJZQrW6EeOJh5abZwMogw" name="Table">
+      <modelElement href="helloplay_light.uml#_8F744LW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_VBJZQ7W6EeOJh5abZwMogw" name="JPA1StyledElement">
+      <modelElement href="helloplay_light.uml#_8F8f8LW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_VBJZRLW6EeOJh5abZwMogw" label="+"/>
+    <attributes xmi:id="_VBJZRbW6EeOJh5abZwMogw" name="uid">
+      <modelElement href="helloplay_light.uml#_8Q2IYLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBJZRrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q2vcLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBJZR7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q2vcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBJZSLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_VBJZSbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_VBJZSrW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBJZS7W6EeOJh5abZwMogw" name="name">
+      <modelElement href="helloplay_light.uml#_8Q3WgLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBJZTLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q3WgbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBJZTbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q3WgrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBJZTrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_VBJZT7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_VBJZULW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBJZUbW6EeOJh5abZwMogw" name="pw">
+      <modelElement href="helloplay_light.uml#_8Q39krW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBJZUrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q39k7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBJZU7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q4koLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBJZVLW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_VBJZVbW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_VBJZVrW6EeOJh5abZwMogw" name="String">
+        <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBJZV7W6EeOJh5abZwMogw" defaultValue="0" name="punkte">
+      <modelElement href="helloplay_light.uml#_8Q4kpLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBJZWLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q5LsbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBJZWbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q5LsrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBJZWrW6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_VBJZW7W6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_VBJZXLW6EeOJh5abZwMogw" name="int">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBKAULW6EeOJh5abZwMogw" defaultValue="0" name="admin">
+      <modelElement href="helloplay_light.uml#_8Q5yw7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAUbW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8Q6Z0bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAUrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Q7A4LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAU7W6EeOJh5abZwMogw" label="+"/>
+      <cardinality xmi:id="_VBKAVLW6EeOJh5abZwMogw" label="1" max="1" min="1"/>
+      <type xmi:id="_VBKAVbW6EeOJh5abZwMogw" name="byte">
+        <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBKAVrW6EeOJh5abZwMogw" name="tipps">
+      <modelElement href="helloplay_light.uml#_8Q7A5LW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_VBKAV7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_VBKAWLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_VBKAWbW6EeOJh5abZwMogw" name="Tipp">
+        <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBKAWrW6EeOJh5abZwMogw" name="trunden">
+      <modelElement href="helloplay_light.uml#_8Q82EbW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_VBKAW7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_VBKAXLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_VBKAXbW6EeOJh5abZwMogw" name="Trunde">
+        <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <attributes xmi:id="_VBKAXrW6EeOJh5abZwMogw" name="tradmin">
+      <modelElement href="helloplay_light.uml#_8Q-rQLW5EeOJh5abZwMogw"/>
+      <visibility xmi:id="_VBKAX7W6EeOJh5abZwMogw" label="-"/>
+      <cardinality xmi:id="_VBKAYLW6EeOJh5abZwMogw" label="1..*" max="-1" min="1"/>
+      <type xmi:id="_VBKAYbW6EeOJh5abZwMogw" name="Trunde">
+        <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+      </type>
+    </attributes>
+    <operations xmi:id="_VBKAYrW6EeOJh5abZwMogw" name="User">
+      <modelElement href="helloplay_light.uml#_8F9uELW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAY7W6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_VBKAZLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8F-VILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAZbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAZrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8F-VIbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAZ7W6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VBKAaLW6EeOJh5abZwMogw" comments="_U-59kLW6EeOJh5abZwMogw" targetConnectionVisual="_U_RJ8LW6EeOJh5abZwMogw" name="User">
+      <modelElement href="helloplay_light.uml#_8F-VIrW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAabW6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_VBKAarW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8F-8NbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAa7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAbLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8F-8NLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAbbW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKAbrW6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8F-8MLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAb7W6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VBKAcLW6EeOJh5abZwMogw" name="pwHash">
+        <modelElement href="helloplay_light.uml#_8F-8MbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAcbW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAcrW6EeOJh5abZwMogw" comments="_U_o9YLW6EeOJh5abZwMogw" targetConnectionVisual="_U_qykLW6EeOJh5abZwMogw" name="User">
+      <modelElement href="helloplay_light.uml#_8F_jQLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAc7W6EeOJh5abZwMogw" keyword="create"/>
+      <stereotypes xmi:id="_VBKAdLW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GAxYLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAdbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAdrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GAKVbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAd7W6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKAeLW6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GAKULW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAebW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VBKAerW6EeOJh5abZwMogw" name="pw">
+        <modelElement href="helloplay_light.uml#_8GAKUbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAe7W6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VBKAfLW6EeOJh5abZwMogw" name="admin">
+        <modelElement href="helloplay_light.uml#_8GAKUrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAfbW6EeOJh5abZwMogw" name="byte">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAfrW6EeOJh5abZwMogw" comments="_U_snwLW6EeOJh5abZwMogw" targetConnectionVisual="_U_tO0LW6EeOJh5abZwMogw" name="getTrunden">
+      <modelElement href="helloplay_light.uml#_8GAxYbW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAf7W6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_VBKAgLW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GBYcrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAgbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAgrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GAxYrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAg7W6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VBKAhLW6EeOJh5abZwMogw" comments="_U_3m4LW6EeOJh5abZwMogw" targetConnectionVisual="_U__isLW6EeOJh5abZwMogw" name="getTipps">
+      <modelElement href="helloplay_light.uml#_8GB_gLW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAhbW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_VBKAhrW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GCmkbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAh7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAiLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GB_gbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAibW6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VBKAirW6EeOJh5abZwMogw" comments="_VAAJwLW6EeOJh5abZwMogw" targetConnectionVisual="_VAFCQLW6EeOJh5abZwMogw" name="getTrAdmin">
+      <modelElement href="helloplay_light.uml#_8GCmkrW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAi7W6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_VBKAjLW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8GDNorW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAjbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAjrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GCmk7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAj7W6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VBKAkLW6EeOJh5abZwMogw" name="userExist" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GD0sLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAkbW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GD0s7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAkrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GEbwLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAk7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAlLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GD0srW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAlbW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKAlrW6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GD0sbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAl7W6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAmLW6EeOJh5abZwMogw" name="findById" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GEbw7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAmbW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GFC0bW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAmrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GFp4LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAm7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKAnLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OjCUrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAnbW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKAnrW6EeOJh5abZwMogw" name="id">
+        <modelElement href="helloplay_light.uml#_8GFC0LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAn7W6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAoLW6EeOJh5abZwMogw" name="findByName" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GGQ8LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAobW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GG4ALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAorW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GG4AbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAo7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKApLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8OjpYLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKApbW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKAprW6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GGQ8bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAp7W6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAqLW6EeOJh5abZwMogw" name="findAll" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GHfELW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKAqbW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_VBKAqrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GIGILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAq7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GIGIbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKArLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKArbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GHfEbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKArrW6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VBKAr7W6EeOJh5abZwMogw" name="add">
+      <modelElement href="helloplay_light.uml#_8GItMLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAsLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GItMbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAsbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GJUQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAsrW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_VBKAs7W6EeOJh5abZwMogw" name="add" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GJ7ULW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAtLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GKiYLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAtbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GKiYbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAtrW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKAt7W6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GJ7UbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAuLW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VBKAubW6EeOJh5abZwMogw" name="pwHash">
+        <modelElement href="helloplay_light.uml#_8GJ7UrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAurW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAu7W6EeOJh5abZwMogw" name="persist">
+      <modelElement href="helloplay_light.uml#_8GKiY7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAvLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GLJcLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAvbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GLJcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAvrW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_VBKAv7W6EeOJh5abZwMogw" name="switchAdmin">
+      <modelElement href="helloplay_light.uml#_8GLJc7W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAwLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GLwgLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAwbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GLwgbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAwrW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_VBKAw7W6EeOJh5abZwMogw" name="update">
+      <modelElement href="helloplay_light.uml#_8GMXkLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAxLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GMXk7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAxbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GM-oLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAxrW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKAx7W6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GMXkbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAyLW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VBKAybW6EeOJh5abZwMogw" name="pwHash">
+        <modelElement href="helloplay_light.uml#_8GMXkrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKAyrW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKAy7W6EeOJh5abZwMogw" name="update">
+      <modelElement href="helloplay_light.uml#_8GM-orW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKAzLW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GNlsLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKAzbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GNlsbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKAzrW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKAz7W6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GM-o7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA0LW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKA0bW6EeOJh5abZwMogw" name="changePw">
+      <modelElement href="helloplay_light.uml#_8GOMwLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA0rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GOMwrW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKA07W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GOz0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA1LW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKA1bW6EeOJh5abZwMogw" name="pwHash">
+        <modelElement href="helloplay_light.uml#_8GOMwbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA1rW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKA17W6EeOJh5abZwMogw" name="delete">
+      <modelElement href="helloplay_light.uml#_8GOz0rW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA2LW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GOz07W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKA2bW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GPa4LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA2rW6EeOJh5abZwMogw" label="+"/>
+    </operations>
+    <operations xmi:id="_VBKA27W6EeOJh5abZwMogw" name="validate" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8GQB8LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA3LW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GQpAbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKA3bW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GRQELW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA3rW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKA37W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GQpALW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA4LW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKA4bW6EeOJh5abZwMogw" name="name">
+        <modelElement href="helloplay_light.uml#_8GQB8bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA4rW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VBKA47W6EeOJh5abZwMogw" name="pw">
+        <modelElement href="helloplay_light.uml#_8GQB8rW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA5LW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKA5bW6EeOJh5abZwMogw" name="checkPw">
+      <modelElement href="helloplay_light.uml#_8GR3ILW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA5rW6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GSeMbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKA57W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GTFQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA6LW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKA6bW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GSeMLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA6rW6EeOJh5abZwMogw" name="boolean">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VBKA67W6EeOJh5abZwMogw" name="pw">
+        <modelElement href="helloplay_light.uml#_8GR3IbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA7LW6EeOJh5abZwMogw" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKA7bW6EeOJh5abZwMogw" name="uncheckedTipps">
+      <modelElement href="helloplay_light.uml#_8GTFQrW5EeOJh5abZwMogw"/>
+      <keywords xmi:id="_VBKA7rW6EeOJh5abZwMogw" keyword="generic_container"/>
+      <stereotypes xmi:id="_VBKA77W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8GTsU7W5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKA8LW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8GUTYLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA8bW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VBKA8rW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8GTFQ7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA87W6EeOJh5abZwMogw" name="Tipp">
+          <modelElement href="helloplay_light.uml#_8FVb8LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VBKA9LW6EeOJh5abZwMogw" comments="_VAUS0LW6EeOJh5abZwMogw" targetConnectionVisual="_VAU54LW6EeOJh5abZwMogw" name="addTrunde">
+      <modelElement href="helloplay_light.uml#_8Oh0MLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA9bW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8OibQLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA9rW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKA97W6EeOJh5abZwMogw" name="tr">
+        <modelElement href="helloplay_light.uml#_8Oh0MbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA-LW6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKA-bW6EeOJh5abZwMogw" comments="_VAwXsLW6EeOJh5abZwMogw" targetConnectionVisual="_VA9MALW6EeOJh5abZwMogw" name="removeFromTrunde">
+      <modelElement href="helloplay_light.uml#_8OibQbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA-rW6EeOJh5abZwMogw" name="StyledElement">
+        <modelElement href="helloplay_light.uml#_8OjCUbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKA-7W6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKA_LW6EeOJh5abZwMogw" name="tr">
+        <modelElement href="helloplay_light.uml#_8OjCULW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKA_bW6EeOJh5abZwMogw" name="Trunde">
+          <modelElement href="helloplay_light.uml#_8FkFcLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VBKA_rW6EeOJh5abZwMogw" name="add" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8OjpYbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VBKA_7W6EeOJh5abZwMogw" name="LegacyStyledElement">
+        <modelElement href="helloplay_light.uml#_8OkQcLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <stereotypes xmi:id="_VBKBALW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8OkQcbW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VBKBAbW6EeOJh5abZwMogw" label="+"/>
+      <parameters xmi:id="_VBKBArW6EeOJh5abZwMogw" name="user">
+        <modelElement href="helloplay_light.uml#_8OjpYrW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VBKBA7W6EeOJh5abZwMogw" name="User">
+          <modelElement href="helloplay_light.uml#_8F41kLW5EeOJh5abZwMogw"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_VF4IQLW6EeOJh5abZwMogw" name="UserController">
+    <modelElement href="helloplay_light.uml#_8EhjoLW5EeOJh5abZwMogw"/>
+    <visualProperties xmi:id="_VF4IQbW6EeOJh5abZwMogw" position="2209.0,37.0" size="-1.0,-1.0"/>
+    <stereotypes xmi:id="_VF4IQrW6EeOJh5abZwMogw" name="LegacyStyledElement">
+      <modelElement href="helloplay_light.uml#_8EiKsLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <stereotypes xmi:id="_VF4IQ7W6EeOJh5abZwMogw" name="Annotations">
+      <modelElement href="helloplay_light.uml#_8ExbQLW5EeOJh5abZwMogw"/>
+    </stereotypes>
+    <visibility xmi:id="_VF4IRLW6EeOJh5abZwMogw" label="+"/>
+    <operations xmi:id="_VF4IRbW6EeOJh5abZwMogw" name="users" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EiKsbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IRrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EixwLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IR7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4ISLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P00sLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4ISbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VF4ISrW6EeOJh5abZwMogw" name="finduser" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8Ej_4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IS7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Ekm8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4ITLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4ITbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P00sbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4ITrW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IT7W6EeOJh5abZwMogw" name="id">
+        <modelElement href="helloplay_light.uml#_8Ej_4bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IULW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4IUbW6EeOJh5abZwMogw" name="accverwaltung" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8Ekm87W5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IUrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8ElOALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IU7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IVLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P1bwLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IVbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VF4IVrW6EeOJh5abZwMogw" name="switchAdmin" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8El1ELW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IV7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EmcILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IWLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IWbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P1bwbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IWrW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IW7W6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8El1EbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IXLW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4IXbW6EeOJh5abZwMogw" name="removeFromTrunde" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EnDMLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IXrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EoRULW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IX7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IYLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P2C0LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IYbW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IYrW6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8EnDMbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IY7W6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_VF4IZLW6EeOJh5abZwMogw" name="trid">
+        <modelElement href="helloplay_light.uml#_8EnqQLW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IZbW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4IZrW6EeOJh5abZwMogw" name="newuser" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EoRUrW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IZ7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Eo4YLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IaLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IabW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P2C0bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IarW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VF4Ia7W6EeOJh5abZwMogw" name="save" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EpfcbW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IbLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EqGgLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IbbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IbrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P2C0rW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4Ib7W6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_VF4IcLW6EeOJh5abZwMogw" name="updateShow" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EqtkLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IcbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8ErUoLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IcrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4Ic7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P2p4LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IdLW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IdbW6EeOJh5abZwMogw" name="id">
+        <modelElement href="helloplay_light.uml#_8EqtkbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IdrW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4Id7W6EeOJh5abZwMogw" name="update" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EsiwLW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IeLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EtJ0LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IebW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IerW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P2p4bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4Ie7W6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IfLW6EeOJh5abZwMogw" name="id">
+        <modelElement href="helloplay_light.uml#_8EsiwbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IfbW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4IfrW6EeOJh5abZwMogw" name="updateName" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8Etw4LW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4If7W6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EuX8LW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IgLW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IgbW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P3Q8LW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IgrW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4Ig7W6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8Etw4bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IhLW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4IhbW6EeOJh5abZwMogw" name="changePwShow" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EuX8rW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IhrW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Eu_ALW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4Ih7W6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IiLW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P3Q8bW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IibW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IirW6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8EuX87W5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4Ii7W6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4IjLW6EeOJh5abZwMogw" name="changePw" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EvmELW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IjbW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8EwNILW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IjrW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4Ij7W6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P3Q8rW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IkLW6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4IkbW6EeOJh5abZwMogw" name="uid">
+        <modelElement href="helloplay_light.uml#_8EvmEbW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4IkrW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_VF4Ik7W6EeOJh5abZwMogw" name="delete" staticOperation="true">
+      <modelElement href="helloplay_light.uml#_8EwNIrW5EeOJh5abZwMogw"/>
+      <stereotypes xmi:id="_VF4IlLW6EeOJh5abZwMogw" name="Annotations">
+        <modelElement href="helloplay_light.uml#_8Ew0MLW5EeOJh5abZwMogw"/>
+      </stereotypes>
+      <visibility xmi:id="_VF4IlbW6EeOJh5abZwMogw" label="+"/>
+      <outParameters xmi:id="_VF4IlrW6EeOJh5abZwMogw">
+        <modelElement href="helloplay_light.uml#_8P34ALW5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4Il7W6EeOJh5abZwMogw" name="Result">
+          <modelElement href="helloplay_light.uml#_8PjH4LW5EeOJh5abZwMogw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_VF4ImLW6EeOJh5abZwMogw" name="id">
+        <modelElement href="helloplay_light.uml#_8EwNI7W5EeOJh5abZwMogw"/>
+        <type xmi:id="_VF4ImbW6EeOJh5abZwMogw" name="int">
+          <modelElement href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>
