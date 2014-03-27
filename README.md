@@ -197,6 +197,8 @@ Changelog:
 
 *FinalSpiel-Vergabe angefangen (noch nicht alle Regeln fuer gg-entscheid fertig)
 
+*FinalSpiel-Vergabe ready. Not tested yet.
+
 =========
 Legende:
 	Leerzeile = neuer commit

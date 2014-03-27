@@ -202,8 +202,10 @@ public class Mannschaft {
     
     @Transactional(readOnly=true)
     public static  List<Mannschaft> findByGroup(String grp) {
-    	String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte";
+    	String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte DESC";
     	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
     	q.setParameter(1, grp);
-    	Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
+    	List<Mannschaft> list = (List<Mannschaft>) q.getResultList();
+    	return list;
+    }
 }
