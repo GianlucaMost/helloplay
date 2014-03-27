@@ -199,6 +199,8 @@ Changelog:
 
 *FinalSpiel-Vergabe ready. Not tested yet.
 
+*Final-Spiel-Vergabe now modular
+
 =========
 Legende:
 	Leerzeile = neuer commit
