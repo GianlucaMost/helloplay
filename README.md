@@ -15,12 +15,12 @@ Frameworks:
 	play 2.2.1
 	bootstrap v3.1.1
 API:
+	JPA
 	rome 1.0 (RSS)
 	jbcrypt 0.3m (password cryp)
 Languages (in etwa anteilmaessig sortiert):
 	java
 	scala
-	JPA
 	mySQL
 Database:
 	SQL
@@ -200,6 +200,8 @@ Changelog:
 *FinalSpiel-Vergabe ready. Not tested yet.
 
 *Final-Spiel-Vergabe now modular
+
+*In TippRunde werden jetzt nur noch Tipps anderer angezeigt, wenn Spiel begonnen hat oder zu Ende ist.
 
 =========
 Legende:

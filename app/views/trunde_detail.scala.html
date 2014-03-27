@@ -86,7 +86,7 @@
 						<th></th>
 						<th></th>
 						<th></th>
-						<th>Tipps</th>
+						<th>Tipps**</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -130,10 +130,12 @@
 										}else{
 											<small>
 										}
-										<a @if(t.getUser().equals(cU)){href="@routes.TippController.showTipps()"}else{href="@routes.UserController.finduser(t.getUser().uid)"}>
-						    				@t.getUser().name: 
-						    			</a>
-						    			@t.toreheim - @t.toregast
+										@if(t.getUser().equals(cU) || s.gameRunning() || s.gameOver()){
+											<a @if(t.getUser().equals(cU)){href="@routes.TippController.showTipps()"}else{href="@routes.UserController.finduser(t.getUser().uid)"}>
+							    				@t.getUser().name: 
+							    			</a>
+							    			@t.toreheim - @t.toregast
+						    			}
 										@if(t.getUser().equals(cU)){
 											</strong>
 										}else{
@@ -150,7 +152,8 @@
 				</tbody>
 		   	</table>
 		   	<br>
-			*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!
+			*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!<br>
+			**Tipps anderer Benutzer werden nur bei laufenden oder fertigen Spielen angezeigt.
 			<ul class="list-group">
 				<li class="list-group-item list-group-item-info">Spiel laeuft.</li>
 				<li class="list-group-item list-group-item-warning">Spiel zu Ende.</li>
