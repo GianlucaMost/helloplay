@@ -203,6 +203,8 @@ Changelog:
 
 *In TippRunde werden jetzt nur noch Tipps anderer angezeigt, wenn Spiel begonnen hat oder zu Ende ist.
 
+*kleine Verbesserungen der TippRunden und Benutzer-Ansicht
+
 =========
 Legende:
 	Leerzeile = neuer commit

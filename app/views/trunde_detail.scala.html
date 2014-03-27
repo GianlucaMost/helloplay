@@ -135,6 +135,10 @@
 							    				@t.getUser().name: 
 							    			</a>
 							    			@t.toreheim - @t.toregast
+						    			}else{
+						    				<a href="@routes.UserController.finduser(t.getUser().uid)">
+							    				@t.getUser().name 
+							    			</a>
 						    			}
 										@if(t.getUser().equals(cU)){
 											</strong>
