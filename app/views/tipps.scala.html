@@ -4,6 +4,7 @@
     <div class="page-header">
 		<h1>Tipps<small>_@cU.name</small></h1>
 	</div>	
+	@if(cU.getTipps().size()!=0){
 	<blockquote>
 		<p>
 			Tipps: @cU.getTipps().size()
@@ -32,7 +33,7 @@
 				</tr>
 			</thead>
 			<tbody>
-	 			@for(t <- cU.getTipps()){
+	 			@for(t <- cU.findSortedTipps()){
 	 				@defining(t.getSpiel()) { s =>
 		 				@if(s.gameRunning()){
 		 					<tr class="info">
@@ -91,4 +92,10 @@
 			<li class="list-group-item list-group-item-warning">Spiel zu Ende, Punkte <strong>noch nicht</strong> erhalten.</li>
 		</ul>
 	</div> <!-- row -->
+	}else{
+		<h2>Sie haben noch keinen Tipp abgegeben.</h2>
+   		<p>
+   			Besuchen Sie die <a href="@routes.Application.index()#stSpielplan">Startseite</a> um einen Tipp abzugeben.
+   		</p>
+	}
 }<!-- main -->

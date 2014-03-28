@@ -209,6 +209,9 @@ Changelog:
 
 *member und tipps in TippRunde jetzt sortiert
 
+*spiele in tipps und mannschaft jetzt sortiert
+*kleine optische Verbesserungen
+
 =========
 Legende:
 	Leerzeile = neuer commit

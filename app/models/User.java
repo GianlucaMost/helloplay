@@ -177,6 +177,14 @@ public class User {
         Query query = JPA.em().createQuery("SELECT u FROM User u");
         return (Collection<User>) query.getResultList();
     }
+    
+    @Transactional
+    public Collection<Tipp> findSortedTipps(){
+    	String sqlQuery = "SELECT t.* FROM tipp AS t INNER JOIN spiel AS s ON s.sid=t.fk_sid WHERE t.fk_uid=? ORDER BY beginn";
+    	Query q = JPA.em().createNativeQuery(sqlQuery, Tipp.class);
+    	q.setParameter(1, this.uid);
+    	return q.getResultList();
+    }
  
     /**
      * non static user persisting

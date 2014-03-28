@@ -208,4 +208,13 @@ public class Mannschaft {
     	List<Mannschaft> list = (List<Mannschaft>) q.getResultList();
     	return list;
     }
+    
+    @Transactional(readOnly=true)
+    public List<Spiel> findGamesSorted() {
+    	String sqlQuery = "SELECT s.* FROM spiel AS s INNER JOIN mannschaft AS m ON m.mid=s.fk_midheim OR m.mid=s.fk_midgast WHERE mid=? ORDER BY s.beginn";
+    	Query q = JPA.em().createNativeQuery(sqlQuery, Spiel.class);
+    	q.setParameter(1, this.mid);
+    	List<Spiel> list = (List<Spiel>) q.getResultList();
+    	return list;
+    }
 }
