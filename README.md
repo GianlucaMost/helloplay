@@ -207,6 +207,8 @@ Changelog:
 
 *kleine Verbesserungen
 
+*member und tipps in TippRunde jetzt sortiert
+
 =========
 Legende:
 	Leerzeile = neuer commit

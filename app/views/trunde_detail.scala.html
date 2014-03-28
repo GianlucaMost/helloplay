@@ -124,7 +124,7 @@
 					    			</a>
 								</td>
 								<td>
-									@for((t, i) <- tr.findTippsSpiel(s).zipWithIndex){
+									@for((t, i) <- tr.findTippsSpielSorted(s, cU).zipWithIndex){
 										@if(t.getUser().equals(cU)){
 											<strong>
 										}else{

@@ -149,6 +149,38 @@ public class Trunde {
     }
     
     /**
+     * find all tipps from this trunde for the given spiel with the tipp from the current user at first place
+     * @param s
+     * @param cU
+     * @return
+     */
+    @Transactional
+    public Collection<Tipp> findTippsSpielSorted(Spiel s, User cU) {
+    	List<Tipp> tipps = new ArrayList<Tipp>();
+    	
+    	for(User m: this.getMember()){
+    		for (Tipp t: m.getTipps()){
+    			if(t.getSpiel().equals(s)){
+    				if(t.getUser().equals(cU)){
+    					tipps.add(t);
+    				}
+    			}
+    		}
+    	}
+    	for(User m: this.getMember()){
+    		for (Tipp t: m.getTipps()){
+    			if(t.getSpiel().equals(s)){
+    				if(!t.getUser().equals(cU)){
+    					tipps.add(t);
+    				}
+    			}
+    		}
+    	}
+    	
+    	return tipps;
+    }
+    
+    /**
      * return the sum of all points from every user in this tipprunde
      * @return
      */
