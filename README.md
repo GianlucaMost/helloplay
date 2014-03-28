@@ -205,6 +205,8 @@ Changelog:
 
 *kleine Verbesserungen der TippRunden und Benutzer-Ansicht
 
+*kleine Verbesserungen
+
 =========
 Legende:
 	Leerzeile = neuer commit

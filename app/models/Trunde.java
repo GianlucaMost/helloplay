@@ -2,7 +2,10 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mindrot.jbcrypt.*;
 
@@ -156,5 +159,13 @@ public class Trunde {
     		p=p+u.punkte;
     	}
     	return p;
+    }
+    
+    @Transactional
+    public Collection<User> findSortedMember(){
+    	String sqlQuery = "SELECT uid, name, pw, punkte, admin FROM user AS u INNER JOIN user_trunde AS utr ON utr.fk_uid=u.uid WHERE fk_trid=? ORDER BY punkte DESC, name ASC";
+    	Query q = JPA.em().createNativeQuery(sqlQuery, User.class);
+    	q.setParameter(1, this.trid);
+    	return q.getResultList();
     }
 }

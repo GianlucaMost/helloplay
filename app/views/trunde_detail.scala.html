@@ -24,7 +24,7 @@
 									</tr>
 								</thead>
 				 				<tbody>
-									@for(m <- tr.getMember()) {
+									@for(m <- tr.findSortedMember()) {
 				 						<tr>
 											<td>
 												@if(tra!=null && tra.equals(m)){

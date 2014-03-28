@@ -61,15 +61,27 @@
   					<th>Ort</th>
   					<th>Beginn*</th>
   					<th>Ende* **</th>
-  					<th>Tipp</th>
+  					<th>
+  						<div class="container-fluid">
+	  						<div class=row-fluid>
+								<div class="col-md-3">
+									Tipp
+								</div>
+							</div>
+						</div>
+					</th>
   				</tr>
   			</thead>
   			<tbody>
   				@for(s <- spiele){
 	 				@if(s.gameRunning()){
-		 					<tr class="info">
+	 					<tr class="info">
 	 				}else {
-	 					<tr>
+	 					@if(s.gameOver()){
+	 						<tr class="warning">
+	 					}else{
+	 						<tr>
+	 					}
 	 				}
 	 					<td><strong>@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)</strong></td>
 						<td>
@@ -105,7 +117,13 @@
 								}else{
 									@for(t <- s.getTipps()){
 										@if(t.getUser().equals(cU)){
-											@t.toreheim - @t.toregast
+											<div class="container-fluid">
+						  						<div class=row-fluid>
+													<div class="col-md-3">
+														@t.toreheim - @t.toregast
+													</div>
+												</div>
+											</div>
 										}
 									}
 								}
@@ -117,5 +135,9 @@
     	</table>
     	*Alle Zeiten in Deutscher Zeit (UTC+01:00) angegeben!<br>
     	**Das Spielende kann sich bis zum naechsten Tag(deutscher Zeit) hinziehen.
+    	<ul class="list-group">
+			<li class="list-group-item list-group-item-info">Spiel laeuft.</li>
+			<li class="list-group-item list-group-item-warning">Spiel zu Ende.</li>
+		</ul>
     </div>
 }
