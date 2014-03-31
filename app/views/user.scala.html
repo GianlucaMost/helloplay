@@ -40,7 +40,7 @@
 		  				</td>
 		  				<td>
 		  					<a href="@routes.UserController.delete(user.uid)">
-		  						<button type="button" class="btn btn-danger btn">
+		  						<button type="button" class="btn btn-danger btn" onclick="return confirm('Sind Sie sicher?');">
 								  <span class="glyphicon glyphicon-trash"></span>
 								</button>
 		  					</a>

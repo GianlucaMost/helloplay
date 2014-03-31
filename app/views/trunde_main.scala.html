@@ -51,20 +51,20 @@
 				 				@if(tr.getTrAdmin()!=null){
 				 					@if(tr.getTrAdmin().equals(cU)){
 					  					@helper.form(action = routes.TrundeController.removeTrunde(tr.trid)) {
-											<button title="Diese TippRunde loeschen" class="btn btn-sm btn-danger btn-block" type="submit">
+											<button title="Diese TippRunde loeschen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
 												<span class="glyphicon glyphicon-trash"></span>
 											</button>
 										}
 									}else{
 										@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
-											<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
+											<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
 												<span class="glyphicon glyphicon-remove"></span>
 											</button>
 										}
 									}
 								}else{
 									@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
-										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit">
+										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
 											<span class="glyphicon glyphicon-remove"></span>
 										</button>
 									}

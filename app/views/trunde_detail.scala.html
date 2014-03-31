@@ -41,7 +41,7 @@
 											@if(tra!=null && tra.equals(cU) && !tra.equals(m)){
 												<td>
 													@helper.form(action = routes.UserController.removeFromTrunde(m.uid, tr.trid)) {
-														<button title="Entfernen" class="btn btn-sm btn-danger btn-block" type="submit">
+														<button title="Entfernen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
 															<span class="glyphicon glyphicon-remove"></span>
 														</button>
 													}
@@ -52,7 +52,7 @@
 								</tbody>
 			 				</table>
 			 			@if(tra!=null && tra.equals(cU)){
-							<a href="mailto:?subject=WMtipp - TippRunden Einladung&body=Melden Sie sich an und klicken dann auf folgenden Link um der TippRunde @tr.bezeichnung beizutreten:%0Dhttp://localhost:9000/trunde/join/@tr.trid">
+							<a href="mailto:?subject=WMtipp - TippRunden Einladung&body=Melden Sie sich an und klicken dann auf folgenden Link um der TippRunde @tr.bezeichnung beizutreten:%0Dhttp://localhost:9000/trunde/join/@tr.trid" target="_newtab">
 								<button title="Neuen Benutzer einladen" class="btn btn-sm btn-default btn-block">
 									<span class="glyphicon glyphicon-plus"></span>
 								</button>

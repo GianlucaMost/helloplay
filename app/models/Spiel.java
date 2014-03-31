@@ -454,34 +454,72 @@ public class Spiel {
 			}
 		}
 		
-		//finde alle AchtelFinal-Spiele
-		Spiel af1 = Spiel.findByBezeichnung("af1");
-		Spiel af2 = Spiel.findByBezeichnung("af2");
-		Spiel af3 = Spiel.findByBezeichnung("af3");
-		Spiel af4 = Spiel.findByBezeichnung("af4");
-		Spiel af5 = Spiel.findByBezeichnung("af5");
-		Spiel af6 = Spiel.findByBezeichnung("af6");
-		Spiel af7 = Spiel.findByBezeichnung("af7");
-		Spiel af8 = Spiel.findByBezeichnung("af8");
+//		//finde alle AchtelFinal-Spiele
+//		Spiel af1 = Spiel.findByBezeichnung("af1");
+//		Spiel af2 = Spiel.findByBezeichnung("af2");
+//		Spiel af3 = Spiel.findByBezeichnung("af3");
+//		Spiel af4 = Spiel.findByBezeichnung("af4");
+//		Spiel af5 = Spiel.findByBezeichnung("af5");
+//		Spiel af6 = Spiel.findByBezeichnung("af6");
+//		Spiel af7 = Spiel.findByBezeichnung("af7");
+//		Spiel af8 = Spiel.findByBezeichnung("af8");
+//		
+//		//setze AchtelFinale
+//		af1.setVersusByState("Sieger A", "Zweiter B");
+//		af2.setVersusByState("Sieger C", "Zweiter D");
+//		af3.setVersusByState("Sieger B", "Zweiter A");
+//		af4.setVersusByState("Sieger D", "Zweiter C");
+//		af5.setVersusByState("Sieger E", "Zweiter F");
+//		af6.setVersusByState("Sieger G", "Zweiter H");
+//		af7.setVersusByState("Sieger F", "Zweiter E");
+//		af8.setVersusByState("Sieger H", "Zweiter G");
+//		
+//		af1.persist();
+//		af2.persist();
+//		af3.persist();
+//		af4.persist();
+//		af5.persist();
+//		af6.persist();
+//		af7.persist();
+//		af8.persist();
 		
-		//setze AchtelFinale
-		af1.setVersusByState("Sieger A", "Zweiter B");
-		af2.setVersusByState("Sieger C", "Zweiter D");
-		af3.setVersusByState("Sieger B", "Zweiter A");
-		af4.setVersusByState("Sieger D", "Zweiter C");
-		af5.setVersusByState("Sieger E", "Zweiter F");
-		af6.setVersusByState("Sieger G", "Zweiter H");
-		af7.setVersusByState("Sieger F", "Zweiter E");
-		af8.setVersusByState("Sieger H", "Zweiter G");
-		
-		af1.persist();
-		af2.persist();
-		af3.persist();
-		af4.persist();
-		af5.persist();
-		af6.persist();
-		af7.persist();
-		af8.persist();
+		for(int i=1; i<=8; i++){
+			Spiel af = Spiel.findByBezeichnung("af"+i);
+			switch (i){
+			case 1:
+				af.setVersusByState("Sieger A", "Zweiter B");
+				break;
+				
+			case 2:
+				af.setVersusByState("Sieger C", "Zweiter D");
+				break;
+				
+			case 3:
+				af.setVersusByState("Sieger B", "Zweiter A");
+				break;
+				
+			case 4:
+				af.setVersusByState("Sieger D", "Zweiter C");
+				break;
+				
+			case 5:
+				af.setVersusByState("Sieger E", "Zweiter F");
+				break;
+				
+			case 6:
+				af.setVersusByState("Sieger G", "Zweiter H");
+				break;
+				
+			case 7:
+				af.setVersusByState("Sieger F", "Zweiter E");
+				break;
+				
+			case 8:
+				af.setVersusByState("Sieger H", "Zweiter G");
+				break;
+			}
+			af.persist();
+		}
     }
     
     @Transactional

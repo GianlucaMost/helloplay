@@ -212,6 +212,10 @@ Changelog:
 *spiele in tipps und mannschaft jetzt sortiert
 *kleine optische Verbesserungen
 
+*kleine Code-Verbesserungen
+*Confirm-Abfragen hinzugefuegt
+*Mail-client wird jetzt in neuem Tab geoeffnet
+
 =========
 Legende:
 	Leerzeile = neuer commit
