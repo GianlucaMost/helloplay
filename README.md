@@ -5,6 +5,7 @@ Author:		Gianluca Most
 Firma:		InnoQ
 Datum:		Feb.2014-Mar.2014
 Kontakt:	most.gianluca@gmail.com
+GitHub:		https://github.com/GianlucaMost/helloplay
 
 Dieses Projekt ist ein kleines TippSpiel zur Fussball Weltmeisterschaft 2014 in Brasilien.
 Es ist im Rahmen meines Praktikums bei der Firma innoQ entstanden.
@@ -41,7 +42,7 @@ Haeufig verwendete Kuerzel:
 	cU -> currentUser (angemeldeter Benutzer (session))
 	p -> punkte
 	a -> admin
-	m -> mannschaft
+	m -> mannschaft / member
 	mh -> MannschaftHeim
 	mg -> MannschaftGast
 	s -> spiel
@@ -56,21 +57,50 @@ Haeufig verwendete Kuerzel:
 	mid -> mannschaft id
 	sid -> spiel id
 	utrid -> user-TippRunde id (Abhaengigkeiten zwischen Benutzer und TippRunde)
+	
+Admin:
+	Ein Benutzer kann Serverseitig zum Administrator ernannt werden (das mitspielen ist fuer ihn dann nicht mehr vorgesehen).
+	mysql: UPDATE user SET admin=1 WHERE uid=X;
+	ACHTUNG! Dieser Benutzer kann anschließend beliebige andere Benutzer zum Administrator ernennen, ihre Anmeldeinformationen aendern und ihren Account unwiederuflich loeschen!
 		
 =========
 	
 Moegliche Probleme:
 	Die Ergebnisse werden nicht korrekt geladen bzw. in die Datenbank geschrieben:
 		Moegliche Ursache:
-			- Der RSS-feed-title sieht nicht konstant gleich aus oder liegt nicht in der erwarteten Form vor
+			- Der RSS-feed-title sieht nicht konstant gleich aus oder liegt nicht in der erwarteten Form vor.
 		Fehlerbehebung:
 			- Checken wie der Titel des feeds aussieht (Quelle s.o.) und Pattern in /app/models/Spiel.java.setResultWithRss() anpassen.
-			- Wie oben und dann switch-case zur Unbenennung der Mannschaften auf Korrektheit der Schreibweise ueberpruefen.
+			- Title checken (wie oben) und dann switch-case zur Unbenennung der Mannschaften auf Korrektheit der Schreibweise ueberpruefen.
 		Moegliche Folgen:
 			- Benutzer bekommen keine Punkte fuer ihre Tipps
+			- Mannschaften die ab dem AchtelFinale gegeneinander spielen werden nicht richtig ermittelt
 			- Finalspiele werden nicht zum Tippen freigegeben
+			
+	___			
 
-=========	
+	Die Finalisten werden nicht korrekt geladen bzw. in die Datenbank geschrieben:
+		Moegliche Ursache:
+			- s.o.
+			- Algorithmus in models/Spiel.java -> setErgebnis() fehlerhaft.
+			- Punktegleichstand in einer Gruppe zwischen mehr als 2 Mannschaften.
+			- Alle angewendeten Regeln bringen keinen Gruppen-ersten/-zweiten hervor
+		Fehlerbehebung:
+			- mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
+		Moegliche Folgen:
+			- Finalisten werden ab entsprechenden Zeitpunkt nicht gesetzt.
+		
+	___	
+				
+	Der Link einer e-Mail zur Einladung in eine TippRunde enthalten ist funktioniert nicht:
+		Moegliche Ursache:
+			- Der Link ist hard codiert in /app/views/trunde_detail.scala.html:55
+		Fehlerbehebung:
+			- Link anpassen
+		Moegliche Folgen:
+			- Es koennen keine neuen Benutzer zu TippRunden eingeladen werden
+
+=========
 
 Changelog:
 
