@@ -6,6 +6,7 @@ Firma:		InnoQ
 Datum:		Feb.2014-Mar.2014
 Kontakt:	most.gianluca@gmail.com
 GitHub:		https://github.com/GianlucaMost/helloplay
+DB-dump:	https://drive.google.com/file/d/0Bx2ndN3Jq3k3NE8zRnJ6b3MxblU/edit?usp=sharing
 
 Dieses Projekt ist ein kleines TippSpiel zur Fussball Weltmeisterschaft 2014 in Brasilien.
 Es ist im Rahmen meines Praktikums bei der Firma innoQ entstanden.
