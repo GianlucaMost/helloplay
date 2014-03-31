@@ -25,7 +25,7 @@
 								</thead>
 				 				<tbody>
 									@for(m <- tr.findSortedMember()) {
-				 						<tr @if(tra!=null && tra.equals(m)){class="info" title="TippRunden Admin"}>
+				 						<tr @if(tra!=null && tra.equals(m) && !tra.equals(cU)){class="info" title="TippRunden Admin"}>
 			 								<td>
 												@if(m.equals(cU)){
 													<a href="@routes.TippController.showTipps()">
@@ -103,9 +103,8 @@
 			 				}
 			 					<td>
 			 						<strong>
-			 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
+			 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1).
 			 						</strong>
-			 						 - 
 			 						<small>
 			 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
 			 						</small>
@@ -137,7 +136,7 @@
 							    			@t.toreheim - @t.toregast
 						    			}else{
 						    				<a href="@routes.UserController.finduser(t.getUser().uid)">
-							    				@t.getUser().name 
+							    				@t.getUser().name
 							    			</a>
 						    			}
 										@if(t.getUser().equals(cU)){

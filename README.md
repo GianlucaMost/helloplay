@@ -218,6 +218,9 @@ Changelog:
 
 *verschiedene view-optimierungen
 
+*alerts now dismissable
+*verschiedene view-optimierungen
+
 =========
 Legende:
 	Leerzeile = neuer commit

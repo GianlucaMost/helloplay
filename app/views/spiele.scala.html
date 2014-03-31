@@ -4,12 +4,14 @@
 	<h2>Spielplan</h2>
 </div>
 @if(flash.containsKey("tippError")) {
-	<div class="alert alert-danger">
+	<div class="alert alert-danger alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<strong class="warning">Fehler!</strong> @flash.get("tippError")
 	</div>
 }
 @if(flash.containsKey("tippSuccess")) {
-	<div class="alert alert-success">
+	<div class="alert alert-success alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<strong class="success">Erfolg!</strong> @flash.get("tippSuccess")
 	</div>
 }
@@ -45,9 +47,8 @@
 		 				}
 		 					<td>
 		 						<strong>
-		 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
+		 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1).
 		 						</strong>
-		 						 - 
 		 						<small>
 		 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
 		 						</small>
