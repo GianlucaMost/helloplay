@@ -260,7 +260,7 @@ public class UserController extends Controller {
 		User curUser = User.findByName(request().username());
 		if (delUser!=null){
 			if(delUser.equals(curUser) || curUser.admin==1){
-				flash("warning", "user " + delUser.name + " wurde geloescht");
+				flash("warning", "Benutzer " + delUser.name + " wurde geloescht.");
 				delUser.delete();
 			}
 			if (curUser.admin==1){

@@ -51,20 +51,20 @@
 				 				@if(tr.getTrAdmin()!=null){
 				 					@if(tr.getTrAdmin().equals(cU)){
 					  					@helper.form(action = routes.TrundeController.removeTrunde(tr.trid)) {
-											<button title="Diese TippRunde loeschen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
+											<button title="Diese TippRunde loeschen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Die TippRunde @tr.bezeichnung wirklich unwiederuflich loeschen?');">
 												<span class="glyphicon glyphicon-trash"></span>
 											</button>
 										}
 									}else{
 										@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
-											<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
+											<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('TippRunde @tr.bezeichnung wirklich verlassen?');">
 												<span class="glyphicon glyphicon-remove"></span>
 											</button>
 										}
 									}
 								}else{
 									@helper.form(action = routes.UserController.removeFromTrunde(cU.uid, tr.trid)) {
-										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
+										<button title="Diese TippRunde verlassen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('TippRunde @tr.bezeichnung wirklich verlassen?');">
 											<span class="glyphicon glyphicon-remove"></span>
 										</button>
 									}

@@ -216,6 +216,8 @@ Changelog:
 *Confirm-Abfragen hinzugefuegt
 *Mail-client wird jetzt in neuem Tab geoeffnet
 
+*verschiedene view-optimierungen
+
 =========
 Legende:
 	Leerzeile = neuer commit

@@ -30,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody>
-	 			@for(t <- user.getTipps()){
+	 			@for(t <- user.findSortedTipps()){
 	 				@defining(t.getSpiel()) { s =>
 		 				@if(s.gameRunning()){
 		 					<tr class="info">

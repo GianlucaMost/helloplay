@@ -7,7 +7,7 @@
 	@alerts()
  	@defining(tr.getTrAdmin()) { tra =>
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-5">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Mitglieder</h3>
@@ -25,23 +25,23 @@
 								</thead>
 				 				<tbody>
 									@for(m <- tr.findSortedMember()) {
-				 						<tr>
-											<td>
-												@if(tra!=null && tra.equals(m)){
-													<strong>
-												}
-					    						<a @if(m.equals(cU)){href="@routes.TippController.showTipps()"}else{href="@routes.UserController.finduser(m.uid)"}>
-					    							@m.name
-					    						</a>
-					    						@if(tra!=null && tra.equals(m)){
-													</strong>
+				 						<tr @if(tra!=null && tra.equals(m)){class="info" title="TippRunden Admin"}>
+			 								<td>
+												@if(m.equals(cU)){
+													<a href="@routes.TippController.showTipps()">
+						    							<strong>@m.name</strong>
+						    						</a>
+												}else{
+													<a href="@routes.UserController.finduser(m.uid)">
+						    							@m.name
+						    						</a>
 												}
 									    	</td>
 											<td>@m.punkte</td>
 											@if(tra!=null && tra.equals(cU) && !tra.equals(m)){
 												<td>
 													@helper.form(action = routes.UserController.removeFromTrunde(m.uid, tr.trid)) {
-														<button title="Entfernen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Sind Sie sicher?');">
+														<button title="Entfernen" class="btn btn-sm btn-danger btn-block" type="submit" onclick="return confirm('Benutzer @m.name wirklich kicken?');">
 															<span class="glyphicon glyphicon-remove"></span>
 														</button>
 													}
@@ -60,9 +60,9 @@
 						}
 					</div><!-- panel-body -->
 				</div><!-- panel -->
-			</div> <!-- col.md-3 -->
+			</div> <!-- col.md-5 -->
 			
-			<div class="col-md-3 col-md-offset-6 text-right">
+			<div class="col-md-3 col-md-offset-4 text-right">
 				<blockquote>
 					<p>
 						Tipps: @tr.findTipps().size()
