@@ -9,6 +9,6 @@ public class RssActor extends UntypedActor {
 	@Override
 	public void onReceive(Object msg) throws Exception {
 		Logger.info("Starting frequently repeated RSScheck");
-		Spiel.setResultWithRss();
+		rssHandler.Rss.updateWithRss();
 	}
 }

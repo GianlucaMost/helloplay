@@ -1,41 +1,38 @@
 package models;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.concurrent.TimeUnit;
 
-import org.mindrot.jbcrypt.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Query;
+import javax.persistence.Table;
 
-import javax.persistence.*;
-
-import models.*;
 import play.Logger;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
-import play.libs.Akka;
+import play.libs.F;
 
-import com.sun.syndication.feed.synd.*;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedOutput;
-import com.sun.syndication.feed.synd.SyndContent;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
-
-import akka.actor.Props;
-import akka.util.*;
-import scala.concurrent.duration.Duration;
 
 /**
  * Spiel entity managed by JPA
@@ -227,6 +224,16 @@ public class Spiel {
     	query.setParameter("pMidh", midh);
     	query.setParameter("pMidg", midg);
     	return (Spiel) query.getSingleResult();
+    }
+    
+    @Transactional
+    public static Spiel findGame(Mannschaft mh, Mannschaft mg) {
+    	for (Spiel s: Spiel.findAll()){
+    		if(s.mannschaft_heim.mid==mh.mid && s.mannschaft_gast.mid==mg.mid){
+    			return s;
+    		}
+    	}
+    	return null;
     }
     
     @Transactional(readOnly=true)
@@ -752,84 +759,95 @@ public class Spiel {
 	    return null;
     }
     
-    public static void setResultWithRss(){
-    	
-		try {
-			
-			byte th=0;
-			byte tg=0;
-			Mannschaft mh=null;
-			Mannschaft mg=null;
-			String mhRename="";
-			String mgRename="";
-			
-//			URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
-			URL feedSource = new URL("http://rss.kicker.de/live/wm");
-			SyndFeedInput input = new SyndFeedInput();
-	    	SyndFeed feed = input.build(new XmlReader(feedSource));
-	    	
-	    	List<SyndEntry> entries = feed.getEntries();
-	    	
-	    	for(SyndEntry se: entries){
-	    		String title=se.getTitle();
-	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
-//	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
-	    		Matcher matcher = pattern.matcher(title);
-	    		if(matcher.matches()){
-	    			Logger.info("RSSfeed matches");
-	    			//umbenennen nicht identischer mannschafts-bezeichnungen
-	    			mhRename=matcher.group(1);
-	    			mgRename=matcher.group(2);
-	    			switch(mhRename){
-	    			case "Elfenbeinküste":
-	    				mhRename="Elfenbeinkueste";
-	    				break;
-	    			case "Bosnien-Herzegowina":
-	    				mhRename="Bosnien-H.";
-	    				break;
-	    			case "Südkorea":
-	    				mhRename="Korea Republik";
-	    				break;
-	    			}
-	    			switch(mgRename){
-	    			case "Elfenbeinküste":
-	    				mgRename="Elfenbeinkueste";
-	    				break;
-	    			case "Bosnien-Herzegowina":
-	    				mgRename="Bosnien-H.";
-	    				break;
-	    			case "Südkorea":
-	    				mgRename="Korea Republik";
-	    				break;
-	    			}
-	    			mh=Mannschaft.findByName(mhRename);
-	    			mg=Mannschaft.findByName(mgRename);
-	    			th=Byte.parseByte((matcher.group(3)));
-	    			tg=Byte.parseByte((matcher.group(4)));
-	    			Logger.info("Found RSSfeed that matches!");
-	    			Logger.info("mh = " + mh + "(" + mhRename + ")");
-	    			Logger.info("mg = " + mg + "(" + mgRename + ")");
-	    			Logger.info("th = " + th);
-	    			Logger.info("tg = " + tg);
-	    			Spiel gg = Spiel.findGroupGame(mh, mg);
-	    	    	gg.setErgebnis(th, tg);
-	    		}else{
+//    @Transactional
+//    public static void setResultWithRss(){
+//		try {
+//			byte th=0;
+//			byte tg=0;
+//			Mannschaft mh=null;
+//			Mannschaft mg=null;
+//			String mhRename="";
+//			String mgRename="";
+//			
+////			URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
+////			URL feedSource = new URL("http://rss.kicker.de/live/wm");
+////			URL feedSource = new URL("http://www.localhost:9000/rss.xml");
+////			URL feedSource = new URL("file://rss.xml");
+//			URL feedSource = new File("rss.xml").toURI().toURL();
+//			SyndFeedInput input = new SyndFeedInput();
+//	    	SyndFeed feed = input.build(new XmlReader(feedSource));
+//	    	
+//	    	List<SyndEntry> entries = feed.getEntries();
+//	    	
+//	    	for(SyndEntry se: entries){
+//	    		String title=se.getTitle();
+//	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
+////	    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
+//	    		Matcher matcher = pattern.matcher(title);
+//	    		if(matcher.matches()){
+//	    			Logger.info("RSSfeed matches");
+//	    			//umbenennen nicht identischer mannschafts-bezeichnungen
+//	    			mhRename=matcher.group(1);
+//	    			mgRename=matcher.group(2);
+//	    			switch(mhRename){
+//	    			case "Elfenbeinküste":
+//	    				mhRename="Elfenbeinkueste";
+//	    				break;
+//	    			case "Bosnien-Herzegowina":
+//	    				mhRename="Bosnien-H.";
+//	    				break;
+//	    			case "Südkorea":
+//	    				mhRename="Korea Republik";
+//	    				break;
+//	    			}
+//	    			switch(mgRename){
+//	    			case "Elfenbeinküste":
+//	    				mgRename="Elfenbeinkueste";
+//	    				break;
+//	    			case "Bosnien-Herzegowina":
+//	    				mgRename="Bosnien-H.";
+//	    				break;
+//	    			case "Südkorea":
+//	    				mgRename="Korea Republik";
+//	    				break;
+//	    			}
+//	    			Logger.info("finde Mannschaften");
+//	    			
+//	    			JPA.withTransaction(new F.Callback0() {
+//	    				@Override
+//	    				public void invoke() throws Throwable {
+//	    					mh=Mannschaft.findByName(mhRename);
+//	    				}
+//	    			});
+//	    			mh = Mannschaft.findByName(mhRename);
+//	    			mg=Mannschaft.findByName(mgRename);
+//	    			Logger.info("setze tore");
+//	    			th=Byte.parseByte((matcher.group(3)));
+//	    			tg=Byte.parseByte((matcher.group(4)));
+//	    			Logger.info("Found RSSfeed that match!");
+//	    			Logger.info("mh = " + mh + "(" + mhRename + ")");
+//	    			Logger.info("mg = " + mg + "(" + mgRename + ")");
+//	    			Logger.info("th = " + th);
+//	    			Logger.info("tg = " + tg);
+//	    			Spiel gg = Spiel.findGroupGame(mh, mg);
+//	    	    	gg.setErgebnis(th, tg);
+//	    		}else{
 //	    			Logger.warn("Found RSSfeed, that doesnt match!");
 //	    			Logger.info("Title: " + title);
-	    		}
-	    	}
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (FeedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
+//	    		}
+//	    	}
+//		} catch (MalformedURLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalArgumentException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (FeedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    }
 }
