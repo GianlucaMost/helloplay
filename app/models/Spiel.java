@@ -220,9 +220,9 @@ public class Spiel {
     	Integer midh=mh.mid;
     	Integer midg=mg.mid;
     	
-		Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim = :pMidh AND s.fk_midgast = :pMidg");
-    	query.setParameter("pMidh", midh);
-    	query.setParameter("pMidg", midg);
+		Query query = JPA.em().createQuery("SELECT s FROM Spiel s WHERE s.mannschaft_heim = :pMidh AND s.mannschaft_gast = :pMidg");
+    	query.setParameter("pMidh", mh);
+    	query.setParameter("pMidg", mg);
     	return (Spiel) query.getSingleResult();
     }
     
@@ -269,18 +269,29 @@ public class Spiel {
      * non static game-result-setting
      * @param toreheim
      * @param toregast
+     * @throws Throwable 
      */
     @Transactional
-    public void setErgebnis(byte th, byte tg){
+    public void setErgebnis(byte th, byte tg) throws Throwable{
     	byte thp = this.toreheim;
     	byte tgp = this.toregast;
     	Mannschaft mh = this.getMannschaftHeim();
 		Mannschaft mg = this.getMannschaftGast();
+		
 		Collection<Spiel> spiele = Spiel.findAll();
+		
+//		final Collection<Spiel> spiele = JPA.withTransaction(new F.Function0<Collection<Spiel>>() {
+//			@Override
+//			public Collection<Spiel> apply() throws Throwable {
+//				return Spiel.findAll();
+//			}
+//		});
+		
     	if (thp!=th || tgp!=tg){
-    		this.toreheim=th;
-        	this.toregast=tg;
+    		this.toreheim = th;
+        	this.toregast = tg;
         	JPA.em().persist(this);
+//        	JPA.em().merge(this);
     	}
     	if (this.gameOver()){
     		//Punkte an Benutzer verteilen

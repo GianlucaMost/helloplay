@@ -30,7 +30,34 @@ public class Rss {
 	public static void updateWithRss(){
 		for(DataHelper pro: checkFeed(loadFeed())){
 			try {
-				findGame(pro.mh, pro.mg).setErgebnis(pro.th, pro.tg);
+//				final Spiel spiel = findGame(pro.mh, pro.mg);
+				final Byte th = pro.th, tg = pro.tg;
+				final Mannschaft mh = pro.mh, mg = pro.mg;
+//				spiel.setErgebnis(pro.th, pro.tg);
+				
+//				JPA.withTransaction(new play.libs.F.Callback0() {
+//					@Override
+//					public void invoke() throws Throwable {
+//						Spiel spiel = findGame(mh, mg);
+//						spiel.setErgebnis(th, tg);
+//					}
+//				});
+				
+				final Spiel spiel = JPA.withTransaction(new F.Function0<Spiel>() {
+					@Override
+					public Spiel apply() throws Throwable {
+						return findGame(mh, mg);
+					}
+				});
+				
+				JPA.withTransaction(new F.Callback0() {
+					@Override
+					public void invoke() throws Throwable {
+						// TODO Auto-generated method stub
+						spiel.setErgebnis(th, tg);
+					}
+				});
+				
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -126,7 +153,7 @@ public class Rss {
 		final Spiel spiel = JPA.withTransaction(new F.Function0<Spiel>() {
 			@Override
 			public Spiel apply() throws Throwable {
-				return Spiel.findGroupGame(mh, mg);
+				return Spiel.findGame(mh, mg);
 			}
 		});
 		return spiel;
