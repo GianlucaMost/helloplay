@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Query;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import play.Logger;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
@@ -33,6 +35,7 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
+
 
 /**
  * Spiel entity managed by JPA
@@ -277,6 +280,7 @@ public class Spiel {
     	byte tgp = this.toregast;
     	Mannschaft mh = this.getMannschaftHeim();
 		Mannschaft mg = this.getMannschaftGast();
+		Spiel spiel = this;
 		
 		Collection<Spiel> spiele = Spiel.findAll();
 		
@@ -288,34 +292,35 @@ public class Spiel {
 //		});
 		
     	if (thp!=th || tgp!=tg){
-    		this.toreheim = th;
-        	this.toregast = tg;
-        	JPA.em().persist(this);
+    		spiel.toreheim = th;
+        	spiel.toregast = tg;
+//        	JPA.em().persist(this);
 //        	JPA.em().merge(this);
+        	spiel = JPA.em().merge(spiel);
     	}
-    	if (this.gameOver()){
+    	if (spiel.gameOver()){
     		//Punkte an Benutzer verteilen
-    		handOutUserPoints(this.tipps, th, tg);
+    		handOutUserPoints(spiel.tipps, th, tg);
     		
-    		if(this.checked==0){
-    			handOutTeamPoints(this, mh, mg, th, tg);
+    		if(spiel.checked==0){
+    			handOutTeamPoints(spiel, mh, mg, th, tg);
 	    		
 	    		//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
-	    		if(this.getBezeichnung().equals("gg48")){
+	    		if(spiel.getBezeichnung().equals("gg48")){
 	    			setAF();
 	    		}
 	    		//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
-	    		if(this.getBezeichnung().equals("af8")){
+	    		if(spiel.getBezeichnung().equals("af8")){
 	    			//setze vf
 	    			setVF(spiele);
 	    		}
 	    		//wenn das hier das letzte VF Spiel war setze HF
-	    		if(this.getBezeichnung().equals("vf4")){
+	    		if(spiel.getBezeichnung().equals("vf4")){
 					//setze hf
 	    			setHF(spiele);
 				}
 	    		//wenn das hier das letzte HF Spiel war setze Finale und SP3
-	    		if(this.getBezeichnung().equals("hf2")){
+	    		if(spiel.getBezeichnung().equals("hf2")){
 	    			//setze fi
 	    			setFI(spiele);
 				}
@@ -324,7 +329,7 @@ public class Spiel {
     }
     
     @Transactional
-    private void handOutUserPoints(Collection<Tipp> tipps, byte th, byte tg){
+	public static void handOutUserPoints(Collection<Tipp> tipps, byte th, byte tg){
     	// Punkte an User verteilen
 		//jeden tipp durchlaufen
 		for (Tipp t: tipps){
@@ -355,7 +360,7 @@ public class Spiel {
     }
     
     @Transactional
-    private void handOutTeamPoints(Spiel s, Mannschaft mh, Mannschaft mg, byte th, byte tg){
+	public static void handOutTeamPoints(Spiel s, Mannschaft mh, Mannschaft mg, byte th, byte tg){
     	mh.anzahlspiele++;
 		mg.anzahlspiele++;
 		//Punkte an Mannschaften verteilen
@@ -389,7 +394,7 @@ public class Spiel {
     }
     
     @Transactional
-    private void setAF(){
+	public static void setAF(){
     	//Sieger und Zweitplatzierte der GruppenSpiele ermitteln
 		String[] gruppen = {"A", "B", "C", "D", "E", "F", "G", "H"};
 		Map<String, List<Mannschaft>> mannschaften = Mannschaft.findAll();
@@ -541,7 +546,7 @@ public class Spiel {
     }
     
     @Transactional
-    private void setVF(Collection<Spiel> spiele){
+    public static void setVF(Collection<Spiel> spiele){
     	Mannschaft m = new Mannschaft();
 		for (Spiel s: spiele){
 			switch (s.getBezeichnung()){
@@ -617,7 +622,7 @@ public class Spiel {
     }
     
     @Transactional
-    private void setHF(Collection<Spiel> spiele){
+    public static void setHF(Collection<Spiel> spiele){
     	Mannschaft m = new Mannschaft();
 		for (Spiel s: spiele){
 			switch (s.getBezeichnung()){
@@ -663,7 +668,7 @@ public class Spiel {
     }
     
     @Transactional
-    private void setFI(Collection<Spiel> spiele){
+    public static void setFI(Collection<Spiel> spiele){
     	for (Spiel s: spiele){
 			Mannschaft mHeim = s.getMannschaftHeim();
 			Mannschaft mGast = s.getMannschaftGast();
