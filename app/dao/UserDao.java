@@ -6,10 +6,8 @@ import models.Tipp;
 import models.User;
 
 public interface UserDao {
-    public void persistOrMerge(User u);
 	public void add(String name, String pwHash);
 	public void delete(User u);
-	public User findById(int id);
     public User findByName(String name);
     public Collection<User> findAll();
     public Collection<Tipp> findSortedTipps(User u);

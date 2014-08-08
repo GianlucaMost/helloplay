@@ -1,39 +1,17 @@
 package dao;
 
 import java.util.Collection;
+
 import javax.persistence.EntityManager;
 
 import models.Mannschaft;
 import models.Spiel;
-
+import models.Tipp;
 import play.db.jpa.JPA;
 
 import javax.persistence.Query;
 
-public class SpielDaoImpl implements SpielDao {
-	
-	private static final EntityManager em = JPA.em();
-	
-	/**
-	 * persist a new object or update/merge an old one.
-	 */
-	@Override
-	public void persistOrMerge(Spiel s) {
-		if(this.findAll().contains(s)){
-			em.merge(s);
-		}else{
-			em.persist(s);
-		}
-	}
-	
-	/**
-	 * Find a game by his id
-	 */
-	@Override
-	public Spiel findById(int sid) {
-		return em.find(Spiel.class, sid);
-	}
-	
+public class SpielDaoImpl extends GenericDao<Integer, Spiel> implements SpielDao {
 	
 	/**
 	 * return  Collection of all games
@@ -99,16 +77,14 @@ public class SpielDaoImpl implements SpielDao {
 	public void setErgebnis(Spiel s, byte th, byte tg) throws Throwable {
 		byte thp = s.toreheim;
     	byte tgp = s.toregast;
-    	Mannschaft mh = s.getMannschaftHeim();
-		Mannschaft mg = s.getMannschaftGast();
-		Collection<Spiel> spiele = findAll();
+//    	Mannschaft mh = s.getMannschaftHeim();
+//		Mannschaft mg = s.getMannschaftGast();
+//		Collection<Spiel> spiele = findAll();
 		
     	if (thp!=th || tgp!=tg){
     		s.toreheim = th;
         	s.toregast = tg;
-//        	em.persist(s);
-//        	s = em.merge(s);
-        	persistOrMerge(s);
+        	update(s);
     	}
 	}
 

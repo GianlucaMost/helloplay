@@ -6,30 +6,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import play.db.jpa.JPA;
+import models.Tipp;
 import models.Trunde;
 import models.User;
 
-public class TrundeDaoImpl implements TrundeDao{
-	
-	private static final EntityManager em = JPA.em();
-	
-	@Override
-	public void persistOrMerge(Trunde tr) {
-		if(findAll().contains(tr)){
-			em.merge(tr);
-		}else{
-			em.persist(tr);
-		}
-	}
+public class TrundeDaoImpl extends GenericDao<Integer, Trunde> implements TrundeDao{
 
 	@Override
 	public void delete(Trunde tr) {
 		em.remove(tr);
-	}
-
-	@Override
-	public Trunde findById(int trid) {
-		return em.find(Trunde.class, trid);
 	}
 
 	@Override

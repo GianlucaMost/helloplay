@@ -12,10 +12,6 @@ import models.Spiel;
 
 public interface SpielDao {
 	
-	void persistOrMerge(Spiel s);
-	
-	Spiel findById(int sid);
-	
 	Collection<Spiel> findAll();
 	
 	//---

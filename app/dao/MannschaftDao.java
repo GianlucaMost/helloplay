@@ -8,10 +8,6 @@ import models.Mannschaft;
 import models.Spiel;
 
 public interface MannschaftDao {
-	
-    public void persistOrMerge(Mannschaft m);
-    
-    public Mannschaft findById(int mid);
     
     public Mannschaft findByName(String bezeichnung);
     

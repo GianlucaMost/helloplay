@@ -16,35 +16,17 @@ import java.util.List;
 import org.mindrot.jbcrypt.*;
 
 
-public class UserDaoImpl implements UserDao {
-	
-	private static final EntityManager em = JPA.em();
-	
-	@Override
-	public void persistOrMerge(User u) {
-		if(findAll().contains(u)){
-			em.merge(u);
-		}else{
-			em.persist(u);
-		}
-	}
+public class UserDaoImpl extends GenericDao<Integer, User> implements UserDao {
 
 	@Override
 	public void add(String name, String pwHash) {
-		User user = new User();
-		user.name=name;
-		user.pw=pwHash;
-		persistOrMerge(user);
+		User user = new User(name, pwHash);
+		persist(user);
 	}
 
 	@Override
 	public void delete(User u) {
 		em.remove(u);
-	}
-
-	@Override
-	public User findById(int id) {
-		return em.find(User.class, id);
 	}
 
 	@Override
@@ -89,19 +71,19 @@ public class UserDaoImpl implements UserDao {
 		User user = em.find(User.class, u.uid);
     	user.name = name;
     	user.pw = pwHash;
-    	persistOrMerge(user);
+    	update(user);
 	}
 
 	@Override
 	public void changeName(User u, String name) {
 		u.name = name;
-		persistOrMerge(u);
+		update(u);
 	}
 
 	@Override
 	public void changePw(User u, String pwHash) {
 		u.pw = pwHash;
-		persistOrMerge(u);
+		update(u);
 	}
 
 	@Override

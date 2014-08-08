@@ -13,39 +13,38 @@ import javax.persistence.Query;
 import play.db.jpa.JPA;
 import models.Mannschaft;
 import models.Spiel;
+import models.Tipp;
 
-public class MannschaftDaoImpl implements MannschaftDao{
+public class MannschaftDaoImpl extends GenericDao<Integer, Mannschaft> implements MannschaftDao{
 	
-	private static final EntityManager em = JPA.em();
-	
-	@Override
-	public void persistOrMerge(Mannschaft m) {
-		if(findAllCol().contains(m)){
-			em.merge(m);
-		}else{
-			em.persist(m);
-		}
-	}
-
-	@Override
-	public Mannschaft findById(int mid) {
-		return em.find(Mannschaft.class, mid);
-	}
-
+	/**
+     * Find a team by name
+     * @param bezeichnung
+     * @return Mannschaft
+     */
 	@Override
 	public Mannschaft findByName(String bezeichnung) {
 		Query query = em.createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
     	query.setParameter("pBezeichnung", bezeichnung);
     	return (Mannschaft) query.getSingleResult();
 	}
-
+	
+	/**
+     * Find a team by state
+     * @param status
+     * @return Mannschaft
+     */
 	@Override
 	public Mannschaft findByState(String status) {
 		Query query = em.createQuery("SELECT m FROM Mannschaft m WHERE m.status = :pStatus");
     	query.setParameter("pStatus", status);
     	return (Mannschaft) query.getSingleResult();
 	}
-
+	
+	/**
+     * Holt alle Mannschaften aus der db und erstellt eine nach gruppen sortierte treeMap
+     * @return
+     */
 	@Override
 		public Map<String, List<Mannschaft>> findAll() {
 			String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
@@ -72,7 +71,7 @@ public class MannschaftDaoImpl implements MannschaftDao{
 		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
         return (Collection<Mannschaft>) query.getResultList();
 	}
-
+	
 	@Override
 	public List<Mannschaft> findByGroup(String grp) {
 		String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte DESC";

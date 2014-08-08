@@ -108,7 +108,7 @@ public class Mannschaft {
     }
     
     /**
-     * get spiele from this mannschaft
+     * get games from this team
      * @return
      */
     public Collection<Spiel> getSpiele(){
@@ -119,7 +119,7 @@ public class Mannschaft {
     }
     
     /**
-     * get all heimspiele from this mannschaft
+     * get all heimspiele from this team
      * @return
      */
     public Collection<Spiel> getHeimSpiele(){
