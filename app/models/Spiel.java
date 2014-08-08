@@ -36,6 +36,8 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
+import dao.SpielDao;
+
 
 /**
  * Spiel entity managed by JPA
@@ -326,6 +328,30 @@ public class Spiel {
 				}
     		}
     	}
+    }
+    
+    public static void setFinalGames(Spiel s){
+    	Collection<Spiel> spiele = Spiel.findAll();
+    	
+    	//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
+		if(s.getBezeichnung().equals("gg48")){
+			Spiel.setAF();
+		}
+		//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
+		if(s.getBezeichnung().equals("af8")){
+			//setze vf
+			Spiel.setVF(spiele);
+		}
+		//wenn das hier das letzte VF Spiel war setze HF
+		if(s.getBezeichnung().equals("vf4")){
+			//setze hf
+			Spiel.setHF(spiele);
+		}
+		//wenn das hier das letzte HF Spiel war setze Finale und SP3
+		if(s.getBezeichnung().equals("hf2")){
+			//setze fi
+			Spiel.setFI(spiele);
+		}
     }
     
     @Transactional

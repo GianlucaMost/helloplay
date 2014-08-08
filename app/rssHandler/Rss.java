@@ -55,6 +55,13 @@ public class Rss {
 					public void invoke() throws Throwable {
 						// TODO Auto-generated method stub
 						spiel.setErgebnis(th, tg);
+						if (spiel.gameOver()){
+							Spiel.handOutUserPoints(spiel.getTipps(), th, tg);
+							if(spiel.checked==0){
+								Spiel.handOutTeamPoints(spiel, mh, mg, th, tg);
+								Spiel.setFinalGames(spiel);
+							}
+						}
 					}
 				});
 				

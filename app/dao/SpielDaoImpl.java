@@ -1,54 +1,18 @@
 package dao;
 
 import java.util.Collection;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import models.Mannschaft;
 import models.Spiel;
 
-import org.hibernate.event.SaveOrUpdateEvent;
-
 import play.db.jpa.JPA;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Timestamp;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Query;
-import javax.persistence.Table;
-
-import play.Logger;
-import play.data.validation.Constraints;
-import play.db.jpa.JPA;
-import play.db.jpa.Transactional;
-import play.libs.F;
-
-import com.sun.syndication.feed.synd.SyndEntry;
-import com.sun.syndication.feed.synd.SyndFeed;
-import com.sun.syndication.io.FeedException;
-import com.sun.syndication.io.SyndFeedInput;
-import com.sun.syndication.io.XmlReader;
 
 public class SpielDaoImpl implements SpielDao {
 	
-	EntityManager em = JPA.em();
+	private static final EntityManager em = JPA.em();
 	
 	/**
 	 * persist a new object or update/merge an old one.
@@ -145,34 +109,6 @@ public class SpielDaoImpl implements SpielDao {
 //        	em.persist(s);
 //        	s = em.merge(s);
         	persistOrMerge(s);
-    	}
-    	if (s.gameOver()){
-    		//Punkte an Benutzer verteilen
-    		Spiel.handOutUserPoints(s.getTipps(), th, tg);
-    		
-    		if(s.checked==0){
-    			Spiel.handOutTeamPoints(s, mh, mg, th, tg);
-	    		
-	    		//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
-	    		if(s.getBezeichnung().equals("gg48")){
-	    			Spiel.setAF();
-	    		}
-	    		//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
-	    		if(s.getBezeichnung().equals("af8")){
-	    			//setze vf
-	    			Spiel.setVF(spiele);
-	    		}
-	    		//wenn das hier das letzte VF Spiel war setze HF
-	    		if(s.getBezeichnung().equals("vf4")){
-					//setze hf
-	    			Spiel.setHF(spiele);
-				}
-	    		//wenn das hier das letzte HF Spiel war setze Finale und SP3
-	    		if(s.getBezeichnung().equals("hf2")){
-	    			//setze fi
-	    			Spiel.setFI(spiele);
-				}
-    		}
     	}
 	}
 
