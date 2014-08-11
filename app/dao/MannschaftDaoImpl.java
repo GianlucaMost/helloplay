@@ -17,6 +17,7 @@ import models.Tipp;
 
 public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> implements MannschaftDao{
 	
+	protected EntityManager em = JPA.em();
 	/**
      * Find a team by name
      * @param bezeichnung
@@ -84,7 +85,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
 	@Override
 	public List<Spiel> findGamesSorted(Mannschaft m) {
 		String sqlQuery = "SELECT s.* FROM spiel AS s INNER JOIN mannschaft AS m ON m.mid=s.fk_midheim OR m.mid=s.fk_midgast WHERE mid=? ORDER BY s.beginn";
-    	Query q = JPA.em().createNativeQuery(sqlQuery, Spiel.class);
+    	Query q = em.createNativeQuery(sqlQuery, Spiel.class);
     	q.setParameter(1, m.mid);
     	List<Spiel> list = (List<Spiel>) q.getResultList();
     	return list;

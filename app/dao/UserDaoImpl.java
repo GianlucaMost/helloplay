@@ -17,7 +17,9 @@ import org.mindrot.jbcrypt.*;
 
 
 public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDao {
-
+	
+	protected EntityManager em = JPA.em();
+	
 	@Override
 	public void add(String name, String pwHash) {
 		User user = new User(name, pwHash);

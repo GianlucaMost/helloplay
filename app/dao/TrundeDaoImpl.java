@@ -12,6 +12,8 @@ import models.User;
 
 public class TrundeDaoImpl extends GenericDaoImpl<Integer, Trunde> implements TrundeDao{
 
+	protected EntityManager em = JPA.em();
+	
 	@Override
 	public void delete(Trunde tr) {
 		em.remove(tr);

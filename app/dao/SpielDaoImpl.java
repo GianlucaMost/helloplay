@@ -13,6 +13,8 @@ import javax.persistence.Query;
 
 public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements SpielDao {
 	
+	protected EntityManager em = JPA.em();
+	
 	/**
 	 * return  Collection of all games
 	 */

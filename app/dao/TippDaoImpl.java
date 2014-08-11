@@ -10,6 +10,8 @@ import play.db.jpa.JPA;
 
 public class TippDaoImpl extends GenericDaoImpl<Integer, Tipp> implements TippDao{
 	
+	protected EntityManager em = JPA.em();
+	
 	@Override
 	public void delete(Tipp t) {
 		em.remove(t);
