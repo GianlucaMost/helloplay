@@ -85,7 +85,7 @@
 	 						<tr>
 	 					}
 	 				}
-	 					<td><strong>@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1).</strong></td>
+	 					<td><strong>@if(s.beginn.get(Calendar.DAY_OF_MONTH)<=9){0}@s.beginn.get(Calendar.DAY_OF_MONTH).@if(s.beginn.get(Calendar.MONTH)<=9){0}@(s.beginn.get(Calendar.MONTH)+1).</strong></td>
 						<td>
 							<a href="@routes.MannschaftController.mannschaftShow(s.getMannschaftHeim().mid)">
 			    				@s.getMannschaftHeim().bezeichnung
@@ -100,8 +100,8 @@
 			    			</a>
 						</td>
 						<td>@s.ort</td>
-						<td>@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr</td>
-						<td>@if(s.ende.getHours()<=9){0}@s.ende.getHours():@if(s.ende.getMinutes()<=9){0}@s.ende.getMinutes()Uhr</td>
+						<td>@if(s.beginn.get(Calendar.HOUR_OF_DAY)<=9){0}@s.beginn.get(Calendar.HOUR_OF_DAY):@if(s.beginn.get(Calendar.MINUTE)<=9){0}@s.beginn.get(Calendar.MINUTE)Uhr</td>
+						<td>@if(s.ende.get(Calendar.HOUR_OF_DAY)<=9){0}@s.ende.get(Calendar.HOUR_OF_DAY):@if(s.ende.get(Calendar.MINUTE)<=9){0}@s.ende.get(Calendar.MINUTE)Uhr</td>
 						@if(cU!=null){
 							<td>
 								@if(!s.gameRunning() && !s.gameOver){

@@ -43,11 +43,10 @@
 		 				}
 		 					<td>
 		 						<strong>
-		 							@if(s.beginn.getDate()<=9){0}@s.beginn.getDate().@if(s.beginn.getMonth()<=9){0}@(s.beginn.getMonth()+1)
+		 							@if(s.beginn.get(Calendar.DAY_OF_MONTH)<=9){0}@s.beginn.get(Calendar.DAY_OF_MONTH).@if(s.beginn.get(Calendar.MONTH)<=9){0}@(s.beginn.get(Calendar.MONTH)+1).
 		 						</strong>
-		 						 - 
 		 						<small>
-		 							@if(s.beginn.getHours()<=9){0}@s.beginn.getHours():@if(s.beginn.getMinutes()<=9){0}@s.beginn.getMinutes()Uhr
+		 							@if(s.beginn.get(Calendar.HOUR_OF_DAY)<=9){0}@s.beginn.get(Calendar.HOUR_OF_DAY):@if(s.beginn.get(Calendar.MINUTE)<=9){0}@s.beginn.get(Calendar.MINUTE)Uhr
 		 						</small>
 		 					</td>
 							<td>

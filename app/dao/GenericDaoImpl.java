@@ -6,8 +6,14 @@ import play.db.jpa.JPA;
 
 public class GenericDaoImpl<K,E> implements GenericDao<K, E> {
 	
+//	final Class<E> typeParameterClass;
+	
 	protected Class<E> entityClass;
 	protected final EntityManager em = JPA.em();
+	
+//	public GenericDaoImpl(Class<E> typeParameterClass){
+//		this.typeParameterClass = typeParameterClass;
+//	}
 	
 	public void persist(E e) {
 		em.persist(e);
@@ -18,6 +24,7 @@ public class GenericDaoImpl<K,E> implements GenericDao<K, E> {
 	}
 	
 	public E findById(K key) {
+//		em.find(typeParameterClass, key);
 		return em.find(entityClass, key);
 	}
 

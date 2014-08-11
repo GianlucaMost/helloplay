@@ -1,9 +1,13 @@
 package models;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+
 import javax.persistence.*;
 
 import play.data.validation.Constraints;
@@ -34,11 +38,13 @@ public class Spiel {
     
     @Constraints.Required
     @Column(name="beginn")
-    public Timestamp beginn;
+//  public Timestamp beginn;
+    public Calendar beginn = Calendar.getInstance();
     
     @Constraints.Required
     @Column(name="ende")
-    public Timestamp ende;
+// 	public Timestamp ende;
+    public Calendar ende = Calendar.getInstance();
     
     @Constraints.Required
     @Column(name="checked")
@@ -72,7 +78,7 @@ public class Spiel {
      * @param ort
      * @param beginn
      */
-    public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Timestamp beginn){
+    public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Calendar beginn){
     	this.mannschaft_heim = mannschaft_heim;
     	this.mannschaft_gast = mannschaft_gast;
     	this.ort = ort;
@@ -88,7 +94,7 @@ public class Spiel {
      * @param beginn
      * @param ende
      */
-    public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Timestamp beginn, Timestamp ende){
+    public Spiel(Mannschaft mannschaft_heim, Mannschaft mannschaft_gast, String ort, Calendar beginn, Calendar ende){
     	this.mannschaft_heim = mannschaft_heim;
     	this.mannschaft_gast = mannschaft_gast;
     	this.ort = ort;
@@ -719,7 +725,8 @@ public class Spiel {
      * @return
      */
     public boolean gameOver(){
-    	return this.ende.before(new Timestamp(System.currentTimeMillis()));
+    	Calendar now = Calendar.getInstance();
+    	return this.ende.before(now);
     }
     
     /**
@@ -727,7 +734,10 @@ public class Spiel {
      * @return
      */
     public boolean gameRunning(){
-    	Timestamp now = new Timestamp(System.currentTimeMillis());
+//    	Timestamp now = new Timestamp(System.currentTimeMillis());
+//    	Date date = new Date(System.currentTimeMillis());
+    	Calendar now = Calendar.getInstance();
+//    	now.setTime(date);
     	return this.beginn.before(now) && this.ende.after(now);
     }
     
@@ -736,25 +746,29 @@ public class Spiel {
     }
     
     public boolean checkAfTippReady(){
-    	Timestamp now = new Timestamp(System.currentTimeMillis());
+//    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Calendar now = Calendar.getInstance();
     	Timestamp rdy = Timestamp.valueOf("2014-06-26 22:00:00.0");
     	return this.getMannschaftHeim().gruppe.equals("AF") && now.after(rdy);
     }
     
     public boolean checkVfTippReady(){
-    	Timestamp now = new Timestamp(System.currentTimeMillis());
+//    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Calendar now = Calendar.getInstance();
     	Timestamp rdy = Timestamp.valueOf("2014-07-02 00:00:00.0");
     	return this.getMannschaftHeim().gruppe.equals("VF") && now.after(rdy);
     }
     
     public boolean checkHfTippReady(){
-    	Timestamp now = new Timestamp(System.currentTimeMillis());
+//    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Calendar now = Calendar.getInstance();
     	Timestamp rdy = Timestamp.valueOf("2014-07-06 00:00:00.0");
     	return this.getMannschaftHeim().gruppe.equals("HF") && now.after(rdy);
     }
     
     public boolean checkFTippReady(){
-    	Timestamp now = new Timestamp(System.currentTimeMillis());
+//    	Timestamp now = new Timestamp(System.currentTimeMillis());
+    	Calendar now = Calendar.getInstance();
     	Timestamp rdy = Timestamp.valueOf("2014-07-10 00:00:00.0");
     	if(this.getMannschaftHeim().gruppe.equals("FI") || this.getMannschaftHeim().gruppe.equals("SP3")){
     		return now.after(rdy);
