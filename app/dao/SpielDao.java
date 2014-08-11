@@ -10,7 +10,7 @@ import play.db.jpa.Transactional;
 import models.Mannschaft;
 import models.Spiel;
 
-public interface SpielDao {
+public interface SpielDao extends GenericDao<Integer, Spiel> {
 	
 	Collection<Spiel> findAll();
 	

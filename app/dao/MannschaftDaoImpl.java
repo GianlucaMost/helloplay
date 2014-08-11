@@ -15,7 +15,7 @@ import models.Mannschaft;
 import models.Spiel;
 import models.Tipp;
 
-public class MannschaftDaoImpl extends GenericDao<Integer, Mannschaft> implements MannschaftDao{
+public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> implements MannschaftDao{
 	
 	/**
      * Find a team by name

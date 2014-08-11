@@ -2,10 +2,11 @@ package dao;
 
 import java.util.Collection;
 
+import models.Mannschaft;
 import models.Tipp;
 import models.User;
 
-public interface UserDao {
+public interface UserDao extends GenericDao<Integer, User> {
 	public void add(String name, String pwHash);
 	public void delete(User u);
     public User findByName(String name);

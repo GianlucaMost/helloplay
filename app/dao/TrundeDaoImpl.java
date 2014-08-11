@@ -10,7 +10,7 @@ import models.Tipp;
 import models.Trunde;
 import models.User;
 
-public class TrundeDaoImpl extends GenericDao<Integer, Trunde> implements TrundeDao{
+public class TrundeDaoImpl extends GenericDaoImpl<Integer, Trunde> implements TrundeDao{
 
 	@Override
 	public void delete(Trunde tr) {

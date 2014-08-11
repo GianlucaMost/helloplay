@@ -11,7 +11,7 @@ import play.db.jpa.JPA;
 
 import javax.persistence.Query;
 
-public class SpielDaoImpl extends GenericDao<Integer, Spiel> implements SpielDao {
+public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements SpielDao {
 	
 	/**
 	 * return  Collection of all games

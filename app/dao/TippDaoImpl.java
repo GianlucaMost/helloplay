@@ -8,7 +8,7 @@ import javax.persistence.Query;
 import models.Tipp;
 import play.db.jpa.JPA;
 
-public class TippDaoImpl extends GenericDao<Integer, Tipp> implements TippDao{
+public class TippDaoImpl extends GenericDaoImpl<Integer, Tipp> implements TippDao{
 	
 	@Override
 	public void delete(Tipp t) {

@@ -2,9 +2,10 @@ package dao;
 
 import java.util.Collection;
 
+import models.Mannschaft;
 import models.Tipp;
 
-public interface TippDao {
+public interface TippDao extends GenericDao<Integer, Tipp> {
 
 	public void delete(Tipp t);
     

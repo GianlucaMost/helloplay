@@ -1,23 +1,20 @@
 package controllers;
 
-import static play.data.Form.form;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.mindrot.jbcrypt.BCrypt;
-
+import dao.MannschaftDao;
+import dao.MannschaftDaoImpl;
+import dao.UserDao;
+import dao.UserDaoImpl;
 import models.*;
-import play.*;
 import play.mvc.*;
-import play.data.Form;
 import play.db.jpa.Transactional;
 import views.html.*;
-import play.data.DynamicForm;
 
 @Security.Authenticated(Secured.class)
 public class MannschaftController extends Controller {
+	
+	private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
+	private static UserDao userDao = new UserDaoImpl();
+	private static User cu = userDao.findByName(request().username());
 	
 	/**
 	 * Listet alle Mannschaften auf
@@ -25,12 +22,13 @@ public class MannschaftController extends Controller {
 	 */
 	@Transactional(readOnly=true)
     public static Result mannschaften() {
-		return ok(mannschaften_tbl.render(Mannschaft.findAll(), User.findByName(request().username())));
+		return ok(mannschaften_tbl.render(mannschaftDao.findAll(), cu));
     }
 	
 	@Transactional(readOnly=true)
 	public static Result mannschaftShow(int mid) {
-		Mannschaft m = Mannschaft.findById(mid);
-		return ok(mannschaft.render(m, m.getSpiele(), User.findByName(request().username())));
+		Mannschaft m = mannschaftDao.findById(mid);
+//		User cu = userDao.findByName(request().username());
+		return ok(mannschaft.render(m, m.getSpiele(), cu));
 	}
 }

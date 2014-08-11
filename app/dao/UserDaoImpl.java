@@ -16,7 +16,7 @@ import java.util.List;
 import org.mindrot.jbcrypt.*;
 
 
-public class UserDaoImpl extends GenericDao<Integer, User> implements UserDao {
+public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDao {
 
 	@Override
 	public void add(String name, String pwHash) {
