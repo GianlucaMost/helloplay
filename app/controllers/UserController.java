@@ -6,6 +6,9 @@ import java.util.Collection;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import dao.UserDao;
+import dao.UserDaoImpl;
+import models.Tipp;
 import models.Trunde;
 import models.User;
 import play.*;
@@ -17,6 +20,9 @@ import play.data.DynamicForm;
 
 @Security.Authenticated(Secured.class)
 public class UserController extends Controller {
+	
+	private static UserDao userDao = new UserDaoImpl();
+	private static User cU = userDao.findByName(request().username());
 	
 	/**
 	 * Put all users (found by the findAll-method) in a Collection and render the user-view
@@ -39,13 +45,15 @@ public class UserController extends Controller {
 	@Transactional(readOnly=true)
 	public static Result finduser(int id) {
 		Logger.info("Start searching for user with id " + id);
-		User user = User.findById(id);
-		if (user==null) {
-			Logger.info("Der Benutzer mit der id " + id + "existiert nicht.");
-			return badRequest("Der Benutzer mit der id '" + id + "' existiert nicht!");
+		User u = userDao.findById(id);
+		Collection<Tipp> sortedTipps = userDao.findSortedTipps(u);
+		String msg = "Der Benutzer mit der id" + id + "existiert nicht!";
+		if (u==null) {
+			Logger.info(msg);
+			return badRequest(msg);
 		}else {
-			Logger.info("User searched for: " + user.name);
-			return ok(oneuser.render("Benutzer mit der id " + id, user, User.findByName(request().username())));
+			Logger.info("User searched for: " + u.name);
+			return ok(oneuser.render("Benutzer mit der id " + id, u, cU, sortedTipps));
 		}
 	}
 	

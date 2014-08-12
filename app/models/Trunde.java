@@ -115,11 +115,11 @@ public class Trunde {
     }
     
     /**
-     * find all Tipps from this trunde
+     * find all Tipps from this trunde (NO DAO!)
      * @return
      */
     @Transactional
-    public Collection<Tipp> findTipps() {
+    public Collection<Tipp> searchTipps() {
     	
     	Collection<Tipp> tipps = new ArrayList<Tipp>();
     	for(User m: this.getMember()){
@@ -136,7 +136,7 @@ public class Trunde {
      * @return
      */
     @Transactional
-    public Collection<Tipp> findTippsSpiel(Spiel s) {
+    public Collection<Tipp> searchTippsSpiel(Spiel s) {
     	Collection<Tipp> tipps = new ArrayList<Tipp>();
     	for(User m: this.getMember()){
     		for (Tipp t: m.getTipps()){
@@ -155,7 +155,7 @@ public class Trunde {
      * @return
      */
     @Transactional
-    public Collection<Tipp> findTippsSpielSorted(Spiel s, User cU) {
+    public Collection<Tipp> searchTippsSpielSorted(Spiel s, User cU) {
     	List<Tipp> tipps = new ArrayList<Tipp>();
     	
     	for(User m: this.getMember()){

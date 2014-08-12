@@ -1,5 +1,7 @@
 package controllers;
 
+import java.util.Collection;
+
 import dao.MannschaftDao;
 import dao.MannschaftDaoImpl;
 import dao.UserDao;
@@ -28,7 +30,8 @@ public class MannschaftController extends Controller {
 	@Transactional(readOnly=true)
 	public static Result mannschaftShow(int mid) {
 		Mannschaft m = mannschaftDao.findById(mid);
+		Collection<Spiel> games = mannschaftDao.findGamesSorted(m);
 //		User cu = userDao.findByName(request().username());
-		return ok(mannschaft.render(m, m.getSpiele(), cu));
+		return ok(mannschaft.render(m, games, cu));
 	}
 }

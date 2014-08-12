@@ -10,6 +10,7 @@ import javax.persistence.NoResultException;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import dao.*;
 import models.*;
 import play.*;
 import play.mvc.*;
@@ -22,6 +23,12 @@ import play.data.DynamicForm;
 
 @Security.Authenticated(Secured.class)
 public class TippController extends Controller {
+	
+	private static TippDao tippDao = new TippDaoImpl();
+	private static SpielDao spielDao = new SpielDaoImpl();
+	private static UserDao userDao = new UserDaoImpl();
+	
+	private static User cU = userDao.findByName(request().username());
 	
 	@Transactional
 	public static Result tippen(int sid, int uid){
@@ -60,6 +67,8 @@ public class TippController extends Controller {
 	
 	@Transactional
 	public static Result showTipps(){
-		return ok(tipps.render(Spiel.findAll(), User.findByName(request().username())));
+		Collection<Spiel> games = spielDao.findAll();
+		Collection<Tipp> sortedTipps = cU.findSortedTipps();
+		return ok(tipps.render(games, cU, sortedTipps));
 	}
 }

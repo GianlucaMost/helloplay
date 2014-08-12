@@ -13,6 +13,14 @@ import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import dao.SpielDao;
+import dao.SpielDaoImpl;
+import dao.TippDao;
+import dao.TippDaoImpl;
+import dao.TrundeDao;
+import dao.TrundeDaoImpl;
+import dao.UserDao;
+import dao.UserDaoImpl;
 import models.*;
 import play.*;
 import play.mvc.*;
@@ -24,24 +32,33 @@ import play.data.DynamicForm;
 @Security.Authenticated(Secured.class)
 public class TrundeController extends Controller {
 	
+	private static TrundeDao trundeDao = new TrundeDaoImpl();
+	private static UserDao userDao = new UserDaoImpl();
+	
+	private static User cU = userDao.findByName(request().username());
+	
 	/**
 	 * Shows the Trunde-Overview onGET
 	 * @return
 	 */
 	@Transactional
     public static Result showDetail(int trid) {
-		Trunde tr = Trunde.findById(trid);
+		String msg = "Dies TippRunde mit der id " + trid + "existiert nicht.";
+//		Trunde tr = Trunde.findById(trid);
+		Trunde tr = trundeDao.findById(trid);
+		Collection<User> sortedMember = trundeDao.findSortedMember(tr);
+		Collection<Spiel> games = Spiel.findAll();
 		if(tr!=null){
-			return ok(trunde_detail.render(Spiel.findAll(), tr, User.findByName(request().username())));
+			return ok(trunde_detail.render(games, tr, cU, sortedMember));
 		}else{
-			Logger.info("Diese TippRunde mit der id " + trid + "existiert nicht.");
-			return badRequest("Diese TippRunde mit der id '" + trid + "' existiert nicht mehr!");
+			Logger.info(msg);
+			return badRequest(msg);
 		}
 	}
 	
 	@Transactional
     public static Result showMain() {
-		return ok(trunde_main.render(User.findByName(request().username())));
+		return ok(trunde_main.render(cU));
 	}
 	
 	@Transactional

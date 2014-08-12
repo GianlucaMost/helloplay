@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 
 import org.mindrot.jbcrypt.*;
 
+import dao.MannschaftDao;
+import dao.MannschaftDaoImpl;
+
 import javax.persistence.*;
 
 import models.*;
@@ -73,6 +76,9 @@ public class Mannschaft {
     
     @OneToMany(mappedBy="mannschaft_gast")
     private Collection<Spiel> auswaertsSpiele;
+    
+//    public static void bindForCurrentThread(javax.persistence.EntityManager em);
+//    private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
     
     /**
      * Default constructor
@@ -151,9 +157,10 @@ public class Mannschaft {
      */
     @Transactional
     public static Mannschaft findByName(String bezeichnung) {
-		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
-    	query.setParameter("pBezeichnung", bezeichnung);
-    	return (Mannschaft) query.getSingleResult();
+//		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
+//    	query.setParameter("pBezeichnung", bezeichnung);
+//    	return (Mannschaft) query.getSingleResult();
+    	return mannschaftDao.findByName(bezeichnung);
     }
     
     /**
@@ -163,16 +170,18 @@ public class Mannschaft {
      */
     @Transactional
     public static Mannschaft findByState(String status) {
-		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.status = :pStatus");
-    	query.setParameter("pStatus", status);
-    	return (Mannschaft) query.getSingleResult();
+//		Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.status = :pStatus");
+//    	query.setParameter("pStatus", status);
+//    	return (Mannschaft) query.getSingleResult();
+    	return mannschaftDao.findByState(status);
     }
     
     
     @Transactional(readOnly=true)
     public static Collection<Mannschaft> findAllCol() {
-        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
-        return (Collection<Mannschaft>) query.getResultList();
+//        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m");
+//        return (Collection<Mannschaft>) query.getResultList();
+    	return mannschaftDao.findAllCol();
     }
     
     /**
@@ -181,40 +190,43 @@ public class Mannschaft {
      */
     @Transactional(readOnly=true)
     public static  Map<String, List<Mannschaft>> findAll() {
-    	String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
-    	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
-//        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
-        Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
-        Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
-        
-        for (Mannschaft team : col) {
-        	if (!teamMap.containsKey(team.gruppe)) {
-        		List<Mannschaft> teamList = new ArrayList<Mannschaft>();
-        		teamList.add(team);
-        		teamMap.put(team.gruppe, teamList);
-        	} else {
-        		teamMap.get(team.gruppe).add(team);
-        	}
-        }
-        Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
-        return treeMap;
+//    	String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
+//    	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
+////        Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
+//        Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
+//        Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
+//        
+//        for (Mannschaft team : col) {
+//        	if (!teamMap.containsKey(team.gruppe)) {
+//        		List<Mannschaft> teamList = new ArrayList<Mannschaft>();
+//        		teamList.add(team);
+//        		teamMap.put(team.gruppe, teamList);
+//        	} else {
+//        		teamMap.get(team.gruppe).add(team);
+//        	}
+//        }
+//        Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
+//        return treeMap;
+    	return mannschaftDao.findAll();
     }
     
     @Transactional(readOnly=true)
     public static  List<Mannschaft> findByGroup(String grp) {
-    	String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte DESC";
-    	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
-    	q.setParameter(1, grp);
-    	List<Mannschaft> list = (List<Mannschaft>) q.getResultList();
-    	return list;
+//    	String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte DESC";
+//    	Query q = JPA.em().createNativeQuery(sqlQuery, Mannschaft.class);
+//    	q.setParameter(1, grp);
+//    	List<Mannschaft> list = (List<Mannschaft>) q.getResultList();
+//    	return list;
+    	return mannschaftDao.findByGroup(grp);
     }
     
     @Transactional(readOnly=true)
     public List<Spiel> findGamesSorted() {
-    	String sqlQuery = "SELECT s.* FROM spiel AS s INNER JOIN mannschaft AS m ON m.mid=s.fk_midheim OR m.mid=s.fk_midgast WHERE mid=? ORDER BY s.beginn";
-    	Query q = JPA.em().createNativeQuery(sqlQuery, Spiel.class);
-    	q.setParameter(1, this.mid);
-    	List<Spiel> list = (List<Spiel>) q.getResultList();
-    	return list;
+//    	String sqlQuery = "SELECT s.* FROM spiel AS s INNER JOIN mannschaft AS m ON m.mid=s.fk_midheim OR m.mid=s.fk_midgast WHERE mid=? ORDER BY s.beginn";
+//    	Query q = JPA.em().createNativeQuery(sqlQuery, Spiel.class);
+//    	q.setParameter(1, this.mid);
+//    	List<Spiel> list = (List<Spiel>) q.getResultList();
+//    	return list;
+    	return mannschaftDao.findGamesSorted(this);
     }
 }

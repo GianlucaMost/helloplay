@@ -1,4 +1,4 @@
-@(message: String, user: models.User, currentUser: models.User)
+@(message: String, user: models.User, currentUser: models.User, sortedTipps: Collection[models.Tipp])
 
 @main("Benutzer " + user.name, currentUser) {	
 	<div class="page-header">
@@ -30,7 +30,7 @@
 				</tr>
 			</thead>
 			<tbody>
-	 			@for(t <- user.findSortedTipps()){
+	 			@for(t <- sortedTipps){
 	 				@defining(t.getSpiel()) { s =>
 		 				@if(s.gameRunning()){
 		 					<tr class="info">
