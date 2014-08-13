@@ -25,7 +25,12 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 import com.sun.syndication.io.XmlReader;
 
+import dao.MannschaftDao;
+import dao.MannschaftDaoImpl;
+
 public class Rss {
+	
+	private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
 	
 	public static void updateWithRss(){
 		for(DataHelper pro: checkFeed(loadFeed())){
@@ -147,13 +152,14 @@ public class Rss {
 	}
 	
 	private static Mannschaft findMannschaft(final String name) throws Throwable {
-		final Mannschaft mannschaft = JPA.withTransaction(new F.Function0<Mannschaft>() {
-			@Override
-			public Mannschaft apply() throws Throwable {
-				return Mannschaft.findByName(name);
-			}
-		});
-		return mannschaft;
+//		final Mannschaft mannschaft = JPA.withTransaction(new F.Function0<Mannschaft>() {
+//			@Override
+//			public Mannschaft apply() throws Throwable {
+//				return Mannschaft.findByName(name);
+//			}
+//		});
+//		return mannschaft;
+		return mannschaftDao.findByName(name);
 	}
 	
 	private static Spiel findGame(final Mannschaft mh, final Mannschaft mg) throws Throwable {

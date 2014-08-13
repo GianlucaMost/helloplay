@@ -10,6 +10,8 @@ import java.util.Map;
 
 import javax.persistence.*;
 
+import dao.MannschaftDao;
+import dao.MannschaftDaoImpl;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -21,6 +23,10 @@ import play.db.jpa.Transactional;
 @Entity 
 @Table(name="spiel")
 public class Spiel {  
+	
+	//testweise den static modifier entfernt
+	private MannschaftDao mannschaftDao = new MannschaftDaoImpl();
+	
 	@Id													// id der tbl
 	@Column(name="sid", nullable=false)
 	@GeneratedValue(strategy=GenerationType.AUTO)		// autoincrement
@@ -169,8 +175,8 @@ public class Spiel {
     }
     
     public void setVersusByState(String mhs, String mgs){
-    	this.mannschaft_heim=Mannschaft.findByState(mhs);
-    	this.mannschaft_gast=Mannschaft.findByState(mgs);
+    	this.mannschaft_heim=mannschaftDao.findByState(mhs);
+    	this.mannschaft_gast=mannschaftDao.findByState(mgs);
     }
     
     /**
@@ -393,18 +399,18 @@ public class Spiel {
 		//Dieses Spiel abhaken, so dass keine Punkte mehr hierfuer vergeben werden
 		s.checked=1;
 		s.persist();
-		mh.persist();
-		mg.persist();
+		mannschaftDao.update(mh);
+		mannschaftDao.update(mg);
     }
     
     @Transactional
 	public static void setAF(){
     	//Sieger und Zweitplatzierte der GruppenSpiele ermitteln
 		String[] gruppen = {"A", "B", "C", "D", "E", "F", "G", "H"};
-		Map<String, List<Mannschaft>> mannschaften = Mannschaft.findAll();
+		Map<String, List<Mannschaft>> mannschaften = mannschaftDao.findAll();
 		for(String key: gruppen){
 			//Liste der Mannschaften in dieser Gruppe, sortiert nach Punkten.
-			List<Mannschaft> mGruppe = Mannschaft.findByGroup(key);
+			List<Mannschaft> mGruppe = mannschaftDao.findByGroup(key);
 			Mannschaft m0=mGruppe.get(0);
 			Mannschaft m1=mGruppe.get(1);
 			Mannschaft m2=mGruppe.get(2);
@@ -473,8 +479,8 @@ public class Spiel {
 				}
 				m0.status=m0.status+" "+key;
 				m1.status=m1.status+" "+key;
-				m0.persist();
-				m1.persist();
+				mannschaftDao.update(m0);
+				mannschaftDao.update(m1);
 			}else if(m0.punkte==m2.punkte){
 				//bitte die gewinner und zweiten der jeweiligen gruppe per hand eintragen
 				//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
@@ -594,18 +600,18 @@ public class Spiel {
 				m.bezeichnung="Sieger AF8";
 				break;
 			}
-			m.persist();
+			mannschaftDao.update(m);
 		}
 		
 		//Sieger der AchtelFinal-Spiele ermitteln
-		Mannschaft siegerAF1 = Mannschaft.findByState("Sieger AF1");
-		Mannschaft siegerAF2 = Mannschaft.findByState("Sieger AF2");
-		Mannschaft siegerAF3 = Mannschaft.findByState("Sieger AF3");
-		Mannschaft siegerAF4 = Mannschaft.findByState("Sieger AF4");
-		Mannschaft siegerAF5 = Mannschaft.findByState("Sieger AF5");
-		Mannschaft siegerAF6 = Mannschaft.findByState("Sieger AF6");
-		Mannschaft siegerAF7 = Mannschaft.findByState("Sieger AF7");
-		Mannschaft siegerAF8 = Mannschaft.findByState("Sieger AF8");
+		Mannschaft siegerAF1 = mannschaftDao.findByState("Sieger AF1");
+		Mannschaft siegerAF2 = mannschaftDao.findByState("Sieger AF2");
+		Mannschaft siegerAF3 = mannschaftDao.findByState("Sieger AF3");
+		Mannschaft siegerAF4 = mannschaftDao.findByState("Sieger AF4");
+		Mannschaft siegerAF5 = mannschaftDao.findByState("Sieger AF5");
+		Mannschaft siegerAF6 = mannschaftDao.findByState("Sieger AF6");
+		Mannschaft siegerAF7 = mannschaftDao.findByState("Sieger AF7");
+		Mannschaft siegerAF8 = mannschaftDao.findByState("Sieger AF8");
 		
 		//finde alle ViertelFinal-Spiele
 		Spiel vf1 = Spiel.findByBezeichnung("vf1");
@@ -650,14 +656,14 @@ public class Spiel {
 				m.bezeichnung="Sieger VF4";
 				break;
 			}
-			m.persist();
+			mannschaftDao.update(m);
 		}
 		
 		//Sieger der ViertelFinal-Spiele ermitteln
-		Mannschaft siegerVF1 = Mannschaft.findByState("Sieger VF1");
-		Mannschaft siegerVF2 = Mannschaft.findByState("Sieger VF2");
-		Mannschaft siegerVF3 = Mannschaft.findByState("Sieger VF3");
-		Mannschaft siegerVF4 = Mannschaft.findByState("Sieger VF4");
+		Mannschaft siegerVF1 = mannschaftDao.findByState("Sieger VF1");
+		Mannschaft siegerVF2 = mannschaftDao.findByState("Sieger VF2");
+		Mannschaft siegerVF3 = mannschaftDao.findByState("Sieger VF3");
+		Mannschaft siegerVF4 = mannschaftDao.findByState("Sieger VF4");
 		
 		//finde alle HalbFinal-Spiele
 		Spiel hf1 = Spiel.findByBezeichnung("hf1");
@@ -697,15 +703,15 @@ public class Spiel {
 				}
 				break;
 			}
-			mHeim.persist();
-			mGast.persist();
+			mannschaftDao.update(mHeim);
+			mannschaftDao.update(mGast);
 		}
 		
 		//Sieger und Verlierer der HalbFinal-Spiele ermitteln
-		Mannschaft siegerHF1 = Mannschaft.findByState("Sieger HF1");
-		Mannschaft verliererHF1 = Mannschaft.findByState("Verlierer HF1");
-		Mannschaft siegerHF2 = Mannschaft.findByState("Sieger HF2");
-		Mannschaft verliererHF2 = Mannschaft.findByState("Verlierer HF2");
+		Mannschaft siegerHF1 = mannschaftDao.findByState("Sieger HF1");
+		Mannschaft verliererHF1 = mannschaftDao.findByState("Verlierer HF1");
+		Mannschaft siegerHF2 = mannschaftDao.findByState("Sieger HF2");
+		Mannschaft verliererHF2 = mannschaftDao.findByState("Verlierer HF2");
 		
 		//finde Spiel um Platz 3 und Finale
 		Spiel sp3 = Spiel.findByBezeichnung("sp3");

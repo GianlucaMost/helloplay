@@ -17,7 +17,9 @@ import models.Tipp;
 
 public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> implements MannschaftDao{
 	
+//	public static void bindForCurrentThread(javax.persistence.EntityManager em){}
 	protected EntityManager em = JPA.em();
+	
 	/**
      * Find a team by name
      * @param bezeichnung
