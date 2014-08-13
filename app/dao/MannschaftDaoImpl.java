@@ -51,26 +51,26 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
      * @return
      */
 	@Override
-		public Map<String, List<Mannschaft>> findAll() {
+	public Map<String, List<Mannschaft>> findAll() {
 		EntityManager em = JPA.em();
-			String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
-	    	Query q = em.createNativeQuery(sqlQuery, Mannschaft.class);
-	//      Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
-	        Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
-	        Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
-	        
-	        for (Mannschaft team : col) {
-	        	if (!teamMap.containsKey(team.gruppe)) {
-	        		List<Mannschaft> teamList = new ArrayList<Mannschaft>();
-	        		teamList.add(team);
-	        		teamMap.put(team.gruppe, teamList);
-	        	} else {
-	        		teamMap.get(team.gruppe).add(team);
-	        	}
-	        }
-	        Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
-	        return treeMap;
-		}
+		String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
+    	Query q = em.createNativeQuery(sqlQuery, Mannschaft.class);
+//      Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
+        Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
+        Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
+        
+        for (Mannschaft team : col) {
+        	if (!teamMap.containsKey(team.gruppe)) {
+        		List<Mannschaft> teamList = new ArrayList<Mannschaft>();
+        		teamList.add(team);
+        		teamMap.put(team.gruppe, teamList);
+        	} else {
+        		teamMap.get(team.gruppe).add(team);
+        	}
+        }
+        Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
+        return treeMap;
+	}
 
 	@Override
 	public Collection<Mannschaft> findAllCol() {
