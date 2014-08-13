@@ -77,9 +77,6 @@ public class Mannschaft {
     @OneToMany(mappedBy="mannschaft_gast")
     private Collection<Spiel> auswaertsSpiele;
     
-//    public static void bindForCurrentThread(javax.persistence.EntityManager em);
-//    private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
-    
     /**
      * Default constructor
      */

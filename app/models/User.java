@@ -123,109 +123,12 @@ public class User {
     }
     
 //    /**
-//     * removes the given TR from the Collection of TRs this user is admin from
+//     * remove the given TR from the Collection of TRs this user is admin from
 //     * @param tr
 //     */
 //    public void removeTrAdmin(Trunde tr){
 //    	this.tradmin.remove(tr);
 //    }
-    
-    /**
-     * check username, when the name already exist, 'true' is returned, otherwise 'false'
-     */
-    @Transactional(readOnly=true)
-    public static boolean userExist(String name) {
-    	try {
-	    	Query query = JPA.em().createQuery("SELECT u.name FROM User u WHERE u.name = :pName");
-	    	query.setParameter("pName", name);
-	    	String tmp = (String) query.getSingleResult();
-	    	return true;
-    	} catch (NoResultException ex) {
-    		return false;
-    	}
-    }
-	
-    /**
-     * Find an user by id.
-     */
-    @Transactional(readOnly=true)
-    public static User findById(int id) {
-    	return JPA.em().find(User.class, id);
-    }
-    
-    /**
-     * find user by name
-     * @param name
-     * @return
-     */
-    @Transactional
-    public static User findByName(String name) {
-    	if (User.userExist(name)) {
-    		Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
-	    	query.setParameter("pName", name);
-	    	return (User) query.getSingleResult();
-    	}else {
-    		return null;
-    	}
-    }
-    
-    /**
-     * Get all users.
-     */
-    @Transactional(readOnly=true)
-    public static Collection<User> findAll(){
-        Query query = JPA.em().createQuery("SELECT u FROM User u");
-        return (Collection<User>) query.getResultList();
-    }
-    
-    @Transactional
-    public Collection<Tipp> findSortedTipps(){
-    	String sqlQuery = "SELECT t.* FROM tipp AS t INNER JOIN spiel AS s ON s.sid=t.fk_sid WHERE t.fk_uid=? ORDER BY beginn";
-    	Query q = JPA.em().createNativeQuery(sqlQuery, Tipp.class);
-    	q.setParameter(1, this.uid);
-    	return q.getResultList();
-    }
- 
-    /**
-     * non static user persisting
-     * @param user
-     */
-    @Transactional
-    public void add() {
-		JPA.em().persist(this);
-    }
-    
-    /**
-     * Add an user
-     * @param user
-     */
-    @Transactional
-    public static void add(User user) {
-		JPA.em().persist(user);
-    }
-    
-    
-    /**
-     * Add a new user.
-     * @param name
-     */
-    @Transactional
-    public static void add(String name, String pwHash) {
-		EntityManager em = JPA.em();
-    	User user = new User();
-    	user.name=name;
-    	user.pw=pwHash;
-		em.persist(user);
-    }
-    
-    
-    /**
-     * persist the user
-     */
-    @Transactional
-    public void persist() {
-		JPA.em().persist(this);
-    }
     
     /**
      * toggle between user.admin=1/0
@@ -237,68 +140,8 @@ public class User {
     	}else{
     		this.admin=1;
     	}
-		JPA.em().persist(this);
     }
-    
-    
-    /**
-     * Update this users name and password.
-     * @param name
-     */
-    @Transactional
-    public void update(String name, String pwHash) {
-    	EntityManager em = JPA.em();
-		User user = em.find(User.class, this.uid);
-    	user.name = name;
-    	user.pw = pwHash;
-    	em.persist(user);
-    }
-    
-    /**
-     * Update this users name.
-     * @param name
-     */
-    @Transactional
-    public void update(String name) {
-    	this.name = name;
-    	JPA.em().persist(this);
-    }
-    
-    /**
-     * Change this users password.
-     * @param name
-     */
-    @Transactional
-    public void changePw(String pwHash) {
-    	this.pw = pwHash;
-    	JPA.em().persist(this);
-    }
- 
-    /**
-     * Delete this user.
-     */
-    @Transactional
-    public void delete(){
-        JPA.em().remove(this);
-    }
-    
-    /**
-     * validate a user
-     * @param name
-     * @param pw
-     * @return
-     */
-    @Transactional
-    public static boolean validate(String name, String pw) {
-    	try {
-	    	Query query = JPA.em().createQuery("SELECT u FROM User u WHERE u.name = :pName");
-	    	query.setParameter("pName", name);
-	    	User user = (User) query.getSingleResult();
-	    	return BCrypt.checkpw(pw, user.pw);
-    	} catch (NoResultException ex) {
-    		return false;
-    	}
-    }
+
     
     /**
      * ueberprueft das uebergebene passwort

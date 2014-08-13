@@ -27,10 +27,13 @@ import com.sun.syndication.io.XmlReader;
 
 import dao.MannschaftDao;
 import dao.MannschaftDaoImpl;
+import dao.SpielDao;
+import dao.SpielDaoImpl;
 
 public class Rss {
 	
 	private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
+	private static SpielDao spielDao = new SpielDaoImpl();
 	
 	public static void updateWithRss(){
 		for(DataHelper pro: checkFeed(loadFeed())){
@@ -55,20 +58,20 @@ public class Rss {
 					}
 				});
 				
-				JPA.withTransaction(new F.Callback0() {
-					@Override
-					public void invoke() throws Throwable {
-						// TODO Auto-generated method stub
-						spiel.setErgebnis(th, tg);
-						if (spiel.gameOver()){
-							Spiel.handOutUserPoints(spiel.getTipps(), th, tg);
-							if(spiel.checked==0){
-								Spiel.handOutTeamPoints(spiel, mh, mg, th, tg);
-								Spiel.setFinalGames(spiel);
-							}
-						}
-					}
-				});
+//				JPA.withTransaction(new F.Callback0() {
+//					@Override
+//					public void invoke() throws Throwable {
+//						// TODO Auto-generated method stub
+//						spiel.setErgebnis(th, tg);
+//						if (spiel.gameOver()){
+//							Spiel.handOutUserPoints(spiel.getTipps(), th, tg);
+//							if(spiel.checked==0){
+//								Spiel.handOutTeamPoints(spiel, mh, mg, th, tg);
+//								Spiel.setFinalGames(spiel);
+//							}
+//						}
+//					}
+//				});
 				
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
@@ -166,7 +169,7 @@ public class Rss {
 		final Spiel spiel = JPA.withTransaction(new F.Function0<Spiel>() {
 			@Override
 			public Spiel apply() throws Throwable {
-				return Spiel.findGame(mh, mg);
+				return spielDao.findGame(mh, mg);
 			}
 		});
 		return spiel;

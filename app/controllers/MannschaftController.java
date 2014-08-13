@@ -16,7 +16,6 @@ public class MannschaftController extends Controller {
 	
 	private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
 	private static UserDao userDao = new UserDaoImpl();
-	private static User cu = userDao.findByName(request().username());
 	
 	/**
 	 * Listet alle Mannschaften auf
@@ -24,11 +23,13 @@ public class MannschaftController extends Controller {
 	 */
 	@Transactional(readOnly=true)
     public static Result mannschaften() {
+		User cu = userDao.findByName(request().username());
 		return ok(mannschaften_tbl.render(mannschaftDao.findAll(), cu));
     }
 	
 	@Transactional(readOnly=true)
 	public static Result mannschaftShow(int mid) {
+		User cu = userDao.findByName(request().username());
 		Mannschaft m = mannschaftDao.findById(mid);
 		Collection<Spiel> games = mannschaftDao.findGamesSorted(m);
 //		User cu = userDao.findByName(request().username());

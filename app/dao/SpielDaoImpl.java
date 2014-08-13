@@ -12,14 +12,12 @@ import play.db.jpa.JPA;
 import javax.persistence.Query;
 
 public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements SpielDao {
-	
-	protected EntityManager em = JPA.em();
-	
 	/**
 	 * return  Collection of all games
 	 */
 	@Override
 	public Collection<Spiel> findAll() {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT s FROM Spiel s ORDER BY s.beginn");
         return (Collection<Spiel>) query.getResultList();
     }
@@ -42,6 +40,7 @@ public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements Spie
 	 */
 	@Override
 	public Spiel findGroupGame(Mannschaft mh, Mannschaft mg) {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT s FROM Spiel s WHERE s.mannschaft_heim = :pMh AND s.mannschaft_gast = :pMg");
     	query.setParameter("pMh", mh);
     	query.setParameter("pMg", mg);
@@ -66,6 +65,7 @@ public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements Spie
 	 */
 	@Override
 	public Collection<Spiel> gamesOfTeam(int mid) {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT s FROM Spiel s WHERE s.fk_midheim=:pMid OR s.fk_midgast=:pMid");
         query.setParameter("pMid", mid);
         Collection<Spiel> col = query.getResultList();
@@ -88,6 +88,17 @@ public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements Spie
         	s.toregast = tg;
         	update(s);
     	}
+	}
+
+	@Override
+	public Spiel findVs(Mannschaft a, Mannschaft b) {
+		Collection<Spiel> spiele = findAll();
+	    for (Spiel s: spiele){
+			if(s.getMannschaftHeim().equals(a) && s.getMannschaftHeim().equals(b)){
+				return s;
+			}
+		}
+	    return null;
 	}
 
 }

@@ -9,16 +9,15 @@ import models.Tipp;
 import play.db.jpa.JPA;
 
 public class TippDaoImpl extends GenericDaoImpl<Integer, Tipp> implements TippDao{
-	
-	protected EntityManager em = JPA.em();
-	
 	@Override
 	public void delete(Tipp t) {
+		EntityManager em = JPA.em();
 		em.remove(t);
 	}
 
 	@Override
 	public Collection<Tipp> findAll() {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT t FROM Tipp t");
         return (Collection<Tipp>) query.getResultList();
 	}

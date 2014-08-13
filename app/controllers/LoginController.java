@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 
 import org.mindrot.jbcrypt.*;
 
+import dao.UserDao;
+import dao.UserDaoImpl;
 import models.User;
 import play.*;
 import play.mvc.*;
@@ -15,6 +17,8 @@ import static play.data.Form.*;
 
 public class LoginController extends Controller
 {	
+	private static UserDao userDao = new UserDaoImpl();
+	
 	/**
 	 * show the login-page
 	 * @return
@@ -38,7 +42,7 @@ public class LoginController extends Controller
 	    if (form.hasErrors()) {
 	        return badRequest(login.render(loginForm));
 	    } else {
-	    	if (User.validate(name, pw)) {
+	    	if (userDao.validate(name, pw)) {
 		        session().clear();
 		        session("name", name);
 		        flash("success", "Sie sind jetzt angemeldet.");
@@ -87,7 +91,7 @@ public class LoginController extends Controller
 		    if (form.hasErrors()) {
 		        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
 		    }else{
-		    	if(User.userExist(name)) {
+		    	if(userDao.userExist(name)) {
 		    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
 		    		return redirect(routes.LoginController.showRegister());
 		    	}else{
@@ -95,8 +99,7 @@ public class LoginController extends Controller
 			    		flash("error", "username or password is emty.");
 						return redirect(routes.LoginController.register());
 		    		}else {				
-		    			User user = new User(name, pwHash);
-		    			User.add(user);
+		    			userDao.add(name, pwHash);
 						session().clear();
 				        session("name", name);
 				        flash("success", "Registrierung erfolgreich.");

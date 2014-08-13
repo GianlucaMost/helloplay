@@ -34,6 +34,7 @@ public class TrundeController extends Controller {
 	
 	private static TrundeDao trundeDao = new TrundeDaoImpl();
 	private static UserDao userDao = new UserDaoImpl();
+	private static SpielDao spielDao = new SpielDaoImpl();
 	
 	private static User cU = userDao.findByName(request().username());
 	
@@ -44,10 +45,9 @@ public class TrundeController extends Controller {
 	@Transactional
     public static Result showDetail(int trid) {
 		String msg = "Dies TippRunde mit der id " + trid + "existiert nicht.";
-//		Trunde tr = Trunde.findById(trid);
 		Trunde tr = trundeDao.findById(trid);
 		Collection<User> sortedMember = trundeDao.findSortedMember(tr);
-		Collection<Spiel> games = Spiel.findAll();
+		Collection<Spiel> games = spielDao.findAll();
 		if(tr!=null){
 			return ok(trunde_detail.render(games, tr, cU, sortedMember));
 		}else{
@@ -65,10 +65,10 @@ public class TrundeController extends Controller {
     public static Result addNew(int uid) {
 		final DynamicForm form = form().bindFromRequest();
 		final String b = form.get("bezeichnung");
-		User u = User.findById(uid);
+		User u = userDao.findById(uid);
 		Trunde tr = new Trunde(b, u);
 		Logger.info("Benutzer " + u.name + " (" + u.uid + ") moechte neue TippRunde " + b + " erstellen.");
-		tr.persist();
+		trundeDao.persist(tr);
 		u.addTrunde(tr);
 		Logger.info("Benutzer " + u.name + " ist nun in TippRunde " + tr.bezeichnung + ".");
 		flash("success", "TippRunde " + tr.bezeichnung + " wurde erstellt.");
@@ -77,18 +77,18 @@ public class TrundeController extends Controller {
 	
 	@Transactional
     public static Result removeTrunde(int trid) {
-		Trunde tr = Trunde.findById(trid);
+		Trunde tr = trundeDao.findById(trid);
 		String tmp = tr.bezeichnung;
 		Logger.info("TippRunde " + tr.bezeichnung + "wird geloscht. Admin is " + tr.getTrAdmin().name + " (" + tr.getTrAdmin().uid + ").");
-		tr.delete();
+		trundeDao.delete(tr);
 		flash("info", "TippRunde " + tmp + " wurde geloescht!");
 		return redirect(routes.TrundeController.showMain());
 	}
 	
 	@Transactional
     public static Result joinTrunde(int trid) {
-		User u = User.findByName(request().username());
-		Trunde tr = Trunde.findById(trid);
+		User u = userDao.findByName(request().username());
+		Trunde tr = trundeDao.findById(trid);
 		if (!u.getTrunden().contains(tr)){
 			u.addTrunde(tr);
 			Logger.info(u.name + " tritt der TippRunde " + tr.bezeichnung + " (" + tr.trid + ") bei.");

@@ -94,44 +94,4 @@ public class Tipp {
     public void setUser(User u){
     	this.user=u;
     }
-    
-    /**
-     * Find a Tipp by id.
-     */
-    @Transactional(readOnly=true)
-    public static Tipp findById(int tid) {
-    	return JPA.em().find(Tipp.class, tid);
-    }
-    
-    @Transactional(readOnly=true)
-    public static Collection<Tipp> findAll() {
-        Query query = JPA.em().createQuery("SELECT t FROM Tipp t");
-        return (Collection<Tipp>) query.getResultList();
-    }
-    
-    @Transactional
-    public void add() {
-		JPA.em().persist(this);
-    }
-    
-    @Transactional
-    public void update(byte th, byte tg) {
-    	this.toreheim=th;
-    	this.toregast=tg;
-		JPA.em().persist(this);
-    }
-    
-    @Transactional
-    public void persist() {
-		JPA.em().persist(this);
-    }
-    
-    /**
-     * Delete this tipp.
-     */
-    @Transactional
-    public void delete(){
-        JPA.em().remove(this);
-    }
-    
 }

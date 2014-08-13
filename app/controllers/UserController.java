@@ -6,6 +6,8 @@ import java.util.Collection;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import dao.TrundeDao;
+import dao.TrundeDaoImpl;
 import dao.UserDao;
 import dao.UserDaoImpl;
 import models.Tipp;
@@ -22,7 +24,9 @@ import play.data.DynamicForm;
 public class UserController extends Controller {
 	
 	private static UserDao userDao = new UserDaoImpl();
-	private static User cU = userDao.findByName(request().username());
+	private static TrundeDao trundeDao = new TrundeDaoImpl();
+	
+//	private static User cU = userDao.findByName(request().username());
 	
 	/**
 	 * Put all users (found by the findAll-method) in a Collection and render the user-view
@@ -32,9 +36,9 @@ public class UserController extends Controller {
 	@Security.Authenticated(AdminSecured.class)
     public static Result users() {
 		Logger.info("Start searching for all user");
-		Collection<User> users = User.findAll();
+		Collection<User> users = userDao.findAll();
 		Logger.info("User size: " + users.size());
-        return ok(user.render("Alle Benutzer", users, User.findByName(request().username())));
+        return ok(user.render("Alle Benutzer", users, userDao.findByName(request().username())));
     }
 	
 	/**
@@ -44,6 +48,8 @@ public class UserController extends Controller {
 	 */
 	@Transactional(readOnly=true)
 	public static Result finduser(int id) {
+		User cU = userDao.findByName(request().username());
+		
 		Logger.info("Start searching for user with id " + id);
 		User u = userDao.findById(id);
 		Collection<Tipp> sortedTipps = userDao.findSortedTipps(u);
@@ -59,7 +65,7 @@ public class UserController extends Controller {
 	
 	@Transactional(readOnly=true)
 	public static Result accverwaltung() {
-		return ok(accverwaltung.render(User.findByName(request().username())));
+		return ok(accverwaltung.render(userDao.findByName(request().username())));
 	}
 	
 	/**
@@ -70,7 +76,7 @@ public class UserController extends Controller {
 	@Transactional
 	@Security.Authenticated(AdminSecured.class)
 	public static Result switchAdmin(int uid) {
-		User u = User.findById(uid);
+		User u = userDao.findById(uid);
 		u.switchAdmin();
 		String refererHeader = request().headers().get("Referer")[0];
 		return redirect(refererHeader);
@@ -84,9 +90,10 @@ public class UserController extends Controller {
 	 */
 	@Transactional
 	public static Result removeFromTrunde(int uid, int trid) {
-		User u = User.findById(uid);
-		User cU = User.findByName(request().username());
-		Trunde tr = Trunde.findById(trid);
+		User cU = userDao.findByName(request().username());
+		
+		User u = userDao.findById(uid);
+		Trunde tr = trundeDao.findById(trid);
 		u.removeFromTrunde(tr);
 //		if(tr.getTrAdmin().equals(u)){
 //			tr.setTrAdmin(null);
@@ -111,7 +118,7 @@ public class UserController extends Controller {
 	@Security.Authenticated(AdminSecured.class)
 	public static Result newuser() {
 		Form<User> userForm = form(User.class);
-		return ok(newuser.render("", userForm, User.findByName(request().username())));
+		return ok(newuser.render("", userForm, userDao.findByName(request().username())));
 	}
 	
 	/**
@@ -128,7 +135,7 @@ public class UserController extends Controller {
 	    if (form.hasErrors()) {
 	        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
 	    }else{
-	    	if(User.userExist(name)) {
+	    	if(userDao.userExist(name)) {
 	    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
 	    		return redirect(routes.UserController.newuser());
 	    	}else{
@@ -136,7 +143,7 @@ public class UserController extends Controller {
 		    		flash("error", "username or password is emty.");
 					return redirect(routes.UserController.newuser());
 	    		}else {				
-					User.add(new User(name, pwHash));
+					userDao.add(name, pwHash);
 		    		flash("success", "User " + name + " has been created");
 		    		return redirect(routes.UserController.users());
 	    		}
@@ -152,9 +159,9 @@ public class UserController extends Controller {
 	@Transactional
 	@Security.Authenticated(AdminSecured.class)
 	public static Result updateShow(int id) {
-		User user = User.findById(id);
+		User user = userDao.findById(id);
 		if (user!=null) {
-			return ok(update.render(user.uid, user, User.findByName(request().username())));
+			return ok(update.render(user.uid, user, userDao.findByName(request().username())));
 		}else {
 			return badRequest("Der Benutzer den Sie editieren wollen existiert nicht!");
 		}
@@ -171,14 +178,14 @@ public class UserController extends Controller {
 		String name = form.get("name");
 		String pw = form.get("pw");
 		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt()); 
-		User udUser = User.findById(id);
-		User curUser = User.findByName(request().username());
-		if (!User.userExist(name) || name.equals(udUser.name)) {
+		User udUser = userDao.findById(id);
+		User curUser = userDao.findByName(request().username());
+		if (!userDao.userExist(name) || name.equals(udUser.name)) {
 			if (name.isEmpty() || pw.isEmpty()) {
 				flash("error", "username or password is empty.");
 				return redirect(routes.UserController.updateShow(id));
 			}else {
-				udUser.update(name, pwHash);
+				userDao.update(udUser, name, pwHash);
 				flash("success", "Benutzer " + name + " wurde aktuallisiert");
 				if (curUser.admin==1) {
 					return redirect(routes.UserController.users());
@@ -199,12 +206,12 @@ public class UserController extends Controller {
 	@Transactional
 	public static Result updateName(int uid) {
 		String name = form().bindFromRequest().get("name");
-		User udUser = User.findById(uid);
-		if (!User.userExist(name) || name.equals(udUser.name)) {
+		User udUser = userDao.findById(uid);
+		if (!userDao.userExist(name) || name.equals(udUser.name)) {
 			if (name.isEmpty()) {
 				flash("error", "Benutzername darf nicht leer sein!");
 			}else {
-				udUser.update(name);
+				userDao.changeName(udUser, name);
 				flash("success", "Benutzername wurde aktuallisiert.");
 				session().clear();
 				session("name", name);
@@ -222,7 +229,7 @@ public class UserController extends Controller {
 	 */
 	@Transactional
 	public static Result changePwShow(int uid) {
-		return ok(changePw.render(User.findByName(request().username())));
+		return ok(changePw.render(userDao.findByName(request().username())));
 	}
 	
 	/**
@@ -236,14 +243,14 @@ public class UserController extends Controller {
 		String pw = form.get("pw");
 		String pwCon = form.get("pwCon");
 		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt()); 
-		User udUser = User.findById(uid);
+		User udUser = userDao.findById(uid);
 		if(udUser.checkPw(pwOld)){
 			if (pw.isEmpty()) {
 				flash("error", "Das Passwort ist ungueltig");
 				return redirect(routes.UserController.changePw(uid));
 			}else {
 				if(pw.equals(pwCon)){
-					udUser.changePw(pwHash);
+					userDao.changePw(udUser, pwHash);
 					flash("success", "Passwort wurde geaendert");
 					return redirect(routes.UserController.accverwaltung());
 				}else{
@@ -264,12 +271,12 @@ public class UserController extends Controller {
 	 */
 	@Transactional
 	public static Result delete(int id){
-		User delUser = User.findById(id);
-		User curUser = User.findByName(request().username());
+		User delUser = userDao.findById(id);
+		User curUser = userDao.findByName(request().username());
 		if (delUser!=null){
 			if(delUser.equals(curUser) || curUser.admin==1){
 				flash("warning", "Benutzer " + delUser.name + " wurde geloescht.");
-				delUser.delete();
+				userDao.delete(delUser);
 			}
 			if (curUser.admin==1){
 				return redirect(routes.UserController.users());

@@ -17,9 +17,6 @@ import org.mindrot.jbcrypt.*;
 
 
 public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDao {
-	
-	protected EntityManager em = JPA.em();
-	
 	@Override
 	public void add(String name, String pwHash) {
 		User user = new User(name, pwHash);
@@ -28,12 +25,14 @@ public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDa
 
 	@Override
 	public void delete(User u) {
+		EntityManager em = JPA.em();
 		em.remove(u);
 	}
 
 	@Override
 	public User findByName(String name) {
-		if (User.userExist(name)) {
+		EntityManager em = JPA.em();
+		if (userExist(name)) {
     		Query query = em.createQuery("SELECT u FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
 	    	return (User) query.getSingleResult();
@@ -44,12 +43,14 @@ public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDa
 
 	@Override
 	public Collection<User> findAll() {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT u FROM User u");
         return (Collection<User>) query.getResultList();
 	}
 	
 	@Override
 	public boolean userExist(String name) {
+		EntityManager em = JPA.em();
 		try {
 	    	Query query = em.createQuery("SELECT u.name FROM User u WHERE u.name = :pName");
 	    	query.setParameter("pName", name);
@@ -62,6 +63,7 @@ public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDa
 
 	@Override
 	public Collection<Tipp> findSortedTipps(User u) {
+		EntityManager em = JPA.em();
 		String sqlQuery = "SELECT t.* FROM tipp AS t INNER JOIN spiel AS s ON s.sid=t.fk_sid WHERE t.fk_uid=? ORDER BY beginn";
     	Query q = em.createNativeQuery(sqlQuery, Tipp.class);
     	q.setParameter(1, u.uid);
@@ -70,6 +72,7 @@ public class UserDaoImpl extends GenericDaoImpl<Integer, User> implements UserDa
 
 	@Override
 	public void update(User u, String name, String pwHash) {
+		EntityManager em = JPA.em();
 		User user = em.find(User.class, u.uid);
     	user.name = name;
     	user.pw = pwHash;

@@ -79,41 +79,8 @@ public class Trunde {
      */
     public void setTrAdmin(User u){
     	this.tradmin=u;
-    }
-    
-    /**
-     * Find a 'Trunde' by id.
-     */
-    @Transactional(readOnly=true)
-    public static Trunde findById(int trid) {
-    	return JPA.em().find(Trunde.class, trid);
-    }
-    
-    /**
-     * persist the trunde
-     */
-    @Transactional
-    public void persist() {
-		JPA.em().persist(this);
-    }
-    
-    /**
-     * Get all trunden.
-     */
-    @Transactional(readOnly=true)
-    public static Collection<Trunde> findAll(){
-        Query query = JPA.em().createQuery("SELECT tr FROM trunde tr");
-        return (Collection<Trunde>) query.getResultList();
-    }
-    
-    /**
-     * Delete this trunde.
-     */
-    @Transactional
-    public void delete(){
-        JPA.em().remove(this);
-    }
-    
+    }    
+
     /**
      * find all Tipps from this trunde (NO DAO!)
      * @return
@@ -191,13 +158,5 @@ public class Trunde {
     		p=p+u.punkte;
     	}
     	return p;
-    }
-    
-    @Transactional
-    public Collection<User> findSortedMember(){
-    	String sqlQuery = "SELECT uid, name, pw, punkte, admin FROM user AS u INNER JOIN user_trunde AS utr ON utr.fk_uid=u.uid WHERE fk_trid=? ORDER BY punkte DESC, name ASC";
-    	Query q = JPA.em().createNativeQuery(sqlQuery, User.class);
-    	q.setParameter(1, this.trid);
-    	return q.getResultList();
     }
 }

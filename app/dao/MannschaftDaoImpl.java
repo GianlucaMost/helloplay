@@ -18,7 +18,7 @@ import models.Tipp;
 public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> implements MannschaftDao{
 	
 //	public static void bindForCurrentThread(javax.persistence.EntityManager em){}
-	protected EntityManager em = JPA.em();
+//	protected EntityManager em = JPA.em();
 	
 	/**
      * Find a team by name
@@ -27,6 +27,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
      */
 	@Override
 	public Mannschaft findByName(String bezeichnung) {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT m FROM Mannschaft m WHERE m.bezeichnung = :pBezeichnung");
     	query.setParameter("pBezeichnung", bezeichnung);
     	return (Mannschaft) query.getSingleResult();
@@ -39,6 +40,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
      */
 	@Override
 	public Mannschaft findByState(String status) {
+		EntityManager em = JPA.em();
 		Query query = em.createQuery("SELECT m FROM Mannschaft m WHERE m.status = :pStatus");
     	query.setParameter("pStatus", status);
     	return (Mannschaft) query.getSingleResult();
@@ -50,6 +52,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
      */
 	@Override
 		public Map<String, List<Mannschaft>> findAll() {
+		EntityManager em = JPA.em();
 			String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
 	    	Query q = em.createNativeQuery(sqlQuery, Mannschaft.class);
 	//      Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
@@ -77,6 +80,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
 	
 	@Override
 	public List<Mannschaft> findByGroup(String grp) {
+		EntityManager em = JPA.em();
 		String sqlQuery = "SELECT * FROM mannschaft WHERE gruppe=? ORDER BY punkte DESC";
     	Query q = em.createNativeQuery(sqlQuery, Mannschaft.class);
     	q.setParameter(1, grp);
@@ -86,6 +90,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
 
 	@Override
 	public List<Spiel> findGamesSorted(Mannschaft m) {
+		EntityManager em = JPA.em();
 		String sqlQuery = "SELECT s.* FROM spiel AS s INNER JOIN mannschaft AS m ON m.mid=s.fk_midheim OR m.mid=s.fk_midgast WHERE mid=? ORDER BY s.beginn";
     	Query q = em.createNativeQuery(sqlQuery, Spiel.class);
     	q.setParameter(1, m.mid);
