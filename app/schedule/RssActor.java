@@ -8,7 +8,7 @@ public class RssActor extends UntypedActor {
 
 	@Override
 	public void onReceive(Object msg) throws Exception {
-//		Logger.info("Starting frequently repeated RSScheck");
-//		rssHandler.Rss.updateWithRss();
+		Logger.info("Starting frequently repeated RSScheck");
+		rssHandler.Rss.updateWithRss();
 	}
 }

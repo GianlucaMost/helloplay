@@ -12,12 +12,16 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.hibernate.Hibernate;
+
 import models.Mannschaft;
 import models.Spiel;
+import models.Tipp;
 import play.Logger;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
 import play.libs.F;
+import services.SpielService;
 
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
@@ -54,24 +58,39 @@ public class Rss {
 				final Spiel spiel = JPA.withTransaction(new F.Function0<Spiel>() {
 					@Override
 					public Spiel apply() throws Throwable {
-						return findGame(mh, mg);
+//						return findGame(mh, mg);
+						Spiel s = spielDao.findGame(mh, mg);
+						return s;
 					}
 				});
 				
-//				JPA.withTransaction(new F.Callback0() {
-//					@Override
-//					public void invoke() throws Throwable {
-//						// TODO Auto-generated method stub
-//						spiel.setErgebnis(th, tg);
-//						if (spiel.gameOver()){
-//							Spiel.handOutUserPoints(spiel.getTipps(), th, tg);
-//							if(spiel.checked==0){
-//								Spiel.handOutTeamPoints(spiel, mh, mg, th, tg);
-//								Spiel.setFinalGames(spiel);
-//							}
-//						}
-//					}
-//				});
+				JPA.withTransaction(new F.Callback0() {
+					@Override
+					public void invoke() throws Throwable {
+						// TODO Auto-generated method stub
+						spielDao.setErgebnis(spiel, th, tg);
+					}
+				});
+				
+				if (spiel.gameOver()){
+//					Hibernate.initialize(spiel.getTipps());
+//					Collection<Tipp> tipps = spiel.getTipps();
+//					Spiel.handOutUserPoints(tipps, th, tg);
+					if (spiel.checked==0){
+						JPA.withTransaction(new F.Callback0() {
+							@Override
+							public void invoke() throws Throwable {
+								SpielService.handOutTeamPoints(spiel, mh, mg, th, tg);
+							}
+						});
+						JPA.withTransaction(new F.Callback0() {
+							@Override
+							public void invoke() throws Throwable {
+								SpielService.setFinalGames(spiel);
+							}
+						});
+					}
+				}
 				
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
@@ -155,14 +174,14 @@ public class Rss {
 	}
 	
 	private static Mannschaft findMannschaft(final String name) throws Throwable {
-//		final Mannschaft mannschaft = JPA.withTransaction(new F.Function0<Mannschaft>() {
-//			@Override
-//			public Mannschaft apply() throws Throwable {
-//				return Mannschaft.findByName(name);
-//			}
-//		});
-//		return mannschaft;
-		return mannschaftDao.findByName(name);
+		final Mannschaft mannschaft = JPA.withTransaction(new F.Function0<Mannschaft>() {
+			@Override
+			public Mannschaft apply() throws Throwable {
+				return mannschaftDao.findByName(name);
+			}
+		});
+		return mannschaft;
+//		return mannschaftDao.findByName(name);
 	}
 	
 	private static Spiel findGame(final Mannschaft mh, final Mannschaft mg) throws Throwable {

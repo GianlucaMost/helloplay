@@ -277,7 +277,7 @@ public class Spiel {
 	public static void handOutUserPoints(Collection<Tipp> tipps, byte th, byte tg){
     	// Punkte an User verteilen
 		//jeden tipp durchlaufen
-		for (Tipp t: tipps){
+		for (Tipp t: tipps) {
 			//pruefen ob dieser tipp.checked=0 ist
 			if(t.checked==0){
 				//punkte vergeben
