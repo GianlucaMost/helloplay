@@ -74,8 +74,13 @@ public class Rss {
 				
 				if (spiel.gameOver()){
 //					Hibernate.initialize(spiel.getTipps());
-//					Collection<Tipp> tipps = spiel.getTipps();
-//					Spiel.handOutUserPoints(tipps, th, tg);
+					final Collection<Tipp> tipps = spiel.getTipps();
+					JPA.withTransaction(new F.Callback0() {
+						@Override
+						public void invoke() throws Throwable {
+							Spiel.handOutUserPoints(tipps, th, tg);
+						}
+					});
 					if (spiel.checked==0){
 						JPA.withTransaction(new F.Callback0() {
 							@Override

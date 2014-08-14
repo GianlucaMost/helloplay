@@ -36,8 +36,6 @@ public class TrundeController extends Controller {
 	private static UserDao userDao = new UserDaoImpl();
 	private static SpielDao spielDao = new SpielDaoImpl();
 	
-	private static User cU = userDao.findByName(request().username());
-	
 	/**
 	 * Shows the Trunde-Overview onGET
 	 * @return
@@ -48,6 +46,7 @@ public class TrundeController extends Controller {
 		Trunde tr = trundeDao.findById(trid);
 		Collection<User> sortedMember = trundeDao.findSortedMember(tr);
 		Collection<Spiel> games = spielDao.findAll();
+		User cU = userDao.findByName(request().username());
 		if(tr!=null){
 			return ok(trunde_detail.render(games, tr, cU, sortedMember));
 		}else{
@@ -58,6 +57,7 @@ public class TrundeController extends Controller {
 	
 	@Transactional
     public static Result showMain() {
+		User cU = userDao.findByName(request().username());
 		return ok(trunde_main.render(cU));
 	}
 	

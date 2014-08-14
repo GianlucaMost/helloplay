@@ -10,8 +10,7 @@ import java.util.Map;
 
 import javax.persistence.*;
 
-import dao.MannschaftDao;
-import dao.MannschaftDaoImpl;
+import dao.*;
 import play.data.validation.Constraints;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
@@ -26,6 +25,8 @@ public class Spiel {
 	
 	//testweise den static modifier entfernen
 //	private MannschaftDao mannschaftDao = new MannschaftDaoImpl();
+	private static UserDao userDao = new UserDaoImpl();
+	private static TippDao tippDao = new TippDaoImpl();
 	
 	@Id													// id der tbl
 	@Column(name="sid", nullable=false)
@@ -59,7 +60,7 @@ public class Spiel {
     @Column(name="bezeichnung")
     private String bezeichnung;
     
-    @OneToMany(mappedBy="spiel", targetEntity=Tipp.class)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy="spiel", targetEntity=Tipp.class)
     private Collection<Tipp> tipps;
     
     @ManyToOne()
@@ -300,12 +301,14 @@ public class Spiel {
 	* temporär auskommentiert
 	 */
 //				user.persist();
+				userDao.update(user);
 				//diesen tipp.checked=1 setzen
 				t.checked=1;
 	/**
 	* temporär auskommentiert
 	 */
 //				t.persist();
+				tippDao.update(t);
 			}
 		}
     }
