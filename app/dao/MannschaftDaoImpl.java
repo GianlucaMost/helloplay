@@ -53,11 +53,10 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
 	@Override
 	public Map<String, List<Mannschaft>> findAll() {
 		EntityManager em = JPA.em();
-		String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1";
+		String sqlQuery = "SELECT * FROM mannschaft WHERE LENGTH(gruppe)=1 ORDER BY punkte DESC";
     	Query q = em.createNativeQuery(sqlQuery, Mannschaft.class);
-//      Query query = JPA.em().createQuery("SELECT m FROM Mannschaft m WHERE m.mid<=32");
         Collection<Mannschaft> col = (Collection<Mannschaft>) q.getResultList();
-        Map<String, List<Mannschaft>> teamMap = new HashMap<String, List<Mannschaft>>();
+        TreeMap<String, List<Mannschaft>> teamMap = new TreeMap<String, List<Mannschaft>>();
         
         for (Mannschaft team : col) {
         	if (!teamMap.containsKey(team.gruppe)) {
@@ -68,8 +67,7 @@ public class MannschaftDaoImpl extends GenericDaoImpl<Integer, Mannschaft> imple
         		teamMap.get(team.gruppe).add(team);
         	}
         }
-        Map<String, List<Mannschaft>> treeMap = new TreeMap<String, List<Mannschaft>>(teamMap);
-        return treeMap;
+        return teamMap;
 	}
 
 	@Override

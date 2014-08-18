@@ -6,20 +6,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.hibernate.Hibernate;
 
 import models.Mannschaft;
 import models.Spiel;
 import models.Tipp;
 import play.Logger;
 import play.db.jpa.JPA;
-import play.db.jpa.Transactional;
 import play.libs.F;
 import services.SpielService;
 
@@ -40,68 +35,39 @@ public class Rss {
 	private static SpielDao spielDao = new SpielDaoImpl();
 	
 	public static void updateWithRss(){
-		for(DataHelper pro: checkFeed(loadFeed())){
+		int i=1;
+		List<SyndEntry> feedList = loadFeed();
+		List<DataHelper> checkedList = checkFeed(feedList);
+		for(DataHelper pro: checkedList){
 			try {
-//				final Spiel spiel = findGame(pro.mh, pro.mg);
 				final Byte th = pro.th, tg = pro.tg;
 				final Mannschaft mh = pro.mh, mg = pro.mg;
-//				spiel.setErgebnis(pro.th, pro.tg);
-				
-//				JPA.withTransaction(new play.libs.F.Callback0() {
+				Logger.info("Durchlauf " + i);
+//				JPA.withTransaction(new F.Callback0() {
 //					@Override
 //					public void invoke() throws Throwable {
-//						Spiel spiel = findGame(mh, mg);
-//						spiel.setErgebnis(th, tg);
+						final Spiel spiel = findGame(mh, mg);
+						final Collection<Tipp> tipps = spiel.getTipps();
+						if (spiel.checked==0){
+							setResult(spiel, th, tg);
+							if (spiel.gameOver()){
+								handOutTeamPoints(spiel, th, tg);
+								handOutUserPoints(tipps, th, tg);
+								/*
+								 * Testweise auskommentiert!
+								 */
+	//							setFinalGames(spiel);
+							}
+						}
 //					}
 //				});
-				
-				final Spiel spiel = JPA.withTransaction(new F.Function0<Spiel>() {
-					@Override
-					public Spiel apply() throws Throwable {
-//						return findGame(mh, mg);
-						Spiel s = spielDao.findGame(mh, mg);
-						return s;
-					}
-				});
-				
-				JPA.withTransaction(new F.Callback0() {
-					@Override
-					public void invoke() throws Throwable {
-						// TODO Auto-generated method stub
-						spielDao.setErgebnis(spiel, th, tg);
-					}
-				});
-				
-				if (spiel.gameOver()){
-//					Hibernate.initialize(spiel.getTipps());
-					final Collection<Tipp> tipps = spiel.getTipps();
-					JPA.withTransaction(new F.Callback0() {
-						@Override
-						public void invoke() throws Throwable {
-							Spiel.handOutUserPoints(tipps, th, tg);
-						}
-					});
-					if (spiel.checked==0){
-						JPA.withTransaction(new F.Callback0() {
-							@Override
-							public void invoke() throws Throwable {
-								SpielService.handOutTeamPoints(spiel, mh, mg, th, tg);
-							}
-						});
-						JPA.withTransaction(new F.Callback0() {
-							@Override
-							public void invoke() throws Throwable {
-								SpielService.setFinalGames(spiel);
-							}
-						});
-					}
-				}
-				
+				i++;
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		Logger.info("complete");
 	}
 	
 	private static List<SyndEntry> loadFeed(){
@@ -135,6 +101,7 @@ public class Rss {
 		byte th=0;
 		byte tg=0;
 		List<DataHelper> proofedList = new ArrayList<DataHelper>();
+		int i = 1, ls;
 		
 		for(SyndEntry se: entries){
 			String title=se.getTitle();
@@ -142,9 +109,9 @@ public class Rss {
 			Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
 			Matcher matcher = pattern.matcher(title);
 			if(matcher.matches()){
-				Logger.info("RSSfeed match");
-				mhName = matcher.group(1);
-    			mgName = matcher.group(2);
+				Logger.info("RSSfeed match " + i);
+				mhName = renameTeam(matcher.group(1));
+    			mgName = renameTeam(matcher.group(2));
     			th = Byte.parseByte((matcher.group(3)));
     			tg = Byte.parseByte((matcher.group(4)));
 				Logger.info(mhName + " " + th + " - " + mgName + " " + tg);
@@ -158,8 +125,16 @@ public class Rss {
 				Logger.warn("Found RSSfeed, that doesnt match!");
 				Logger.info("Title: " + title);
 			}
+			i++;
 		}
-		return proofedList;
+		ls=proofedList.size();
+		Logger.info(ls + " games in list");
+		if(ls!=i-1){
+			Logger.error("An exception accoured while loading the matching feeds in a list.");
+			return null;
+		}else{
+			return proofedList;
+		}
 	}
 	
 	private static String renameTeam(String rename){
@@ -199,4 +174,42 @@ public class Rss {
 		return spiel;
 	}
 	
+	private static void setResult(final Spiel s, final Byte th, final Byte tg){
+		JPA.withTransaction(new F.Callback0() {
+			@Override
+			public void invoke() throws Throwable {
+				Logger.info("Setze Ergebnis " + s.getMannschaftHeim().bezeichnung + " - " + s.getMannschaftGast().bezeichnung);
+				spielDao.setErgebnis(s, th, tg);
+			}
+		});
+	}
+	
+	private static void handOutUserPoints(final Collection<Tipp> tipps, final Byte th, final Byte tg){
+		JPA.withTransaction(new F.Callback0() {
+			@Override
+			public void invoke() throws Throwable {
+				Logger.info("Verteile Punkte an Benutzer");
+				SpielService.handOutUserPoints(tipps, th, tg);
+			}
+		});
+	}
+	
+	private static void handOutTeamPoints(final Spiel spiel, final Byte th, final Byte tg){
+		JPA.withTransaction(new F.Callback0() {
+			@Override
+			public void invoke() throws Throwable {
+				Logger.info("Verteile Punkte an Mannschaften");
+				SpielService.handOutTeamPoints(spiel, th, tg);
+			}
+		});
+	}
+	
+	private static void setFinalGames(final Spiel spiel){
+		JPA.withTransaction(new F.Callback0() {
+			@Override
+			public void invoke() throws Throwable {
+				SpielService.setFinalGames(spiel);
+			}
+		});
+	}
 }

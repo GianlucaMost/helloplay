@@ -3,29 +3,21 @@ package services;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
-import dao.MannschaftDao;
-import dao.MannschaftDaoImpl;
-import dao.SpielDao;
-import dao.SpielDaoImpl;
-import models.Mannschaft;
-import models.Spiel;
-import models.Tipp;
-import models.User;
+import dao.*;
+import models.*;
 import play.db.jpa.Transactional;
 
-/*
- * extends models.Spiel nur temporär! Wieder entfernen!
- */
+
 public class SpielService extends Spiel{
 	
 	private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
 	private static SpielDao spielDao = new SpielDaoImpl();
+	private static TippDao tippDao = new TippDaoImpl();
+	private static UserDao userDao = new UserDaoImpl();
 
 	public Mannschaft searchWinner(Spiel s){
 		Mannschaft m = new Mannschaft();
@@ -37,129 +29,66 @@ public class SpielService extends Spiel{
     	return m;
 	}
 	    
-//	    /**
-//	     * non static game-result-setting
-//	     * @param toreheim
-//	     * @param toregast
-//	     * @throws Throwable 
-//	     */
-//	    @Transactional
-//	    public void setErgebnis(byte th, byte tg) throws Throwable{
-//	    	byte thp = this.toreheim;
-//	    	byte tgp = this.toregast;
-//	    	Mannschaft mh = this.getMannschaftHeim();
-//			Mannschaft mg = this.getMannschaftGast();
-//			Spiel spiel = this;
-//			
-//			Collection<Spiel> spiele = Spiel.findAll();
-//			
-////			final Collection<Spiel> spiele = JPA.withTransaction(new F.Function0<Collection<Spiel>>() {
-////				@Override
-////				public Collection<Spiel> apply() throws Throwable {
-////					return Spiel.findAll();
-////				}
-////			});
-//			
-//	    	if (thp!=th || tgp!=tg){
-//	    		spiel.toreheim = th;
-//	        	spiel.toregast = tg;
-////	        	JPA.em().persist(this);
-////	        	JPA.em().merge(this);
-//	        	spiel = JPA.em().merge(spiel);
-//	    	}
-//	    	if (spiel.gameOver()){
-//	    		//Punkte an Benutzer verteilen
-//	    		handOutUserPoints(spiel.tipps, th, tg);
-//	    		
-//	    		if(spiel.checked==0){
-//	    			handOutTeamPoints(spiel, mh, mg, th, tg);
-//		    		
-//		    		//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
-//		    		if(spiel.getBezeichnung().equals("gg48")){
-//		    			setAF();
-//		    		}
-//		    		//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
-//		    		if(spiel.getBezeichnung().equals("af8")){
-//		    			//setze vf
-//		    			setVF(spiele);
-//		    		}
-//		    		//wenn das hier das letzte VF Spiel war setze HF
-//		    		if(spiel.getBezeichnung().equals("vf4")){
-//						//setze hf
-//		    			setHF(spiele);
-//					}
-//		    		//wenn das hier das letzte HF Spiel war setze Finale und SP3
-//		    		if(spiel.getBezeichnung().equals("hf2")){
-//		    			//setze fi
-//		    			setFI(spiele);
-//					}
-//	    		}
-//	    	}
-//	    }
-	//    
-	    public static void setFinalGames(Spiel s){
-	    	Collection<Spiel> spiele = spielDao.findAll();
+	  public static void setFinalGames(Spiel s){
+		  Collection<Spiel> spiele = spielDao.findAll();
 	    	
-	    	//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
-			if(s.getBezeichnung().equals("gg48")){
-				setAF();
-			}
-			//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
-			if(s.getBezeichnung().equals("af8")){
-				//setze vf
-				setVF(spiele);
-			}
-			//wenn das hier das letzte VF Spiel war setze HF
-			if(s.getBezeichnung().equals("vf4")){
-				//setze hf
-				setHF(spiele);
-			}
-			//wenn das hier das letzte HF Spiel war setze Finale und SP3
-			if(s.getBezeichnung().equals("hf2")){
-				//setze fi
-				setFI(spiele);
-			}
-	    }
+		  //wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
+		  if(s.getBezeichnung().equals("gg48")){
+			  setAF();
+		  }
+		  //wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
+		  if(s.getBezeichnung().equals("af8")){
+			  //setze vf
+			  setVF(spiele);
+		  }
+		  //wenn das hier das letzte VF Spiel war setze HF
+		  if(s.getBezeichnung().equals("vf4")){
+			  //setze hf
+			  setHF(spiele);
+		  }
+		  //wenn das hier das letzte HF Spiel war setze Finale und SP3
+		  if(s.getBezeichnung().equals("hf2")){
+			  //setze fi
+			  setFI(spiele);
+		  }
+	  }
+	    
+	  @Transactional
+	  public static void handOutUserPoints(Collection<Tipp> tipps, byte th, byte tg){
+		  // Punkte an User verteilen
+		  //jeden tipp durchlaufen
+		  for (Tipp t: tipps) {
+			  //pruefen ob dieser tipp.checked=0 ist
+			  if(t.checked==0){
+				  //punkte vergeben
+				  User user = t.getUser();
+				  int p=user.punkte;
+				  //wenn genau richtiges ergebnis dann 3punkte
+				  if(th==t.toreheim && tg==t.toregast){
+					  p=p+3;
+					  //wenn richtige tordifferenz dann 2punkte
+				  }else if(th-tg==t.toreheim-t.toregast){
+					  p=p+2;
+					  //wenn richtige mannschaft dann 1punkt
+				  }else if(th>tg && t.toreheim>t.toregast){
+					  p=p+1;
+				  }else if(tg>th && t.toregast>t.toreheim){
+					  p=p+1;
+				  }
+				  user.punkte=p;
+				  userDao.update(user);
+				  //diesen tipp.checked=1 setzen
+				  t.checked=1;
+				  tippDao.update(t);
+			  }
+		  }
+	  }
 	    
 	    @Transactional
-		public static void handOutUserPoints(Collection<Tipp> tipps, byte th, byte tg){
-	    	// Punkte an User verteilen
-			//jeden tipp durchlaufen
-			for (Tipp t: tipps){
-				//pruefen ob dieser tipp.checked=0 ist
-				if(t.checked==0){
-					//punkte vergeben
-					User user = t.getUser();
-					int p=user.punkte;
-						//wenn genau richtiges ergebnis dann 3punkte
-						if(th==t.toreheim && tg==t.toregast){
-							p=p+3;
-						//wenn richtige tordifferenz dann 2punkte
-						}else if(th-tg==t.toreheim-t.toregast){
-							p=p+2;
-						//wenn richtige mannschaft dann 1punkt
-						}else if(th>tg && t.toreheim>t.toregast){
-							p=p+1;
-						}else if(tg>th && t.toregast>t.toreheim){
-							p=p+1;
-						}
-					user.punkte=p;
-		/**
-		* temporär auskommentiert
-		 */
-//					user.persist();
-					//diesen tipp.checked=1 setzen
-					t.checked=1;
-		/**
-		* temporär auskommentiert
-		 */
-//					t.persist();
-				}
-			}
-	    }
-	    
-	    @Transactional
-		public static void handOutTeamPoints(Spiel s, Mannschaft mh, Mannschaft mg, byte th, byte tg){
+		public static void handOutTeamPoints(Spiel s, byte th, byte tg){
+	    	Mannschaft mh = s.getMannschaftHeim();
+	    	Mannschaft mg = s.getMannschaftGast();
+	    	
 	    	mh.anzahlspiele++;
 			mg.anzahlspiele++;
 			//Punkte an Mannschaften verteilen
@@ -194,6 +123,15 @@ public class SpielService extends Spiel{
 	    
 	    @Transactional
 		public static void setAF(){
+//	    	//sorted
+//	    	List<Spiel> spiele = spielDao.findAF();
+//	    	
+//	    	Map<String, Spiel> af = new HashMap<String, Spiel>();
+//	    	
+//	    	for(Spiel s : spiele) {
+//	    		af.put(s.getBezeichnung(), s);
+//	    	}
+	    	
 	    	//Sieger und Zweitplatzierte der GruppenSpiele ermitteln
 			String[] gruppen = {"A", "B", "C", "D", "E", "F", "G", "H"};
 			Map<String, List<Mannschaft>> mannschaften = mannschaftDao.findAll();
@@ -270,40 +208,12 @@ public class SpielService extends Spiel{
 					m1.status=m1.status+" "+key;
 					mannschaftDao.update(m0);
 					mannschaftDao.update(m1);
+//					af.get("af1").setMannschaftHeim(m0.status.startsWith("Sieger") ? m0 : m1);
 				}else if(m0.punkte==m2.punkte){
 					//bitte die gewinner und zweiten der jeweiligen gruppe per hand eintragen
 					//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
 				}
 			}
-			
-//			//finde alle AchtelFinal-Spiele
-//			Spiel af1 = Spiel.findByBezeichnung("af1");
-//			Spiel af2 = Spiel.findByBezeichnung("af2");
-//			Spiel af3 = Spiel.findByBezeichnung("af3");
-//			Spiel af4 = Spiel.findByBezeichnung("af4");
-//			Spiel af5 = Spiel.findByBezeichnung("af5");
-//			Spiel af6 = Spiel.findByBezeichnung("af6");
-//			Spiel af7 = Spiel.findByBezeichnung("af7");
-//			Spiel af8 = Spiel.findByBezeichnung("af8");
-//			
-//			//setze AchtelFinale
-//			af1.setVersusByState("Sieger A", "Zweiter B");
-//			af2.setVersusByState("Sieger C", "Zweiter D");
-//			af3.setVersusByState("Sieger B", "Zweiter A");
-//			af4.setVersusByState("Sieger D", "Zweiter C");
-//			af5.setVersusByState("Sieger E", "Zweiter F");
-//			af6.setVersusByState("Sieger G", "Zweiter H");
-//			af7.setVersusByState("Sieger F", "Zweiter E");
-//			af8.setVersusByState("Sieger H", "Zweiter G");
-//			
-//			af1.persist();
-//			af2.persist();
-//			af3.persist();
-//			af4.persist();
-//			af5.persist();
-//			af6.persist();
-//			af7.persist();
-//			af8.persist();
 			
 			for(int i=1; i<=8; i++){
 				Spiel af = spielDao.findByBezeichnung("af"+i);
@@ -587,96 +497,4 @@ public class SpielService extends Spiel{
 	    		return false;
 	    	}
 	    }
-	    
-//	    @Transactional
-//	    public static void setResultWithRss(){
-//			try {
-//				byte th=0;
-//				byte tg=0;
-//				Mannschaft mh=null;
-//				Mannschaft mg=null;
-//				String mhRename="";
-//				String mgRename="";
-//				
-////				URL feedSource = new URL("http://rss.kicker.de/live/championsleaguequalifikation");
-////				URL feedSource = new URL("http://rss.kicker.de/live/wm");
-////				URL feedSource = new URL("http://www.localhost:9000/rss.xml");
-////				URL feedSource = new URL("file://rss.xml");
-//				URL feedSource = new File("rss.xml").toURI().toURL();
-//				SyndFeedInput input = new SyndFeedInput();
-//		    	SyndFeed feed = input.build(new XmlReader(feedSource));
-//		    	
-//		    	List<SyndEntry> entries = feed.getEntries();
-//		    	
-//		    	for(SyndEntry se: entries){
-//		    		String title=se.getTitle();
-//		    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
-////		    		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
-//		    		Matcher matcher = pattern.matcher(title);
-//		    		if(matcher.matches()){
-//		    			Logger.info("RSSfeed matches");
-//		    			//umbenennen nicht identischer mannschafts-bezeichnungen
-//		    			mhRename=matcher.group(1);
-//		    			mgRename=matcher.group(2);
-//		    			switch(mhRename){
-//		    			case "Elfenbeinküste":
-//		    				mhRename="Elfenbeinkueste";
-//		    				break;
-//		    			case "Bosnien-Herzegowina":
-//		    				mhRename="Bosnien-H.";
-//		    				break;
-//		    			case "Südkorea":
-//		    				mhRename="Korea Republik";
-//		    				break;
-//		    			}
-//		    			switch(mgRename){
-//		    			case "Elfenbeinküste":
-//		    				mgRename="Elfenbeinkueste";
-//		    				break;
-//		    			case "Bosnien-Herzegowina":
-//		    				mgRename="Bosnien-H.";
-//		    				break;
-//		    			case "Südkorea":
-//		    				mgRename="Korea Republik";
-//		    				break;
-//		    			}
-//		    			Logger.info("finde Mannschaften");
-//		    			
-//		    			JPA.withTransaction(new F.Callback0() {
-//		    				@Override
-//		    				public void invoke() throws Throwable {
-//		    					mh=Mannschaft.findByName(mhRename);
-//		    				}
-//		    			});
-//		    			mh = Mannschaft.findByName(mhRename);
-//		    			mg=Mannschaft.findByName(mgRename);
-//		    			Logger.info("setze tore");
-//		    			th=Byte.parseByte((matcher.group(3)));
-//		    			tg=Byte.parseByte((matcher.group(4)));
-//		    			Logger.info("Found RSSfeed that match!");
-//		    			Logger.info("mh = " + mh + "(" + mhRename + ")");
-//		    			Logger.info("mg = " + mg + "(" + mgRename + ")");
-//		    			Logger.info("th = " + th);
-//		    			Logger.info("tg = " + tg);
-//		    			Spiel gg = Spiel.findGroupGame(mh, mg);
-//		    	    	gg.setErgebnis(th, tg);
-//		    		}else{
-//		    			Logger.warn("Found RSSfeed, that doesnt match!");
-//		    			Logger.info("Title: " + title);
-//		    		}
-//		    	}
-//			} catch (MalformedURLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IllegalArgumentException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (FeedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//	    }
 }
