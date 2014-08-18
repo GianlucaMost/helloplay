@@ -30,24 +30,27 @@ public class SpielService extends Spiel{
 	}
 	    
 	  public static void setFinalGames(Spiel s){
-		  Collection<Spiel> spiele = spielDao.findAll();
-	    	
+		  String b = s.getBezeichnung();
+
 		  //wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
-		  if(s.getBezeichnung().equals("gg48")){
+		  if(b.equals("gg48")){
 			  setAF();
 		  }
 		  //wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
-		  if(s.getBezeichnung().equals("af8")){
+		  if(b.equals("af8")){
+			  Collection<Spiel> spiele = spielDao.findAll();
 			  //setze vf
 			  setVF(spiele);
 		  }
 		  //wenn das hier das letzte VF Spiel war setze HF
-		  if(s.getBezeichnung().equals("vf4")){
+		  if(b.equals("vf4")){
+			  Collection<Spiel> spiele = spielDao.findAll();
 			  //setze hf
 			  setHF(spiele);
 		  }
 		  //wenn das hier das letzte HF Spiel war setze Finale und SP3
-		  if(s.getBezeichnung().equals("hf2")){
+		  if(b.equals("hf2")){
+			  Collection<Spiel> spiele = spielDao.findAll();
 			  //setze fi
 			  setFI(spiele);
 		  }

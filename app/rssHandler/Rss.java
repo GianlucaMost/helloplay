@@ -42,32 +42,29 @@ public class Rss {
 			try {
 				final Byte th = pro.th, tg = pro.tg;
 				final Mannschaft mh = pro.mh, mg = pro.mg;
-				Logger.info("Durchlauf " + i);
-//				JPA.withTransaction(new F.Callback0() {
-//					@Override
-//					public void invoke() throws Throwable {
-						final Spiel spiel = findGame(mh, mg);
-						final Collection<Tipp> tipps = spiel.getTipps();
-						if (spiel.checked==0){
-							setResult(spiel, th, tg);
-							if (spiel.gameOver()){
-								handOutTeamPoints(spiel, th, tg);
-								handOutUserPoints(tipps, th, tg);
-								/*
-								 * Testweise auskommentiert!
-								 */
-	//							setFinalGames(spiel);
-							}
+//				Logger.info("Durchlauf " + i);
+					final Spiel spiel = findGame(mh, mg);
+					final Collection<Tipp> tipps = spiel.getTipps();
+					if (spiel.checked==0){
+						setResult(spiel, th, tg);
+						if (spiel.gameOver()){
+							handOutTeamPoints(spiel, th, tg);
+							handOutUserPoints(tipps, th, tg);
+							/*
+							 * Testweise auskommentiert!
+							 */
+//							setFinalGames(spiel);
 						}
-//					}
-//				});
+					}
 				i++;
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		Logger.info("complete");
+		Logger.info("--------------------");
+		Logger.info("| --- complete --- |");
+		Logger.info("--------------------");
 	}
 	
 	private static List<SyndEntry> loadFeed(){
@@ -101,7 +98,7 @@ public class Rss {
 		byte th=0;
 		byte tg=0;
 		List<DataHelper> proofedList = new ArrayList<DataHelper>();
-		int i = 1, ls;
+		int i = 0, ls;
 		
 		for(SyndEntry se: entries){
 			String title=se.getTitle();
@@ -109,12 +106,13 @@ public class Rss {
 			Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
 			Matcher matcher = pattern.matcher(title);
 			if(matcher.matches()){
-				Logger.info("RSSfeed match " + i);
+//				Logger.info("RSSfeed match " + i);
 				mhName = renameTeam(matcher.group(1));
     			mgName = renameTeam(matcher.group(2));
     			th = Byte.parseByte((matcher.group(3)));
     			tg = Byte.parseByte((matcher.group(4)));
-				Logger.info(mhName + " " + th + " - " + mgName + " " + tg);
+//				Logger.info(mhName + " " + th + " - " + mgName + " " + tg);
+				i++;
     			try {
 					proofedList.add(new DataHelper(findMannschaft(mhName), findMannschaft(mgName), th, tg));
 				} catch (Throwable e) {
@@ -125,14 +123,14 @@ public class Rss {
 				Logger.warn("Found RSSfeed, that doesnt match!");
 				Logger.info("Title: " + title);
 			}
-			i++;
 		}
 		ls=proofedList.size();
-		Logger.info(ls + " games in list");
-		if(ls!=i-1){
+//		Logger.info(ls + " games in list");
+		if(ls!=i){
 			Logger.error("An exception accoured while loading the matching feeds in a list.");
 			return null;
 		}else{
+			Logger.info(i + " feed-entries matched.");
 			return proofedList;
 		}
 	}
@@ -178,7 +176,9 @@ public class Rss {
 		JPA.withTransaction(new F.Callback0() {
 			@Override
 			public void invoke() throws Throwable {
-				Logger.info("Setze Ergebnis " + s.getMannschaftHeim().bezeichnung + " - " + s.getMannschaftGast().bezeichnung);
+				String mhb = s.getMannschaftHeim().bezeichnung;
+				String mgb = s.getMannschaftGast().bezeichnung;
+				Logger.info("Setze Ergebnis " + mhb + " " + th + " - " + mgb + " " + tg);
 				spielDao.setErgebnis(s, th, tg);
 			}
 		});
