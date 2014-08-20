@@ -43,19 +43,16 @@ public class Rss {
 				final Byte th = pro.th, tg = pro.tg;
 				final Mannschaft mh = pro.mh, mg = pro.mg;
 //				Logger.info("Durchlauf " + i);
-					final Spiel spiel = findGame(mh, mg);
-					final Collection<Tipp> tipps = spiel.getTipps();
-					if (spiel.checked==0){
-						setResult(spiel, th, tg);
-						if (spiel.gameOver()){
-							handOutTeamPoints(spiel, th, tg);
-							handOutUserPoints(tipps, th, tg);
-							/*
-							 * Testweise auskommentiert!
-							 */
-//							setFinalGames(spiel);
-						}
+				final Spiel spiel = findGame(mh, mg);
+				final Collection<Tipp> tipps = spiel.getTipps();
+				if (spiel.checked==0){
+					setResult(spiel, th, tg);
+					if (spiel.gameOver()){
+						handOutTeamPoints(spiel, th, tg);
+						handOutUserPoints(tipps, th, tg);
+						setFinalGames(spiel.getBezeichnung());
 					}
+				}
 				i++;
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
@@ -204,11 +201,11 @@ public class Rss {
 		});
 	}
 	
-	private static void setFinalGames(final Spiel spiel){
+	private static void setFinalGames(final String sBezeichnung){
 		JPA.withTransaction(new F.Callback0() {
 			@Override
 			public void invoke() throws Throwable {
-				SpielService.setFinalGames(spiel);
+				SpielService.setFinalGames(sBezeichnung);
 			}
 		});
 	}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 	<rss version="2.0" >
 		<channel>
-			<item>
+			            <item>
 				<title>Brasilien - Kroatien 3:1</title>
 			</item>
             <item>
@@ -68,10 +68,10 @@
 				<title>Italien - Costa Rica 0:1</title>
 			</item>
             <item>
-				<title>Costa Rica - England 0:0</title>
+				<title>Italien - Uruguay 0:1</title>
 			</item>
             <item>
-				<title>Italien - Uruguay 0:1</title>
+				<title>Costa Rica - England 0:0</title>
 			</item>
             <item>
 				<title>Schweiz - Ecuador 2:1</title>
@@ -122,28 +122,28 @@
 				<title>USA - Portugal 2:2</title>
 			</item>
             <item>
-				<title>Portugal - Ghana 2:1</title>
+				<title>USA - Deutschland 0:1</title>
 			</item>
             <item>
-				<title>USA - Deutschland 0:1</title>
+				<title>Portugal - Ghana 2:1</title>
 			</item>
             <item>
 				<title>Belgien - Algerien 2:1</title>
 			</item>
             <item>
-				<title>Russland - Korea Republik 1:1</title>
+				<title>Russland - Südkorea 1:1</title>
 			</item>
             <item>
 				<title>Belgien - Russland 1:0</title>
 			</item>
             <item>
-				<title>Korea Republik - Algerien 2:4</title>
+				<title>Südkorea - Algerien 2:4</title>
+			</item>
+            <item>
+				<title>Südkorea - Belgien 0:1</title>
 			</item>
             <item>
 				<title>Algerien - Russland 1:1</title>
-			</item>
-            <item>
-				<title>Korea Republik - Belgien 0:1</title>
 			</item>
 		</channel>
 	</rss>

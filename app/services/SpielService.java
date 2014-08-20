@@ -9,6 +9,7 @@ import java.util.Map;
 
 import dao.*;
 import models.*;
+import play.Logger;
 import play.db.jpa.Transactional;
 
 
@@ -29,30 +30,34 @@ public class SpielService extends Spiel{
     	return m;
 	}
 	    
-	  public static void setFinalGames(Spiel s){
-		  String b = s.getBezeichnung();
-
-		  //wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
-		  if(b.equals("gg48")){
-			  setAF();
-		  }
-		  //wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
-		  if(b.equals("af8")){
-			  Collection<Spiel> spiele = spielDao.findAll();
-			  //setze vf
-			  setVF(spiele);
-		  }
-		  //wenn das hier das letzte VF Spiel war setze HF
-		  if(b.equals("vf4")){
-			  Collection<Spiel> spiele = spielDao.findAll();
-			  //setze hf
-			  setHF(spiele);
-		  }
-		  //wenn das hier das letzte HF Spiel war setze Finale und SP3
-		  if(b.equals("hf2")){
-			  Collection<Spiel> spiele = spielDao.findAll();
-			  //setze fi
-			  setFI(spiele);
+	  public static void setFinalGames(String sBezeichnung){
+		  switch (sBezeichnung) {
+			case "gg48":
+				//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
+				Logger.info("Ermittel und setze AchtelFinale");
+				setAF();
+				break;
+				
+			case "af8":
+				//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
+				Logger.info("Ermittel und setze ViertelFinale");
+				setVF(spielDao.findAll());
+				break;
+				
+			case "vf4":
+				//wenn das hier das letzte VF Spiel war setze HF
+				Logger.info("Ermittel und setze HalbFinale");
+				setHF(spielDao.findAll());
+				break;
+				
+			case "hf2":
+				//wenn das hier das letzte HF Spiel war setze Finale und SP3
+				Logger.info("Ermittel und setze Finale und Spiel um Platz 3");
+				setFI(spielDao.findAll());
+				break;
+	
+			default:
+				break;
 		  }
 	  }
 	    
@@ -207,15 +212,15 @@ public class SpielService extends Spiel{
 							//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
 						}
 					}
-					m0.status=m0.status+" "+key;
-					m1.status=m1.status+" "+key;
-					mannschaftDao.update(m0);
-					mannschaftDao.update(m1);
 //					af.get("af1").setMannschaftHeim(m0.status.startsWith("Sieger") ? m0 : m1);
 				}else if(m0.punkte==m2.punkte){
 					//bitte die gewinner und zweiten der jeweiligen gruppe per hand eintragen
 					//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
 				}
+				m0.status=m0.status+" "+key;
+				m1.status=m1.status+" "+key;
+				mannschaftDao.update(m0);
+				mannschaftDao.update(m1);
 			}
 			
 			for(int i=1; i<=8; i++){
@@ -347,6 +352,44 @@ public class SpielService extends Spiel{
 			spielDao.update(vf2);
 			spielDao.update(vf3);
 			spielDao.update(vf4);
+	    }
+	    
+	    @Transactional
+	    public static void setVFalternativ(Collection<Spiel> spiele){
+	    	int i = 1;
+	    	Mannschaft m = new Mannschaft();
+	    	//finde alle ViertelFinal-Spiele
+			Spiel vf1 = spielDao.findByBezeichnung("vf1");
+			Spiel vf2 = spielDao.findByBezeichnung("vf2");
+			Spiel vf3 = spielDao.findByBezeichnung("vf3");
+			Spiel vf4 = spielDao.findByBezeichnung("vf4");
+			
+			for (Spiel s: spiele){
+				if (s.getBezeichnung().equals("af"+i)) {
+					m = s.searchWinner();
+					m.bezeichnung="Sieger AF" + i;
+					switch (i) {
+						case 1: case 2:
+							vf2.setMannschaftHeim(m);
+							break;
+						case 3: case 4:
+							vf4.setMannschaftHeim(m);
+							break;
+						case 5: case 6:
+							vf1.setMannschaftHeim(m);
+							break;
+						case 7: case 8:
+							vf3.setMannschaftHeim(m);
+							break;
+					}
+					i++;
+				}
+				mannschaftDao.update(m);
+				spielDao.update(vf1);
+				spielDao.update(vf2);
+				spielDao.update(vf3);
+				spielDao.update(vf4);
+			}
 	    }
 	    
 	    @Transactional
