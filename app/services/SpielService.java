@@ -151,8 +151,20 @@ public class SpielService extends Spiel{
 				Mannschaft m2=mGruppe.get(2);
 				if(m0.punkte!=m1.punkte){
 					//wenn kein Punktegleichstand herrscht
-					m0.status="Sieger";
-					m1.status="Zweiter";
+					if(m1.punkte!=m2.punkte){
+						//wenn kein Punktegleichstand zwischen der zweiten und dritten Mannschaft herrscht
+						m0.status="Sieger";
+						m1.status="Zweiter";
+					}else if (m1.punkte==m2.punkte){
+						m0.status="Sieger";
+						if(m1.tore-m1.gegentore>m2.tore-m2.gegentore){
+							//wenn Tordifferenz groesser
+							m1.status="Zweiter";
+						}else if(m1.tore-m1.gegentore<m2.tore-m2.gegentore){
+							//wenn Tordifferenz groesser
+							m2.status="Zweiter";
+						}
+					}
 				}else if(m0.punkte==m1.punkte && m0.punkte!=m2.punkte){
 					//wenn Punktegleichstand zwischen den ersten beiden Mannschaften herrscht (und nicht zwischen den ersten 3)
 					if(m0.tore-m0.gegentore>m1.tore-m1.gegentore){
@@ -218,9 +230,15 @@ public class SpielService extends Spiel{
 					//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
 				}
 				m0.status=m0.status+" "+key;
-				m1.status=m1.status+" "+key;
 				mannschaftDao.update(m0);
-				mannschaftDao.update(m1);
+				if(m1.status!=null) {
+					m1.status=m1.status+" "+key;
+					mannschaftDao.update(m1);
+				}
+				if(m2.status!=null) {
+					m2.status=m2.status+" "+key;
+					mannschaftDao.update(m2);
+				}
 			}
 			
 			for(int i=1; i<=8; i++){
