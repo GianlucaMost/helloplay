@@ -18,4 +18,5 @@ public interface SpielDao extends GenericDao<Integer, Spiel> {
     Collection<Spiel> gamesOfTeam(int mid);
     void setErgebnis(Spiel s, byte th, byte tg) throws Throwable;
     Spiel findVs(Mannschaft a, Mannschaft b);
+	void check(Spiel s);
 }

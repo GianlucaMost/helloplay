@@ -45,10 +45,13 @@ public class Rss {
 //				Logger.info("Durchlauf " + i);
 				final Spiel spiel = findGame(mh, mg);
 				final Collection<Tipp> tipps = spiel.getTipps();
-				if (spiel.checked==0){
+				if (spiel.checked==0) {
 					setResult(spiel, th, tg);
-					if (spiel.gameOver()){
-						handOutTeamPoints(spiel, th, tg);
+					if (spiel.gameOver()) {
+						check(spiel);
+						if (spiel.getBezeichnung().startsWith("gg")) {
+							handOutTeamPoints(spiel, th, tg);
+						}
 						handOutUserPoints(tipps, th, tg);
 						setFinalGames(spiel.getBezeichnung());
 					}
@@ -64,6 +67,16 @@ public class Rss {
 		Logger.info("--------------------");
 	}
 	
+	private static void check(final Spiel s) {
+		JPA.withTransaction(new F.Callback0() {
+			@Override
+			public void invoke() throws Throwable {
+				spielDao.check(s);
+				spielDao.update(s);
+			}
+		});
+	}
+
 	private static List<SyndEntry> loadFeed(){
 		try {
 	//		URL feedSource = new URL("http://rss.kicker.de/live/wm");

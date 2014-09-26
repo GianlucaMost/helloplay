@@ -100,5 +100,10 @@ public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements Spie
 		}
 	    return null;
 	}
+	
+	@Override
+	public void check(Spiel s) {
+		s.checked=1;
+	}
 
 }

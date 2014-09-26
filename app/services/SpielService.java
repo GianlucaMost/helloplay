@@ -41,7 +41,8 @@ public class SpielService extends Spiel{
 			case "af8":
 				//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
 				Logger.info("Ermittel und setze ViertelFinale");
-				setVF(spielDao.findAll());
+//				setVF(spielDao.findAll());
+				setVFalternativ(spielDao.findAll());
 				break;
 				
 			case "vf4":
@@ -298,50 +299,65 @@ public class SpielService extends Spiel{
 	    
 	    @Transactional
 	    public static void setVF(Collection<Spiel> spiele){
+	    	boolean found = false;
 	    	Mannschaft m = new Mannschaft();
-			for (Spiel s: spiele){
+	    	for (Spiel s: spiele){
 				switch (s.getBezeichnung()){
 				case "af1":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF1";
+					found=true;
 					break;
 					
 				case "af2":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF2";
+					found=true;
 					break;
 					
 				case "af3":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF3";
+					found=true;
 					break;
 					
 				case "af4":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF4";
+					found=true;
 					break;
 					
 				case "af5":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF5";
+					found=true;
 					break;
 					
 				case "af6":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF6";
+					found=true;
 					break;
 					
 				case "af7":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF7";
+					found=true;
 					break;
 					
 				case "af8":
 					m = s.searchWinner();
 					m.bezeichnung="Sieger AF8";
+					found=true;
+					break;
+					
+				default:
+					found=false;
 					break;
 				}
-				mannschaftDao.update(m);
+				if (found==true) {
+					mannschaftDao.update(m);
+				}
 			}
 			
 			//Sieger der AchtelFinal-Spiele ermitteln
@@ -385,24 +401,36 @@ public class SpielService extends Spiel{
 			for (Spiel s: spiele){
 				if (s.getBezeichnung().equals("af"+i)) {
 					m = s.searchWinner();
-					m.bezeichnung="Sieger AF" + i;
+					m.status="Sieger AF" + i;
 					switch (i) {
-						case 1: case 2:
+						case 1:
 							vf2.setMannschaftHeim(m);
 							break;
-						case 3: case 4:
+						case 2:
+							vf2.setMannschaftGast(m);
+							break;
+						case 3:
 							vf4.setMannschaftHeim(m);
 							break;
-						case 5: case 6:
+						case 4:
+							vf4.setMannschaftGast(m);
+							break;
+						case 5:
 							vf1.setMannschaftHeim(m);
 							break;
-						case 7: case 8:
+						case 6:
+							vf1.setMannschaftGast(m);
+							break;
+						case 7:
 							vf3.setMannschaftHeim(m);
+							break;
+						case 8:
+							vf3.setMannschaftGast(m);
 							break;
 					}
 					i++;
+					mannschaftDao.update(m);
 				}
-				mannschaftDao.update(m);
 				spielDao.update(vf1);
 				spielDao.update(vf2);
 				spielDao.update(vf3);
