@@ -41,14 +41,13 @@ public class SpielService extends Spiel{
 			case "af8":
 				//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
 				Logger.info("Ermittel und setze ViertelFinale");
-//				setVF(spielDao.findAll());
-				setVFalternativ(spielDao.findAll());
+				setVF(spielDao.findAll());
 				break;
 				
 			case "vf4":
 				//wenn das hier das letzte VF Spiel war setze HF
 				Logger.info("Ermittel und setze HalbFinale");
-				setHF(spielDao.findAll());
+				setHFalternative(spielDao.findAll());
 				break;
 				
 			case "hf2":
@@ -299,97 +298,6 @@ public class SpielService extends Spiel{
 	    
 	    @Transactional
 	    public static void setVF(Collection<Spiel> spiele){
-	    	boolean found = false;
-	    	Mannschaft m = new Mannschaft();
-	    	for (Spiel s: spiele){
-				switch (s.getBezeichnung()){
-				case "af1":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF1";
-					found=true;
-					break;
-					
-				case "af2":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF2";
-					found=true;
-					break;
-					
-				case "af3":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF3";
-					found=true;
-					break;
-					
-				case "af4":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF4";
-					found=true;
-					break;
-					
-				case "af5":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF5";
-					found=true;
-					break;
-					
-				case "af6":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF6";
-					found=true;
-					break;
-					
-				case "af7":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF7";
-					found=true;
-					break;
-					
-				case "af8":
-					m = s.searchWinner();
-					m.bezeichnung="Sieger AF8";
-					found=true;
-					break;
-					
-				default:
-					found=false;
-					break;
-				}
-				if (found==true) {
-					mannschaftDao.update(m);
-				}
-			}
-			
-			//Sieger der AchtelFinal-Spiele ermitteln
-			Mannschaft siegerAF1 = mannschaftDao.findByState("Sieger AF1");
-			Mannschaft siegerAF2 = mannschaftDao.findByState("Sieger AF2");
-			Mannschaft siegerAF3 = mannschaftDao.findByState("Sieger AF3");
-			Mannschaft siegerAF4 = mannschaftDao.findByState("Sieger AF4");
-			Mannschaft siegerAF5 = mannschaftDao.findByState("Sieger AF5");
-			Mannschaft siegerAF6 = mannschaftDao.findByState("Sieger AF6");
-			Mannschaft siegerAF7 = mannschaftDao.findByState("Sieger AF7");
-			Mannschaft siegerAF8 = mannschaftDao.findByState("Sieger AF8");
-			
-			//finde alle ViertelFinal-Spiele
-			Spiel vf1 = spielDao.findByBezeichnung("vf1");
-			Spiel vf2 = spielDao.findByBezeichnung("vf2");
-			Spiel vf3 = spielDao.findByBezeichnung("vf3");
-			Spiel vf4 = spielDao.findByBezeichnung("vf4");
-			
-			//setze ViertelFinale
-			vf1.setVersus(siegerAF5, siegerAF6);
-			vf2.setVersus(siegerAF1, siegerAF2);
-			vf3.setVersus(siegerAF7, siegerAF8);
-			vf4.setVersus(siegerAF3, siegerAF4);
-			
-			spielDao.update(vf1);
-			spielDao.update(vf2);
-			spielDao.update(vf3);
-			spielDao.update(vf4);
-	    }
-	    
-	    @Transactional
-	    public static void setVFalternativ(Collection<Spiel> spiele){
 	    	int i = 1;
 	    	Mannschaft m = new Mannschaft();
 	    	//finde alle ViertelFinal-Spiele
@@ -445,22 +353,22 @@ public class SpielService extends Spiel{
 				switch (s.getBezeichnung()){
 				case "vf1":
 					m = s.searchWinner();
-					m.bezeichnung="Sieger VF1";
+					m.status="Sieger VF1";
 					break;
 					
 				case "vf2":
 					m = s.searchWinner();
-					m.bezeichnung="Sieger VF2";
+					m.status="Sieger VF2";
 					break;
 					
 				case "vf3":
 					m = s.searchWinner();
-					m.bezeichnung="Sieger VF3";
+					m.status="Sieger VF3";
 					break;
 					
 				case "vf4":
 					m = s.searchWinner();
-					m.bezeichnung="Sieger VF4";
+					m.status="Sieger VF4";
 					break;
 				}
 				mannschaftDao.update(m);
@@ -485,33 +393,69 @@ public class SpielService extends Spiel{
 	    }
 	    
 	    @Transactional
+	    public static void setHFalternative(Collection<Spiel> spiele){
+	    	int i = 1;
+	    	Mannschaft m = new Mannschaft();
+	    	//finde alle HalbFinal-Spiele
+			Spiel hf1 = spielDao.findByBezeichnung("hf1");
+			Spiel hf2 = spielDao.findByBezeichnung("hf2");
+			
+			for (Spiel s: spiele){
+				if (s.getBezeichnung().equals("vf"+i)) {
+					m = s.searchWinner();
+					m.status="Sieger VF" + i;
+					switch (i) {
+						case 1:
+							hf1.setMannschaftHeim(m);
+							break;
+						case 2:
+							hf1.setMannschaftGast(m);
+							break;
+						case 3:
+							hf2.setMannschaftHeim(m);
+							break;
+						case 4:
+							hf2.setMannschaftGast(m);
+							break;
+					}
+					i++;
+					mannschaftDao.update(m);
+				}
+				spielDao.update(hf1);
+				spielDao.update(hf2);
+			}
+	    }
+	    
+	    @Transactional
 	    public static void setFI(Collection<Spiel> spiele){
 	    	for (Spiel s: spiele){
 				Mannschaft mHeim = s.getMannschaftHeim();
 				Mannschaft mGast = s.getMannschaftGast();
 				switch (s.getBezeichnung()){
-				case "hf1":
-					if(s.toreheim>s.toregast){;
-						mHeim.bezeichnung="Sieger HF1";
-						mGast.bezeichnung="Verlierer HF1";
-					}else if (s.toregast>s.toreheim){
-						mGast.bezeichnung="Sieger HF1";
-						mHeim.bezeichnung="Verlierer HF1";
-					}
-					break;
-					
-				case "hf2":
-					if(s.toreheim>s.toregast){;
-						mHeim.bezeichnung="Sieger HF2";
-						mGast.bezeichnung="Verlierer HF2";
-					}else if (s.toregast>s.toreheim){
-						mGast.bezeichnung="Sieger HF2";
-						mHeim.bezeichnung="Verlierer HF2";
-					}
-					break;
+					case "hf1":
+						if(s.toreheim>s.toregast){;
+							mHeim.status="Sieger HF1";
+							mGast.status="Verlierer HF1";
+						}else if (s.toregast>s.toreheim){
+							mGast.status="Sieger HF1";
+							mHeim.status="Verlierer HF1";
+						}
+						mannschaftDao.update(mHeim);
+						mannschaftDao.update(mGast);
+						break;
+						
+					case "hf2":
+						if(s.toreheim>s.toregast){;
+							mHeim.status="Sieger HF2";
+							mGast.status="Verlierer HF2";
+						}else if (s.toregast>s.toreheim){
+							mGast.status="Sieger HF2";
+							mHeim.status="Verlierer HF2";
+						}
+						mannschaftDao.update(mHeim);
+						mannschaftDao.update(mGast);
+						break;
 				}
-				mannschaftDao.update(mHeim);
-				mannschaftDao.update(mGast);
 			}
 			
 			//Sieger und Verlierer der HalbFinal-Spiele ermitteln
