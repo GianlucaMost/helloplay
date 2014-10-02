@@ -47,7 +47,7 @@ public class SpielService extends Spiel{
 			case "vf4":
 				//wenn das hier das letzte VF Spiel war setze HF
 				Logger.info("Ermittel und setze HalbFinale");
-				setHFalternative(spielDao.findAll());
+				setHF(spielDao.findAll());
 				break;
 				
 			case "hf2":
@@ -348,52 +348,6 @@ public class SpielService extends Spiel{
 	    
 	    @Transactional
 	    public static void setHF(Collection<Spiel> spiele){
-	    	Mannschaft m = new Mannschaft();
-			for (Spiel s: spiele){
-				switch (s.getBezeichnung()){
-				case "vf1":
-					m = s.searchWinner();
-					m.status="Sieger VF1";
-					break;
-					
-				case "vf2":
-					m = s.searchWinner();
-					m.status="Sieger VF2";
-					break;
-					
-				case "vf3":
-					m = s.searchWinner();
-					m.status="Sieger VF3";
-					break;
-					
-				case "vf4":
-					m = s.searchWinner();
-					m.status="Sieger VF4";
-					break;
-				}
-				mannschaftDao.update(m);
-			}
-			
-			//Sieger der ViertelFinal-Spiele ermitteln
-			Mannschaft siegerVF1 = mannschaftDao.findByState("Sieger VF1");
-			Mannschaft siegerVF2 = mannschaftDao.findByState("Sieger VF2");
-			Mannschaft siegerVF3 = mannschaftDao.findByState("Sieger VF3");
-			Mannschaft siegerVF4 = mannschaftDao.findByState("Sieger VF4");
-			
-			//finde alle HalbFinal-Spiele
-			Spiel hf1 = spielDao.findByBezeichnung("hf1");
-			Spiel hf2 = spielDao.findByBezeichnung("hf2");
-			
-			//setze HalbFinale
-			hf1.setVersus(siegerVF1, siegerVF2);
-			hf2.setVersus(siegerVF3, siegerVF4);
-
-			spielDao.update(hf1);
-			spielDao.update(hf2);
-	    }
-	    
-	    @Transactional
-	    public static void setHFalternative(Collection<Spiel> spiele){
 	    	int i = 1;
 	    	Mannschaft m = new Mannschaft();
 	    	//finde alle HalbFinal-Spiele
@@ -406,16 +360,16 @@ public class SpielService extends Spiel{
 					m.status="Sieger VF" + i;
 					switch (i) {
 						case 1:
-							hf1.setMannschaftHeim(m);
-							break;
-						case 2:
 							hf1.setMannschaftGast(m);
 							break;
+						case 2:
+							hf1.setMannschaftHeim(m);
+							break;
 						case 3:
-							hf2.setMannschaftHeim(m);
+							hf2.setMannschaftGast(m);
 							break;
 						case 4:
-							hf2.setMannschaftGast(m);
+							hf2.setMannschaftHeim(m);
 							break;
 					}
 					i++;
@@ -475,7 +429,6 @@ public class SpielService extends Spiel{
 			spielDao.update(sp3);
 			spielDao.update(fi);
 	    }
-	    
 	    
 	    /**
 	     * return true if this games end-timestamp is before the current system-time

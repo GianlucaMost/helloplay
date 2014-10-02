@@ -53,7 +53,9 @@ public class SpielDaoImpl extends GenericDaoImpl<Integer, Spiel> implements Spie
 	@Override
 	public Spiel findGame(Mannschaft mh, Mannschaft mg) {
 		for (Spiel s: findAll()){
-    		if(s.getMannschaftHeim().mid==mh.mid && s.getMannschaftGast().mid==mg.mid){
+			Mannschaft sMh = s.getMannschaftHeim();
+			Mannschaft sMg = s.getMannschaftGast();
+    		if(sMh.mid==mh.mid && sMg.mid==mg.mid){
     			return s;
     		}
     	}
