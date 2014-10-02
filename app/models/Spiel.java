@@ -166,11 +166,21 @@ public class Spiel{
     	this.mannschaft_gast=mg;
     }
     
-    public Mannschaft searchWinner(){
+    public Mannschaft searchWinner() {
     	Mannschaft m = new Mannschaft();
-    	if(this.toreheim>this.toregast){
+    	if(this.toreheim>this.toregast) {
 			m = this.getMannschaftHeim();
-		}else if (this.toregast>this.toreheim){
+		}else if (this.toregast>this.toreheim) {
+			m = this.getMannschaftGast();
+		}
+    	return m;
+    }
+    
+    public Mannschaft searchLoser() {
+    	Mannschaft m = new Mannschaft();
+    	if(this.toreheim < this.toregast) {
+			m = this.getMannschaftHeim();
+		}else if (this.toregast < this.toreheim) {
 			m = this.getMannschaftGast();
 		}
     	return m;

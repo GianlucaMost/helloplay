@@ -34,7 +34,8 @@ public class Rss {
 	private static MannschaftDao mannschaftDao = new MannschaftDaoImpl();
 	private static SpielDao spielDao = new SpielDaoImpl();
 	
-	public static void updateWithRss(){
+	//Aufruf der Funktionen zum Verteilen aller Punkte und zur Ermittlung neuer Spiele.
+	public static void updateWithRss() {
 		int i=1;
 		List<SyndEntry> feedList = loadFeed();
 		List<DataHelper> checkedList = checkFeed(feedList);

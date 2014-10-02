@@ -3,7 +3,6 @@ package services;
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +18,12 @@ public class SpielService extends Spiel{
 	private static SpielDao spielDao = new SpielDaoImpl();
 	private static TippDao tippDao = new TippDaoImpl();
 	private static UserDao userDao = new UserDaoImpl();
-
+	
+	/**
+	 * Ermittelt den Gewinner eines Spiels und gibt ihn zurueck
+	 * @param s
+	 * @return
+	 */
 	public Mannschaft searchWinner(Spiel s){
 		Mannschaft m = new Mannschaft();
     	if(s.toreheim>s.toregast){
@@ -29,55 +33,76 @@ public class SpielService extends Spiel{
 		}
     	return m;
 	}
-	    
-	  public static void setFinalGames(String sBezeichnung){
-		  switch (sBezeichnung) {
+	
+	/**
+	 * Ueberpruft ob es sich bei einem Spiel mit der uebergebenen Spielbezeichnung um das jeweils letzte einer Phase handelt.
+	 * Dem entsprechend wird jeweils die entsprechende Methode zum setzen der jeweils naechsten Phase aufgerufen.
+	 * @param sBezeichnung
+	 */
+	public static void setFinalGames(String sBezeichnung){
+		switch (sBezeichnung) {
 			case "gg48":
-				//wenn das hier das letzte gruppenspiel war, setze AchtelFinalSpiele.
+				//wenn das hier das letzte Gruppenspiel war, setze AchtelFinalSpiele.
+				Logger.info("---");
 				Logger.info("Ermittel und setze AchtelFinale");
 				setAF();
 				break;
 				
 			case "af8":
 				//wenn das hier das letzte AchtelFinalSpiel war, setze viertelFinale
+				Logger.info("---");
 				Logger.info("Ermittel und setze ViertelFinale");
 				setVF(spielDao.findAll());
 				break;
 				
 			case "vf4":
 				//wenn das hier das letzte VF Spiel war setze HF
+				Logger.info("---");
 				Logger.info("Ermittel und setze HalbFinale");
 				setHF(spielDao.findAll());
 				break;
 				
 			case "hf2":
 				//wenn das hier das letzte HF Spiel war setze Finale und SP3
-				Logger.info("Ermittel und setze Finale und Spiel um Platz 3");
+				Logger.info("---");
+				Logger.info("Ermittel und setze Finale und Spiel um Platz Drei");
 				setFI(spielDao.findAll());
+				break;
+			
+			case "fi":
+				Logger.info("Die Weltmeisterschaft 2014 ist vorbei!");
+				Spiel sp3 = spielDao.findByBezeichnung("sp3");
+				Spiel fi = spielDao.findByBezeichnung("fi");
+				Mannschaft mDritter = sp3.searchWinner();
+				Mannschaft mVize = fi.searchLoser();
+				Mannschaft mWeltmeister = fi.searchWinner();
+				mDritter.status="DRITTER";
+				mVize.status="VIZE";
+				mWeltmeister.status="WELTMEISTER";
 				break;
 	
 			default:
 				break;
 		  }
-	  }
+	}
 	    
 	  @Transactional
 	  public static void handOutUserPoints(Collection<Tipp> tipps, byte th, byte tg){
-		  // Punkte an User verteilen
-		  //jeden tipp durchlaufen
+		  //Punkte an User verteilen
+		  //Jeden Tipp durchlaufen
 		  for (Tipp t: tipps) {
-			  //pruefen ob dieser tipp.checked=0 ist
+			  //Pruefen, ob fuer den aktuellen Tipp schon Punkte vergeben wurden
 			  if(t.checked==0){
-				  //punkte vergeben
+				  //Punkte an Benutzer vergeben
 				  User user = t.getUser();
 				  int p=user.punkte;
-				  //wenn genau richtiges ergebnis dann 3punkte
+				  //Wenn der Tipp genau richtig war, dann 3 Punkte
 				  if(th==t.toreheim && tg==t.toregast){
 					  p=p+3;
-					  //wenn richtige tordifferenz dann 2punkte
+					  //Wenn die Tordifferenz richtig getippt wurde, dann 2 Punkte
 				  }else if(th-tg==t.toreheim-t.toregast){
 					  p=p+2;
-					  //wenn richtige mannschaft dann 1punkt
+					  //Wenn auf die richtige Mannschaft getippt wurde, dann 1 Punkt
 				  }else if(th>tg && t.toreheim>t.toregast){
 					  p=p+1;
 				  }else if(tg>th && t.toregast>t.toreheim){
@@ -85,7 +110,7 @@ public class SpielService extends Spiel{
 				  }
 				  user.punkte=p;
 				  userDao.update(user);
-				  //diesen tipp.checked=1 setzen
+				  //Diesen Tipp abhacken
 				  t.checked=1;
 				  tippDao.update(t);
 			  }
@@ -101,7 +126,7 @@ public class SpielService extends Spiel{
 			mg.anzahlspiele++;
 			//Punkte an Mannschaften verteilen
 			if (th>tg){
-				//Bei Sieg drei Punkte fuer Gewinner
+				//Bei Sieg 3 Punkte fuer Gewinner
 				mh.punkte=mh.punkte+3;
 				mh.siege++;
 				mg.niederlagen++;
@@ -129,6 +154,11 @@ public class SpielService extends Spiel{
 			mannschaftDao.update(mg);
 	    }
 	    
+	    /**
+	     * Ermittelt die Mannschaften, welche im Achtelfinale gegeneinander antreten
+	     * und setzt diese in die ensprechenden Spiele ein.
+	     * @param spiele
+	     */
 	    @Transactional
 		public static void setAF(){
 //	    	//sorted
@@ -139,8 +169,9 @@ public class SpielService extends Spiel{
 //	    	for(Spiel s : spiele) {
 //	    		af.put(s.getBezeichnung(), s);
 //	    	}
-	    	
-	    	//Sieger und Zweitplatzierte der GruppenSpiele ermitteln
+	    	/*
+	    	 * Sieger und Zweitplatzierte der Gruppenspiele ermitteln
+	    	 */
 			String[] gruppen = {"A", "B", "C", "D", "E", "F", "G", "H"};
 			Map<String, List<Mannschaft>> mannschaften = mannschaftDao.findAll();
 			for(String key: gruppen){
@@ -150,64 +181,64 @@ public class SpielService extends Spiel{
 				Mannschaft m1=mGruppe.get(1);
 				Mannschaft m2=mGruppe.get(2);
 				if(m0.punkte!=m1.punkte){
-					//wenn kein Punktegleichstand herrscht
+					//Wenn kein Punktegleichstand herrscht
 					if(m1.punkte!=m2.punkte){
-						//wenn kein Punktegleichstand zwischen der zweiten und dritten Mannschaft herrscht
+						//Wenn kein Punktegleichstand zwischen der zweiten und dritten Mannschaft herrscht
 						m0.status="Sieger";
 						m1.status="Zweiter";
 					}else if (m1.punkte==m2.punkte){
 						m0.status="Sieger";
 						if(m1.tore-m1.gegentore>m2.tore-m2.gegentore){
-							//wenn Tordifferenz groesser
+							//Wenn Tordifferenz groesser
 							m1.status="Zweiter";
 						}else if(m1.tore-m1.gegentore<m2.tore-m2.gegentore){
-							//wenn Tordifferenz groesser
+							//Wenn Tordifferenz groesser
 							m2.status="Zweiter";
 						}
 					}
 				}else if(m0.punkte==m1.punkte && m0.punkte!=m2.punkte){
-					//wenn Punktegleichstand zwischen den ersten beiden Mannschaften herrscht (und nicht zwischen den ersten 3)
+					//Wenn Punktegleichstand zwischen den ersten beiden Mannschaften herrscht (und nicht zwischen den ersten 3)
 					if(m0.tore-m0.gegentore>m1.tore-m1.gegentore){
-						//wenn Tordifferenz groesser
+						//Wenn Tordifferenz groesser
 						m0.status="Sieger";
 						m1.status="Zweiter";
 					}else if(m0.tore-m0.gegentore<m1.tore-m1.gegentore){
-						//wenn Tordifferenz groesser
+						//Wenn Tordifferenz groesser
 						m1.status="Sieger";
 						m0.status="Zweiter";
 					}else if(m0.tore-m0.gegentore==m1.tore-m1.gegentore){
-						//wenn Tordifferenz gleich ist
+						//Wenn Tordifferenz gleich ist
 						if(m0.tore>m1.tore){
-							//wenn anzahl der Tore groesser
+							//Wenn anzahl der Tore groesser
 							m0.status="Sieger";
 							m1.status="Zweiter";
 						}else if(m0.tore<m1.tore){
-							//wenn anzahl der Tore groesser
+							//Wenn anzahl der Tore groesser
 							m1.status="Sieger";
 							m0.status="Zweiter";
 						}else if(m0.tore==m1.tore){
-							//wenn Anzahl der tore gleich ist
+							//Wenn Anzahl der Tore gleich ist
 							Spiel db = spielDao.findVs(m0, m1);
 							if (db.toreheim>db.toregast){
-								//wenn anzahl der Punkte aus db groesser
+								//Wenn anzahl der Punkte aus db groesser
 								m0.status="Sieger";
 								m1.status="Zweiter";
 							}else if(db.toregast>db.toreheim){
-								//wenn anzahl der Punkte aus db groesser
+								//Wenn anzahl der Punkte aus db groesser
 								m0.status="Zweiter";
 								m1.status="Sieger";
 							}else if(db.toreheim==db.toregast){
-								//wenn anzahl der punkte aus db gleich
+								//Wenn anzahl der Punkte aus db gleich
 								if(db.toreheim-db.toregast>db.toregast-db.toreheim){
-									//wenn tordifferenz aus db groesser
+									//Wenn Tordifferenz aus db groesser
 									m0.status="Sieger";
 	    							m1.status="Zweiter";
 								}else if(db.toregast-db.toreheim>db.toreheim-db.toregast){
-									//wenn tordifferenz aus db groesser
+									//Wenn Tordifferenz aus Datenbank groesser
 									m0.status="Zweiter";
 	    							m1.status="Sieger";
 								}else if(db.toreheim-db.toregast==db.toregast-db.toregast){
-									//wenn tordifferenz aus db gleich
+									//Wenn Tordifferenz aus Datenbank gleich
 									/**
 									f. Anzahl der in den Direktbegegnungen der punktgleichen Mannschaften erzielten Tore.
 									Sollten diese Kriterien nichtzu den eindeutigen Platzierungen führen, entscheidet die FIFA per Los.
@@ -220,13 +251,13 @@ public class SpielService extends Spiel{
 								f. Anzahl der in den Direktbegegnungen der punktgleichen Mannschaften erzielten Tore.
 								Sollten diese Kriterien nichtzu den eindeutigen Platzierungen führen, entscheidet die FIFA per Los.
 							 **/
-							//bitte die gewinner und zweiten der jeweiligen gruppe per hand eintragen
+							//Bitte die Gewinner und zweiten der jeweiligen Gruppe per Hand eintragen
 							//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
 						}
 					}
 //					af.get("af1").setMannschaftHeim(m0.status.startsWith("Sieger") ? m0 : m1);
 				}else if(m0.punkte==m2.punkte){
-					//bitte die gewinner und zweiten der jeweiligen gruppe per hand eintragen
+					//Bitte die Gewinner und zweiten der jeweiligen Gruppe per Hand eintragen
 					//mysql: UPDATE mannschaft SET status="Sieger/Zweiter <Gruppe>" WHERE mid=X;
 				}
 				m0.status=m0.status+" "+key;
@@ -296,20 +327,30 @@ public class SpielService extends Spiel{
 			}
 	    }
 	    
+	    /**
+	     * Ermittelt die Mannschaften, welche im Viertelfinale gegeneinander antreten
+	     * und setzt diese in die ensprechenden Spiele ein.
+	     * @param spiele
+	     */
 	    @Transactional
 	    public static void setVF(Collection<Spiel> spiele){
 	    	int i = 1;
 	    	Mannschaft m = new Mannschaft();
-	    	//finde alle ViertelFinal-Spiele
+	    	//Finde alle Viertelfinal-Spiele
 			Spiel vf1 = spielDao.findByBezeichnung("vf1");
 			Spiel vf2 = spielDao.findByBezeichnung("vf2");
 			Spiel vf3 = spielDao.findByBezeichnung("vf3");
 			Spiel vf4 = spielDao.findByBezeichnung("vf4");
 			
+			//Durchlaeft alle Spiele
 			for (Spiel s: spiele){
+				//Wenn es sich beim akuellen Spiel um ein Achtelfinal-Spiel handelt:
 				if (s.getBezeichnung().equals("af"+i)) {
+					//Ermittel den Gewinner des Spiels
 					m = s.searchWinner();
+					//Setze den Gewinner-Status
 					m.status="Sieger AF" + i;
+					//Setze den Gewinner in das entsprechende Viertelfinal-Spiel ein
 					switch (i) {
 						case 1:
 							vf2.setMannschaftHeim(m);
@@ -346,6 +387,11 @@ public class SpielService extends Spiel{
 			}
 	    }
 	    
+	    /**
+	     * Ermittelt die Mannschaften, welche im Halbfinale gegeneinander antreten
+	     * und setzt diese in die ensprechenden Spiele ein.
+	     * @param spiele
+	     */
 	    @Transactional
 	    public static void setHF(Collection<Spiel> spiele){
 	    	int i = 1;
@@ -380,54 +426,43 @@ public class SpielService extends Spiel{
 			}
 	    }
 	    
+	    /**
+	     * Ermittelt die Mannschaften, welche im Finale und im Spiel um Platz Drei gegeneinander antreten 
+	     * und setzt diese in die ensprechenden Spiele ein.
+	     * @param spiele
+	     */
 	    @Transactional
-	    public static void setFI(Collection<Spiel> spiele){
-	    	for (Spiel s: spiele){
-				Mannschaft mHeim = s.getMannschaftHeim();
-				Mannschaft mGast = s.getMannschaftGast();
-				switch (s.getBezeichnung()){
-					case "hf1":
-						if(s.toreheim>s.toregast){;
-							mHeim.status="Sieger HF1";
-							mGast.status="Verlierer HF1";
-						}else if (s.toregast>s.toreheim){
-							mGast.status="Sieger HF1";
-							mHeim.status="Verlierer HF1";
-						}
-						mannschaftDao.update(mHeim);
-						mannschaftDao.update(mGast);
-						break;
-						
-					case "hf2":
-						if(s.toreheim>s.toregast){;
-							mHeim.status="Sieger HF2";
-							mGast.status="Verlierer HF2";
-						}else if (s.toregast>s.toreheim){
-							mGast.status="Sieger HF2";
-							mHeim.status="Verlierer HF2";
-						}
-						mannschaftDao.update(mHeim);
-						mannschaftDao.update(mGast);
-						break;
-				}
-			}
-			
-			//Sieger und Verlierer der HalbFinal-Spiele ermitteln
-			Mannschaft siegerHF1 = mannschaftDao.findByState("Sieger HF1");
-			Mannschaft verliererHF1 = mannschaftDao.findByState("Verlierer HF1");
-			Mannschaft siegerHF2 = mannschaftDao.findByState("Sieger HF2");
-			Mannschaft verliererHF2 = mannschaftDao.findByState("Verlierer HF2");
-			
-			//finde Spiel um Platz 3 und Finale
+	    public static void setFI(Collection<Spiel> spiele) {
+	    	int i = 1;
+	    	Mannschaft mW = new Mannschaft();
+	    	Mannschaft mL = new Mannschaft();
+	    	//Finde Spiel um Platz Drei und Finalspiel
 			Spiel sp3 = spielDao.findByBezeichnung("sp3");
 			Spiel fi = spielDao.findByBezeichnung("fi");
 			
-			//setze Spiel um Platz 3 und Finale
-			sp3.setVersus(verliererHF1, verliererHF2);
-			fi.setVersus(siegerHF1, siegerHF2);
-			
-			spielDao.update(sp3);
-			spielDao.update(fi);
+			for (Spiel s: spiele){
+				if (s.getBezeichnung().equals("hf"+i)) {
+					mW = s.searchWinner();
+					mW.status="Sieger HF" + i;
+					mL = s.searchLoser();
+					mL.status="Verlierer HF" + i;
+					switch (i) {
+						case 1:
+							fi.setMannschaftHeim(mW);
+							sp3.setMannschaftHeim(mL);
+							break;
+						case 2:
+							fi.setMannschaftGast(mW);
+							sp3.setMannschaftGast(mL);
+							break;
+					}
+					i++;
+					mannschaftDao.update(mW);
+					mannschaftDao.update(mL);
+				}
+				spielDao.update(sp3);
+				spielDao.update(fi);
+			}
 	    }
 	    
 	    /**
@@ -444,40 +479,58 @@ public class SpielService extends Spiel{
 	     * @return
 	     */
 	    public boolean gameRunning(Spiel s){
-//	    	Timestamp now = new Timestamp(System.currentTimeMillis());
-//	    	Date date = new Date(System.currentTimeMillis());
 	    	Calendar now = Calendar.getInstance();
-//	    	now.setTime(date);
 	    	return s.beginn.before(now) && s.ende.after(now);
 	    }
 	    
+	    /**
+	     * return true when the game s is a groupgame
+	     * @param s
+	     * @return
+	     */
 	    public boolean isGg(Spiel s){
 	    	return s.getMannschaftHeim().gruppe.equals("A") || s.getMannschaftHeim().gruppe.equals("B") || s.getMannschaftHeim().gruppe.equals("C") || s.getMannschaftHeim().gruppe.equals("D") || s.getMannschaftHeim().gruppe.equals("E") || s.getMannschaftHeim().gruppe.equals("F") || s.getMannschaftHeim().gruppe.equals("G") || s.getMannschaftHeim().gruppe.equals("H");
 	    }
 	    
+	    /**
+	     * Ueberprueft, ob das uebergebene Achtelfinal-Spiel s bereit zum tippen ist.
+	     * @param s
+	     * @return
+	     */
 	    public boolean checkAfTippReady(Spiel s){
-//	    	Timestamp now = new Timestamp(System.currentTimeMillis());
 	    	Calendar now = Calendar.getInstance();
 	    	Timestamp rdy = Timestamp.valueOf("2014-06-26 22:00:00.0");
 	    	return s.getMannschaftHeim().gruppe.equals("AF") && now.after(rdy);
 	    }
 	    
+	    /**
+	     * Ueberprueft, ob das uebergebene Viertelfinal-Spiel s bereit zum tippen ist.
+	     * @param s
+	     * @return
+	     */
 	    public boolean checkVfTippReady(Spiel s){
-//	    	Timestamp now = new Timestamp(System.currentTimeMillis());
 	    	Calendar now = Calendar.getInstance();
 	    	Timestamp rdy = Timestamp.valueOf("2014-07-02 00:00:00.0");
 	    	return s.getMannschaftHeim().gruppe.equals("VF") && now.after(rdy);
 	    }
 	    
+	    /**
+	     * Ueberprueft, ob das uebergebene Halbfinal-Spiel s bereit zum tippen ist.
+	     * @param s
+	     * @return
+	     */
 	    public boolean checkHfTippReady(Spiel s){
-//	    	Timestamp now = new Timestamp(System.currentTimeMillis());
 	    	Calendar now = Calendar.getInstance();
 	    	Timestamp rdy = Timestamp.valueOf("2014-07-06 00:00:00.0");
 	    	return s.getMannschaftHeim().gruppe.equals("HF") && now.after(rdy);
 	    }
 	    
+	    /**
+	     * Ueberprueft, ob das uebergebene Final-Spiel s bereit zum tippen ist.
+	     * @param s
+	     * @return
+	     */
 	    public boolean checkFTippReady(Spiel s){
-//	    	Timestamp now = new Timestamp(System.currentTimeMillis());
 	    	Calendar now = Calendar.getInstance();
 	    	Timestamp rdy = Timestamp.valueOf("2014-07-10 00:00:00.0");
 	    	if(s.getMannschaftHeim().gruppe.equals("FI") || s.getMannschaftHeim().gruppe.equals("SP3")){
