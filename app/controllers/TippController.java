@@ -29,10 +29,11 @@ public class TippController extends Controller {
 	private static UserDao userDao = new UserDaoImpl();
 	
 	@Transactional
-	public static Result tippen(int sid, int uid){
-		String refererHeader = request().headers().get("Referer")[0];
+	public static Result tippen(int sid, int uid) {
+		String refererHeader = null;
 		
 		try {
+			refererHeader = request().headers().get("Referer")[0];
 		    final DynamicForm form = form().bindFromRequest();
 			final byte th = Byte.parseByte(form.get("toreHeim"));
 			final byte tg = Byte.parseByte(form.get("toreGast"));
@@ -60,7 +61,10 @@ public class TippController extends Controller {
 			Logger.error(ex.toString());
 			flash("tippError", "Ihr Tipp ist ungueltig. Die Werte sind so falsch.");
     		return redirect(refererHeader + "#stSpielplan");
-    	}
+    	} catch (NullPointerException e) {
+    		flash("redirectError", "Evtl. ist Ihr Lesezeichen kaputt");
+			return redirect("/#stSpielplan");
+		}
 	}
 	
 	@Transactional

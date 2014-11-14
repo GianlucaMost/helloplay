@@ -39,7 +39,7 @@ public class Rss {
 		int i=1;
 		List<SyndEntry> feedList = loadFeed();
 		List<DataHelper> checkedList = checkFeed(feedList);
-		for(DataHelper pro: checkedList){
+		for(DataHelper pro: checkedList) {
 			try {
 				final Byte th = pro.th, tg = pro.tg;
 				final Mannschaft mh = pro.mh, mg = pro.mg;
@@ -78,7 +78,7 @@ public class Rss {
 		});
 	}
 
-	private static List<SyndEntry> loadFeed(){
+	private static List<SyndEntry> loadFeed() {
 		try {
 	//		URL feedSource = new URL("http://rss.kicker.de/live/wm");
 			URL feedSource = new File("rss.xml").toURI().toURL();
@@ -111,12 +111,12 @@ public class Rss {
 		List<DataHelper> proofedList = new ArrayList<DataHelper>();
 		int i = 0, ls;
 		
-		for(SyndEntry se: entries){
+		for(SyndEntry se: entries) {
 			String title=se.getTitle();
 //	   		Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9]) (.*)$");
 			Pattern pattern = Pattern.compile("^(.*)? - (.*)? ([0-9]):([0-9])$");
 			Matcher matcher = pattern.matcher(title);
-			if(matcher.matches()){
+			if(matcher.matches()) {
 //				Logger.info("RSSfeed match " + i);
 				mhName = renameTeam(matcher.group(1));
     			mgName = renameTeam(matcher.group(2));

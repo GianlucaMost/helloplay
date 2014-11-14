@@ -11,6 +11,9 @@ libraryDependencies ++= Seq(
   "org.hibernate" % "hibernate-entitymanager" % "3.6.9.Final",
   "org.mindrot" % "jbcrypt" % "0.3m",
   "rome" % "rome" % "1.0"
-)     
+) 
+
+
+    
 
 play.Project.playJavaSettings

@@ -70,6 +70,7 @@ public class SpielService extends Spiel{
 				break;
 			
 			case "fi":
+				//Setze die ensprechenden Status der besten drei Mannschaften
 				Logger.info("Die Weltmeisterschaft 2014 ist vorbei!");
 				Spiel sp3 = spielDao.findByBezeichnung("sp3");
 				Spiel fi = spielDao.findByBezeichnung("fi");
