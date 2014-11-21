@@ -8,8 +8,10 @@ import com.google.common.collect.ImmutableMap;
 import com.ning.http.client.Request;
 
 import controllers.TippController;
+import models.Trunde;
 
 import org.junit.*;
+import org.specs2.specification.Fixture;
 
 import play.mvc.*;
 import play.test.*;
@@ -46,49 +48,83 @@ public class ApplicationTest {
 //	  assertThat(contentType(html)).isEqualTo("text/html");
 //	  assertThat(contentAsString(html)).contains("Coco");
 //	}
-	
-//	@Test
-//	public void tippen() {
-//	  running(fakeApplication(), new Runnable() {
-//	    public void run() {
-//	    	Result result = callAction(
-//	    			controllers.routes.ref.TippController.tippen(1, 35)
-//	    		);
-////	    		assertThat(status(result)).isEqualTo(OK);
-////	    		assertThat(contentType(result)).isEqualTo("text/html");
-////	    	    assertThat(charset(result)).isEqualTo("utf-8");
-//	    }
-//	  });
-//	}
-	
+
+	/**
+	 * Testet die tipp-funktion
+	 */
 	@Test
 	public void tippen() {
-	  running(fakeApplication(), new Runnable() {
-	    public void run() {
-//	    	Result result = callAction(
-//	    			controllers.routes.ref.TippController.tippen(1, 35)
-//	    		);
-//	    	HashMap<String,String> data = new HashMap<String, Object>();
+//		inMemoryDatabase("default", ImmutableMap.of("MODE", "MySQL"));
+		
+	/*
+	 * Starte eine fakeApplication
+	 */
+	running(fakeApplication(inMemoryDatabase("default", ImmutableMap.of("MODE", "MySQL", "IGNORECASE", "TRUE"))), new Runnable() {
+		public void run() {
+	    	//Input simulation
 	    	HashMap<String, String> data = new HashMap<String, String>();
+	    	//positives Beispiel
 	        data.put("toreHeim", "1");
-	        data.put("toreGast", "2");
+	        data.put("toreGast", "1");
 	        
-//	        Result ini = callAction(controllers.routes.ref.Application.index());
-	        Result result = callAction(
+	        Result resPo = callAction(
 	        	controllers.routes.ref.TippController.tippen(1, 35),
 	            fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user").withHeader("Referer", "/")
 	        );
 	        
-//	        String newURL= redirectLocation(result);
+	        assertThat(status(resPo)).isEqualTo(303);
+	        assertThat(flash(resPo).containsKey("tippSuccess")).isTrue();
 	        
-//	        Result newResult = route(fakeRequest(GET, newURL));
+	        //negatives Beispiel
+	        data.put("toreHeim", "-1");
+	        data.put("toreGast", "-0");
 	        
-//	        Result result = routeAndCall(fakeRequest().withFormUrlEncodedBody(data));
-	        assertThat(status(result)).isEqualTo(303);
-	        assertThat(flash(result).containsKey("tippSuccess")).isTrue();
-//	        assertThat(status(newResult)).isEqualTo(200);
-//	        assertThat(flash(result).isEmpty()).isTrue();
+	        Result resNeg = callAction(
+	        	controllers.routes.ref.TippController.tippen(1, 35),
+	            fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user").withHeader("Referer", "/")
+	        );
+	        
+	        assertThat(flash(resNeg).containsKey("tippError")).isTrue();
 	    }
 	  });
 	}
+	
+//	@Test
+//	public void createTrunde() {
+//		running(
+//			fakeApplication(inMemoryDatabase(
+//			"test",
+//			ImmutableMap.of("MODE", "MySQL", "IGNORECASE", "TRUE"))),
+//			new Runnable() {
+//				public void run() {
+//					//Input simulation
+//				   	HashMap<String, String> data = new HashMap<String, String>();
+//				   	//positives Beispiel
+//				   	data.put("bezeichnung", "hallo");
+//				        
+//					Result result = callAction(
+//						controllers.routes.ref.TrundeController.addNew(35),
+//						fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user")
+//					);
+//						
+//					assertThat(flash(result).containsKey("success")).isTrue();
+//				}
+//			}
+//		);
+//	} 
+	
+	@Test
+	public void removeTrunde() {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

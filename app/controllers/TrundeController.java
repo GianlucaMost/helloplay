@@ -2,21 +2,9 @@ package controllers;
 
 import static play.data.Form.form;
 
-import java.awt.Desktop;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
-import org.mindrot.jbcrypt.BCrypt;
-
 import dao.SpielDao;
 import dao.SpielDaoImpl;
-import dao.TippDao;
-import dao.TippDaoImpl;
 import dao.TrundeDao;
 import dao.TrundeDaoImpl;
 import dao.UserDao;
@@ -24,7 +12,6 @@ import dao.UserDaoImpl;
 import models.*;
 import play.*;
 import play.mvc.*;
-import play.data.Form;
 import play.db.jpa.Transactional;
 import views.html.*;
 import play.data.DynamicForm;

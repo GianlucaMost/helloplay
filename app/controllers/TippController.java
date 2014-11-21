@@ -40,7 +40,7 @@ public class TippController extends Controller {
 			
 			Collection<Tipp> tipps = (Collection<Tipp>) tippDao.findAll();
 			
-			for(Tipp t: tipps){
+			for(Tipp t: tipps) {
 				if(t.getSpiel().equals(spielDao.findById(sid)) && t.getUser().equals(userDao.findById(uid)) && th >=0 && tg >=0){
 					tippDao.update(t, th, tg);
 					flash("tippSuccess", "Ihr Tipp " + t.getSpiel().getMannschaftHeim().bezeichnung + " - " + t.getSpiel().getMannschaftGast().bezeichnung + " wurde aktuallisiert");
