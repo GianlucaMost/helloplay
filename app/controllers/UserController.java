@@ -136,15 +136,15 @@ public class UserController extends Controller {
 	        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
 	    }else{
 	    	if(userDao.userExist(name)) {
-	    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
+	    		flash("error", "Benutzer " + name + " wurde nicht erstellt. Dieser Name existiert bereits!");
 	    		return redirect(routes.UserController.newuser());
 	    	}else{
 	    		if(name.isEmpty() || pwHash.isEmpty()) {
-		    		flash("error", "username or password is emty.");
+		    		flash("error", "Benutzername oder Passwort darf nicht leer sein.");
 					return redirect(routes.UserController.newuser());
 	    		}else {				
 					userDao.add(name, pwHash);
-		    		flash("success", "User " + name + " has been created");
+		    		flash("success", "Benutzer " + name + " wurde angelegt.");
 		    		return redirect(routes.UserController.users());
 	    		}
 	    	}

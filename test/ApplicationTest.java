@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -5,6 +6,8 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.ImmutableMap;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 import com.ning.http.client.Request;
 
 import controllers.TippController;
@@ -33,98 +36,87 @@ import static org.fest.assertions.Assertions.*;
 *
 */
 public class ApplicationTest {
-  
-//    public void renderTemplate() {
-//        Content html = views.html.index.render("Your new application is ready.");
-//        assertThat(contentType(html)).isEqualTo("text/html");
-//        assertThat(contentAsString(html)).contains("Your new application is ready.");
-//    }
 
-//	@Test
-//	public void renderTemplate() {
-//	  Content html = views.html.index.render("Coco");
-//	  //home.render(spielDao.findAll(), mannschaftDao.findAll(), cU)
-//	  Content html = views.html.home.render(arg0, arg1, arg2)
-//	  assertThat(contentType(html)).isEqualTo("text/html");
-//	  assertThat(contentAsString(html)).contains("Coco");
-//	}
+	@Before
+	public void setUp() throws SQLException{
+		start(fakeApplication(inMemoryDatabase("default", ImmutableMap.of("MODE", "MySQL"))));
 
-	/**
-	 * Testet die tipp-funktion
-	 */
-	@Test
-	public void tippen() {
-//		inMemoryDatabase("default", ImmutableMap.of("MODE", "MySQL"));
-		
-	/*
-	 * Starte eine fakeApplication
-	 */
-	running(fakeApplication(inMemoryDatabase("default", ImmutableMap.of("MODE", "MySQL", "IGNORECASE", "TRUE"))), new Runnable() {
-		public void run() {
-	    	//Input simulation
-	    	HashMap<String, String> data = new HashMap<String, String>();
-	    	//positives Beispiel
-	        data.put("toreHeim", "1");
-	        data.put("toreGast", "1");
-	        
-	        Result resPo = callAction(
-	        	controllers.routes.ref.TippController.tippen(1, 35),
-	            fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user").withHeader("Referer", "/")
-	        );
-	        
-	        assertThat(status(resPo)).isEqualTo(303);
-	        assertThat(flash(resPo).containsKey("tippSuccess")).isTrue();
-	        
-	        //negatives Beispiel
-	        data.put("toreHeim", "-1");
-	        data.put("toreGast", "-0");
-	        
-	        Result resNeg = callAction(
-	        	controllers.routes.ref.TippController.tippen(1, 35),
-	            fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user").withHeader("Referer", "/")
-	        );
-	        
-	        assertThat(flash(resNeg).containsKey("tippError")).isTrue();
-	    }
-	  });
-	}
-	
-//	@Test
-//	public void createTrunde() {
-//		running(
-//			fakeApplication(inMemoryDatabase(
-//			"test",
-//			ImmutableMap.of("MODE", "MySQL", "IGNORECASE", "TRUE"))),
-//			new Runnable() {
-//				public void run() {
-//					//Input simulation
-//				   	HashMap<String, String> data = new HashMap<String, String>();
-//				   	//positives Beispiel
-//				   	data.put("bezeichnung", "hallo");
-//				        
-//					Result result = callAction(
-//						controllers.routes.ref.TrundeController.addNew(35),
-//						fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user")
-//					);
-//						
-//					assertThat(flash(result).containsKey("success")).isTrue();
-//				}
+//		String sql = "DROP TABLE IF EXISTS mannschaft)";
+//		java.sql.Connection conn = play.db.DB.getConnection();
+//		try {
+//			java.sql.Statement stmt = conn.createStatement();
+//			try {
+//				stmt.execute(sql);
+//			} finally {
+//				stmt.close();
 //			}
-//		);
-//	} 
-	
-	@Test
-	public void removeTrunde() {
-		
+//		} finally {
+//			conn.close();
+//		}
 	}
 	
+//	@Test
+//	public void createUser() {
+//		HashMap<String, String> data = new HashMap<String, String>();
+//	    data.put("name", "user");
+//	    data.put("pw", "user");
+//	    
+//	    Result resPo = callAction(
+//	    	controllers.routes.ref.UserController.save()
+//	    );
+//	    
+//	    assertThat(status(resPo)).isEqualTo(303);
+//	    assertThat(flash(resPo).containsKey("success")).isTrue();
+//	}
 	
+//	@Test
+//	public void tippen() {
+//		HashMap<String, String> data = new HashMap<String, String>();
+//		//positives Beispiel
+//	    data.put("toreHeim", "1");
+//	    data.put("toreGast", "1");
+//	    
+//	    Result resPo = callAction(
+//	    	controllers.routes.ref.TippController.tippen(1, 35),
+//	        fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user").withHeader("Referer", "/")
+//	    );
+//	    
+//	    assertThat(status(resPo)).isEqualTo(303);
+//	    assertThat(flash(resPo).containsKey("tippSuccess")).isTrue();
+//	    
+//	    //negatives Beispiel
+//	    data.put("toreHeim", "-1");
+//	    data.put("toreGast", "-0");
+//	    
+//	    Result resNeg = callAction(
+//	    	controllers.routes.ref.TippController.tippen(1, 35),
+//	        fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user").withHeader("Referer", "/")
+//	    );
+//	    
+//	    assertThat(flash(resNeg).containsKey("tippError")).isTrue();
+//	}
 	
+	@Test
+	public void createTrunde() {
+		HashMap<String, String> data = new HashMap<String, String>();
+		data.put("bezeichnung", "hallo");
+		
+		Result result = callAction(
+			controllers.routes.ref.TrundeController.addNew(1),
+			fakeRequest().withFormUrlEncodedBody(data).withSession("name", "user")
+		);
+						
+		assertThat(flash(result).containsKey("success")).isTrue();
+	} 
 	
-	
-	
-	
-	
-	
-	
+	@Test
+	public void showMannschaf() {
+		Result res = callAction(controllers.routes.ref.MannschaftController.mannschaften(), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).isEqualTo(200);
+	}	
 }
+
+
+
+
+

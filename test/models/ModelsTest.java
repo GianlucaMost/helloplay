@@ -1,14 +1,21 @@
 package models;
 
+import java.sql.SQLException;
+
 import models.*;
+
 import org.junit.*;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
+
 import static org.junit.Assert.*;
 import play.test.WithApplication;
 import static play.test.Helpers.*;
 
 public class ModelsTest extends WithApplication{
 	@Before
-	public void setUp(){
+	public void setUp() throws SQLException{
 		start(fakeApplication(inMemoryDatabase()));
 	}
 	

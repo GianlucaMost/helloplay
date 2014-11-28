@@ -22,7 +22,6 @@ public class SimpleTest implements TestInterface {
 	}
 	
 	public static void main(String[] args) {
-		
 		TestInterface obj = new SimpleTest();
 		obj.testInteger();
 	}

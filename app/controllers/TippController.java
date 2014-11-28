@@ -40,15 +40,17 @@ public class TippController extends Controller {
 			
 			Collection<Tipp> tipps = (Collection<Tipp>) tippDao.findAll();
 			
+			// Wenn von diesem Benutzer schon ein Tipp zu diesem Spiel vorhanden ist, update
 			for(Tipp t: tipps) {
-				if(t.getSpiel().equals(spielDao.findById(sid)) && t.getUser().equals(userDao.findById(uid)) && th >=0 && tg >=0){
+				if(th >=0 && tg >=0 && t.getUser().equals(userDao.findById(uid)) && t.getSpiel().equals(spielDao.findById(sid))) {
 					tippDao.update(t, th, tg);
 					flash("tippSuccess", "Ihr Tipp " + t.getSpiel().getMannschaftHeim().bezeichnung + " - " + t.getSpiel().getMannschaftGast().bezeichnung + " wurde aktuallisiert");
 					return redirect(refererHeader + "#stSpielplan");
 				}
 			}
 			
-			if (th >=0 && tg >=0){
+			// Lege Tipp an
+			if (th >=0 && tg >=0) {
 				Tipp newTipp = new Tipp(userDao.findById(uid), spielDao.findById(sid), th, tg);
 				tippDao.persist(newTipp);
 				flash("tippSuccess", "Ihr Tipp " + newTipp.getSpiel().getMannschaftHeim().bezeichnung + " - " + newTipp.getSpiel().getMannschaftGast().bezeichnung + " wurde abgegeben");
