@@ -88,7 +88,7 @@ public class LoginController extends Controller
 		final String pw = form.get("pw");
 		final String pwCon = form.get("pwCon");
 		
-		if(pw.equals(pwCon)){
+		if(pw.equals(pwCon)) {
 			final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
 		
 		    if (form.hasErrors()) {
@@ -110,8 +110,8 @@ public class LoginController extends Controller
 		    		}
 		    	}
 		    }
-		}else{
-			flash("error", "Die Passwoerter muessen ubereinstimmen!");
+		}else {
+			flash("error", "Die Passwörter müssen übereinstimmen!");
 			return redirect(routes.LoginController.register());
 		}
 	}
