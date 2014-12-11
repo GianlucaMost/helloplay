@@ -45,10 +45,12 @@ public class LoginController extends Controller
 	    	if (userDao.validate(name, pw)) {
 		        session().clear();
 		        session("name", name);
+	    		Logger.info("user " + name + " logged in");
 		        flash("success", "Sie sind jetzt angemeldet.");
 		        return redirect(routes.Application.index());
 	    	}else {
-	    		flash("error", "username or password is wrong.");
+	    		Logger.info("Jemand hat versucht, sich mit dem username " + name + " anzumelden. Falsches Passwort!");
+	    		flash("error", "Benutzername oder Passwort ist falsch.");
 				return badRequest(login.render(loginForm));
 	    	}
 	    }
@@ -60,7 +62,8 @@ public class LoginController extends Controller
 	 */
 	public static Result logout() {
 	    session().clear();
-	    flash("info", "Sie sind jetzt abgemeldet.");
+		Logger.info("Jemand hat sich abgemeldet");
+		flash("info", "Sie sind jetzt abgemeldet.");
 	    return redirect(routes.Application.index());
 	}
 	

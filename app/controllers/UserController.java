@@ -128,22 +128,27 @@ public class UserController extends Controller {
 	@Transactional
 	@Security.Authenticated(AdminSecured.class)
 	public static Result save() {
+		Logger.info("TEST!!!");
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
 		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
 		
 	    if (form.hasErrors()) {
+    		Logger.info("user konnte nicht angelegt werden, Formular enthaelt fehler");
 	        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
-	    }else{
+	    }else {
 	    	if(userDao.userExist(name)) {
+	    		Logger.info("user " + name + " existiert bereits");
 	    		flash("error", "Benutzer " + name + " wurde nicht erstellt. Dieser Name existiert bereits!");
 	    		return redirect(routes.UserController.newuser());
-	    	}else{
+	    	}else {
 	    		if(name.isEmpty() || pwHash.isEmpty()) {
+	    			Logger.info("name or password was empty");
 		    		flash("error", "Benutzername oder Passwort darf nicht leer sein.");
 					return redirect(routes.UserController.newuser());
 	    		}else {				
 					userDao.add(name, pwHash);
+		    		Logger.info("user " + name + " wurde angelegt");
 		    		flash("success", "Benutzer " + name + " wurde angelegt.");
 		    		return redirect(routes.UserController.users());
 	    		}
