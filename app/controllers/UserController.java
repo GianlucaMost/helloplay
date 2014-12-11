@@ -128,7 +128,6 @@ public class UserController extends Controller {
 	@Transactional
 	@Security.Authenticated(AdminSecured.class)
 	public static Result save() {
-		Logger.info("TEST!!!");
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
 		final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());

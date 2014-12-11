@@ -95,7 +95,7 @@ public class LoginController extends Controller
 		        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
 		    }else{
 		    	if(userDao.userExist(name)) {
-		    		flash("error", "User " + name + " has not been created. User " + name + " exists already!");
+		    		flash("error", "Benutzer " + name + " wurde nicht erstellt. Dieser Name existiert bereits!");
 		    		return redirect(routes.LoginController.showRegister());
 		    	}else{
 		    		if(name.isEmpty() || pwHash.isEmpty()) {

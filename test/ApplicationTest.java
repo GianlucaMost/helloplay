@@ -65,13 +65,13 @@ public class ApplicationTest {
 	 * Neuen Benutzer anlegen
 	 */
 	@Test
-	public void createUser() {
+	public void register() {
 		HashMap<String, String> data = new HashMap<String, String>();
 	    data.put("name", "user");
 	    data.put("pw", "user");
 	    
 	    Result res = callAction(
-	    	controllers.routes.ref.UserController.save(),
+	    	controllers.routes.ref.LoginController.register(),
 	    	fakeRequest().withFormUrlEncodedBody(data)
 	    );
 	    
