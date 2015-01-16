@@ -16,8 +16,7 @@ public class Application extends Controller {
     public static Result index() {
 		String name = session().get("name");
 		User cU = userDao.findByName(name);
-		if (cU==null)
-		{
+		if (cU==null) {
 			return ok(home.render(spielDao.findAll(), mannschaftDao.findAll(), null));
 		}else if(cU.admin==1) {
 			return redirect(routes.UserController.users());

@@ -82,7 +82,7 @@ public class LoginController extends Controller
 	 * @return
 	 */
 	@Transactional
-	public static Result register() {
+	public static Result register_old() {
 		final DynamicForm form = form().bindFromRequest();
 		final String name = form.get("name");
 		final String pw = form.get("pw");
@@ -93,7 +93,7 @@ public class LoginController extends Controller
 		
 		    if (form.hasErrors()) {
 		        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
-		    }else{
+		    }else {
 		    	if(userDao.userExist(name)) {
 		    		flash("error", "Benutzer " + name + " wurde nicht erstellt. Dieser Name existiert bereits!");
 		    		return redirect(routes.LoginController.showRegister());
@@ -114,5 +114,45 @@ public class LoginController extends Controller
 			flash("error", "Die Passwörter müssen übereinstimmen!");
 			return redirect(routes.LoginController.register());
 		}
+	}
+	
+	
+	/**
+	 * handle the register-POST-request
+	 * @return
+	 */
+	@Transactional
+	public static Result register() {
+		final DynamicForm form = form().bindFromRequest();
+		
+		if (form.hasErrors()) {
+	        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
+	    }else {	
+	    	final String name = form.get("name");
+			final String pw = form.get("pw");
+			final String pwCon = form.get("pwCon");
+			
+			if(name.isEmpty() || pw.isEmpty()) {
+				flash("error", "Benutzername oder Passwort ist leer.");
+				return redirect(routes.LoginController.register());
+			}else {
+		    	if(userDao.userExist(name)) {
+		    		flash("error", "Benutzer " + name + " wurde nicht erstellt. Dieser Name existiert bereits!");
+		    		return redirect(routes.LoginController.showRegister());
+		    	}else{
+		    		if(pw.equals(pwCon)) {
+		    			final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
+		    			userDao.add(name, pwHash);
+						session().clear();
+				        session("name", name);
+				        flash("success", "Registrierung erfolgreich.");
+				        return redirect(routes.Application.index());
+		    		}else {				
+		    			flash("error", "Die Passwörter müssen übereinstimmen!");
+						return redirect(routes.LoginController.register());
+		    		}
+		    	}
+			}
+	    }
 	}
 }
