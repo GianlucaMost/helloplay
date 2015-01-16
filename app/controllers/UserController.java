@@ -230,7 +230,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	public static Result changePwShow(int uid) {		
+	public static Result changePwShow() {		
 		return ok(changePw.render(userDao.findByName(request().username())));
 	}
 	

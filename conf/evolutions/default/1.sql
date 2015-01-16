@@ -27,8 +27,6 @@ CREATE TABLE spiel (
   checked tinyint(4) DEFAULT '0',
   bezeichnung varchar(45) DEFAULT NULL,
   PRIMARY KEY (sid),
-  KEY midgast_idx (fk_midgast),
-  KEY midheim_idx (fk_midheim),
   CONSTRAINT midgast FOREIGN KEY (fk_midgast) REFERENCES mannschaft (mid) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT midheim FOREIGN KEY (fk_midheim) REFERENCES mannschaft (mid) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
@@ -47,7 +45,6 @@ CREATE TABLE trunde (
   bezeichnung varchar(45) NOT NULL,
   fk_admin int(11) DEFAULT NULL,
   PRIMARY KEY (trid),
-  KEY fkadmin_idx (fk_admin),
   CONSTRAINT fkadmin FOREIGN KEY (fk_admin) REFERENCES user (uid) ON DELETE SET NULL ON UPDATE NO ACTION
 );
 
@@ -59,8 +56,6 @@ CREATE TABLE tipp (
   toregast tinyint(3) unsigned NOT NULL DEFAULT '0',
   checked tinyint(3) DEFAULT '0',
   PRIMARY KEY (tid),
-  KEY fkUID_idx (fk_uid),
-  KEY fkSID_idx (fk_sid),
   CONSTRAINT fkSID FOREIGN KEY (fk_sid) REFERENCES spiel (sid) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT fkUID FOREIGN KEY (fk_uid) REFERENCES user (uid) ON DELETE CASCADE ON UPDATE NO ACTION
 );
@@ -70,9 +65,6 @@ CREATE TABLE user_trunde (
   fk_uid int(11) NOT NULL,
   fk_trid int(11) NOT NULL,
   PRIMARY KEY (utrid),
-  KEY uid_idx (fk_uid),
-  KEY trid_idx (fk_trid),
-  KEY fktrid_idx (fk_trid),
   CONSTRAINT fktrid FOREIGN KEY (fk_trid) REFERENCES trunde (trid) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT user_trunde_ibfk_1 FOREIGN KEY (fk_uid) REFERENCES user (uid) ON DELETE CASCADE ON UPDATE NO ACTION
 );

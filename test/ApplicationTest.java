@@ -251,9 +251,9 @@ public class ApplicationTest {
 	
 	@Test
 	public void changePw() {
-		Result res = callAction(controllers.routes.ref.UserController.changePwShow(1), fakeRequest().withSession("name", "user"));
+		Result res = callAction(controllers.routes.ref.UserController.changePwShow(), fakeRequest().withSession("name", "user"));
 		assertThat(status(res)).as("changePw_http-state-case1-logged-in").isEqualTo(200);
-		res = callAction(controllers.routes.ref.UserController.changePwShow(1));
+		res = callAction(controllers.routes.ref.UserController.changePwShow());
 		assertThat(status(res)).as("changePw_http-state-case2-not-logged-in").isEqualTo(303);
 	}
 	

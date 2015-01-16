@@ -31,7 +31,7 @@ POST	/user/update/:id			controllers.UserController.update(id: Int)
 POST 	/user/updateName/:id		controllers.UserController.updateName(id: Int)
 
 # zeigt das formular zum aendern des passwortes des benutzers mit id an
-GET		/user/changePw/:id			controllers.UserController.changePwShow(id: Int)
+GET		/user/changePw				controllers.UserController.changePwShow()
 
 # aendert das passwort des benutzers mit id
 POST	/user/changePw/:id			controllers.UserController.changePw(id: Int)
