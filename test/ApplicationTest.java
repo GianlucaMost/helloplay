@@ -195,12 +195,15 @@ public class ApplicationTest {
 	
 	@Test
 	public void showMainpage() {
+		//angemeldet als user
 		Result res = callAction(controllers.routes.ref.Application.index(), fakeRequest().withSession("name", "user"));
 		assertThat(status(res)).as("showMainpage_http-state_case1-logged-in-as-user").isEqualTo(200);
 		assertThat(session(res)).as("showMainpage_session_case1-logged-in-as-user").isNotNull();
+		//nicht angemeldet
 		res = callAction(controllers.routes.ref.Application.index());
 		assertThat(status(res)).as("showMainpage_http-state_case2-not-logged-in").isEqualTo(200);
 		assertThat(session(res)).as("showMainpage_session_case2-not-logged-in").isNullOrEmpty();
+		//angemeldet als admin
 		res = callAction(controllers.routes.ref.Application.index(), fakeRequest().withSession("name", "admin"));
 		assertThat(status(res)).as("showMainpage_http-state_case3-logged-in-as-admin").isEqualTo(303);
 		assertThat(session(res)).as("showMainpage_session_case3-logged-in-as-admin").isNotNull();
@@ -211,6 +214,49 @@ public class ApplicationTest {
 		Result res = callAction(controllers.routes.ref.MannschaftController.mannschaften(), fakeRequest().withSession("name", "user"));
 		assertThat(status(res)).isEqualTo(200);
 	}	
+	
+	@Test
+	public void findUser() {
+		Result res = callAction(controllers.routes.ref.UserController.finduser(1), fakeRequest().withSession("name", "test"));
+		assertThat(status(res)).as("findUser_http-state-case1-all-right").isEqualTo(200);
+		res = callAction(controllers.routes.ref.UserController.finduser(-1), fakeRequest().withSession("name", "test"));
+		assertThat(status(res)).as("findUser_http-state-case2-wrong-id").isEqualTo(400);
+	}
+	
+	@Test
+	public void userList() {
+		Result res = callAction(controllers.routes.ref.UserController.users(), fakeRequest().withSession("name", "admin"));
+		assertThat(status(res)).as("userList_http-state-case1-logged-in-as-admin").isEqualTo(200);
+		res = callAction(controllers.routes.ref.UserController.users(), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("userList_http-state-case2-logged-in-as-normal-user").isEqualTo(303);
+	}
+	
+	@Test
+	public void newUser() {
+		Result res = callAction(controllers.routes.ref.UserController.newuser(), fakeRequest().withSession("name", "admin"));
+		assertThat(status(res)).as("newUser_http-state-case1-logged-in-as-admin").isEqualTo(200);
+		res = callAction(controllers.routes.ref.UserController.newuser(), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("newUser_http-state-case2-logged-in-as-normal-user").isEqualTo(303);
+	}
+	
+	@Test
+	public void userUpdatePage() {
+		Result res = callAction(controllers.routes.ref.UserController.updateShow(1), fakeRequest().withSession("name", "admin"));
+		assertThat(status(res)).as("userUpdatePage_http-state-case1-admin-and-correct-id").isEqualTo(200);
+		res = callAction(controllers.routes.ref.UserController.updateShow(-1), fakeRequest().withSession("name", "admin"));
+		assertThat(status(res)).as("userUpdatePage_http-state-case2-admin-and-incorrect-id").isEqualTo(400);
+		res = callAction(controllers.routes.ref.UserController.updateShow(1), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("userUpdatePage_http-state-case3-logged-in-as-normal-user").isEqualTo(303);
+	}
+	
+	@Test
+	public void changePw() {
+		Result res = callAction(controllers.routes.ref.UserController.changePwShow(1), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("changePw_http-state-case1-logged-in").isEqualTo(200);
+		res = callAction(controllers.routes.ref.UserController.changePwShow(1));
+		assertThat(status(res)).as("changePw_http-state-case2-not-logged-in").isEqualTo(303);
+	}
+	
 }
 
 

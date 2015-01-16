@@ -48,18 +48,16 @@ public class UserController extends Controller {
 	 */
 	@Transactional(readOnly=true)
 	public static Result finduser(int id) {
-		User cU = userDao.findByName(request().username());
-		
-		Logger.info("Start searching for user with id " + id);
-		User u = userDao.findById(id);
-		Collection<Tipp> sortedTipps = userDao.findSortedTipps(u);
-		String msg = "Der Benutzer mit der id" + id + "existiert nicht!";
-		if (u==null) {
+		try {
+			Logger.info("Somebody want to search for a user with the id " + id);
+			User u = userDao.findById(id);
+			Collection<Tipp> sortedTipps = userDao.findSortedTipps(u);
+			User cU = userDao.findByName(request().username());
+			return ok(oneuser.render("Benutzer mit der id " + id, u, cU, sortedTipps));
+		} catch (NullPointerException e) {
+			String msg = "Der Benutzer mit der id" + id + "existiert nicht!";
 			Logger.info(msg);
 			return badRequest(msg);
-		}else {
-			Logger.info("User searched for: " + u.name);
-			return ok(oneuser.render("Benutzer mit der id " + id, u, cU, sortedTipps));
 		}
 	}
 	
@@ -232,7 +230,7 @@ public class UserController extends Controller {
 	 * @return
 	 */
 	@Transactional
-	public static Result changePwShow(int uid) {
+	public static Result changePwShow(int uid) {		
 		return ok(changePw.render(userDao.findByName(request().username())));
 	}
 	
