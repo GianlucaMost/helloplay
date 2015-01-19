@@ -7,6 +7,7 @@ import dao.MannschaftDaoImpl;
 import dao.UserDao;
 import dao.UserDaoImpl;
 import models.*;
+import play.Logger;
 import play.mvc.*;
 import play.db.jpa.Transactional;
 import views.html.*;
@@ -30,9 +31,14 @@ public class MannschaftController extends Controller {
 	@Transactional(readOnly=true)
 	public static Result mannschaftShow(int mid) {
 		User cu = userDao.findByName(request().username());
-		Mannschaft m = mannschaftDao.findById(mid);
-		Collection<Spiel> games = mannschaftDao.findGamesSorted(m);
-//		User cu = userDao.findByName(request().username());
-		return ok(mannschaft.render(m, games, cu));
+		try {
+			Mannschaft m = mannschaftDao.findById(mid);
+			Collection<Spiel> games = mannschaftDao.findGamesSorted(m);
+			return ok(mannschaft.render(m, games, cu));
+		} catch (NullPointerException e) {
+			Logger.info("Es existiert keine Mannschaft mit der id " + mid);
+			flash("error", "Es ist ein Fehler aufgetreten.");
+	        return redirect(routes.Application.index());
+		}
 	}
 }

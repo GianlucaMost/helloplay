@@ -22,6 +22,7 @@ public class ApplicationTest {
 		
 		// Initial Datensaetze
 		String createUser = "INSERT INTO user VALUES (1,'user','$2a$10$Icg8ysl4avuzHhY5nrwVhuGVG882i.OhkplBllbbv.X7zSm9kHZgm',0,0),(2,'admin','$2a$10$Icg8ysl4avuzHhY5nrwVhuGVG882i.OhkplBllbbv.X7zSm9kHZgm',0,1)";
+		String createTrunde = "INSERT INTO `trunde` VALUES (1,'test',1)";
 //		String createMannschaften = "INSERT INTO `mannschaft` VALUES (1,'Brasilien','A',1,1,0,0,3,1,3,NULL),(2,'Kroatien','A',0,0,0,0,0,0,0,NULL)";
 //		String createSpiel = "INSERT INTO spiel VALUES (1,1,2,0,0,'Sao Paulo','2020-06-12 20:00:00','2020-06-12 22:00:00',0,'gg1')";
 		java.sql.Connection conn = play.db.DB.getConnection();
@@ -29,6 +30,7 @@ public class ApplicationTest {
 			java.sql.Statement stmt = conn.createStatement();
 			try {
 				stmt.execute(createUser);
+				stmt.execute(createTrunde);
 //				stmt.execute(createMannschaften);
 //				stmt.execute(createSpiel);
 			} finally {
@@ -256,6 +258,57 @@ public class ApplicationTest {
 		res = callAction(controllers.routes.ref.UserController.changePwShow());
 		assertThat(status(res)).as("changePw_http-state-case2-not-logged-in").isEqualTo(303);
 	}
+	
+	@Test
+	public void accVerwaltung() {
+		Result res = callAction(controllers.routes.ref.UserController.accverwaltung(), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("accVerwaltung_http-state-case1-logged-in").isEqualTo(200);
+		res = callAction(controllers.routes.ref.UserController.accverwaltung());
+		assertThat(status(res)).as("accVerwaltung_http-state-case2-not-logged-in").isEqualTo(303);
+	}
+	
+	@Test
+	public void showLogin() {
+		Result res = callAction(controllers.routes.ref.LoginController.login());
+		assertThat(status(res)).as("showLogin_http-state").isEqualTo(200);
+	}
+	
+	@Test
+	public void showRegister() {
+		Result res = callAction(controllers.routes.ref.LoginController.showRegister());
+		assertThat(status(res)).as("showRegister_http-state").isEqualTo(200);
+	}
+	
+	@Test
+	public void showTeam() {
+		Result res = callAction(controllers.routes.ref.MannschaftController.mannschaftShow(1), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("showTeam_http-state-case1-logged-in").isEqualTo(200);
+		res = callAction(controllers.routes.ref.MannschaftController.mannschaftShow(1));
+		assertThat(status(res)).as("showTeam_http-state-case2-not-logged-in").isEqualTo(303);
+		res = callAction(controllers.routes.ref.MannschaftController.mannschaftShow(-1), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("showTeam_http-state-case3-invalid-team").isEqualTo(303);
+	    assertThat(flash(res).containsKey("error")).as("showTeam_flash-key-case3-invalid-team").isTrue();
+	}
+	
+	@Test
+	public void showTipps() {
+		Result res = callAction(controllers.routes.ref.TippController.showTipps(), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("showTipps_http-state-case1-logged-in").isEqualTo(200);
+		res = callAction(controllers.routes.ref.TippController.showTipps());
+		assertThat(status(res)).as("showTipps_http-state-case2-not-logged-in").isEqualTo(303);
+	}
+	
+	@Test
+	public void showTrundeDetail() {
+		Result res = callAction(controllers.routes.ref.TrundeController.showDetail(1), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("showTrundeDetail_http-state-case1-logged-in").isEqualTo(200);
+		res = callAction(controllers.routes.ref.TrundeController.showDetail(1));
+		assertThat(status(res)).as("showTrundeDetail_http-state-case2-not-logged-in").isEqualTo(303);
+		res = callAction(controllers.routes.ref.TrundeController.showDetail(-1), fakeRequest().withSession("name", "user"));
+		assertThat(status(res)).as("showTrundeDetail_http-state-case3-invalid-trunde").isEqualTo(303);
+	    assertThat(flash(res).containsKey("error")).as("showTeam_flash-key-case3-invalid-trunde").isTrue();
+	}
+	//controllers.TrundeController.showDetail(id: Int)
 	
 }
 

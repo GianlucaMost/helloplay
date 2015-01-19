@@ -3,6 +3,7 @@ package controllers;
 import static play.data.Form.form;
 
 import java.util.Collection;
+
 import dao.SpielDao;
 import dao.SpielDaoImpl;
 import dao.TrundeDao;
@@ -29,17 +30,28 @@ public class TrundeController extends Controller {
 	 */
 	@Transactional
     public static Result showDetail(int trid) {
-		String msg = "Dies TippRunde mit der id " + trid + "existiert nicht.";
-		Trunde tr = trundeDao.findById(trid);
-		Collection<User> sortedMember = trundeDao.findSortedMember(tr);
-		Collection<Spiel> games = spielDao.findAll();
-		User cU = userDao.findByName(request().username());
-		if(tr!=null){
+		try {
+			Trunde tr = trundeDao.findById(trid);
+			Collection<User> sortedMember = trundeDao.findSortedMember(tr);
+			Collection<Spiel> games = spielDao.findAll();
+			User cU = userDao.findByName(request().username());
 			return ok(trunde_detail.render(games, tr, cU, sortedMember));
-		}else{
-			Logger.info(msg);
-			return badRequest(msg);
+		} catch (NullPointerException e) {
+			Logger.info("Die TippRunde mit der id " + trid + "existiert nicht.");
+			flash("error", "Es ist ein Fehler aufgetreten.");
+	        return redirect(routes.Application.index());
 		}
+//		String msg = "Dies TippRunde mit der id " + trid + "existiert nicht.";
+//		Trunde tr = trundeDao.findById(trid);
+//		Collection<User> sortedMember = trundeDao.findSortedMember(tr);
+//		Collection<Spiel> games = spielDao.findAll();
+//		User cU = userDao.findByName(request().username());
+//		if(tr!=null){
+//			return ok(trunde_detail.render(games, tr, cU, sortedMember));
+//		}else{
+//			Logger.info(msg);
+//			return badRequest(msg);
+//		}
 	}
 	
 	@Transactional

@@ -45,7 +45,7 @@ public class LoginController extends Controller
 	    	if (userDao.validate(name, pw)) {
 		        session().clear();
 		        session("name", name);
-	    		Logger.info("user " + name + " logged in");
+	    		Logger.info(name + " logged in");
 		        flash("success", "Sie sind jetzt angemeldet.");
 		        return redirect(routes.Application.index());
 	    	}else {
@@ -61,8 +61,9 @@ public class LoginController extends Controller
 	 * @return
 	 */
 	public static Result logout() {
+		String name = session().get("name");
 	    session().clear();
-		Logger.info("Jemand hat sich abgemeldet");
+		Logger.info(name + " logged out");
 		flash("info", "Sie sind jetzt abgemeldet.");
 	    return redirect(routes.Application.index());
 	}
@@ -76,46 +77,6 @@ public class LoginController extends Controller
 		Form<User> userForm = form(User.class);
 		return ok(register.render(userForm));
 	}
-	
-	/**
-	 * handle the register-POST-request
-	 * @return
-	 */
-	@Transactional
-	public static Result register_old() {
-		final DynamicForm form = form().bindFromRequest();
-		final String name = form.get("name");
-		final String pw = form.get("pw");
-		final String pwCon = form.get("pwCon");
-		
-		if(pw.equals(pwCon)) {
-			final String pwHash = BCrypt.hashpw(form.get("pw"), BCrypt.gensalt());
-		
-		    if (form.hasErrors()) {
-		        return badRequest("Mit den eingegebenen Werten stimmt etwas nicht.");
-		    }else {
-		    	if(userDao.userExist(name)) {
-		    		flash("error", "Benutzer " + name + " wurde nicht erstellt. Dieser Name existiert bereits!");
-		    		return redirect(routes.LoginController.showRegister());
-		    	}else{
-		    		if(name.isEmpty() || pwHash.isEmpty()) {
-			    		flash("error", "username or password is emty.");
-						return redirect(routes.LoginController.register());
-		    		}else {				
-		    			userDao.add(name, pwHash);
-						session().clear();
-				        session("name", name);
-				        flash("success", "Registrierung erfolgreich.");
-				        return redirect(routes.Application.index());
-		    		}
-		    	}
-		    }
-		}else {
-			flash("error", "Die Passwörter müssen übereinstimmen!");
-			return redirect(routes.LoginController.register());
-		}
-	}
-	
 	
 	/**
 	 * handle the register-POST-request
@@ -145,6 +106,7 @@ public class LoginController extends Controller
 		    			userDao.add(name, pwHash);
 						session().clear();
 				        session("name", name);
+				        Logger.info(name + " hat sich registriert");
 				        flash("success", "Registrierung erfolgreich.");
 				        return redirect(routes.Application.index());
 		    		}else {				
