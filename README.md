@@ -2,9 +2,8 @@ helloplay (WMtipp)
 =========
 
 Author:		Gianluca Most
-Firma:		InnoQ
+Firma:		InnoQ Deutschland GmbH
 Datum:		Feb.2014-Mar.2014
-Kontakt:	most.gianluca@gmail.com
 GitHub:		https://github.com/GianlucaMost/helloplay
 DB-dump:	https://drive.google.com/file/d/0Bx2ndN3Jq3k3NE8zRnJ6b3MxblU/edit?usp=sharing
 
